@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Status - Yog Milk</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#dde1f8",
+            "on-primary-fixed-variant": "#374183",
+            "outline-variant": "#c6c5d2",
+            "on-primary-fixed": "#051256",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary": "#994700",
+            "inverse-surface": "#2b3041",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface-bright": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container": "#eaedff",
+            "tertiary": "#261a00",
+            "error": "#ba1a1a",
+            "on-background": "#161b2b",
+            "on-tertiary-fixed": "#251a00",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#bbc3ff",
+            "tertiary-container": "#3f2e00",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#ba9331",
+            "background": "#faf8ff",
+            "surface-tint": "#4f599c",
+            "on-secondary-container": "#602a00",
+            "surface": "#faf8ff",
+            "on-secondary-fixed-variant": "#753400",
+            "on-surface": "#161b2b",
+            "outline": "#767681",
+            "primary-fixed": "#dee0ff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "surface-container-low": "#f2f3ff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "on-primary-container": "#8994db",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-high": "#e3e7fe",
+            "surface-dim": "#d5d9ef",
+            "secondary-fixed-dim": "#ffb68b",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased font-body-md flex justify-center min-h-screen">
+<!-- Mobile Viewport Canvas 390x844 Shell -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface flex flex-col relative shadow-2xl">
+<!-- Top Bar: Task-focused Header (Linear/Transactional Context, Bottom Nav Suppressed) -->
+<header class="w-full h-16 px-4 flex items-center justify-between sticky top-0 z-30 bg-surface/90 backdrop-blur-md">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<h1 class="font-title-lg text-title-lg text-primary font-semibold tracking-tight">Payment Status</h1>
+<div class="w-10 h-10 flex items-center justify-center">
+<!-- Calming Vedic Lotus Accent Icon -->
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+</header>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-5 pt-2 pb-8 flex flex-col gap-5 overflow-y-auto">
+<!-- Calm Alert Emblem & Vedic Atmosphere Header -->
+<div class="flex flex-col items-center text-center pt-2">
+<div class="relative flex items-center justify-center mb-4">
+<!-- Outer gentle pulsing aura (Soft amber-coral cream) -->
+<div class="w-24 h-24 rounded-full bg-secondary-fixed/50 flex items-center justify-center animate-pulse"></div>
+<!-- Inner Ceramic Ring with Warm Amber Emblem -->
+<div class="absolute w-16 h-16 rounded-full bg-surface-container-lowest shadow-sm border border-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary-container text-[32px]">account_balance_wallet</span>
+<div class="absolute -bottom-0.5 -right-0.5 w-6 h-6 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center border-2 border-surface-container-lowest">
+<span class="material-symbols-outlined text-[15px] font-bold">priority_high</span>
+</div>
+</div>
+</div>
+<!-- Headline in Playfair Display -->
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-semibold tracking-normal mb-2">
+          Payment was not completed
+        </h2>
+<!-- Subtitle: Calm, non-alarming explanation -->
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[320px] leading-relaxed">
+          Your bank or UPI app declined or timed out the transaction. Don't worry — no funds were deducted.
+        </p>
+</div>
+<!-- Hard Reassurance Notice Banner (Vedic Malai-Cream Surface) -->
+<div class="w-full bg-tertiary-fixed/30 border border-tertiary-fixed-dim/60 rounded-xl p-4 flex gap-3 items-start shadow-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex-shrink-0 flex items-center justify-center mt-0.5 shadow-xs">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">hourglass_top</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-sm text-label-sm tracking-wide text-on-tertiary-fixed-variant uppercase font-semibold">Basket Safe For</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold px-2 py-0.5 bg-surface-container-lowest rounded-full border border-secondary-fixed" id="countdown-badge">09:48 left</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface text-left leading-relaxed">
+            Your dawn basket items (<span class="font-semibold text-primary">₹4,260</span>) are held safely in your cart for 10 minutes. Nothing is charged or billed unless confirmed.
+          </p>
+</div>
+</div>
+<!-- Transaction Attempt Summary Card (Layer 1 Surface) -->
+<div class="w-full bg-surface-container-lowest rounded-2xl border border-outline-variant/40 p-4 shadow-sm flex flex-col gap-3.5">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]">receipt_long</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Attempt Summary</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container bg-secondary-fixed/40 px-2 py-0.5 rounded-full font-medium">Failed</span>
+</div>
+<div class="flex flex-col gap-2.5">
+<!-- Attempted Amount -->
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Attempted Amount</span>
+<span class="font-title-md text-title-md text-primary font-bold">₹4,260</span>
+</div>
+<!-- Gateway Reference -->
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Gateway Ref</span>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface tracking-wider font-mono">RZP-ATTEMPT-8829</span>
+<button aria-label="Copy Gateway Reference" class="text-outline hover:text-primary transition-colors flex items-center" onclick="copyRef()">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Selected Mode -->
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Selected Mode</span>
+<div class="flex items-center gap-1.5 text-on-surface font-label-md text-label-md">
+<span class="material-symbols-outlined text-secondary text-[18px]">contactless</span>
+<span>UPI (Google Pay)</span>
+</div>
+</div>
+</div>
+<!-- Dawn Delivery Item Preview Snapshot -->
+<div class="mt-1 pt-3 border-t border-surface-container flex items-center justify-between bg-surface-container-low/60 rounded-xl px-3 py-2">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-surface-container-lowest flex items-center justify-center border border-outline-variant/30 text-primary">
+<span class="material-symbols-outlined text-[18px]">water_drop</span>
+</div>
+<div class="text-left">
+<p class="font-label-md text-label-md text-primary font-semibold">Gir Cow A2 Milk (2L) + Vedic Ghee</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Scheduled for Dawn 6:00 AM</p>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">3 items</span>
+</div>
+</div>
+<!-- Immediate Action Hierarchy -->
+<div class="flex flex-col gap-3 mt-1">
+<!-- Primary Action: Try Payment Again with Brand Navy -->
+<button class="w-full h-12 bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-[0.98]">
+<span>Try Payment Again · ₹4,260</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Secondary Action: Choose Another Payment Method -->
+<button class="w-full h-12 bg-transparent hover:bg-surface-container-high border-[1.5px] border-primary text-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center gap-2 transition-colors active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+<span>Choose Another Payment Method</span>
+</button>
+<!-- Quick Switch Options Hint -->
+<div class="flex items-center justify-center gap-3 pt-1 text-on-surface-variant">
+<span class="font-body-sm text-body-sm">Switch to:</span>
+<button class="font-label-sm text-label-sm text-primary underline underline-offset-2 hover:text-primary-container transition-colors">Cash on Delivery</button>
+<span class="text-outline-variant">•</span>
+<button class="font-label-sm text-label-sm text-primary underline underline-offset-2 hover:text-primary-container transition-colors">Netbanking</button>
+</div>
+</div>
+<!-- Need Help / Support Link -->
+<div class="mt-auto pt-4 flex flex-col items-center gap-1">
+<a class="inline-flex items-center gap-1.5 font-label-md text-label-md text-primary hover:underline hover:text-primary-container transition-colors py-1" href="#support">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">support_agent</span>
+<span>Need help? Contact support</span>
+</a>
+<p class="font-body-sm text-body-sm text-outline text-[11px]">
+          Dedicated Vedic Care desk open 5:00 AM – 10:00 PM
+        </p>
+</div>
+</div>
+</main>
+<script>
+    // Lightweight countdown micro-interaction for the basket hold reassurance
+    (function initHoldTimer() {
+      let durationSeconds = 9 * 60 + 48; // 9 min 48 sec
+      const timerElement = document.getElementById('countdown-badge');
+      if (!timerElement) return;
+
+      const interval = setInterval(() => {
+        if (durationSeconds <= 0) {
+          clearInterval(interval);
+          timerElement.textContent = "Hold expired";
+          return;
+        }
+        durationSeconds--;
+        const mins = Math.floor(durationSeconds / 60).toString().padStart(2, '0');
+        const secs = (durationSeconds % 60).toString().padStart(2, '0');
+        timerElement.textContent = `${mins}:${secs} left`;
+      }, 1000);
+    })();
+
+    // Copy reference code feedback
+    function copyRef() {
+      const ref = "RZP-ATTEMPT-8829";
+      navigator.clipboard?.writeText(ref);
+      const icon = event.currentTarget.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.textContent = 'check';
+        setTimeout(() => { icon.textContent = 'content_copy'; }, 1500);
+      }
+    }
+  </script>
+</body></html>

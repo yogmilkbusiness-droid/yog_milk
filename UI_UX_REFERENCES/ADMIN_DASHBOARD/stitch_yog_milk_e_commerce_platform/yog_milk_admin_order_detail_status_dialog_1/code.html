@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Order Detail &amp; Status Transition</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#767680",
+            "surface-dim": "#dcdad4",
+            "on-secondary-fixed-variant": "#374183",
+            "on-primary-fixed-variant": "#3b4375",
+            "primary-fixed": "#dee0ff",
+            "surface": "#fcf9f3",
+            "primary": "#000533",
+            "tertiary-fixed": "#ffdbc8",
+            "on-tertiary-fixed": "#321200",
+            "inverse-surface": "#31312d",
+            "outline-variant": "#c7c5d0",
+            "secondary-fixed": "#dee0ff",
+            "primary-fixed-dim": "#bcc3fd",
+            "surface-bright": "#fcf9f3",
+            "surface-tint": "#535b8e",
+            "secondary-container": "#a9b4fe",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#4f599c",
+            "tertiary": "#190600",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#394485",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#ebe8e2",
+            "on-surface-variant": "#46464f",
+            "error": "#ba1a1a",
+            "surface-container-low": "#f6f3ed",
+            "on-primary-container": "#7e86bc",
+            "on-secondary-fixed": "#051256",
+            "surface-variant": "#e5e2dc",
+            "surface-container-highest": "#e5e2dc",
+            "secondary-fixed-dim": "#bbc3ff",
+            "on-tertiary-fixed-variant": "#753400",
+            "inverse-on-surface": "#f3f0eb",
+            "on-background": "#1c1c18",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#ffb68b",
+            "primary-container": "#151d4d",
+            "inverse-primary": "#bcc3fd",
+            "on-error-container": "#93000a",
+            "surface-container": "#f0eee8",
+            "on-primary-fixed": "#0e1647",
+            "on-primary": "#ffffff",
+            "on-surface": "#1c1c18",
+            "on-tertiary-container": "#db6805",
+            "tertiary-container": "#3c1700",
+            "background": "#fcf9f3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "margin-tablet": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.25rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin-desktop": "3rem",
+            "space-xs": "0.25rem",
+            "gutter-desktop": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "display-lg": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden min-h-screen flex selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- ============================================================== -->
+<!-- SIDE NAVIGATION (From Shared Components JSON)                   -->
+<!-- ============================================================== -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary-container dark:bg-primary border-r border-outline-variant/30 sticky top-0 z-30 select-none">
+<!-- Header / Brand -->
+<div class="p-4 border-b border-surface-container-highest/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface/10 flex items-center justify-center border border-surface/20 text-surface">
+<span class="material-symbols-outlined text-[24px]" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface">Yog Milk</div>
+<div class="text-label-sm font-label-sm text-surface-variant/70 tracking-wider">Vedic Pure Dairy Admin</div>
+</div>
+</div>
+</div>
+<!-- Scrollable Navigation Tabs -->
+<nav class="flex-1 overflow-y-auto p-4 space-y-1 custom-scroll">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Orders (ACTIVE TAB) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md active:scale-[0.99] border-l-2 border-secondary-container" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+<!-- Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+<!-- Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Invoices</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="bar_chart">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_clock">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<!-- Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span>Audit log</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<!-- Sidebar Footer / Cold Chain Telemetry & Support -->
+<div class="p-4 border-t border-surface-container-highest/10 space-y-3">
+<!-- Cold Chain IoT Status Telemetry Widget -->
+<div class="bg-surface/5 rounded-xl p-2.5 border border-surface/10">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-surface">
+<span class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Cold Chain IoT
+          </span>
+<span class="text-surface-variant/70">Hub: 3.4°C</span>
+</div>
+<div class="text-[11px] text-surface-variant/60 mt-1 flex items-center justify-between">
+<span>Van fleet telemetry</span>
+<span class="text-emerald-300 font-medium">Optimal</span>
+</div>
+</div>
+<!-- Support Desk CTA -->
+<button class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-lg bg-surface/10 hover:bg-surface/20 text-surface text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="support_agent">support_agent</span>
+        Support Desk
+      </button>
+<!-- System Health & Logout tabs -->
+<div class="flex items-center justify-between pt-1 text-surface-variant/70 text-label-sm font-label-sm">
+<a class="flex items-center gap-1 hover:text-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="vital_signs">vital_signs</span>
+          System Health
+        </a>
+<a class="flex items-center gap-1 hover:text-surface transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+          Log out
+        </a>
+</div>
+</div>
+</aside>
+<!-- ============================================================== -->
+<!-- MAIN LAYOUT AREA                                               -->
+<!-- ============================================================== -->
+<div class="flex-1 flex flex-col min-w-0">
+<!-- TOP APP BAR (From Shared Components JSON) -->
+<header class="docked full-width top-0 sticky z-20 flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest border-b border-surface-variant shadow-sm">
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<span class="text-headline-sm font-headline-sm text-primary font-bold tracking-tight whitespace-nowrap">Yog Milk Admin</span>
+<!-- Search omnibar -->
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant/40 rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search orders, crates, dispatch route or customer phone..." type="text" value="YM-2026-000123"/>
+</div>
+</div>
+<!-- Trailing Controls -->
+<div class="flex items-center gap-3">
+<!-- Ordering Open Status Pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Ordering Open · Closes 5:00 PM
+        </div>
+<!-- Emergency Freeze Action -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-error/30 text-error hover:bg-error-container/20 text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="ac_unit">ac_unit</span>
+          Emergency Freeze
+        </button>
+<!-- Notification Bell -->
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+</button>
+<!-- Profile Avatar -->
+<div class="flex items-center gap-2 pl-2 border-l border-surface-variant">
+<div class="w-9 h-9 rounded-full bg-primary-container text-surface flex items-center justify-center font-title-md text-title-md font-bold shadow-sm">
+            AP
+          </div>
+<div class="text-left hidden lg:block">
+<div class="text-label-md font-label-md text-on-surface leading-tight">Anand Patil</div>
+<div class="text-label-sm font-label-sm text-outline leading-tight">Master Dispatcher</div>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT WRAPPER -->
+<main class="flex-1 px-8 py-6 max-w-[1440px] w-full mx-auto space-y-6">
+<!-- Breadcrumbs & Meta Top Header Bar -->
+<div class="flex flex-col gap-3">
+<nav class="flex items-center gap-2 text-label-sm font-label-sm text-outline">
+<a class="hover:text-primary transition-colors" href="#">Operations Console</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Orders</a>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-bold">YM-2026-000123</span>
+</nav>
+<div class="flex flex-wrap items-center justify-between gap-4 bg-surface-container-lowest p-5 rounded-2xl border border-surface-variant shadow-sm">
+<!-- Left Order Identifiers -->
+<div>
+<div class="flex items-center gap-3">
+<h1 class="text-headline-md font-headline-md text-primary tracking-tight">Order YM-2026-000123</h1>
+<button class="p-1 text-outline hover:text-primary transition-colors rounded hover:bg-surface-container-low" title="Copy Order ID">
+<span class="material-symbols-outlined text-[18px]" data-icon="content_copy">content_copy</span>
+</button>
+<span class="text-label-sm font-label-sm px-2.5 py-1 bg-surface-container-low text-on-surface-variant rounded-md font-mono">Vedic Morning Run #14</span>
+</div>
+<div class="flex items-center gap-3 mt-1.5 text-body-sm font-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="schedule">schedule</span>
+                Created: <strong class="text-on-surface font-medium">29 Oct 2026, 07:45 AM IST</strong>
+</span>
+<span>•</span>
+<a class="text-primary hover:underline font-label-md font-label-md flex items-center gap-0.5" href="#customer-profile">
+                Sharma General Store (Rajesh Sharma)
+                <span class="material-symbols-outlined text-[14px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Right Action Cluster -->
+<div class="flex items-center gap-2.5 flex-wrap">
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-outline-variant/60 bg-surface text-on-surface hover:bg-surface-container-high transition-colors text-label-md font-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="print">print</span>
+              Print Non-GST Bill (YMI-2026-000049)
+            </button>
+<button class="flex items-center gap-1.5 px-3.5 py-2 rounded-xl border border-outline-variant/60 bg-surface text-on-surface hover:bg-surface-container-high transition-colors text-label-md font-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt">receipt</span>
+              Kitchen Bottling Slip
+            </button>
+<a class="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-primary-container text-surface hover:bg-opacity-95 transition-all text-label-md font-label-md shadow-sm" href="tel:+919823044120">
+<span class="material-symbols-outlined text-[18px]" data-icon="call">call</span>
+              Contact Customer (+91 98230 44120)
+            </a>
+</div>
+</div>
+</div>
+<!-- ============================================================== -->
+<!-- THE THREE DISTINCT STATUS CARDS                                 -->
+<!-- ============================================================== -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- CARD A: ORDER STATUS -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Order Lifecycle</span>
+<!-- Soft blue-purple filled pill -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6E8F5] text-primary text-label-md font-label-md font-semibold">
+<span class="w-2 h-2 rounded-full bg-[#1F2A6B]"></span>
+                Preparing
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+              Bottling full cream batches at 4°C. Kitchen slip generated. Insulated crate staged for van load.
+            </p>
+</div>
+<!-- Status Dropdown / Action trigger -->
+<div class="pt-3 border-t border-surface-variant">
+<label class="text-[11px] font-label-sm text-outline block mb-1.5 font-bold uppercase">Next Valid Transitions</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="w-full flex items-center justify-center gap-1 py-2 px-2.5 rounded-xl bg-primary-container text-surface text-label-sm font-label-sm font-semibold hover:bg-opacity-90 transition-all shadow-sm" onclick="document.getElementById('status-modal-overlay').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+                Ready for delivery
+              </button>
+<button class="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-xl border border-error/40 text-error hover:bg-error-container/20 text-label-sm font-label-sm transition-colors" onclick="document.getElementById('status-modal-overlay').classList.remove('hidden')">
+<span class="material-symbols-outlined text-[16px]" data-icon="cancel">cancel</span>
+                Cancel Order
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD B: PAYMENT STATUS -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-amber-500"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Payment Status</span>
+<!-- Amber outlined pill with ₹ symbol -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#E8A317] bg-[#FFF4DB] text-[#9A6700] text-label-md font-label-md font-semibold">
+<span class="font-bold">₹</span>
+                Pending (COD)
+              </span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-md font-label-md text-on-surface font-semibold">Cash on Delivery</span>
+<span class="text-body-sm font-body-sm text-outline">· ₹2,440 Due</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+              Awaiting physical cash receipt on morning run delivery. Driver collection pending at doorstep.
+            </p>
+</div>
+<div class="pt-3 border-t border-surface-variant">
+<label class="text-[11px] font-label-sm text-outline block mb-1.5 font-bold uppercase">Next Valid Transitions</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-xl bg-emerald-700 text-white text-label-sm font-label-sm font-semibold hover:bg-emerald-800 transition-colors shadow-sm" title="Mark cash received">
+<span class="material-symbols-outlined text-[16px]" data-icon="task_alt">task_alt</span>
+                Verify Cash (₹2,440)
+              </button>
+<button class="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high text-label-sm font-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="credit_card_off">credit_card_off</span>
+                Mark Failed
+              </button>
+</div>
+</div>
+</div>
+<!-- CARD C: DELIVERY STATUS -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Delivery Dispatch</span>
+<!-- Soft pill with truck icon -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6E8F5] text-[#151D4D] text-label-md font-label-md font-semibold">
+<span class="material-symbols-outlined text-[16px]" data-icon="local_shipping">local_shipping</span>
+                Assigned
+              </span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="text-label-md font-label-md text-on-surface font-semibold">Route 4 - Nashik East</span>
+<span class="text-[11px] font-label-sm px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant">Van #04</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed mb-4">
+              Insulated Van #04 scheduled for 05:30 – 07:00 AM Dawn Dispatch. Cold storage box loaded.
+            </p>
+</div>
+<div class="pt-3 border-t border-surface-variant">
+<label class="text-[11px] font-label-sm text-outline block mb-1.5 font-bold uppercase">Next Valid Transitions</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-xl bg-secondary-container text-on-secondary-container text-label-sm font-label-sm font-semibold hover:bg-secondary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="outbox">outbox</span>
+                Hub Picked Up
+              </button>
+<button class="w-full flex items-center justify-center gap-1 py-2 px-2 rounded-xl border border-outline-variant text-on-surface hover:bg-surface-container-high text-label-sm font-label-sm transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="sync_alt">sync_alt</span>
+                Reassign Route
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ============================================================== -->
+<!-- 2-COLUMN MAIN CONTENT (65% / 35%)                             -->
+<!-- ============================================================== -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- ==================== LEFT COLUMN (65%) ==================== -->
+<div class="lg:col-span-8 space-y-6">
+<!-- SECTION A: ITEMS IN ORDER TABLE -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm overflow-hidden">
+<div class="p-5 border-b border-surface-variant flex items-center justify-between">
+<div>
+<h2 class="text-headline-sm font-headline-sm text-primary">Artisan Order Manifest</h2>
+<p class="text-body-sm font-body-sm text-outline">Vedic non-homogenized cold-chain stock allocated for Dawn Run</p>
+</div>
+<span class="text-label-sm font-label-sm px-3 py-1 bg-surface-container-low rounded-full text-on-surface-variant">
+                2 Line Items (64 Units)
+              </span>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left text-body-sm font-body-sm">
+<thead class="bg-surface-container-low/70 text-on-surface-variant font-label-sm text-label-sm border-b border-surface-variant">
+<tr>
+<th class="py-3 px-5">Product Name &amp; Specs</th>
+<th class="py-3 px-4">Pack Size</th>
+<th class="py-3 px-4">Locked Price</th>
+<th class="py-3 px-4">Quantity</th>
+<th class="py-3 px-5 text-right">Line Total</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/50">
+<!-- Row 1: Full Cream Milk -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-5">
+<div class="font-title-md text-title-md text-on-surface font-semibold">Full Cream Milk 500 ml</div>
+<div class="text-body-sm text-outline flex items-center gap-2 mt-0.5">
+<span>A2 Gir Cow Milk</span>
+<span>•</span>
+<span class="text-tertiary-container font-semibold">6.0% Natural Fat</span>
+<span>•</span>
+<span class="inline-flex items-center gap-1 text-emerald-700">
+<span class="material-symbols-outlined text-[14px]" data-icon="recycling">recycling</span>
+                          Glass Bottle Exchange
+                        </span>
+</div>
+<div class="text-[11px] text-outline mt-1 font-mono">Batch: B-NSK-20261029-A2 · Chilled at 3.2°C</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-medium text-label-sm">Pack of 20</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">₹34 / unit</div>
+<div class="text-[11px] text-outline">₹680 / pack</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-bold text-on-surface">2 packs</div>
+<div class="text-[11px] text-outline">(40 glass bottles)</div>
+</td>
+<td class="py-4 px-5 text-right align-top font-title-md text-title-md font-bold text-on-surface">
+                      ₹1,360
+                    </td>
+</tr>
+<!-- Row 2: Fresh Dahi -->
+<tr class="hover:bg-surface-container-low/40 transition-colors">
+<td class="py-4 px-5">
+<div class="font-title-md text-title-md text-on-surface font-semibold">Fresh Dahi 400 g</div>
+<div class="text-body-sm text-outline flex items-center gap-2 mt-0.5">
+<span>Traditional Clay Pot set</span>
+<span>•</span>
+<span class="text-tertiary-container font-semibold">Vedic Cultured</span>
+<span>•</span>
+<span class="text-on-surface-variant">Earthen Matka</span>
+</div>
+<div class="text-[11px] text-outline mt-1 font-mono">Batch: D-NSK-20261029-01 · 16h Fermentation</div>
+</td>
+<td class="py-4 px-4 align-top">
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface font-medium text-label-sm">Pack of 24</span>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-medium text-on-surface">₹45 / unit</div>
+<div class="text-[11px] text-outline">₹1,080 / pack</div>
+</td>
+<td class="py-4 px-4 align-top">
+<div class="font-bold text-on-surface">1 pack</div>
+<div class="text-[11px] text-outline">(24 pots)</div>
+</td>
+<td class="py-4 px-5 text-right align-top font-title-md text-title-md font-bold text-on-surface">
+                      ₹1,080
+                    </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Ledger Summary & Breakdown -->
+<div class="p-5 bg-surface-container-low/30 border-t border-surface-variant flex flex-col sm:flex-row justify-between gap-6">
+<div class="max-w-xs space-y-2">
+<div class="flex items-center gap-2 text-label-md font-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="lock_clock">lock_clock</span>
+<span>Prices locked at order creation time</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">
+                  Unhomogenized direct farm harvest. Subject to zero GST under raw unbranded dairy schedule.
+                </p>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#E3F6EC] text-[#1F9D63] text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+                  Glass return bottle credits intact
+                </div>
+</div>
+<!-- Computation Box -->
+<div class="w-full sm:w-72 space-y-2 text-body-sm font-body-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span class="font-medium text-on-surface">₹2,440.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Vedic Cold-Chain Morning Run</span>
+<span class="font-medium text-emerald-700">₹0.00 (Free)</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Crate Deposit (Insulated)</span>
+<span class="font-medium text-on-surface">₹0.00 (Waived)</span>
+</div>
+<div class="pt-2 border-t border-surface-variant flex justify-between items-baseline font-title-lg text-title-lg text-primary">
+<span>Total Net Payable (COD)</span>
+<span class="font-bold text-headline-sm font-headline-sm text-primary">₹2,440</span>
+</div>
+<p class="text-[11px] text-right text-outline">Strict Non-GST Farm Bill</p>
+</div>
+</div>
+</div>
+<!-- SECTION B & C: PAYMENT RECORD & DELIVERY DISPATCH (BENTO) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+<!-- Payment Records Card -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-title-md font-title-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-amber-600" data-icon="wallet">wallet</span>
+                    Payment Records
+                  </h3>
+<span class="px-2 py-0.5 rounded text-[11px] font-label-sm font-bold bg-amber-100 text-amber-800">
+                    UNPAID
+                  </span>
+</div>
+<div class="space-y-2.5 text-body-sm font-body-sm">
+<div class="flex justify-between py-1 border-b border-surface-variant/40">
+<span class="text-outline">Settlement Method</span>
+<span class="font-semibold text-on-surface">Cash on Delivery (COD)</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-variant/40">
+<span class="text-outline">Expected Amount</span>
+<span class="font-bold text-primary">₹2,440</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-variant/40">
+<span class="text-outline">Status</span>
+<span class="text-amber-700 font-medium">Awaiting morning driver deposit</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-outline">Collector Driver</span>
+<span class="text-on-surface">Suresh K. (Van #04)</span>
+</div>
+</div>
+</div>
+<!-- Zero-Credit Policy Notice -->
+<div class="mt-4 p-3 rounded-xl bg-[#FFF4DB] border border-[#E8A317]/30 text-[12px] text-on-surface">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[#E8A317] text-[18px] shrink-0" data-icon="warning">warning</span>
+<div>
+<strong class="font-semibold text-[#8B5A00]">Zero-Credit Policy:</strong> Customer cannot place any new orders until this specific invoice is settled and deposited by the driver.
+                  </div>
+</div>
+</div>
+</div>
+<!-- Delivery & Dispatch Card -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<h3 class="text-title-md font-title-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="local_shipping">local_shipping</span>
+                    Cold-Chain Delivery
+                  </h3>
+<button class="px-2 py-0.5 rounded bg-surface-container-low hover:bg-surface-container font-mono text-[11px] text-on-surface-variant flex items-center gap-1 border border-outline-variant/30" title="Copy Delivery Code">
+<span>YMD-2026-000123</span>
+<span class="material-symbols-outlined text-[13px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<div class="space-y-2.5 text-body-sm font-body-sm">
+<div class="flex justify-between py-1 border-b border-surface-variant/40">
+<span class="text-outline">Dispatch Slot</span>
+<span class="font-semibold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-primary" data-icon="wb_twilight">wb_twilight</span>
+                      05:30 – 07:00 AM Dawn Run
+                    </span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-variant/40">
+<span class="text-outline">Route Name</span>
+<span class="font-medium text-on-surface">Route 4 - Nashik East</span>
+</div>
+<div class="flex justify-between py-1 border-b border-surface-variant/40">
+<span class="text-outline">Assigned Vehicle</span>
+<span class="text-on-surface font-medium">Insulated Van #04 (MH-15-EG-4402)</span>
+</div>
+<div class="flex justify-between py-1">
+<span class="text-outline">Allocated Crate ID</span>
+<span class="font-mono text-primary font-semibold">CR-NSK-084 (3.4°C Logged)</span>
+</div>
+</div>
+</div>
+<!-- Driver Handover Action -->
+<div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between text-body-sm">
+<span class="text-outline text-[12px]">Drop priority: Stop #03</span>
+<button class="text-primary hover:underline font-label-md font-label-md flex items-center gap-1">
+                  Inspect Van Telemetry
+                  <span class="material-symbols-outlined text-[16px]" data-icon="open_in_new">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SECTION D: FULL AUDIT & STATUS TIMELINE -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<div>
+<h3 class="text-title-lg font-title-lg text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-outline" data-icon="history_toggle_off">history_toggle_off</span>
+                  Audit &amp; Cold-Chain Status Log
+                </h3>
+<p class="text-body-sm font-body-sm text-outline">Immutable operational event ledger for order verification</p>
+</div>
+<span class="text-[11px] font-mono text-outline bg-surface-container-low px-2 py-1 rounded">
+                SHA256 Signed
+              </span>
+</div>
+<!-- Timeline Nodes -->
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-variant">
+<!-- Node 4: Latest -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-secondary border-2 border-white ring-4 ring-secondary/20"></div>
+<div class="flex-1 bg-surface-container-low/50 p-3.5 rounded-xl border border-surface-variant/40">
+<div class="flex items-center justify-between">
+<div class="font-title-md text-title-md text-on-surface font-semibold flex items-center gap-2">
+<span>Delivery assigned to Route 4 Nashik East</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-fixed text-on-secondary-fixed">AUTOMATED</span>
+</div>
+<span class="text-label-sm font-label-sm font-mono text-outline">07:55 AM IST</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                    Automated fleet allocator assigned order to Insulated Van #04 based on geographic density and delivery window.
+                  </p>
+<div class="mt-2 text-[11px] text-outline flex items-center gap-3">
+<span>Actor: System Allocator (Daemon v2.4)</span>
+<span>•</span>
+<span>Crate Tag: CR-NSK-084</span>
+</div>
+</div>
+</div>
+<!-- Node 3 -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-primary-container border-2 border-white"></div>
+<div class="flex-1 bg-surface-container-low/50 p-3.5 rounded-xl border border-surface-variant/40">
+<div class="flex items-center justify-between">
+<div class="font-title-md text-title-md text-on-surface font-semibold flex items-center gap-2">
+<span>Status changed from Confirmed → Preparing</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-primary-fixed text-on-primary-fixed">KITCHEN</span>
+</div>
+<span class="text-label-sm font-label-sm font-mono text-outline">07:52 AM IST</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                    Kitchen slip generated. Cold room inventory locked for bottling line. Glass bottle sterilization verified.
+                  </p>
+<div class="mt-2 text-[11px] text-outline flex items-center gap-3">
+<span>Operator: Ganesh P. (Kitchen Lead, Nashik Central Hub)</span>
+<span>•</span>
+<span>Temperature: 4.1°C</span>
+</div>
+</div>
+</div>
+<!-- Node 2 -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-outline-variant border-2 border-white"></div>
+<div class="flex-1 bg-surface-container-low/50 p-3.5 rounded-xl border border-surface-variant/40">
+<div class="flex items-center justify-between">
+<div class="font-title-md text-title-md text-on-surface font-semibold">
+                      Order Confirmed automatically
+                    </div>
+<span class="text-label-sm font-label-sm font-mono text-outline">07:48 AM IST</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                    Morning batch inventory availability verified against raw milk intake bulk chillers (4,200 L pool).
+                  </p>
+<div class="mt-2 text-[11px] text-outline">
+                    Actor: Inventory Guard Service
+                  </div>
+</div>
+</div>
+<!-- Node 1 -->
+<div class="relative flex items-start gap-4">
+<div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full bg-outline-variant border-2 border-white"></div>
+<div class="flex-1 bg-surface-container-low/50 p-3.5 rounded-xl border border-surface-variant/40">
+<div class="flex items-center justify-between">
+<div class="font-title-md text-title-md text-on-surface font-semibold">
+                      Order Placed by customer Rajesh Sharma
+                    </div>
+<span class="text-label-sm font-label-sm font-mono text-outline">07:45 AM IST</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">
+                    Submitted via Yog Milk Android App v3.14. Payment selected as Cash on Delivery.
+                  </p>
+<div class="mt-2 text-[11px] text-outline flex items-center gap-3">
+<span>Origin IP: 103.21.144.82</span>
+<span>•</span>
+<span>Device: Samsung SM-A536E</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== RIGHT COLUMN (35%) ==================== -->
+<div class="lg:col-span-4 space-y-6">
+<!-- CUSTOMER CARD -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant shadow-sm space-y-5" id="customer-profile">
+<div class="flex items-start justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Customer Profile</span>
+<h3 class="text-headline-sm font-headline-sm text-primary mt-1">Rajesh Sharma</h3>
+<div class="text-body-sm font-body-sm text-on-surface-variant font-medium mt-0.5">Sharma General Store</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-label-sm font-label-sm border border-emerald-200">
+                Active Account
+              </span>
+</div>
+<!-- PROMINENT BADGE: Blocked from Placing New Orders -->
+<div class="p-4 rounded-xl bg-amber-50 border-2 border-amber-400 text-amber-950 space-y-2">
+<div class="flex items-center gap-2 font-bold text-label-md font-label-md text-amber-900">
+<span class="material-symbols-outlined text-amber-600 text-[20px]" data-icon="block">block</span>
+                ⚠️ Blocked from Placing New Orders
+              </div>
+<p class="text-body-sm font-body-sm text-amber-900/90 leading-relaxed">
+                Has 1 pending unpaid order (<strong class="font-mono">YM-2026-000123</strong>, ₹2,440). Next checkout auto-disabled per Zero-Credit Policy until driver confirms cash receipt.
+              </p>
+</div>
+<!-- Contact & Address -->
+<div class="space-y-3 pt-2 text-body-sm font-body-sm border-t border-surface-variant">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-outline text-[18px] mt-0.5" data-icon="location_on">location_on</span>
+<div>
+<div class="text-on-surface font-medium">College Road, Opp. KTHM Ground</div>
+<div class="text-outline">Nashik, Maharashtra - 422005</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="phone">phone</span>
+<span class="text-on-surface font-mono font-medium">+91 98230 44120</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="badge">badge</span>
+<span class="text-outline">Customer ID: <strong class="text-on-surface font-mono">CUST-NSK-00912</strong></span>
+</div>
+</div>
+<!-- Order History Summary -->
+<div class="p-4 rounded-xl bg-surface-container-low space-y-3">
+<div class="text-label-sm font-label-sm text-outline uppercase tracking-wider font-bold">Subscription &amp; Loyalty History</div>
+<div class="grid grid-cols-3 gap-2 text-center">
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-surface-variant/40">
+<div class="text-headline-sm font-headline-sm text-primary">14</div>
+<div class="text-[11px] text-outline mt-0.5">Past Orders</div>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-surface-variant/40">
+<div class="text-headline-sm font-headline-sm text-primary font-bold">₹32.4k</div>
+<div class="text-[11px] text-outline mt-0.5">Lifetime Value</div>
+</div>
+<div class="bg-surface-container-lowest p-2.5 rounded-lg border border-surface-variant/40">
+<div class="text-headline-sm font-headline-sm text-emerald-700 font-bold">100%</div>
+<div class="text-[11px] text-outline mt-0.5">Bottles Returned</div>
+</div>
+</div>
+</div>
+<button class="w-full py-2.5 px-4 rounded-xl border border-outline-variant bg-surface hover:bg-surface-container text-on-surface text-label-md font-label-md font-medium transition-colors">
+              View Complete Customer Ledger
+            </button>
+</div>
+<!-- NON-GST INVOICE CARD -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant shadow-sm space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Direct Farm Bill</span>
+<h3 class="text-headline-sm font-headline-sm text-primary">Bill #YMI-2026-000049</h3>
+</div>
+<span class="px-2 py-1 rounded bg-[#FBF1DC] text-[#753400] text-label-sm font-label-sm font-semibold border border-[#E7E2D6]">
+                Farm Direct
+              </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+              Billed directly under rural primary agriculture schedule. Complete unadulterated glass-packaged farm milk delivery.
+            </p>
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-variant/60 space-y-2 text-body-sm font-body-sm">
+<div class="flex justify-between">
+<span class="text-outline">Tax Categorization</span>
+<span class="font-medium text-on-surface">Exempt (Raw Vedic Dairy)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">HSN / SAC</span>
+<span class="font-mono text-on-surface">04012000</span>
+</div>
+<div class="flex justify-between">
+<span class="text-outline">Farmer Herd Tag</span>
+<span class="text-on-surface">A2 Pure Gir Herd #08</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2">
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl border border-outline-variant hover:bg-surface-container-high transition-colors text-label-md font-label-md text-on-surface">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                PDF Bill
+              </button>
+<button class="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-primary-container text-surface hover:bg-opacity-90 transition-colors text-label-md font-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="print">print</span>
+                Thermal Print
+              </button>
+</div>
+</div>
+<!-- BOTTLE RECYCLING & CRATE RETURN TELEMETRY -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-surface-variant shadow-sm space-y-3">
+<h4 class="text-title-md font-title-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-700" data-icon="recycling">recycling</span>
+              Vedic Circular Glass Exchange
+            </h4>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant">Expected Empties to Pickup:</span>
+<span class="font-bold text-primary">40 Bottles (500ml)</span>
+</div>
+<div class="w-full bg-surface-container-low rounded-full h-2 overflow-hidden">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 100%"></div>
+</div>
+<p class="text-[12px] text-outline leading-tight">
+              Customer has maintained a flawless bottle return score. No deposit surcharge has been levied on this consignment.
+            </p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- ============================================================== -->
+<!-- STATUS-CHANGE TRANSITION DIALOG (MODAL OVERLAY)                -->
+<!-- ============================================================== -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4" id="status-modal-overlay">
+<div class="bg-surface-container-lowest rounded-2xl max-w-xl w-full border border-surface-variant shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+<!-- Modal Header -->
+<div class="p-6 border-b border-surface-variant bg-surface-container-low/40 flex items-start justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Cold-Chain Operations Gate</span>
+<h2 class="text-headline-sm font-headline-sm text-primary mt-1">Update Order Status · YM-2026-000123</h2>
+<div class="flex items-center gap-2.5 mt-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#E6E8F5] text-primary text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F2A6B]"></span>
+              Preparing
+            </span>
+<span class="material-symbols-outlined text-outline text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-error-container text-on-error-container text-label-sm font-label-sm font-bold">
+              Cancelled (Cold-Chain Exception)
+            </span>
+</div>
+</div>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors" onclick="document.getElementById('status-modal-overlay').classList.add('hidden')">
+<span class="material-symbols-outlined text-[20px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-6 space-y-5 max-h-[716px] overflow-y-auto custom-scroll">
+<!-- Transition Selector Tabs -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2">Select Target Transition</label>
+<div class="grid grid-cols-2 gap-3">
+<label class="flex items-center gap-3 p-3 rounded-xl border border-outline-variant/60 cursor-pointer hover:bg-surface-container-low transition-colors">
+<input class="text-primary-container focus:ring-primary-container" name="target-status" type="radio"/>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Ready for delivery</div>
+<div class="text-[12px] text-outline">Move to Hub loading dock</div>
+</div>
+</label>
+<label class="flex items-center gap-3 p-3 rounded-xl border-2 border-error bg-error-container/10 cursor-pointer">
+<input checked="" class="text-error focus:ring-error" name="target-status" type="radio"/>
+<div>
+<div class="font-title-md text-title-md text-error font-bold">Cancel Order</div>
+<div class="text-[12px] text-error/80">Requires audit exception justification</div>
+</div>
+</label>
+</div>
+</div>
+<!-- Exception Mandatory Reason Selector -->
+<div class="space-y-3">
+<label class="block text-label-md font-label-md text-on-surface">
+            Cancellation Root Cause <span class="text-error">*</span>
+</label>
+<div class="space-y-2">
+<label class="flex items-start gap-2.5 p-2.5 rounded-lg border border-surface-variant hover:bg-surface-container-low cursor-pointer text-body-sm font-body-sm">
+<input checked="" class="mt-1 text-primary-container" name="cancel-reason" type="radio"/>
+<div>
+<span class="font-semibold text-on-surface">Cold-chain temperature excursion (&gt;6°C)</span>
+<span class="block text-[12px] text-outline">Chilled tank sensor flagged thermal threshold breach during morning pre-pack.</span>
+</div>
+</label>
+<label class="flex items-start gap-2.5 p-2.5 rounded-lg border border-surface-variant hover:bg-surface-container-low cursor-pointer text-body-sm font-body-sm">
+<input class="mt-1 text-primary-container" name="cancel-reason" type="radio"/>
+<div>
+<span class="font-semibold text-on-surface">Batch stock shortage</span>
+<span class="block text-[12px] text-outline">Gir cow intake yields insufficient for daily allocation.</span>
+</div>
+</label>
+<label class="flex items-start gap-2.5 p-2.5 rounded-lg border border-surface-variant hover:bg-surface-container-low cursor-pointer text-body-sm font-body-sm">
+<input class="mt-1 text-primary-container" name="cancel-reason" type="radio"/>
+<div>
+<span class="font-semibold text-on-surface">Customer requested cancellation before dawn cutoff</span>
+<span class="block text-[12px] text-outline">Verified store owner call via verified line.</span>
+</div>
+</label>
+<label class="flex items-start gap-2.5 p-2.5 rounded-lg border border-surface-variant hover:bg-surface-container-low cursor-pointer text-body-sm font-body-sm">
+<input class="mt-1 text-primary-container" name="cancel-reason" type="radio"/>
+<div>
+<span class="font-semibold text-on-surface">Logistics van breakdown</span>
+<span class="block text-[12px] text-outline">No secondary reefer vehicle available for Route 4 Nashik East.</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Mandatory Operational Explanation -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1.5">
+            Operational Explanation (Mandatory for Vedic Audit Log) <span class="text-error">*</span>
+</label>
+<textarea class="w-full p-3 rounded-xl border border-surface-variant bg-surface text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-transparent" placeholder="Provide detailed notes regarding batch temperature sensor readings or reason specifics..." rows="3">Chiller sensor B-NSK-4 recorded 6.4°C for 22 minutes during pre-dawn power fluctuations. Batch rejected per Vedic Purity Protocol.</textarea>
+<p class="text-[11px] text-outline mt-1">This entry will be logged into immutable audit history with operator ID Anand Patil.</p>
+</div>
+<!-- Reversible Inventory Checkbox -->
+<div class="p-3 rounded-xl bg-surface-container-low flex items-center justify-between border border-surface-variant/60">
+<div class="flex items-center gap-2.5">
+<input checked="" class="rounded text-primary-container focus:ring-primary-container w-4 h-4" id="restock-toggle" type="checkbox"/>
+<label class="text-body-sm font-body-sm text-on-surface font-medium cursor-pointer" for="restock-toggle">
+              Restock non-spoiled items back into Nashik morning inventory pool
+            </label>
+</div>
+<span class="text-[11px] font-mono text-outline">40 Bottles / 24 Pots</span>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-5 border-t border-surface-variant bg-surface-container-low/60 flex items-center justify-end gap-3">
+<button class="px-5 py-2.5 rounded-xl border border-outline-variant hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" onclick="document.getElementById('status-modal-overlay').classList.add('hidden')">
+          Cancel / Close
+        </button>
+<button class="px-5 py-2.5 rounded-xl bg-primary-container text-surface hover:bg-opacity-95 font-label-md text-label-md shadow-sm transition-all flex items-center gap-2" onclick="document.getElementById('status-modal-overlay').classList.add('hidden')">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_reset">lock_reset</span>
+          Confirm Status Transition
+        </button>
+</div>
+</div>
+</div>
+</body></html>

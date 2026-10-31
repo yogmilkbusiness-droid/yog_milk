@@ -1,0 +1,1397 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<title>Yog Milk Vedic Wellness Design System &amp; Interactive Prototype Hub</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Rozha+One&amp;family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error": "#ffffff",
+            "secondary": "#994700",
+            "on-secondary-container": "#602a00",
+            "surface-container-lowest": "#ffffff",
+            "surface": "#faf8ff",
+            "on-secondary-fixed": "#321200",
+            "on-primary-container": "#8994db",
+            "surface-bright": "#faf8ff",
+            "tertiary-container": "#3f2e00",
+            "on-primary": "#ffffff",
+            "tertiary": "#261a00",
+            "on-surface": "#161b2b",
+            "on-primary-fixed-variant": "#374183",
+            "on-surface-variant": "#454650",
+            "surface-dim": "#d5d9ef",
+            "secondary-container": "#fc8127",
+            "primary": "#051256",
+            "error-container": "#ffdad6",
+            "background": "#faf8ff",
+            "secondary-fixed-dim": "#ffb68b",
+            "inverse-primary": "#bbc3ff",
+            "outline-variant": "#c6c5d2",
+            "surface-container-low": "#f2f3ff",
+            "inverse-surface": "#2b3041",
+            "on-tertiary-fixed": "#251a00",
+            "surface-container": "#eaedff",
+            "surface-container-high": "#e3e7fe",
+            "secondary-fixed": "#ffdbc8",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "error": "#ba1a1a",
+            "surface-tint": "#4f599c",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#dee0ff",
+            "surface-container-highest": "#dde1f8",
+            "on-secondary": "#ffffff",
+            "outline": "#767681",
+            "on-tertiary": "#ffffff",
+            "primary-container": "#1f2a6b",
+            "primary-fixed-dim": "#bbc3ff",
+            "surface-variant": "#dde1f8",
+            "tertiary-fixed": "#ffdf9c",
+            "inverse-on-surface": "#eef0ff",
+            "on-tertiary-container": "#ba9331",
+            "on-primary-fixed": "#051256",
+            "on-secondary-fixed-variant": "#753400",
+            "on-background": "#161b2b",
+            "tertiary-fixed-dim": "#edc15a"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter-desktop": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "margin-desktop": "3rem"
+          },
+          fontFamily: {
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "body-sm": ["12px", { lineHeight: "18px", letterSpacing: "0.01em", fontWeight: "400" }],
+            "body-md": ["14px", { lineHeight: "22px", letterSpacing: "0", fontWeight: "400" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "600" }],
+            "display-lg-mobile": ["34px", { lineHeight: "42px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "body-lg": ["16px", { lineHeight: "26px", letterSpacing: "0", fontWeight: "400" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "0", fontWeight: "500" }],
+            "label-sm": ["11px", { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" }],
+            "headline-lg-mobile": ["26px", { lineHeight: "34px", letterSpacing: "0", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "title-md": ["16px", { lineHeight: "24px", letterSpacing: "0", fontWeight: "600" }],
+            "label-lg": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "headline-sm": ["20px", { lineHeight: "28px", letterSpacing: "0", fontWeight: "500" }],
+            "title-lg": ["18px", { lineHeight: "26px", letterSpacing: "-0.01em", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      vertical-align: middle;
+    }
+    
+    /* Subtle custom shimmers and lotus aesthetics */
+    @keyframes pulse-shimmer {
+      0% { opacity: 0.45; }
+      50% { opacity: 0.95; }
+      100% { opacity: 0.45; }
+    }
+    .animate-shimmer {
+      animation: pulse-shimmer 1.8s infinite ease-in-out;
+    }
+    
+    /* Smooth custom scrollbars */
+    ::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #faf8ff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c6c5d2;
+      border-radius: 9999px;
+    }
+    
+    .font-devanagari {
+      font-family: 'Noto Sans Devanagari', 'Rozha One', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed pb-24">
+<!-- Top App Bar (Shared Components standard) -->
+<header class="bg-surface/90 backdrop-blur-md text-primary font-headline-sm-mobile font-semibold border-b border-outline-variant/30 shadow-sm flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="spa" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-semibold tracking-wide text-primary">Yog Milk</span>
+<span class="bg-primary-container text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full tracking-wider uppercase ml-1">DS v2.4</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="text-label-sm font-label-sm bg-surface-container-high text-primary px-3 py-1.5 rounded-full font-semibold border border-outline-variant/30 flex items-center gap-1 active:scale-95 transition-transform" id="hub-toggle-btn" onclick="toggleSystemTab('tokens')">
+<span class="material-symbols-outlined text-sm" data-icon="dashboard">dashboard</span>
+<span class="">Specs</span>
+</button>
+<button aria-label="Cart" class="hover:bg-surface-container-high transition-colors duration-150 p-2 rounded-full text-on-surface-variant flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Dual Mode Selector: Design System Tokens vs Interactive Prototype Flows -->
+<div class="bg-surface-container-low px-4 pt-3 pb-2 border-b border-outline-variant/20 sticky top-16 z-30 shadow-xs">
+<div class="bg-surface-container p-1 rounded-xl flex items-center gap-1 shadow-inner">
+<button class="flex-1 py-2 text-center rounded-lg text-label-md font-label-md font-semibold transition-all duration-200 bg-primary-container text-white shadow-sm flex items-center justify-center gap-1.5" id="tab-btn-tokens" onclick="switchMasterView('tokens')">
+<span class="material-symbols-outlined text-base" data-icon="palette">palette</span>
+        Tokens &amp; Specs
+      </button>
+<button class="flex-1 py-2 text-center rounded-lg text-label-md font-label-md font-semibold transition-all duration-200 text-on-surface-variant hover:text-primary flex items-center justify-center gap-1.5" id="tab-btn-prototype" onclick="switchMasterView('prototype')">
+<span class="material-symbols-outlined text-base" data-icon="alt_route">alt_route</span>
+        Clickable Flows
+        <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</button>
+</div>
+<!-- Quick Jump Sub-Navigation Chips (Visible on Tokens View) -->
+<div class="flex items-center gap-2 overflow-x-auto py-2.5 no-scrollbar text-label-sm font-label-sm" id="quick-jump-chips">
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-identity">1. Brand Identity</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-logo">2. Logo Construction</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-colors">3. Color Tokens</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-type">4. Bilingual Type</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-elevation">5. Elevation</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-buttons">6. Buttons &amp; States</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-inputs">7. Steppers &amp; Inputs</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-chips">8. Status Chips</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-cards">9. Card Archetypes</a>
+<a class="whitespace-nowrap px-3 py-1 bg-surface rounded-full border border-outline-variant/40 text-on-surface hover:border-primary-container transition-colors" href="#section-feedback">10. Feedback &amp; Modals</a>
+</div>
+</div>
+<!-- MAIN CANVAS CONTAINER -->
+<main class="px-4 py-6 max-w-lg mx-auto space-y-10">
+<!-- VIEW A: DESIGN SYSTEM SPECIFICATION ENGINE -->
+<div class="space-y-12 block" id="view-tokens-engine">
+<!-- SECTION 1: HEADER & IDENTITY -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-outline-variant/40 shadow-xs relative overflow-hidden" id="section-identity">
+<div class="absolute -right-10 -bottom-10 opacity-5 pointer-events-none text-primary">
+<span class="material-symbols-outlined" data-icon="spa" style="font-size: 160px;">spa</span>
+</div>
+<div class="flex items-center gap-2 text-secondary-container font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+          Vedic Purity &amp; Sattvic Guidelines
+        </div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mt-1 font-bold">
+          Yog Milk Design System
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5 italic">
+          "From Nature to Nourish You" · v2.4 (Production Spec)
+        </p>
+<p class="font-body-sm text-body-sm text-on-surface mt-3 leading-relaxed">
+          Rooted in pure Sattvic morning traditions and sacred Gir cow ancestry. Crafted with meditative restraint, ceramic paper warmth, and zero synthetic urgency.
+        </p>
+<!-- Identity Pillars Bento -->
+<div class="grid grid-cols-2 gap-2.5 mt-4">
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary mb-1 text-xl" data-icon="water_drop">water_drop</span>
+<div class="font-title-md text-title-md text-primary font-bold">Sacred A2</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Zero Hormones · Pure Gir cows</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary mb-1 text-xl" data-icon="wb_twilight">wb_twilight</span>
+<div class="font-title-md text-title-md text-primary font-bold">Dawn Delivery</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-[11px]">Before 6:30 AM Ritual Doorstep</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: LOGO USAGE & CONSTRUCTION -->
+<section class="space-y-4" id="section-logo">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 02</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Logo Construction &amp; Rules</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="aspect_ratio">aspect_ratio</span>
+</div>
+<!-- Master Logo Showcase with Assigned Image https://lh3.googleusercontent.com/aida-public/AB6AXuD_5dZUFojvDtrqC-8QtshDhWrjTdhXCGXG5tpW2DFBbXsSXvCJEa1z6fzLCTaVF9GKxVKxnaekH1pDu6sER35U7fTiLMRzK0tRsttvXkGmHM76IBxCEO-5vZOffJudWCiZIPDLx_NvYpaSrGkz7dvEmuVvqgDHjxCuHgV6PGivcpKArDZlf2T-4n1Eo6NhjnJZ0GYS_sBIcz02P75Mqbx9_9rcqm9d81C_oP80lNtJpQw_3EEcs_E -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 space-y-4">
+<div class="text-label-md font-label-md text-on-surface-variant flex items-center justify-between">
+<span class="">Primary Master Asset (Full Brand Lockup)</span>
+<span class="text-[10px] bg-surface-container-high px-2 py-0.5 rounded text-primary font-mono">Aspect Ratio 0.78</span>
+</div>
+<div class="bg-[#fbf9f4] border border-outline-variant/30 rounded-xl p-4 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="w-48 max-w-full rounded-lg overflow-hidden shadow-sm border border-outline-variant/20 bg-white p-2">
+<img alt="Yog Milk Vedic Wellness Brand Emblem" class="w-full h-auto object-contain rounded" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_5dZUFojvDtrqC-8QtshDhWrjTdhXCGXG5tpW2DFBbXsSXvCJEa1z6fzLCTaVF9GKxVKxnaekH1pDu6sER35U7fTiLMRzK0tRsttvXkGmHM76IBxCEO-5vZOffJudWCiZIPDLx_NvYpaSrGkz7dvEmuVvqgDHjxCuHgV6PGivcpKArDZlf2T-4n1Eo6NhjnJZ0GYS_sBIcz02P75Mqbx9_9rcqm9d81C_oP80lNtJpQw_3EEcs_E">
+</div>
+<div class="mt-3 text-center">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">YOG MILK</div>
+<div class="text-[11px] tracking-widest text-on-surface-variant uppercase font-medium">From Nature to Nourish You</div>
+</div>
+<!-- Clear space overlay guides (X indicator) -->
+<div class="w-full border-t border-dashed border-primary/30 mt-3 pt-2 flex justify-between items-center text-[10px] text-primary/70 font-mono">
+<span class="">← Clear Space: 1X (Drop Height) →</span>
+<span class="">Min Print: 28mm</span>
+</div>
+</div>
+<!-- Mark Only vs Wordmark Only Mini Spec -->
+<div class="grid grid-cols-2 gap-3 pt-1">
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 text-center">
+<div class="h-12 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="spa" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div class="font-title-md text-title-md text-primary font-semibold">Mark Only</div>
+<div class="text-[10px] text-on-surface-variant mt-0.5">Min Digital: 24px width</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 text-center">
+<div class="h-12 flex items-center justify-center">
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">YOG MILK</span>
+</div>
+<div class="font-title-md text-title-md text-primary font-semibold">Wordmark Only</div>
+<div class="text-[10px] text-on-surface-variant mt-0.5">Min Digital: 64px width</div>
+</div>
+</div>
+<!-- Dos & Don'ts Contrast Table -->
+<div class="mt-2 pt-2 border-t border-outline-variant/20">
+<div class="text-label-md font-label-md font-bold text-on-surface mb-2">Contrast Guidelines</div>
+<div class="grid grid-cols-2 gap-2 text-xs">
+<!-- Do -->
+<div class="p-2.5 rounded-lg bg-[#fffdfa] border-l-4 border-l-green-600 border border-outline-variant/30">
+<div class="text-green-700 font-bold flex items-center gap-1 text-[11px] mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                  DO: Morning Cream
+                </div>
+<div class="p-2 bg-[#fdfbf6] rounded text-center text-primary font-bold text-xs tracking-wider">
+                  YOG MILK
+                </div>
+<p class="text-[10px] text-on-surface-variant mt-1.5">Deep Sacred Navy text on organic Warm Morning Cream (#faf8ff).</p>
+</div>
+<!-- Don't -->
+<div class="p-2.5 rounded-lg bg-error-container/20 border-l-4 border-l-error border border-outline-variant/30">
+<div class="text-error font-bold flex items-center gap-1 text-[11px] mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="cancel">cancel</span>
+                  DON'T: Low Contrast
+                </div>
+<div class="p-2 bg-primary text-secondary rounded text-center font-bold text-xs tracking-wider">
+                  YOG MILK
+                </div>
+<p class="text-[10px] text-on-surface-variant mt-1.5">Never place dark saffron or unverified fills on dark Sacred Navy.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: COLOR SYSTEM TOKENS -->
+<section class="space-y-4" id="section-colors">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 03</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Color Tokens &amp; Roles</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+</div>
+<div class="grid grid-cols-1 gap-2.5">
+<!-- Primary Sacred Navy -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container shadow-xs flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Sacred Navy (Primary)</div>
+<div class="text-[11px] text-on-surface-variant font-mono">Token: primary-container · #1f2a6b</div>
+</div>
+</div>
+<span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded font-mono">Pass AAA</span>
+</div>
+<!-- Secondary Gaushala Saffron -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-secondary-container shadow-xs flex items-center justify-center text-white font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="bolt">bolt</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Gaushala Saffron</div>
+<div class="text-[11px] text-on-surface-variant font-mono">Token: secondary-container · #fc8127</div>
+</div>
+</div>
+<span class="text-[10px] bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded font-mono">Accent CTA</span>
+</div>
+<!-- Tertiary Vedic Gold -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-tertiary-fixed-dim shadow-xs flex items-center justify-center text-tertiary font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Vedic Gold (Tertiary)</div>
+<div class="text-[11px] text-on-surface-variant font-mono">Token: tertiary-fixed-dim · #edc15a</div>
+</div>
+</div>
+<span class="text-[10px] bg-tertiary-fixed text-on-tertiary-fixed px-2 py-0.5 rounded font-mono">Purity Seal</span>
+</div>
+<!-- Morning Cream Surface -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface border border-outline-variant/40 shadow-xs flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="brightness_low">brightness_low</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-primary font-bold">Morning Cream (Surface)</div>
+<div class="text-[11px] text-on-surface-variant font-mono">Token: surface / background · #faf8ff</div>
+</div>
+</div>
+<span class="text-[10px] bg-surface-container px-2 py-0.5 rounded font-mono">Base 0</span>
+</div>
+<!-- Dawn Sage (Success) & Error Coral (Alert) -->
+<div class="grid grid-cols-2 gap-2 mt-1">
+<div class="bg-[#f0fdf4] p-2.5 rounded-xl border border-green-200">
+<div class="flex items-center gap-1.5 text-green-800 font-bold text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+                Dawn Sage (#15803d)
+              </div>
+<div class="text-[10px] text-green-700 mt-0.5">Success &amp; Delivered</div>
+</div>
+<div class="bg-error-container/30 p-2.5 rounded-xl border border-error/20">
+<div class="flex items-center gap-1.5 text-error font-bold text-xs">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                Error Coral (#ba1a1a)
+              </div>
+<div class="text-[10px] text-error mt-0.5">Cutoff &amp; Delivery alerts</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: TYPOGRAPHY SPECIMENS (BILINGUAL) -->
+<section class="space-y-4" id="section-type">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 04</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Bilingual Typography</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="translate">translate</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/40 space-y-4">
+<div>
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant mb-1">
+<span class="">Headline Serif: Playfair Display / Rozha One</span>
+<span class="text-[10px] text-secondary font-mono">+25% Line-height on Devanagari</span>
+</div>
+<!-- Side by side specimen -->
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/30 space-y-2">
+<div class="border-b border-outline-variant/20 pb-2">
+<div class="text-[10px] text-outline font-mono uppercase">Display Lg · 34px / 42px</div>
+<div class="font-display-lg-mobile text-display-lg-mobile text-primary font-semibold">
+                  Pure A2 Gir Milk
+                </div>
+</div>
+<div>
+<div class="text-[10px] text-outline font-mono uppercase">Devanagari Rozha One · Indic Specimen</div>
+<div class="font-devanagari text-2xl text-primary font-bold leading-normal">
+                  शुद्ध ए२ गिर गाय का अमृत दूध
+                </div>
+</div>
+</div>
+</div>
+<div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mb-1">
+              Body &amp; Functional Sans: Plus Jakarta Sans / Noto Sans
+            </div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-outline-variant/30 space-y-2 text-xs">
+<div class="flex justify-between items-baseline">
+<span class="font-body-md text-body-md text-on-surface">Untouched dawn delivery by 6:00 AM</span>
+<span class="text-[10px] text-outline font-mono">14px / 22px</span>
+</div>
+<div class="flex justify-between items-baseline font-devanagari">
+<span class="text-on-surface font-medium">प्रातः ६:०० बजे तक सीधा आपके द्वार पर</span>
+<span class="text-[10px] text-outline font-mono font-sans">+20% LH</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: FOUNDATION & ELEVATION -->
+<section class="space-y-4" id="section-elevation">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 05</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Spacing &amp; Elevation</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="layers">layers</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<!-- Elevation 1 -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 shadow-xs">
+<div class="text-[10px] font-mono text-outline">Layer 1: Card Base</div>
+<div class="font-title-md text-title-md text-primary mt-1 font-bold">Hairline Flat</div>
+<div class="text-[11px] text-on-surface-variant">Border 1px #E7E2D6 + Ambient soft indigo</div>
+</div>
+<!-- Elevation 2 -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30 shadow-md">
+<div class="text-[10px] font-mono text-secondary">Layer 2: Active Plan</div>
+<div class="font-title-md text-title-md text-primary mt-1 font-bold">Elevated Bloom</div>
+<div class="text-[11px] text-on-surface-variant">0 10px 24px -4px Indigo-tinted shadow</div>
+</div>
+<!-- Radius Specimen -->
+<div class="p-3 bg-surface-container-low rounded-lg border border-outline-variant/30 text-center">
+<span class="text-[10px] font-mono text-outline">Radius: lg (8px)</span>
+<div class="w-8 h-8 mx-auto mt-1 bg-primary rounded-lg"></div>
+</div>
+<div class="p-3 bg-surface-container-low rounded-2xl border border-outline-variant/30 text-center">
+<span class="text-[10px] font-mono text-outline">Radius: 20px (Card)</span>
+<div class="w-8 h-8 mx-auto mt-1 bg-secondary-container rounded-2xl"></div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: BUTTON SYSTEM & STATES -->
+<section class="space-y-4" id="section-buttons">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 06</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Button State Matrix</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="smart_button">smart_button</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/40 space-y-3"><div>
+<div class="text-[11px] font-semibold text-on-surface-variant mb-1">Primary Action (Sacred Navy #1f2a6b)</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="w-full h-12 bg-primary-container text-white rounded-[14px] font-label-md text-label-md flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-transform">
+<span class="">Add to Cart</span>
+<span class="material-symbols-outlined text-sm" data-icon="shopping_bag">shopping_bag</span>
+</button>
+<button class="w-full h-12 bg-primary-container text-white rounded-[14px] font-label-md text-label-md flex items-center justify-center gap-2 opacity-90 cursor-wait">
+<span class="material-symbols-outlined animate-spin text-sm" data-icon="progress_activity">progress_activity</span>
+<span class="">Milking batch...</span>
+</button>
+</div>
+</div>
+<div>
+<div class="text-[11px] font-semibold text-on-surface-variant mb-1">Secondary CTA (Gaushala Saffron #fc8127)</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="w-full h-12 bg-secondary-container text-white rounded-[14px] font-label-md text-label-md font-semibold flex items-center justify-center gap-1 active:scale-95 transition-transform shadow-xs">
+<span class="">Order Fresh Batch</span>
+</button>
+<button class="w-full h-12 bg-outline-variant/30 text-outline rounded-[14px] font-label-md text-label-md font-semibold flex items-center justify-center cursor-not-allowed" disabled="">
+<span class="">Sold Out Dawn</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="h-11 border-1.5 border-primary-container text-primary bg-transparent rounded-[14px] font-label-md text-label-md font-semibold hover:bg-surface-container transition-colors">
+              Order History
+            </button>
+<button class="h-11 bg-surface-container text-on-surface rounded-[14px] font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors">
+              Sign in with Google
+            </button>
+</div></div>
+</section>
+<!-- SECTION 7: INPUTS & MICRO-COMPONENTS -->
+<section class="space-y-4" id="section-inputs">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 07</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Inputs &amp; Stepper Unit</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="touch_app">touch_app</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/40 space-y-4">
+<!-- Vedic Search Input with mic -->
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1">Ritual Product Search</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-outline" data-icon="search">search</span>
+<input class="w-full h-12 pl-10 pr-10 rounded-[14px] border-1.5 border-outline-variant/60 bg-white text-on-surface placeholder:text-outline/70 focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 text-body-md font-body-md" placeholder="Search A2 Gir Cow, Vedic Bilona Ghee..." type="text">
+<button class="absolute right-3 text-primary hover:text-secondary-container transition-colors" title="Voice Search">
+<span class="material-symbols-outlined" data-icon="mic">mic</span>
+</button>
+</div>
+</div>
+<!-- Error with Devanagari Helper -->
+<div>
+<label class="block text-label-sm font-label-sm text-on-surface-variant mb-1">Morning Pincode Validation</label>
+<div class="relative flex items-center">
+<input class="w-full h-12 px-3 rounded-[14px] border-1.5 border-error text-error text-body-md font-body-md bg-error-container/10" type="text" value="400001 (Mumbai South)">
+<span class="material-symbols-outlined absolute right-3 text-error" data-icon="error">error</span>
+</div>
+<div class="text-[11px] text-error mt-1 flex items-center gap-1 font-devanagari">
+<span class="">* क्षमा करें, इस क्षेत्र में प्रातःकाल डिलीवरी स्लॉट पूर्ण हो चुका है (Slot Full)</span>
+</div>
+</div>
+<!-- Transformative Stepper Component Preview -->
+<div class="p-3 bg-surface-container-low rounded-xl border border-outline-variant/30">
+<div class="text-label-sm font-label-sm text-on-surface font-semibold mb-2">Interactive Stepper Transformation:</div>
+<div class="flex items-center justify-between">
+<!-- State A: Default Add Button -->
+<div class="text-center">
+<button class="h-9 px-5 bg-white border border-primary-container text-primary font-label-md text-label-md rounded-full shadow-xs hover:bg-surface-container transition-all flex items-center gap-1 active:scale-95" id="demo-stepper-btn" onclick="toggleDemoStepper(this)">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="">ADD</span>
+</button>
+<div class="text-[10px] text-outline mt-1 font-mono">Pill State</div>
+</div>
+<span class="text-outline material-symbols-outlined" data-icon="arrow_right_alt">arrow_right_alt</span>
+<!-- State B: Active Qty Stepper -->
+<div class="text-center">
+<div class="h-9 px-2 bg-primary-container text-white rounded-full flex items-center gap-3 shadow-xs">
+<button aria-label="Decrease" class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-90">
+<span class="material-symbols-outlined text-xs" data-icon="remove">remove</span>
+</button>
+<span class="font-title-md text-title-md font-bold px-1">2 L</span>
+<button aria-label="Increase" class="w-6 h-6 flex items-center justify-center rounded-full hover:bg-white/20 active:scale-90">
+<span class="material-symbols-outlined text-xs" data-icon="add">add</span>
+</button>
+</div>
+<div class="text-[10px] text-primary font-mono mt-1 font-semibold">Active [- Qty +]</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 8: TRIPLE UNMERGED STATUS CHIP SETS -->
+<section class="space-y-4" id="section-chips">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 08</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Triple Status Chip Sets</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="label">label</span>
+</div>
+<p class="text-xs text-on-surface-variant">
+          Strict separation of concerns: Every order instance explicitly displays Order, Payment, and Delivery lifecycle stages independently.
+        </p>
+<div class="space-y-3">
+<!-- 1. Order Status Chips -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30">
+<div class="text-label-sm font-label-sm font-semibold text-primary mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm" data-icon="receipt_long">receipt_long</span>
+              1. Lifecycle Order Status
+            </div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-surface-container text-primary border border-outline-variant/40">Placed</span>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-secondary-fixed text-on-secondary-fixed">Preparing</span>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed">Ready to Bottle</span>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-100 text-green-800 border border-green-300">Delivered</span>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-error-container text-error">Cancelled</span>
+</div>
+</div>
+<!-- 2. Payment Status Chips -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30">
+<div class="text-label-sm font-label-sm font-semibold text-primary mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm" data-icon="payments">payments</span>
+              2. Settlement &amp; Payment Status
+            </div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-green-600 text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="verified">verified</span>
+                Online Paid
+              </span>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-900 border border-amber-300 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="schedule">schedule</span>
+                Pending COD
+              </span>
+<span class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-red-100 text-red-700 border border-red-200 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="error">error</span>
+                Payment Failed
+              </span>
+</div>
+</div>
+<!-- 3. Delivery Status Chips -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-outline-variant/30">
+<div class="text-label-sm font-label-sm font-semibold text-primary mb-2 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm" data-icon="local_shipping">local_shipping</span>
+              3. Doorstep Delivery Status
+            </div>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2 py-0.5 rounded text-[11px] bg-surface-container-high text-on-surface">Not Assigned</span>
+<span class="px-2 py-0.5 rounded text-[11px] bg-surface-variant text-primary font-medium">Assigned #204</span>
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary-fixed text-on-secondary-fixed font-medium">Picked Up</span>
+<span class="px-2 py-0.5 rounded text-[11px] bg-secondary-container text-white font-bold animate-pulse">Out for Dawn Delivery</span>
+<span class="px-2 py-0.5 rounded text-[11px] bg-green-700 text-white font-semibold">Delivered 05:42 AM</span>
+<span class="px-2 py-0.5 rounded text-[11px] bg-error text-white font-semibold">Gate Locked / Failed</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 9: CARD ARCHETYPES -->
+<section class="space-y-4" id="section-cards">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 09</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Production Card Archetypes</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="view_agenda">view_agenda</span>
+</div>
+<div class="space-y-4">
+<!-- 1. Product Card Specimen -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-xs">
+<div class="text-[11px] font-mono text-outline mb-2">Archetype A: Vedic Product Card</div>
+<div class="flex gap-3.5">
+<div class="w-24 h-28 rounded-xl bg-surface-container-low border border-outline-variant/30 flex-shrink-0 flex flex-col items-center justify-center p-2 relative overflow-hidden">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="water_drop" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-[9px] bg-primary-container text-white font-bold px-1.5 py-0.2 rounded-full mt-1">FAT 4.8%</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-green-600"></span>
+<span class="text-[10px] font-bold tracking-wide uppercase text-secondary">A2 Gir Cow</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold leading-tight mt-0.5">Raw A2 Farm Milk</h3>
+<p class="text-body-sm text-on-surface-variant text-xs">Chilled within 45 mins · Glass Bottle</p>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1 border-t border-outline-variant/20">
+<div>
+<span class="text-label-md font-label-md font-bold text-primary">₹95</span>
+<span class="text-[10px] text-outline">/ 1 Litre</span>
+</div>
+<button class="h-8 px-4 rounded-full bg-secondary-container text-white font-label-md text-label-md active:scale-95 transition-transform flex items-center gap-1 shadow-xs"><span class="">Add to Cart</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Order History Card (With Triple Chips Built-in) -->
+<div class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2">
+<div>
+<div class="text-[11px] font-mono text-outline">#YM-2026-9812</div>
+<div class="text-xs font-semibold text-primary">Tomorrow Dawn Slot · 5:30 AM - 6:30 AM</div>
+</div>
+<span class="text-label-md font-label-md font-bold text-primary">₹190.00</span>
+</div>
+<!-- Triple chips displayed cleanly -->
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-surface-container text-primary">Placed</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-100 text-green-800">Online Paid (UPI)</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-white">Out for Dawn</span>
+</div>
+<div class="flex items-center justify-between text-xs text-on-surface-variant pt-1">
+<span class="">Items: 2x 1L Gir Milk Glass Bottle</span>
+<a class="text-primary font-bold hover:underline flex items-center gap-0.5" href="#prototype" onclick="switchMasterView('prototype')">
+                Track
+                <span class="material-symbols-outlined text-xs" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- 3. KPI Metric Card & Ordering Window Banner -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-low p-3.5 rounded-2xl border border-outline-variant/30">
+<span class="text-[10px] text-outline font-semibold uppercase">Monthly Spend</span>
+<div class="font-headline-sm text-headline-sm text-primary font-bold mt-1">₹2,850</div>
+<div class="text-[10px] text-green-700 font-medium mt-1 flex items-center gap-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="trending_up">trending_up</span>
+                30 Litres pure intake
+              </div>
+</div>
+<div class="bg-secondary-fixed/50 p-3.5 rounded-2xl border border-secondary-container/30">
+<span class="text-[10px] text-secondary font-bold uppercase">Ordering Cutoff</span>
+<div class="font-headline-sm text-headline-sm text-on-secondary-fixed font-bold mt-1">9:00 PM</div>
+<div class="text-[10px] text-secondary font-medium mt-1">
+                For next day 6 AM door drop
+              </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 10: FEEDBACK, DIALOGS, SHEETS & SKELETON -->
+<section class="space-y-4" id="section-feedback">
+<div class="flex items-center justify-between border-b border-outline-variant/30 pb-2">
+<div>
+<span class="text-[11px] font-bold tracking-widest text-secondary uppercase">Guideline 10</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Feedback, Modals &amp; Empty</h2>
+</div>
+<span class="material-symbols-outlined text-primary" data-icon="feedback">feedback</span>
+</div>
+<div class="space-y-4">
+<!-- Non-GST Table Row Specimen -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-outline-variant/40"><div class="text-[11px] font-semibold text-primary mb-2 flex items-center justify-between">
+<span class="">Invoice Breakdown (Unprocessed Milk)</span>
+<span class="text-[10px] bg-surface-container px-1.5 py-0.5 rounded text-outline font-mono">Itemized</span>
+</div>
+<div class="text-xs space-y-1.5 border-t border-outline-variant/20 pt-2">
+<div class="flex justify-between text-on-surface-variant">
+<span class="">A2 Gir Raw Milk (1 Litre x 2)</span>
+<span class="font-mono">₹190.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span class="">Dawn Delivery Fee</span>
+<span class="font-mono">₹0.00</span>
+</div>
+<div class="flex justify-between text-primary font-bold border-t border-dashed border-outline-variant/30 pt-1.5">
+<span class="">Total Payable (Net)</span>
+<span class="font-mono text-sm">₹190.00</span>
+</div>
+</div></div>
+<!-- Dialog Preview: Ordering Cutoff -->
+<div class="bg-surface-container-low p-4 rounded-2xl border border-outline-variant/40 shadow-sm relative">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined" data-icon="access_time">access_time</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md font-bold text-primary">Night Cutoff Passed (9:00 PM)</h4>
+<p class="text-xs text-on-surface-variant mt-1">
+                  Milk has been dispatched from the Vedic Gaushala for dawn chilling. Next batch available for day after tomorrow.
+                </p>
+<div class="mt-3 flex gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-primary-container text-white text-xs font-semibold">
+                    Schedule Next Slot
+                  </button>
+<button class="px-3 py-1.5 rounded-lg border border-outline-variant/40 text-on-surface text-xs">
+                    Dismiss
+                  </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Shimmer Skeleton Card Archetype -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/40 space-y-3">
+<div class="text-[11px] font-mono text-outline">Shimmer Loading State (Zero Content Flash)</div>
+<div class="flex gap-3">
+<div class="w-16 h-16 rounded-xl bg-surface-container animate-shimmer"></div>
+<div class="flex-1 space-y-2">
+<div class="w-3/4 h-4 bg-surface-container rounded animate-shimmer"></div>
+<div class="w-1/2 h-3 bg-surface-container rounded animate-shimmer"></div>
+<div class="w-1/3 h-3 bg-surface-container-high rounded animate-shimmer"></div>
+</div>
+</div>
+</div>
+<!-- Empty State with Sacred Lotus & Drop Motif -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/40 text-center flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center text-primary mb-2">
+<span class="material-symbols-outlined text-3xl" data-icon="filter_vintage">filter_vintage</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-primary font-bold">No Active Deliveries Today</h4>
+<p class="text-xs text-on-surface-variant max-w-xs mt-1">Your porch milk crate is resting. Order your usual items to restore dawn ritual delivery.</p>
+<button class="mt-3 px-4 py-2 bg-primary-container text-white text-xs font-semibold rounded-full shadow-xs">
+              Explore Fresh Batches
+            </button>
+</div>
+</div>
+</section>
+</div>
+<!-- VIEW B: CLICKABLE PROTOTYPE FLOWS (CUSTOMER & ADMIN JOURNEYS) -->
+<div class="space-y-8 hidden" id="view-prototype-engine">
+<!-- Flow Selector Tabs -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/40 shadow-xs">
+<div class="flex items-center justify-between mb-3">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-bold">Interactive Flow Emulator</h2>
+<p class="text-xs text-on-surface-variant">Tap any node to test the connected screen modal</p>
+</div>
+<span class="text-xs bg-secondary-fixed text-on-secondary-fixed font-bold px-2.5 py-1 rounded-full">Live Mock</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 text-xs font-bold rounded-xl bg-primary-container text-white shadow-xs" id="btn-proto-customer" onclick="setPrototypeRole('customer')">
+            Customer Journey (11 Steps)
+          </button>
+<button class="flex-1 py-2 text-xs font-bold rounded-xl bg-surface-container text-on-surface-variant hover:text-primary" id="btn-proto-admin" onclick="setPrototypeRole('admin')">
+            Admin &amp; Ops (5 Steps)
+          </button>
+</div>
+</div>
+<!-- FLOW CONTAINER: CUSTOMER FLOW -->
+<div class="space-y-3" id="flow-customer-container">
+<div class="text-label-md font-label-md font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary" data-icon="timeline">timeline</span>
+          Vedic Consumer Onboarding to Doorstep Flow
+        </div>
+<!-- 11 Step Linear Chain Cards -->
+<div class="space-y-2 relative before:absolute before:left-5 before:top-4 before:bottom-4 before:w-0.5 before:bg-outline-variant/40">
+<!-- Step 1: Splash -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('splash')">
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-xs z-10">1</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">01. Splash &amp; Sacred Invocation</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Mark animation, mantra vibration, network sync</div>
+</div>
+</div>
+<!-- Step 2: Welcome -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('welcome')">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">2</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">02. Welcome &amp; Heritage Onboarding</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Vedic Gaushala ethos, glass bottle lifecycle</div>
+</div>
+</div>
+<!-- Step 3: Sign In -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('signin')"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">3</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">03. Sign in with Google</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Seamless one-tap authentication &amp; address sync</div>
+</div></div>
+<!-- Step 4: Home -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('home')">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">4</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">04. Daily Home Dashboard</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Doorstep timeline, morning dew calendar ribbon</div>
+</div>
+</div>
+<!-- Step 5: Shop -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('shop')">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">5</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">05. Shop &amp; Vedic Dairy Catalog</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Raw milk, cultured Bilona ghee, paneer blocks</div>
+</div>
+</div>
+<!-- Step 6: Product Detail -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('detail')">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">6</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">06. Product Purity Lab Details</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Batch certificate seal, cow grass feed breakdown</div>
+</div>
+</div>
+<!-- Step 7: Cart -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('cart')"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">7</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">07. Cart &amp; Your Usual Items</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Select morning order items &amp; delivery frequency</div>
+</div></div>
+<!-- Step 8: Checkout -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('checkout')">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-white flex items-center justify-center font-bold text-xs z-10">8</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">08. Secure Checkout &amp; Address</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Doorbell silence instruction, milk bag hook location</div>
+</div>
+</div>
+<!-- Step 9: Order Placed -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('placed')">
+<div class="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xs z-10">9</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">09. Order Confirmed &amp; Dawn Drop Slotted</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Scheduled for tomorrow morning 05:30 AM</div>
+</div>
+</div>
+<!-- Step 10: Order Detail -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('orderdetail')">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">10</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">10. Live Doorstep Delivery Tracking</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Out for Dawn Delivery · Doorstep photo proof</div>
+</div>
+</div>
+<!-- Step 11: Invoice Preview -->
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98] shadow-2xs" onclick="openProtoScreen('invoice')"><div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">11</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary flex items-center justify-between">
+<span class="">11. Invoice</span>
+<span class="material-symbols-outlined text-sm text-outline" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="text-[11px] text-on-surface-variant">Digital receipt &amp; order breakdown</div>
+</div></div>
+</div>
+</div>
+<!-- FLOW CONTAINER: ADMIN FLOW -->
+<div class="space-y-3 hidden" id="flow-admin-container">
+<div class="text-label-md font-label-md font-bold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary" data-icon="local_shipping">local_shipping</span>
+          Gaushala Operations &amp; Logistics Flow
+        </div>
+<div class="space-y-2 relative before:absolute before:left-5 before:top-4 before:bottom-4 before:w-0.5 before:bg-outline-variant/40">
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98]" onclick="openProtoScreen('admin_ops')">
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-xs z-10">A</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary">Ops Dashboard (Dawn Chilling Metrics)</div>
+<div class="text-[11px] text-on-surface-variant">420 Litres bottled · 8 Van routes loaded</div>
+</div>
+</div>
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98]" onclick="openProtoScreen('admin_orders')">
+<div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold text-xs z-10">B</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary">Orders Management Table</div>
+<div class="text-[11px] text-on-surface-variant">Filter by Route South 04, Bulk print tags</div>
+</div>
+</div>
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98]" onclick="openProtoScreen('admin_cash')"><div class="w-8 h-8 rounded-full bg-amber-600 text-white flex items-center justify-center font-bold text-xs z-10">C</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary">Record cash payment (admin)</div>
+<div class="text-[11px] text-on-surface-variant">Admin reconciliation for offline doorstep drops</div>
+</div></div>
+<div class="relative flex items-center gap-3.5 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 hover:border-primary-container cursor-pointer transition-all active:scale-[0.98]" onclick="openProtoScreen('admin_route')">
+<div class="w-8 h-8 rounded-full bg-green-700 text-white flex items-center justify-center font-bold text-xs z-10">D</div>
+<div class="flex-1">
+<div class="text-xs font-bold text-primary">Delivery Partner Route Update</div>
+<div class="text-[11px] text-on-surface-variant">Geo-fence trigger: 'Out for Dawn Delivery' alert</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- INTERACTIVE PROTOTYPE MODAL / SHEET OVERLAY -->
+<div class="fixed inset-0 z-50 bg-[#151D4D]/60 backdrop-blur-sm hidden items-end justify-center" id="proto-modal-overlay">
+<div class="bg-surface w-full max-w-lg rounded-t-3xl max-h-[85vh] flex flex-col shadow-2xl border-t border-outline-variant/40 animate-in slide-in-from-bottom duration-200">
+<!-- Drag Handle -->
+<div class="pt-3 pb-1 flex justify-center">
+<div class="w-12 h-1.5 bg-outline-variant rounded-full"></div>
+</div>
+<!-- Sheet Header -->
+<div class="px-5 py-2.5 flex items-center justify-between border-b border-outline-variant/20">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-wider text-secondary" id="proto-screen-tag">Step 04 Screen</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold" id="proto-screen-title">Interactive Preview</h3>
+</div>
+<button aria-label="Close Preview" class="p-1.5 rounded-full hover:bg-surface-container text-on-surface-variant" onclick="closeProtoScreen()">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<!-- Sheet Scrollable Content -->
+<div class="p-5 overflow-y-auto space-y-4" id="proto-screen-body">
+<!-- Content injected dynamically via JavaScript -->
+</div>
+<!-- Sheet Bottom Bar -->
+<div class="p-4 bg-surface-container-low border-t border-outline-variant/20 flex gap-2">
+<button class="flex-1 py-3 rounded-xl border border-outline-variant text-on-surface font-label-md text-label-md" onclick="closeProtoScreen()">
+          Back to Flow Map
+        </button>
+<button class="flex-1 py-3 rounded-xl bg-primary-container text-white font-label-md text-label-md shadow-xs flex items-center justify-center gap-1" id="proto-action-next" onclick="advanceProtoStep()">
+<span class="">Next Flow Step</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar (Mandatory Shared Component for Top-Level Hub Canvas) -->
+<nav class="fixed bottom-0 left-0 w-full z-40 flex justify-around items-center h-16 px-2 pb-safe bg-surface/95 backdrop-blur-md border-t border-outline-variant/30 shadow-lg">
+<!-- Tab 1: Home (Default specs) -->
+<button aria-label="Home Specs" class="flex flex-col items-center justify-center text-primary font-semibold bg-surface-container-high rounded-full px-4 py-1 active:scale-95 transition-transform" onclick="switchMasterView('tokens')">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-label-sm font-label-sm font-semibold">Home</span>
+</button>
+<!-- Tab 2: Shop Catalog Flow -->
+<button aria-label="Shop" class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary active:scale-95 transition-transform" onclick="switchMasterView('prototype'); openProtoScreen('shop');">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-label-sm font-label-sm font-semibold">Shop</span>
+</button>
+<!-- Tab 3: Orders History Flow -->
+<button aria-label="Orders" class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary active:scale-95 transition-transform" onclick="switchMasterView('prototype'); openProtoScreen('orderdetail');">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm font-semibold">Orders</span>
+</button>
+<!-- Tab 4: Account & Purity Certs -->
+<button aria-label="Account" class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary active:scale-95 transition-transform" onclick="switchMasterView('tokens');">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm font-semibold">Account</span>
+</button>
+</nav>
+<!-- Embedded Vanilla Micro-Interactions Script -->
+<script>
+    let currentFlowRole = 'customer';
+    let currentScreenIndex = 'home';
+
+    const screenData = {
+      splash: {
+        tag: 'Step 01 &middot; Splash & Awakening',
+        title: 'Dawn Sattvic Invocation',
+        content: `
+          <div class="text-center py-6 space-y-3">
+            <div class="w-20 h-20 mx-auto rounded-full bg-surface-container flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined text-5xl animate-bounce" data-icon="spa">spa</span>
+            </div>
+            <div class="font-headline-md text-headline-md text-primary font-bold">YOG MILK</div>
+            <div class="text-xs text-on-surface-variant">Connecting Sacred Gir Gaushala to Doorstep</div>
+            <div class="p-3 bg-surface-container-low rounded-xl text-[11px] text-primary/80 font-mono">
+              Status: Batch #419 chilled at 4°C &middot; Route ready
+            </div>
+          </div>
+        `
+      },
+      welcome: {
+        tag: 'Step 02 &middot; Vedic Ethos',
+        title: 'Glass Bottle Circulation',
+        content: `
+          <div class="space-y-3">
+            <div class="p-4 bg-secondary-fixed/30 rounded-2xl border border-secondary-fixed">
+              <h4 class="font-title-md text-title-md font-bold text-on-secondary-fixed">100% Non-Toxic Glass</h4>
+              <p class="text-xs text-secondary mt-1">We rinse and sterilize our thick glass bottles in a closed loop. Leave yesterday's empty bottle on the hook!</p>
+            </div>
+            <div class="p-3 bg-surface-container-low rounded-xl text-xs space-y-1">
+              <div class="font-bold text-primary">Zero Microplastics Guarantee</div>
+              <div class="text-on-surface-variant text-[11px]">Milk bottled immediately after milking at our natural Vedic habitat.</div>
+            </div>
+          </div>
+        `
+      },
+      signin: {
+        tag: 'Step 03 &middot; Authentication',
+        title: 'WhatsApp Instant Verification',
+        content: `
+          <div class="space-y-3">
+            <label class="text-xs font-semibold text-on-surface-variant">Enter Mobile Number</label>
+            <div class="flex gap-2">
+              <input type="text" value="+91 98200 45678" class="flex-1 h-11 px-3 border border-outline-variant/60 rounded-xl text-sm" readonly>
+              <button class="px-3 bg-green-700 text-white rounded-xl text-xs font-bold">Send OTP</button>
+            </div>
+            <div class="text-[11px] text-outline">You will receive a 4-digit sacred passkey on WhatsApp.</div>
+          </div>
+        `
+      },
+      home: {
+        tag: 'Step 04 &middot; Customer Home',
+        title: 'Tomorrow Morning 6:00 AM',
+        content: `
+          <div class="space-y-3">
+            <div class="p-4 bg-primary-container text-white rounded-2xl">
+              <span class="text-[10px] tracking-wider uppercase text-secondary-fixed font-bold">Upcoming Delivery</span>
+              <div class="text-lg font-bold mt-1">2x A2 Raw Gir Milk (2L)</div>
+              <div class="text-xs opacity-90 mt-0.5">Assigned to Dawn Runner: Suresh K.</div>
+              <div class="mt-3 flex items-center justify-between text-xs pt-2 border-t border-white/20">
+                <span>Arrival: 05:45 AM - 06:15 AM</span>
+                <span class="bg-secondary-container px-2 py-0.5 rounded text-[10px] font-bold">Confirmed</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      shop: {
+        tag: 'Step 05 &middot; Catalog',
+        title: 'Sattvic Dairy Range',
+        content: `
+          <div class="space-y-2">
+            <div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between">
+              <div>
+                <div class="font-bold text-primary text-xs">Vedic Bilona Ghee (500ml)</div>
+                <div class="text-[11px] text-on-surface-variant">Slow wood-churned from curd &middot; ₹1,450</div>
+              </div>
+              <button class="px-3 py-1 bg-primary-container text-white rounded-full text-xs font-bold">Add</button>
+            </div>
+            <div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between">
+              <div>
+                <div class="font-bold text-primary text-xs">Malai Paneer (200g)</div>
+                <div class="text-[11px] text-on-surface-variant">Made fresh every 12 hours &middot; ₹120</div>
+              </div>
+              <button class="px-3 py-1 bg-primary-container text-white rounded-full text-xs font-bold">Add</button>
+            </div>
+          </div>
+        `
+      },
+      detail: {
+        tag: 'Step 06 &middot; Lab Testing',
+        title: 'Batch #Gir-419 Purity Report',
+        content: `
+          <div class="space-y-2.5">
+            <div class="p-3 bg-tertiary-fixed/30 rounded-xl border border-tertiary-fixed">
+              <div class="text-xs font-bold text-on-tertiary-fixed">A2 Beta-Casein DNA: 100% Positive</div>
+              <div class="text-[11px] text-tertiary mt-0.5">NABL Accredited Lab Sample collected at 4:30 AM today.</div>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="p-2 bg-surface-container-low rounded-lg">SNF: 8.85% (Optimal)</div>
+              <div class="p-2 bg-surface-container-low rounded-lg">Fat: 4.82% (Full Cream)</div>
+            </div>
+          </div>
+        `
+      },
+      cart: {
+        tag: 'Step 07 &middot; Frequency',
+        title: 'Morning Basket Delivery Plan',
+        content: `
+          <div class="space-y-3">
+            <div class="p-3 bg-surface-container-low rounded-xl flex justify-between items-center text-xs">
+              <span class="font-bold text-primary">Frequency Mode:</span>
+              <span class="bg-primary-container text-white px-2 py-0.5 rounded font-bold">Every Dawn (7 Days)</span>
+            </div>
+            <div class="p-3 bg-surface-container-lowest border border-outline-variant/30 rounded-xl text-xs space-y-1">
+              <div class="flex justify-between"><span>2 Litres Milk x 7 drops</span><span>₹1,330</span></div>
+              <div class="flex justify-between"><span>Glass Bottle Crate Deposit</span><span>₹80</span></div>
+              <div class="flex justify-between font-bold text-primary pt-1 border-t"><span>Weekly Total</span><span>₹1,410</span></div>
+            </div>
+          </div>
+        `
+      },
+      checkout: {
+        tag: 'Step 08 &middot; Doorstep Details',
+        title: 'Doorbell & Drop Preferences',
+        content: `
+          <div class="space-y-2 text-xs">
+            <div class="p-3 bg-surface-container-low rounded-xl">
+              <div class="font-bold text-primary">Drop Instruction:</div>
+              <div class="text-on-surface-variant mt-0.5">"Please hang bottle in insulated pouch on door hook. Do NOT ring morning bell."</div>
+            </div>
+            <div class="p-3 bg-surface-container-low rounded-xl flex justify-between items-center">
+              <span>Payment Mode:</span>
+              <span class="font-bold text-green-700">UPI AutoPay (Direct)</span>
+            </div>
+          </div>
+        `
+      },
+      placed: {
+        tag: 'Step 09 &middot; Slotted',
+        title: 'First Dawn Drop Scheduled!',
+        content: `
+          <div class="text-center py-4 space-y-2">
+            <div class="w-12 h-12 mx-auto bg-green-100 text-green-800 rounded-full flex items-center justify-center">
+              <span class="material-symbols-outlined text-2xl" data-icon="check_circle">check_circle</span>
+            </div>
+            <div class="font-bold text-primary text-sm">Welcome to Vedic Morning Wellness</div>
+            <div class="text-xs text-on-surface-variant">Your first crate of untouched A2 milk will arrive tomorrow before 6:30 AM.</div>
+          </div>
+        `
+      },
+      orderdetail: {
+        tag: 'Step 10 &middot; Live Status',
+        title: 'Doorstep Delivery Tracking',
+        content: `
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-secondary-container text-white">Out for Dawn Delivery</span>
+              <span class="text-xs font-mono text-outline">Runner: 1.2 km away</span>
+            </div>
+            <div class="p-3 bg-surface-container-low rounded-xl text-xs space-y-2">
+              <div class="flex items-center gap-2 text-green-800">
+                <span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+                <span>04:15 AM: Chilled & Loaded in Van 03</span>
+              </div>
+              <div class="flex items-center gap-2 text-green-800">
+                <span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+                <span>05:10 AM: Route Sector Reached</span>
+              </div>
+              <div class="flex items-center gap-2 font-bold text-primary">
+                <span class="material-symbols-outlined text-sm text-secondary-container" data-icon="near_me">near_me</span>
+                <span>05:38 AM: Driver walking to Apartment B-402</span>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      invoice: {
+        tag: 'Step 11 &middot; Non-GST Invoice',
+        title: 'Tax Invoice (HSN 0401 Exempt)',
+        content: `
+          <div class="p-4 bg-surface-container-lowest border border-outline-variant/40 rounded-xl space-y-2 text-xs font-mono">
+            <div class="flex justify-between border-b pb-1 font-bold text-primary">
+              <span>YOG MILK VEDIC DAIRY</span>
+              <span>INV-2026-88</span>
+            </div>
+            <div class="flex justify-between"><span>HSN 0401 (Fresh Milk)</span><span>₹190.00</span></div>
+            <div class="flex justify-between"><span>GST @ 0%</span><span>₹0.00</span></div>
+            <div class="flex justify-between"><span>Bottle Security</span><span>₹40.00</span></div>
+            <div class="flex justify-between font-bold border-t pt-1 text-sm text-primary">
+              <span>Paid via UPI</span>
+              <span>₹230.00</span>
+            </div>
+          </div>
+        `
+      },
+      // Admin screen mappings
+      admin_ops: {
+        tag: 'Admin &middot; Ops Room',
+        title: 'Dawn Gaushala Dispatch Desk',
+        content: `
+          <div class="space-y-2 text-xs">
+            <div class="grid grid-cols-2 gap-2">
+              <div class="p-2.5 bg-surface-container-low rounded-xl">
+                <div class="text-[10px] text-outline">Total Bottled</div>
+                <div class="text-base font-bold text-primary">480 Litres</div>
+              </div>
+              <div class="p-2.5 bg-surface-container-low rounded-xl">
+                <div class="text-[10px] text-outline">Active Vans</div>
+                <div class="text-base font-bold text-primary">12 Vehicles</div>
+              </div>
+            </div>
+          </div>
+        `
+      },
+      admin_orders: {
+        tag: 'Admin &middot; Management',
+        title: 'Route South 04 Dispatch Table',
+        content: `
+          <div class="space-y-1.5 text-xs">
+            <div class="p-2 bg-surface-container-low rounded flex justify-between">
+              <span>#YM-981 &middot; Flat 401</span>
+              <span class="text-green-700 font-bold">2L Packed</span>
+            </div>
+            <div class="p-2 bg-surface-container-low rounded flex justify-between">
+              <span>#YM-982 &middot; Flat 502</span>
+              <span class="text-green-700 font-bold">1L + Ghee Packed</span>
+            </div>
+          </div>
+        `
+      },
+      admin_cash: {
+        tag: 'Admin &middot; Reconcile',
+        title: 'Record Offline Doorstep Cash',
+        content: `
+          <div class="p-3 bg-surface-container-low rounded-xl space-y-2 text-xs">
+            <div class="font-bold text-primary">Driver Cash Handover:</div>
+            <div class="flex justify-between"><span>Route 04 Collected:</span><span class="font-bold">₹1,240.00</span></div>
+            <button class="w-full py-2 bg-green-700 text-white rounded-lg font-bold mt-2">Reconcile All Slips</button>
+          </div>
+        `
+      },
+      admin_route: {
+        tag: 'Admin &middot; Geo Alerts',
+        title: 'Broadcast Out for Dawn Status',
+        content: `
+          <div class="space-y-2 text-xs">
+            <div class="p-3 bg-secondary-fixed/40 rounded-xl">
+              <div class="font-bold text-secondary">Trigger Sector Broadcast:</div>
+              <div class="text-[11px] mt-1">Send WhatsApp push notification to 142 households on Route 04 that milk is on the way.</div>
+            </div>
+            <button class="w-full py-2 bg-secondary-container text-white rounded-lg font-bold">Send Morning Alerts</button>
+          </div>
+        `
+      }
+    };
+
+    function switchMasterView(view) {
+      const tokensView = document.getElementById('view-tokens-engine');
+      const protoView = document.getElementById('view-prototype-engine');
+      const tabTokens = document.getElementById('tab-btn-tokens');
+      const tabProto = document.getElementById('tab-btn-prototype');
+      const chips = document.getElementById('quick-jump-chips');
+
+      if (view === 'tokens') {
+        tokensView.classList.remove('hidden');
+        tokensView.classList.add('block');
+        protoView.classList.add('hidden');
+        chips.classList.remove('hidden');
+
+        tabTokens.className = "flex-1 py-2 text-center rounded-lg text-label-md font-label-md font-semibold transition-all duration-200 bg-primary-container text-white shadow-sm flex items-center justify-center gap-1.5";
+        tabProto.className = "flex-1 py-2 text-center rounded-lg text-label-md font-label-md font-semibold transition-all duration-200 text-on-surface-variant hover:text-primary flex items-center justify-center gap-1.5";
+      } else {
+        tokensView.classList.add('hidden');
+        tokensView.classList.remove('block');
+        protoView.classList.remove('hidden');
+        chips.classList.add('hidden');
+
+        tabProto.className = "flex-1 py-2 text-center rounded-lg text-label-md font-label-md font-semibold transition-all duration-200 bg-primary-container text-white shadow-sm flex items-center justify-center gap-1.5";
+        tabTokens.className = "flex-1 py-2 text-center rounded-lg text-label-md font-label-md font-semibold transition-all duration-200 text-on-surface-variant hover:text-primary flex items-center justify-center gap-1.5";
+      }
+    }
+
+    function toggleSystemTab(type) {
+      switchMasterView(type === 'tokens' ? 'prototype' : 'tokens');
+    }
+
+    function setPrototypeRole(role) {
+      currentFlowRole = role;
+      const custBox = document.getElementById('flow-customer-container');
+      const adminBox = document.getElementById('flow-admin-container');
+      const btnCust = document.getElementById('btn-proto-customer');
+      const btnAdmin = document.getElementById('btn-proto-admin');
+
+      if (role === 'customer') {
+        custBox.classList.remove('hidden');
+        adminBox.classList.add('hidden');
+        btnCust.className = "flex-1 py-2 text-xs font-bold rounded-xl bg-primary-container text-white shadow-xs";
+        btnAdmin.className = "flex-1 py-2 text-xs font-bold rounded-xl bg-surface-container text-on-surface-variant hover:text-primary";
+      } else {
+        custBox.classList.add('hidden');
+        adminBox.classList.remove('hidden');
+        btnAdmin.className = "flex-1 py-2 text-xs font-bold rounded-xl bg-primary-container text-white shadow-xs";
+        btnCust.className = "flex-1 py-2 text-xs font-bold rounded-xl bg-surface-container text-on-surface-variant hover:text-primary";
+      }
+    }
+
+    function openProtoScreen(screenKey) {
+      currentScreenIndex = screenKey;
+      const data = screenData[screenKey] || screenData['home'];
+      document.getElementById('proto-screen-tag').innerHTML = data.tag;
+      document.getElementById('proto-screen-title').innerText = data.title;
+      document.getElementById('proto-screen-body').innerHTML = data.content;
+      
+      const overlay = document.getElementById('proto-modal-overlay');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+    }
+
+    function closeProtoScreen() {
+      const overlay = document.getElementById('proto-modal-overlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+    }
+
+    function advanceProtoStep() {
+      const keys = ['splash', 'welcome', 'signin', 'home', 'shop', 'detail', 'cart', 'checkout', 'placed', 'orderdetail', 'invoice'];
+      let curr = keys.indexOf(currentScreenIndex);
+      if (curr >= 0 && curr < keys.length - 1) {
+        openProtoScreen(keys[curr + 1]);
+      } else {
+        closeProtoScreen();
+      }
+    }
+
+    function toggleDemoStepper(btn) {
+      btn.innerHTML = `<span class="material-symbols-outlined text-xs" data-icon="check">check</span> Added!`;
+      setTimeout(() => {
+        btn.innerHTML = `<span class="material-symbols-outlined text-sm" data-icon="add">add</span> ADD`;
+      }, 1500);
+    }
+  </script>
+
+
+</body></html>

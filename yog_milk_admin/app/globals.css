@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 249 100% 99%;
+    --foreground: 226 32% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 226 32% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 32% 13%;
+
+    --primary: 230 89% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 28 100% 30%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 231 67% 97%;
+    --muted-foreground: 228 10% 41%;
+
+    --accent: 231 100% 96%;
+    --accent-foreground: 230 89% 18%;
+
+    --destructive: 0 84% 42%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 231 67% 92%;
+    --input: 231 67% 92%;
+    --ring: 230 89% 18%;
+
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Scrollbars for High Data Density Desks */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f2f3ff;
+}
+::-webkit-scrollbar-thumb {
+  background: #c6c5d2;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #767681;
+}
+

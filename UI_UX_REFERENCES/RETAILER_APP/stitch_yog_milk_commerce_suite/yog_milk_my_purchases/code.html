@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk - My Purchases</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#767681",
+            "surface-bright": "#faf8ff",
+            "secondary": "#994700",
+            "outline-variant": "#c6c5d2",
+            "on-tertiary-fixed": "#251a00",
+            "surface-variant": "#dde1f8",
+            "tertiary": "#261a00",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374183",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "on-secondary": "#ffffff",
+            "background": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-primary-container": "#8994db",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2b3041",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "primary-fixed": "#dee0ff",
+            "surface-container": "#eaedff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "on-secondary-fixed-variant": "#753400",
+            "tertiary-fixed": "#ffdf9c",
+            "surface": "#faf8ff",
+            "on-background": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "on-surface": "#161b2b",
+            "on-tertiary-container": "#ba9331",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#3f2e00",
+            "inverse-on-surface": "#eef0ff",
+            "surface-dim": "#d5d9ef",
+            "on-primary-fixed": "#051256"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "margin-tablet": "2rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#FFFCF6] text-on-surface antialiased font-body-md text-body-md flex justify-center min-h-screen selection:bg-tertiary-fixed selection:text-tertiary">
+<!-- Mobile Simulator Canvas (390px constrained width) -->
+<div class="w-full max-w-[390px] min-h-screen bg-[#FFFCF6] flex flex-col shadow-2xl relative pb-24 overflow-x-hidden border-x border-[#E7E2D6]/70">
+<!-- Header / TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-[#FFFCF6]/90 backdrop-blur-md border-b border-[#E7E2D6] shadow-sm">
+<div class="flex items-center gap-2">
+<button aria-label="Back" class="w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[22px]">arrow_back</span>
+</button>
+<h1 class="font-headline-sm-mobile text-headline-sm-mobile font-semibold tracking-tight text-primary">My Purchases</h1>
+</div>
+<!-- Trailing Month Selector Chip -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-[#E7E2D6] text-primary hover:border-primary transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" data-weight="fill">calendar_month</span>
+<span class="font-label-md text-label-md text-primary font-semibold">Oct 2026</span>
+<span class="material-symbols-outlined text-[16px] text-outline">arrow_drop_down</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-4 space-y-4">
+<!-- Top Metrics Ribbon (3-Card Stats Grid) -->
+<section class="grid grid-cols-3 gap-2">
+<!-- Metric 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-3 border border-[#E7E2D6] shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-10 h-10 rounded-full bg-surface-container-high/40 pointer-events-none"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">This Month</span>
+<div class="mt-1.5">
+<div class="font-title-lg text-title-lg font-bold text-primary tracking-tight">₹18,460</div>
+<div class="flex items-center gap-0.5 mt-0.5 text-[#2E7D32]">
+<span class="material-symbols-outlined text-[13px]">trending_up</span>
+<span class="font-label-sm text-[10px] font-semibold">+8%</span>
+</div>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-3 border border-[#E7E2D6] shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Total Drops</span>
+<div class="mt-1.5">
+<div class="font-title-lg text-title-lg font-bold text-primary tracking-tight">14 Drops</div>
+<div class="flex items-center gap-1 mt-0.5 text-secondary-container">
+<span class="material-symbols-outlined text-[13px]" data-weight="fill">wb_twilight</span>
+<span class="font-label-sm text-[10px] font-medium text-on-surface-variant">Dawn logged</span>
+</div>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="bg-surface-container-lowest rounded-2xl p-3 border border-[#E7E2D6] shadow-sm flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Avg Drop</span>
+<div class="mt-1.5">
+<div class="font-title-lg text-title-lg font-bold text-primary tracking-tight">₹1,318</div>
+<div class="flex items-center gap-1 mt-0.5 text-tertiary-container">
+<span class="material-symbols-outlined text-[13px]">grain</span>
+<span class="font-label-sm text-[10px] font-medium text-on-surface-variant">Pure Vedic</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Settlement Health Bar Section -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 border border-[#E7E2D6] shadow-sm">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-weight="fill">account_balance_wallet</span>
+<span class="font-title-md text-title-md text-primary font-bold">Settlement Ratio</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">1 Pending Drop</span>
+</div>
+<!-- Custom Visual Progress Bar -->
+<div class="w-full h-3 rounded-full bg-surface-container overflow-hidden flex p-0.5 gap-0.5 border border-[#E7E2D6]/80">
+<div class="bg-[#2E7D32] h-full rounded-l-full transition-all duration-500" style="width: 77%;" title="Paid: ₹14,200"></div>
+<div class="bg-secondary-container h-full rounded-r-full transition-all duration-500" style="width: 23%;" title="Pending: ₹4,260"></div>
+</div>
+<!-- Numerical Breakdown -->
+<div class="flex justify-between items-center mt-3 text-label-md font-label-md">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#2E7D32]"></span>
+<span class="text-on-surface-variant">Cleared (UPI/Net):</span>
+<span class="text-primary font-bold">₹14,200</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container"></span>
+<span class="text-on-surface-variant">COD:</span>
+<span class="text-secondary font-bold">₹4,260</span>
+</div>
+</div>
+<!-- Reassurance Helper Note -->
+<div class="mt-3 pt-2.5 border-t border-[#E7E2D6]/70 flex items-start gap-2">
+<span class="material-symbols-outlined text-secondary-container text-[16px] shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+            1 order awaiting tomorrow dawn doorstep cash collection. Keep exact change ready for the delivery sahayak.
+          </p>
+</div>
+</section>
+<!-- Weekly Spend Analytics (Vertical Bar Chart) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 border border-[#E7E2D6] shadow-sm">
+<div class="flex justify-between items-baseline mb-4">
+<div>
+<h2 class="font-headline-sm-mobile text-headline-sm font-semibold text-primary">Weekly Spend Rhythm</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Consistent farm drops for your family</p>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">₹18,460 Total</span>
+</div>
+<!-- Bar Chart Container -->
+<div class="flex items-end justify-between gap-3 h-32 pt-4 px-2 pb-1 border-b border-[#E7E2D6]">
+<!-- W1 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
+<span class="font-label-sm text-[10px] text-on-surface-variant font-medium opacity-0 group-hover:opacity-100 transition-opacity">₹4.1k</span>
+<div class="w-full max-w-[28px] bg-surface-variant rounded-t-lg transition-all duration-300 group-hover:bg-primary-container" style="height: 60%;"></div>
+<span class="font-label-sm text-label-sm text-outline font-medium">W1</span>
+</div>
+<!-- W2 -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
+<span class="font-label-sm text-[10px] text-on-surface-variant font-medium opacity-0 group-hover:opacity-100 transition-opacity">₹4.8k</span>
+<div class="w-full max-w-[28px] bg-surface-variant rounded-t-lg transition-all duration-300 group-hover:bg-primary-container" style="height: 72%;"></div>
+<span class="font-label-sm text-label-sm text-outline font-medium">W2</span>
+</div>
+<!-- W3 (Peak) -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
+<span class="font-label-sm text-[10px] text-on-surface-variant font-medium opacity-0 group-hover:opacity-100 transition-opacity">₹5.2k</span>
+<div class="w-full max-w-[28px] bg-surface-variant rounded-t-lg transition-all duration-300 group-hover:bg-primary-container" style="height: 86%;"></div>
+<span class="font-label-sm text-label-sm text-outline font-medium">W3</span>
+</div>
+<!-- W4 (Current - Highlighted) -->
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end group cursor-pointer">
+<span class="font-label-sm text-[11px] text-primary font-bold">₹4,260</span>
+<div class="w-full max-w-[28px] bg-primary rounded-t-lg shadow-md relative" style="height: 64%;">
+<div class="absolute -top-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-secondary-container rounded-full"></div>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-bold">W4 (Now)</span>
+</div>
+</div>
+</section>
+<!-- Most Ordered Farm Staples Bento Card -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 border border-[#E7E2D6] shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]" data-weight="fill">eco</span>
+<h2 class="font-headline-sm-mobile text-headline-sm font-semibold text-primary">Farm Staples Basket</h2>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-medium">Oct 2026</span>
+</div>
+<div class="space-y-3">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-[#FFFCF6] border border-[#E7E2D6]/80 hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#FBF1DC] border border-[#E7E2D6] flex items-center justify-center text-primary font-bold text-[18px]">
+                🥛
+              </div>
+<div>
+<h3 class="font-title-md text-body-md font-bold text-primary leading-tight">Gir Cow A2 Whole Milk</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1L Pure Glass Bottle</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md font-bold text-primary">28 bottles</div>
+<span class="font-label-sm text-[10px] text-secondary font-semibold bg-secondary-fixed/50 px-1.5 py-0.5 rounded">65% of Basket</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-[#FFFCF6] border border-[#E7E2D6]/80 hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#FBF1DC] border border-[#E7E2D6] flex items-center justify-center text-primary font-bold text-[18px]">
+                🏺
+              </div>
+<div>
+<h3 class="font-title-md text-body-md font-bold text-primary leading-tight">Cultured Vedic Bilona Ghee</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">500ml Hand-churned Jar</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md font-bold text-primary">4 jars</div>
+<span class="font-label-sm text-[10px] text-outline font-medium">Bi-weekly drop</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-[#FFFCF6] border border-[#E7E2D6]/80 hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#FBF1DC] border border-[#E7E2D6] flex items-center justify-center text-primary font-bold text-[18px]">
+                🧀
+              </div>
+<div>
+<h3 class="font-title-md text-body-md font-bold text-primary leading-tight">Fresh Malai Paneer</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1kg Vacuum Block</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md font-bold text-primary">5 packs</div>
+<span class="font-label-sm text-[10px] text-outline font-medium">Weekend feast</span>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-[#FFFCF6] border border-[#E7E2D6]/80 hover:border-primary/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-[#FBF1DC] border border-[#E7E2D6] flex items-center justify-center text-primary font-bold text-[18px]">
+                🥣
+              </div>
+<div>
+<h3 class="font-title-md text-body-md font-bold text-primary leading-tight">Fresh Matka Dahi</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">400g Earthen Clay Pot</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-title-md text-title-md font-bold text-primary">8 matkas</div>
+<span class="font-label-sm text-[10px] text-outline font-medium">Probiotic live</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Snapshot -->
+<section class="space-y-3">
+<h2 class="font-headline-sm-mobile text-headline-sm font-semibold text-primary px-1">Recent Activity</h2>
+<!-- Order Card (Pending COD Dawn Drop) -->
+<div class="bg-surface-container-lowest rounded-[20px] p-4 border border-[#E7E2D6] shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-fixed/60 flex items-center justify-center text-secondary font-bold">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</div>
+<div>
+<div class="font-title-md text-body-md font-bold text-primary">YM-2026-000124</div>
+<div class="font-label-sm text-label-sm text-outline">Today, 4:15 PM · 3 items</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-secondary bg-secondary-fixed/50 px-2 py-0.5 rounded-full">
+              Dawn Drop Pending
+            </span>
+</div>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-[#E7E2D6]">
+<div>
+<span class="font-label-sm text-label-sm text-outline">Total Amount:</span>
+<span class="font-title-md text-title-md font-bold text-primary ml-1">₹4,260</span>
+</div>
+<button class="flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:text-secondary transition-colors">
+<span>Track Order</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Payment Settled Card -->
+<div class="bg-surface-container-lowest rounded-[20px] p-4 border border-[#E7E2D6] shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-[18px]" data-weight="fill">verified</span>
+</div>
+<div>
+<div class="font-title-md text-body-md font-bold text-primary">RZP_PAY_994182904</div>
+<div class="font-label-sm text-label-sm text-outline">Yesterday, 3:31 PM · Online UPI</div>
+</div>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-[#2E7D32] bg-[#E8F5E9] px-2 py-0.5 rounded-full">
+              Settled
+            </span>
+</div>
+<div class="flex justify-between items-center mt-3 pt-3 border-t border-[#E7E2D6]">
+<div>
+<span class="font-label-sm text-label-sm text-outline">Amount Settled:</span>
+<span class="font-title-md text-title-md font-bold text-primary ml-1">₹3,450</span>
+</div>
+<button class="flex items-center gap-1 font-label-md text-label-md text-primary font-bold hover:text-secondary transition-colors">
+<span>View Memo</span>
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Bottom Reassurance Badge -->
+<section class="p-3.5 rounded-2xl bg-[#FBF1DC] border border-[#E7E2D6] text-center my-4">
+<div class="flex justify-center items-center gap-1.5 mb-1 text-primary">
+<span class="material-symbols-outlined text-[18px] text-[#C9A03D]" data-weight="fill">verified_user</span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-wider text-primary">Pure Sattvic Origin</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant leading-relaxed">
+          100% Single-origin A2 Vedic Gir cow farm records. Sourced with reverence from Devlali, Nashik.
+        </p>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Account selected as per prompt requirement) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-[#FFFCF6]/95 backdrop-blur-md shadow-lg border-t border-[#E7E2D6]/40 max-w-[390px] mx-auto right-0">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="font-label-sm text-label-sm mt-0.5">Home</span>
+</a>
+<!-- Shop -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+<span class="font-label-sm text-label-sm mt-0.5">Shop</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+<span class="font-label-sm text-label-sm mt-0.5">Orders</span>
+</a>
+<!-- Account (Active Destination) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold bg-surface-container-high rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[22px]" data-weight="fill">person</span>
+<span class="font-label-sm text-label-sm font-semibold mt-0.5">Account</span>
+</a>
+</nav>
+</div>
+</body></html>

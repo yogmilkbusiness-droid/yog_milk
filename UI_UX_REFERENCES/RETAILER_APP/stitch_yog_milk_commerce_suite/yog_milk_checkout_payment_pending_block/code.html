@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Checkout - Payment Pending | Yog Milk</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#dde1f8",
+            "on-primary-fixed-variant": "#374183",
+            "outline-variant": "#c6c5d2",
+            "on-primary-fixed": "#051256",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary": "#994700",
+            "inverse-surface": "#2b3041",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface-bright": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container": "#eaedff",
+            "tertiary": "#261a00",
+            "error": "#ba1a1a",
+            "on-background": "#161b2b",
+            "on-tertiary-fixed": "#251a00",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#bbc3ff",
+            "tertiary-container": "#3f2e00",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#ba9331",
+            "background": "#faf8ff",
+            "surface-tint": "#4f599c",
+            "on-secondary-container": "#602a00",
+            "surface": "#faf8ff",
+            "on-secondary-fixed-variant": "#753400",
+            "on-surface": "#161b2b",
+            "outline": "#767681",
+            "primary-fixed": "#dee0ff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "surface-container-low": "#f2f3ff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "on-primary-container": "#8994db",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-high": "#e3e7fe",
+            "surface-dim": "#d5d9ef",
+            "secondary-fixed-dim": "#ffb68b",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center selection:bg-secondary-fixed selection:text-secondary min-h-screen">
+<!-- Mobile Viewport Frame (390 x 844 Canvas) -->
+<div class="w-full max-w-[390px] min-h-[844px] bg-background relative flex flex-col shadow-2xl overflow-hidden pb-44">
+<!-- Linear/Task Flow Header (No generic BottomNavBar rendered per Shell Suppression logic) -->
+<header class="w-full sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-4 h-16 flex items-center justify-between shadow-sm">
+<div class="flex items-center space-x-3">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-primary text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm-mobile text-headline-sm-mobile font-semibold text-primary">Checkout</h1>
+<p class="font-label-sm text-label-sm text-outline">Step 2 of 2 • Review &amp; Place</p>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-3 space-y-4">
+<!-- PROMINENT BLOCKING PAYMENT ALERT CARD -->
+<section class="w-full bg-surface-container-lowest rounded-[20px] p-5 shadow-sm border border-secondary-container/40 relative overflow-hidden">
+<!-- Subtle Vedic Saffron Accent Glow -->
+<div class="absolute -top-12 -right-12 w-32 h-32 bg-secondary-fixed-dim/30 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Header: Badge & Status -->
+<div class="flex items-start space-x-3 relative z-10">
+<div class="w-11 h-11 rounded-2xl bg-secondary-fixed flex items-center justify-center text-secondary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+<div class="flex-1">
+<div class="inline-flex items-center px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-[10px] font-semibold tracking-wide uppercase mb-1">
+              Payment Pending Action
+            </div>
+<h2 class="font-title-lg text-title-lg text-primary leading-tight">Complete your pending payment to place a new order</h2>
+</div>
+</div>
+<!-- Order Information Summary -->
+<div class="mt-4 bg-surface-container-low rounded-xl p-3.5 space-y-2.5 border border-outline-variant/30">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Order Reference</span>
+<div class="flex items-center space-x-1 bg-surface-container-lowest border border-outline-variant/50 rounded-md px-2 py-0.5 cursor-pointer active:scale-95 transition-transform" onclick="navigator.clipboard?.writeText('YM-2026-000123')">
+<span class="font-label-md text-label-md font-mono font-semibold text-primary">YM-2026-000123</span>
+<span class="material-symbols-outlined text-[14px] text-outline">content_copy</span>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Outstanding Amount</span>
+<span class="font-title-lg text-title-lg text-secondary font-bold">₹8,450</span>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Payment Mode</span>
+<div class="flex items-center space-x-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">Cash on Delivery (Unsettled)</span>
+</div>
+</div>
+<div class="flex items-center justify-between border-t border-outline-variant/20 pt-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Delivery Status</span>
+<span class="font-label-md text-label-md text-outline">Delivered yesterday 06:15 AM</span>
+</div>
+</div>
+<!-- Explanatory Purity & Guidelines Note -->
+<div class="mt-3 flex items-start space-x-2 text-on-surface-variant bg-tertiary-fixed/30 p-2.5 rounded-lg border border-tertiary-fixed-dim/40">
+<span class="material-symbols-outlined text-[18px] text-secondary shrink-0 mt-0.5">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-secondary-container">
+            As per Yog Milk daily purity guidelines, past delivery settlements must be confirmed before reserving fresh dawn stock.
+          </p>
+</div>
+<!-- Action CTAs inside blocking card -->
+<div class="mt-4 space-y-2">
+<button class="w-full h-12 bg-secondary-container text-on-secondary rounded-[14px] font-label-lg text-label-lg font-semibold flex items-center justify-center space-x-2 shadow-sm hover:opacity-95 active:scale-98 transition-all" type="button">
+<span>View Payment / Pay Online Now</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="w-full h-10 bg-transparent text-primary hover:bg-surface-container-high rounded-[14px] font-label-md text-label-md font-semibold flex items-center justify-center space-x-1 transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">support_agent</span>
+<span>Contact Support &amp; Delivery Partner</span>
+</button>
+</div>
+</section>
+<!-- LOCKED / DIMMED CHECKOUT SECTIONS -->
+<div class="relative rounded-[20px] overflow-hidden opacity-50 pointer-events-none select-none filter grayscale-[30%]">
+<!-- Lock Watermark Banner Overlay -->
+<div class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-surface/40 backdrop-blur-[1px]">
+<div class="bg-surface-container-lowest/90 px-4 py-2 rounded-full shadow-md border border-outline-variant/40 flex items-center space-x-2 text-outline">
+<span class="material-symbols-outlined text-[18px]">lock</span>
+<span class="font-label-md text-label-md font-semibold">Checkout inputs locked until payment is cleared</span>
+</div>
+</div>
+<div class="space-y-3">
+<!-- Delivery Slot & Address Card -->
+<div class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/30">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]">location_on</span>
+<span class="font-title-md text-title-md text-primary">Dawn Delivery Address</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Change</span>
+</div>
+<div class="bg-surface-container-low rounded-xl p-3">
+<p class="font-label-md text-label-md font-semibold text-on-surface">Home • Lotus Villa #402</p>
+<p class="font-body-sm text-body-sm text-outline">Koramangala 4th Block, Bengaluru, 560034</p>
+<div class="mt-2 flex items-center space-x-2 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">wb_twilight</span>
+<span>Expected: Tomorrow, 5:30 AM – 6:30 AM</span>
+</div>
+</div>
+</div>
+<!-- Cart Summary Card -->
+<div class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/30">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]">shopping_bag</span>
+<span class="font-title-md text-title-md text-primary">Order Cart (3 Items)</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-primary">₹4,260</span>
+</div>
+<!-- Cart Items Brief -->
+<div class="space-y-2">
+<div class="flex items-center justify-between py-1.5 border-b border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary text-xs font-bold">2L</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Pure Desi Gir Cow A2 Milk</p>
+<p class="font-body-sm text-body-sm text-outline">Glass Bottle • Raw Chilled</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface">₹240</span>
+</div>
+<div class="flex items-center justify-between py-1.5 border-b border-outline-variant/20">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary text-xs font-bold">1kg</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Vedic Bilona A2 Cultured Ghee</p>
+<p class="font-body-sm text-body-sm text-outline">Clay Handi Matka Batch</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface">₹3,400</span>
+</div>
+<div class="flex items-center justify-between py-1.5">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary text-xs font-bold">500g</div>
+<div>
+<p class="font-label-md text-label-md font-semibold text-on-surface">Organic Malai Paneer</p>
+<p class="font-body-sm text-body-sm text-outline">Soft Vacuum Sealed</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface">₹620</span>
+</div>
+</div>
+<!-- Bill Breakdown snippet -->
+<div class="mt-3 pt-3 border-t border-outline-variant/30 space-y-1 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex justify-between">
+<span>Items Subtotal</span>
+<span>₹4,260</span>
+</div>
+<div class="flex justify-between text-secondary">
+<span>Dawn Farm Drop Delivery</span>
+<span>FREE</span>
+</div>
+<div class="flex justify-between font-bold text-primary pt-1 text-title-md">
+<span>Current Cart Total</span>
+<span>₹4,260</span>
+</div>
+</div>
+</div>
+<!-- Payment Method Preference Placeholder -->
+<div class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/30">
+<div class="flex items-center space-x-2 text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="font-title-md text-title-md">Payment Selection</span>
+</div>
+<div class="p-3 bg-surface-container-low rounded-xl flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface">UPI / Yog Purified Wallet</span>
+<span class="material-symbols-outlined text-[18px] text-outline">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- STICKY BOTTOM BAR (Strictly Locked / Disabled State) -->
+<footer class="fixed bottom-0 left-0 w-full max-w-[390px] mx-auto right-0 bg-surface/95 backdrop-blur-md px-4 pt-3 pb-6 shadow-2xl border-t border-outline-variant/30 z-50">
+<!-- Cart Total and Status Indicator -->
+<div class="flex items-center justify-between mb-2">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">New Order Total</span>
+<div class="flex items-baseline space-x-1">
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-bold text-primary">₹4,260</span>
+<span class="font-label-sm text-label-sm text-outline">(Taxes Incl.)</span>
+</div>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-high px-2.5 py-1 rounded-full text-outline">
+<span class="material-symbols-outlined text-[16px] text-secondary">block</span>
+<span class="font-label-sm text-label-sm font-semibold text-secondary">Checkout Suspended</span>
+</div>
+</div>
+<!-- Completely Disabled CTA Button -->
+<button aria-disabled="true" class="w-full h-13 py-3.5 px-4 bg-outline-variant/40 text-on-surface-variant/60 rounded-[14px] font-label-lg text-label-lg font-semibold cursor-not-allowed flex items-center justify-center space-x-2 border border-outline-variant/50 shadow-none transition-none" disabled="" type="button">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span>Place Order (Blocked by Pending Payment)</span>
+</button>
+<!-- Required Helper Text -->
+<div class="mt-2.5 flex items-center justify-center space-x-1 text-center">
+<span class="material-symbols-outlined text-[15px] text-secondary shrink-0">info</span>
+<p class="font-label-sm text-label-sm text-secondary font-medium tracking-tight">
+          Clear outstanding ₹8,450 on YM-2026-000123 to unblock checkout
+        </p>
+</div>
+<!-- Home Indicator bar -->
+<div class="w-32 h-1 bg-outline-variant/50 rounded-full mx-auto mt-3"></div>
+</footer>
+</div>
+</body></html>

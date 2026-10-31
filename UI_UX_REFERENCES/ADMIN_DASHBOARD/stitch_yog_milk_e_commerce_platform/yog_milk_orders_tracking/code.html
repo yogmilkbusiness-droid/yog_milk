@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk - My Orders</title>
+<!-- Google Fonts for Editorial Luxury Pure Dairy -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined (Literal transcription logic) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed": "#321200",
+            "tertiary-container": "#3c1700",
+            "on-primary-container": "#7e86bc",
+            "primary-fixed": "#dee0ff",
+            "on-error-container": "#93000a",
+            "on-surface": "#1c1c18",
+            "error-container": "#ffdad6",
+            "on-secondary": "#ffffff",
+            "inverse-surface": "#31312d",
+            "primary-container": "#151d4d",
+            "on-secondary-fixed-variant": "#374183",
+            "on-tertiary-container": "#db6805",
+            "on-background": "#1c1c18",
+            "surface-container-lowest": "#ffffff",
+            "on-error": "#ffffff",
+            "on-primary-fixed": "#0e1647",
+            "on-tertiary-fixed-variant": "#753400",
+            "surface-dim": "#dcdad4",
+            "on-secondary-fixed": "#051256",
+            "outline": "#767680",
+            "surface-container-highest": "#e5e2dc",
+            "primary": "#000533",
+            "secondary": "#4f599c",
+            "surface-container": "#f0eee8",
+            "surface-container-low": "#f6f3ed",
+            "inverse-on-surface": "#f3f0eb",
+            "error": "#ba1a1a",
+            "tertiary": "#190600",
+            "surface-bright": "#fcf9f3",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#ebe8e2",
+            "surface-tint": "#535b8e",
+            "primary-fixed-dim": "#bcc3fd",
+            "on-surface-variant": "#46464f",
+            "surface-variant": "#e5e2dc",
+            "tertiary-fixed": "#ffdbc8",
+            "outline-variant": "#c7c5d0",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#ffb68b",
+            "secondary-container": "#a9b4fe",
+            "secondary-fixed-dim": "#bbc3ff",
+            "secondary-fixed": "#dee0ff",
+            "surface": "#fcf9f3",
+            "on-secondary-container": "#394485",
+            "on-primary-fixed-variant": "#3b4375",
+            "background": "#fcf9f3",
+            "inverse-primary": "#bcc3fd"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-tablet": "1.5rem",
+            "space-xl": "2.25rem",
+            "margin-desktop": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Hide scrollbar for clean horizontal badging */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center min-h-screen selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Mobile Viewport Shell (Android Flutter Frame ~390px x 844px) -->
+<div class="w-full max-w-[420px] bg-surface flex flex-col min-h-screen relative shadow-[0_20px_50px_rgba(21,29,77,0.08)] pb-24 border-x border-surface-container-highest">
+<!-- Top App Bar / Brand Header (From Shared Component JSON) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-space-md py-space-sm flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="spa" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-headline-md text-headline-md font-bold tracking-tight text-primary">YOG MILK</span>
+</div>
+<div class="flex items-center gap-3">
+<!-- Language Switcher Chip (EN | हि | म) -->
+<div class="flex items-center bg-surface-container-low border border-surface-container-highest rounded-full px-2.5 py-1 text-label-sm font-label-sm text-on-surface-variant">
+<span class="text-primary font-bold">EN</span>
+<span class="mx-1 text-outline-variant font-normal">|</span>
+<button class="hover:text-primary transition-colors">हि</button>
+<span class="mx-1 text-outline-variant font-normal">|</span>
+<button class="hover:text-primary transition-colors">म</button>
+</div>
+<!-- Support Contact Icon -->
+<button aria-label="Support Contact" class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+</button>
+</div>
+</header>
+<!-- Page Title & Micro Context Header -->
+<div class="px-space-md pt-4 pb-2">
+<div class="flex items-baseline justify-between">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight">My Orders</h1>
+<div class="flex items-center gap-1.5 text-label-md font-label-md text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span>Fulfillment Live</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+        Pure Vedic cold-chain dairy delivered every dawn before 07:00 AM.
+      </p>
+</div>
+<!-- Main Orders Feed Canvas -->
+<main class="px-space-md flex flex-col gap-5 mt-2">
+<!-- CARD 1: ACTIVE LIVE ORDER (Preparing / Pending COD / Not assigned) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-surface-container-highest shadow-[0_4px_20px_-2px_rgba(21,29,77,0.05)] flex flex-col gap-3.5 transition-all">
+<!-- Header Info Row with Copy Chip -->
+<div class="flex items-center justify-between border-b border-surface-container-low pb-3">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-primary font-bold">YM-2026-000123</span>
+<button class="text-on-surface-variant hover:text-primary active:scale-90 transition-transform" onclick="navigator.clipboard.writeText('YM-2026-000123')" title="Copy Order ID">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">29 Oct 2026, 7:45 AM</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm">
+            In Kitchen
+          </span>
+</div>
+<!-- 3-System Badges Row (Order Status, Payment Status, Delivery Status) -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<!-- 1. ORDER STATUS (Soft-filled pill: Preparing) -->
+<div class="inline-flex items-center gap-1.5 bg-secondary-fixed/50 text-primary px-2.5 py-1 rounded-full text-label-md font-label-md shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Preparing</span>
+</div>
+<!-- 2. PAYMENT STATUS (Outlined pill with ₹ icon: Pending COD) -->
+<div class="inline-flex items-center gap-1 border border-amber-500/70 bg-amber-50 text-amber-900 px-2.5 py-1 rounded-full text-label-md font-label-md shrink-0">
+<span class="font-bold text-amber-700">₹</span>
+<span>Pending · Cash on Delivery</span>
+</div>
+<!-- 3. DELIVERY STATUS (Soft pill with truck icon: Not assigned) -->
+<div class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2.5 py-1 rounded-full text-label-md font-label-md shrink-0">
+<span class="material-symbols-outlined text-[15px]" data-icon="local_shipping">local_shipping</span>
+<span>Not assigned</span>
+</div>
+</div>
+<!-- Checkpoint Telemetry (No GPS Map Rule - Team-posted Timestamps) -->
+<div class="bg-surface-container-low rounded-xl p-3 border border-surface-container-high flex flex-col gap-2">
+<div class="flex items-center justify-between text-label-sm font-label-sm text-on-surface-variant">
+<span class="font-bold text-primary">COLD-CHAIN PROGRESS</span>
+<span>Updated 7:52 AM</span>
+</div>
+<div class="grid grid-cols-4 gap-1 items-center mt-1">
+<div class="h-1.5 rounded-full bg-primary"></div>
+<div class="h-1.5 rounded-full bg-secondary animate-pulse"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+<div class="h-1.5 rounded-full bg-surface-container-highest"></div>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="inventory_2">inventory_2</span>
+<p class="font-body-sm text-body-sm text-on-surface">
+              Chilled batch bottled at 4°C. Dispatch team assigning morning route run.
+            </p>
+</div>
+</div>
+<!-- Policy Note for Cash on Delivery -->
+<div class="flex items-start gap-2 bg-surface-container-low/70 rounded-lg p-2.5 border-l-2 border-amber-500 text-body-sm font-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-amber-700 text-[18px] shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="leading-tight">
+<strong class="text-on-surface font-semibold">Cash on Delivery:</strong> Payment collected upon morning delivery. Our team verifies cash receipt digitally.
+          </p>
+</div>
+<!-- Items Preview Section -->
+<div class="flex flex-col gap-1.5 pt-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant tracking-wider">ITEMS IN DISPATCH</div>
+<div class="flex items-start gap-3">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-container-highest">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="water_bottle">water_bottle</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-title-md text-title-md text-on-surface leading-tight">
+                Full Cream Milk 500 ml <span class="text-label-md font-label-md text-on-surface-variant">(Pack of 20)</span>
+</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Qty: 2 · Glass Bottle return enabled</span>
+</div>
+</div>
+<div class="flex items-start gap-3 pt-1">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center shrink-0 border border-surface-container-highest">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="egg_alt">egg_alt</span>
+</div>
+<div class="flex flex-col flex-grow">
+<span class="font-title-md text-title-md text-on-surface leading-tight">
+                Fresh Dahi 400 g <span class="text-label-md font-label-md text-on-surface-variant">(Pack of 24)</span>
+</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Qty: 1 · Traditional earthen pot set</span>
+</div>
+</div>
+</div>
+<!-- Ledger Total & Actions -->
+<div class="border-t border-surface-container-low pt-3 flex flex-col gap-3">
+<div class="flex items-baseline justify-between">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">NET PAYABLE (COD)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Non-GST Direct Farm Bill</span>
+</div>
+<div class="font-headline-sm text-headline-sm font-bold text-primary">₹2,440</div>
+</div>
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<button class="h-11 rounded-[14px] bg-surface-bright border border-surface-container-highest font-label-lg text-label-lg text-primary hover:bg-surface-container transition-colors flex items-center justify-center gap-1.5 active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="description">description</span>
+<span>View Bill</span>
+</button>
+<button class="h-11 rounded-[14px] bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-colors flex items-center justify-center gap-1 active:scale-95 shadow-sm">
+<span>Order Details</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- CARD 2: YESTERDAY'S COMPLETED ORDER (Delivered / Online Paid / Delivered Truck) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-space-md border border-surface-container-highest shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] flex flex-col gap-3.5 transition-all">
+<!-- Order Header with Codes -->
+<div class="flex items-center justify-between border-b border-surface-container-low pb-3">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-primary font-bold">YM-2026-000118</span>
+<button class="text-on-surface-variant hover:text-primary active:scale-90 transition-transform" onclick="navigator.clipboard.writeText('YM-2026-000118')" title="Copy Order ID">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">28 Oct 2026, 6:15 AM</span>
+</div>
+<!-- Slot Badge -->
+<div class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="alarm">alarm</span>
+<span>05:30 – 07:00 AM</span>
+</div>
+</div>
+<!-- 3-System Badges Row (All Completed State) -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1">
+<!-- 1. ORDER STATUS (Soft-filled pill: Delivered) -->
+<div class="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-800 px-2.5 py-1 rounded-full text-label-md font-label-md shrink-0">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+<span>Delivered</span>
+</div>
+<!-- 2. PAYMENT STATUS (Outlined pill with ₹ icon: Paid Online) -->
+<div class="inline-flex items-center gap-1 border border-emerald-500/60 bg-emerald-50/50 text-emerald-900 px-2.5 py-1 rounded-full text-label-md font-label-md shrink-0">
+<span class="font-bold text-emerald-700">₹</span>
+<span>Paid · Online (Razorpay)</span>
+</div>
+<!-- 3. DELIVERY STATUS (Soft pill with truck icon: Delivered at 6:40 AM) -->
+<div class="inline-flex items-center gap-1 bg-surface-container text-on-surface-variant px-2.5 py-1 rounded-full text-label-md font-label-md shrink-0">
+<span class="material-symbols-outlined text-[15px] text-emerald-700" data-icon="local_shipping">local_shipping</span>
+<span>Delivered at 6:40 AM</span>
+</div>
+</div>
+<!-- Delivery & Invoice References -->
+<div class="grid grid-cols-2 gap-2 bg-surface-container-low/60 rounded-xl p-2.5 border border-surface-container-high font-body-sm text-body-sm">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">DELIVERY DISPATCH CODE</span>
+<span class="font-semibold text-on-surface">YMD-2026-000118</span>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">DIRECT FARM BILL NO.</span>
+<span class="font-semibold text-on-surface">YMI-2026-000045</span>
+</div>
+</div>
+<!-- Items Preview (Pure Ghee & Fresh Paneer) -->
+<div class="flex flex-col gap-2 pt-1">
+<div class="text-label-sm font-label-sm text-on-surface-variant tracking-wider">ORDER SUMMARY</div>
+<div class="flex items-center justify-between text-body-md font-body-md text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="verified">verified</span>
+<span>Pure Ghee 1 L <span class="text-on-surface-variant">× 1</span></span>
+</div>
+<span class="font-semibold text-primary">₹1,190</span>
+</div>
+<div class="flex items-center justify-between text-body-md font-body-md text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="verified">verified</span>
+<span>Fresh Paneer 1 kg <span class="text-on-surface-variant">× 2</span></span>
+</div>
+<span class="font-semibold text-primary">₹1,100</span>
+</div>
+</div>
+<!-- Total Paid & Reorder Flow -->
+<div class="border-t border-surface-container-low pt-3 flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Total Settled</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">₹2,290</span>
+</div>
+<!-- Primary Reorder Action -->
+<div class="flex flex-col gap-1.5">
+<button class="w-full h-12 rounded-[14px] bg-primary text-on-primary font-label-lg text-label-lg hover:bg-primary-container transition-all flex items-center justify-center gap-2 active:scale-95 shadow-[0_4px_12px_rgba(21,29,77,0.12)]">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync">sync</span>
+<span>Reorder in 2 taps</span>
+</button>
+<p class="text-center font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-tight">
+              Creates new order at current prices and live stock. Morning slot pre-selected.
+            </p>
+</div>
+</div>
+</section>
+<!-- Non-GST Transparent Producer Note -->
+<div class="bg-surface-container-low rounded-2xl p-4 border border-surface-container flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[28px] shrink-0" data-icon="agriculture">agriculture</span>
+<div class="flex flex-col">
+<span class="font-title-md text-title-md text-primary font-bold">Vedic Single-Origin Sourcing</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+            Directly from certified indigenous Gir &amp; Kankrej gaushalas. Free of adulteration, cold-preserved within 2 hours of milking.
+          </span>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Docked Semantic Shell from Shared JSON) -->
+<!-- Destination count: 4 | Labels: Home, Shop, Orders (ACTIVE), Account -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-md py-space-xs bg-surface shadow-[0_-4px_20px_-2px_rgba(21,29,77,0.06)] max-w-[420px] left-1/2 -translate-x-1/2 border-t border-surface-container-highest">
+<!-- 1. Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-primary transition-colors active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm">Home</span>
+</a>
+<!-- 2. Shop (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-primary transition-colors active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="text-label-sm font-label-sm">Shop</span>
+</a>
+<!-- 3. Orders (ACTIVE) - Explicit styling applied as per JSON instructions -->
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-xl px-3 py-1.5 transition-all active:scale-95 shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long" data-weight="fill" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</a>
+<!-- 4. Account (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1.5 hover:text-primary transition-colors active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm">Account</span>
+</a>
+</nav>
+</div>
+</body></html>

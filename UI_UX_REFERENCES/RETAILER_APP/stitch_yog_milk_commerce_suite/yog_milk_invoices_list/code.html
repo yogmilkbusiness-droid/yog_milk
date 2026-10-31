@@ -1,0 +1,371 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Invoices &amp; Bills</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#767681",
+            "surface-bright": "#faf8ff",
+            "secondary": "#994700",
+            "outline-variant": "#c6c5d2",
+            "on-tertiary-fixed": "#251a00",
+            "surface-variant": "#dde1f8",
+            "tertiary": "#261a00",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374183",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "on-secondary": "#ffffff",
+            "background": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-primary-container": "#8994db",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2b3041",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "primary-fixed": "#dee0ff",
+            "surface-container": "#eaedff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "on-secondary-fixed-variant": "#753400",
+            "tertiary-fixed": "#ffdf9c",
+            "surface": "#faf8ff",
+            "on-background": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "on-surface": "#161b2b",
+            "on-tertiary-container": "#ba9331",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#3f2e00",
+            "inverse-on-surface": "#eef0ff",
+            "surface-dim": "#d5d9ef",
+            "on-primary-fixed": "#051256"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "margin-tablet": "2rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Container: 390px fixed simulation -->
+<div class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col shadow-2xl pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface/90 backdrop-blur-md text-primary flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 shadow-sm border-b border-outline-variant/30">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150 text-primary" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div><h1 class="font-headline-sm-mobile text-headline-sm-mobile font-semibold text-primary tracking-tight">Invoices</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-normal">Invoices &amp; Billing Statements</p></div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Export or Filter Invoices" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150 text-primary" type="button">
+<span class="material-symbols-outlined text-[22px]">download</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-3 space-y-4">
+<!-- Vedic Cycle Billing Summary Card -->
+<section class="relative overflow-hidden rounded-[20px] bg-gradient-to-br from-surface-container-lowest via-surface to-surface-container-high/40 p-4 border border-outline-variant/40 shadow-sm">
+<!-- Subtle sacred background motif accent -->
+<div class="absolute -right-4 -bottom-6 w-28 h-28 text-surface-variant/40 pointer-events-none opacity-50">
+<span class="material-symbols-outlined text-[110px]" style="font-variation-settings: 'FILL' 0;">spa</span>
+</div>
+<div class="flex items-start justify-between relative z-10">
+<div>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold tracking-wide">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+              Cycle: Oct 2026
+            </span>
+<div class="mt-2 text-on-surface-variant font-label-md text-label-md">Total Billed Amount</div>
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary tracking-tight flex items-baseline gap-1 mt-0.5">
+<span class="">₹18,460</span>
+<span class="font-body-sm text-body-sm text-outline font-normal">/ 8 Invoices</span>
+</div>
+</div>
+<!-- All-Settled status pill with Vedic shield icon -->
+<div class="flex flex-col items-end">
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/60 shadow-sm text-primary font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="">All-Settled</span>
+</div>
+<span class="mt-2 font-label-sm text-label-sm text-outline font-normal">Auto-Reconciled</span>
+</div>
+</div>
+<!-- Quick metadata stats divider -->
+<div class="mt-3 pt-3 border-t border-outline-variant/30 flex items-center justify-between text-on-surface-variant relative z-10">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-label-sm text-label-sm font-medium">Invoice</span>
+</div>
+
+</div>
+</section>
+<!-- Search Bar -->
+<section class="relative">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-[20px] text-outline pointer-events-none">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl bg-surface-container-lowest border border-outline-variant/50 text-on-surface placeholder:text-outline/70 font-body-sm text-body-sm focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary-container/20 transition-all" placeholder="Search by Invoice (YMI-) or Order (YM-)" type="search">
+</div>
+</section>
+<!-- Segment Filter Pills -->
+<section class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5"><button class="shrink-0 px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-semibold shadow-sm transition-transform active:scale-95" type="button">
+          All Invoices (8)
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:text-primary hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-all active:scale-95" type="button">
+          Paid (7)
+        </button>
+<button class="shrink-0 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-on-surface-variant hover:text-primary hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-all active:scale-95 flex items-center gap-1.5" type="button">
+<span class="">Pending (1)</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+</button></section>
+<!-- Invoice Cards List -->
+<div class="space-y-3 pt-1">
+<!-- Card 1: Latest, Settled Online -->
+<article class="rounded-[20px] bg-surface-container-lowest border border-outline-variant/40 p-4 shadow-sm hover:border-primary/30 transition-all">
+<div class="flex items-start justify-between gap-2 pb-2.5 border-b border-outline-variant/20">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-primary tracking-wide">Invoice YMI-2026-000045</span>
+<button class="text-outline hover:text-primary transition-colors flex items-center p-0.5" title="Copy Invoice Number" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Order Ref: <span class="font-medium text-on-surface">YM-2026-000122</span></p>
+</div>
+<!-- Green status badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px] text-emerald-700" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Paid &amp; Settled (Online)
+            </span>
+</div>
+<!-- Invoice Details Body -->
+<div class="py-3 space-y-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 0;">wb_twilight</span>
+                28 Oct 2026 · Dawn Batch
+              </span>
+<span class="font-medium text-on-surface-variant">3 items included</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-1 font-normal bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg border border-outline-variant/20">
+              Toned Milk 1L, Organic Malai Paneer 1kg, Bilona Ghee 500ml
+            </p>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-label-sm text-label-sm text-outline">Invoice Value</span>
+<span class="font-title-lg text-title-lg font-bold text-primary">₹3,450</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/20">
+<button class="flex-1 h-9 rounded-xl border border-primary text-primary font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors active:scale-95 duration-150 flex items-center justify-center gap-1" type="button"><span class="material-symbols-outlined text-[16px]">visibility</span> View Invoice</button>
+<button class="flex-1 h-9 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-colors active:scale-95 duration-150 flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+              Download PDF
+            </button>
+</div>
+</article>
+<!-- Card 2: COD Settlement Completed -->
+<article class="rounded-[20px] bg-surface-container-lowest border border-outline-variant/40 p-4 shadow-sm hover:border-primary/30 transition-all">
+<div class="flex items-start justify-between gap-2 pb-2.5 border-b border-outline-variant/20">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-primary tracking-wide">Invoice YMI-2026-000039</span>
+<button class="text-outline hover:text-primary transition-colors flex items-center p-0.5" title="Copy Invoice Number" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Order Ref: <span class="font-medium text-on-surface">YM-2026-000118</span></p>
+</div>
+<!-- Status badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/60 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[14px] text-emerald-700" style="font-variation-settings: 'FILL' 1;">payments</span>
+              Cash Collected (Settled)
+            </span>
+</div>
+<!-- Invoice Details Body -->
+<div class="py-3 space-y-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-primary" style="font-variation-settings: 'FILL' 0;">wb_sunny</span>
+                29 Oct 2026 · Dawn Drop
+              </span>
+<span class="font-medium text-on-surface-variant">2 items included</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface line-clamp-1 font-normal bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg border border-outline-variant/20">
+              Gir Cow A2 Milk, Fresh Dahi
+            </p>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-label-sm text-label-sm text-outline">Invoice Value</span>
+<span class="font-title-lg text-title-lg font-bold text-primary">₹1,480</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/20">
+<button class="flex-1 h-9 rounded-xl border border-primary text-primary font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors active:scale-95 duration-150 flex items-center justify-center gap-1" type="button"><span class="material-symbols-outlined text-[16px]">visibility</span> View Invoice</button>
+<button class="flex-1 h-9 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-colors active:scale-95 duration-150 flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+              Download PDF
+            </button>
+</div>
+</article>
+<!-- Card 3: Pending Settlement - COD -->
+<article class="rounded-[20px] bg-surface-container-lowest border border-amber-200/80 p-4 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-amber-100/40 to-transparent pointer-events-none"></div>
+<div class="flex items-start justify-between gap-2 pb-2.5 border-b border-outline-variant/20">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md font-bold text-primary tracking-wide">Invoice YMI-2026-000048</span>
+<button class="text-outline hover:text-primary transition-colors flex items-center p-0.5" title="Copy Invoice Number" type="button">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-outline mt-0.5">Order Ref: <span class="font-medium text-on-surface">YM-2026-000124</span></p>
+</div>
+<!-- Amber status badge -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-300 font-label-sm text-label-sm font-semibold text-right">
+<span class="material-symbols-outlined text-[14px] text-amber-700" style="font-variation-settings: 'FILL' 1;">pending</span>
+              Pending Collection at Doorstep
+            </span>
+</div>
+<!-- Invoice Details Body -->
+<div class="py-3 space-y-1.5">
+<div class="flex items-center justify-between font-label-sm text-label-sm text-outline">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary" style="font-variation-settings: 'FILL' 0;">schedule</span>
+                29 Oct 2026 · Scheduled Dawn Drop
+              </span>
+<span class="font-medium text-on-surface-variant">Batch In Dispatch</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface font-normal bg-surface-container-low/60 px-2.5 py-1.5 rounded-lg border border-outline-variant/20">
+              Whole Cow Milk 2L, Cultured Vedic Makkhan 250g
+            </p>
+<div class="flex items-baseline justify-between pt-1">
+<span class="font-label-sm text-label-sm text-outline">Collectible at Delivery</span>
+<span class="font-title-lg text-title-lg font-bold text-secondary">₹4,260</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/20">
+<button class="flex-1 h-9 rounded-xl border border-primary text-primary font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors active:scale-95 duration-150 flex items-center justify-center gap-1" type="button"><span class="material-symbols-outlined text-[16px]">visibility</span> View Invoice</button>
+<button class="flex-1 h-9 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-colors active:scale-95 duration-150 flex items-center justify-center gap-1 shadow-sm" type="button">
+<span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
+              Download PDF
+            </button>
+</div>
+</article>
+</div>
+<!-- Regulatory Reassurance Note: Agricultural Exemption (No GST) -->
+
+<!-- Bottom Spacer for Floating BottomNav -->
+<div class="h-6"></div>
+</main>
+<!-- BottomNavBar (FromJson Shell Specification: Active tab is 'Account') -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface/95 backdrop-blur-md shadow-lg border-t border-outline-variant/30 max-w-[390px] mx-auto right-0">
+<!-- Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Home</span>
+</a>
+<!-- Shop -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#shop">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Shop</span>
+</a>
+<!-- Orders -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#orders">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Orders</span>
+</a>
+<!-- Account (Active Navigation Item for Invoices & Billing subflow) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold bg-surface-container-high rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#account">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Account</span>
+</a>
+</nav>
+</div>
+
+
+
+
+</body></html>

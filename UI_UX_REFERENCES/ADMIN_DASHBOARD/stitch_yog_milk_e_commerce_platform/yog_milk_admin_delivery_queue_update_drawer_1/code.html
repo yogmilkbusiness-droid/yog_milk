@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Deliveries Queue &amp; Cold-Chain Dispatch Operations</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts for Vedic Dairy Editorial Wellness Aesthetics -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#753400",
+            "inverse-surface": "#31312d",
+            "on-primary-fixed": "#0e1647",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#321200",
+            "outline": "#767680",
+            "surface-container": "#f0eee8",
+            "surface-bright": "#fcf9f3",
+            "surface-container-highest": "#e5e2dc",
+            "surface-tint": "#535b8e",
+            "inverse-on-surface": "#f3f0eb",
+            "on-tertiary": "#ffffff",
+            "primary": "#000533",
+            "primary-fixed": "#dee0ff",
+            "on-background": "#1c1c18",
+            "on-primary": "#ffffff",
+            "primary-container": "#151d4d",
+            "surface-variant": "#e5e2dc",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#dcdad4",
+            "secondary-container": "#a9b4fe",
+            "on-primary-fixed-variant": "#3b4375",
+            "secondary-fixed": "#dee0ff",
+            "outline-variant": "#c7c5d0",
+            "secondary-fixed-dim": "#bbc3ff",
+            "on-secondary-fixed-variant": "#374183",
+            "surface-container-high": "#ebe8e2",
+            "on-surface-variant": "#46464f",
+            "on-primary-container": "#7e86bc",
+            "tertiary": "#190600",
+            "on-secondary-fixed": "#051256",
+            "surface": "#fcf9f3",
+            "surface-container-low": "#f6f3ed",
+            "tertiary-fixed-dim": "#ffb68b",
+            "on-surface": "#1c1c18",
+            "secondary": "#4f599c",
+            "background": "#fcf9f3",
+            "primary-fixed-dim": "#bcc3fd",
+            "tertiary-fixed": "#ffdbc8",
+            "inverse-primary": "#bcc3fd",
+            "tertiary-container": "#3c1700",
+            "on-secondary-container": "#394485",
+            "on-tertiary-container": "#db6805"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin-desktop": "3rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f0eee8;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #767680;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen overflow-x-hidden flex">
+<!-- ========================================== -->
+<!-- LEFT SIDEBAR: Yog Milk Admin Navy Dock     -->
+<!-- ========================================== -->
+<aside class="bg-primary-container text-surface docked h-screen w-64 flex flex-col justify-between shrink-0 border-r border-outline-variant/30 sticky top-0 z-50">
+<div class="h-full flex flex-col justify-between p-4">
+<div>
+<!-- Brand Header with Sacred Drop Lotus Emblem -->
+<div class="flex items-center gap-3 px-2 py-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/10 border border-secondary-container/30 flex items-center justify-center text-secondary-container shadow-inner">
+<span class="material-symbols-outlined text-2xl" data-icon="spa" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<h1 class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface leading-tight">Yog Milk</h1>
+<p class="text-label-sm font-label-sm text-secondary-container tracking-wider uppercase">Vedic Pure Dairy Admin</p>
+</div>
+</div>
+<!-- Navigation Tab Items -->
+<nav class="space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="receipt_long">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+<!-- Deliveries: ACTIVE TAB with '8 due' cold-chain notification badge -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md border border-secondary-container/30 shadow-sm active:scale-[0.99]" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl text-secondary-container" data-icon="local_shipping" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span class="font-title-md text-title-md tracking-tight">Deliveries</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-on-tertiary-container text-surface text-label-sm font-label-sm shadow">8 due</span>
+</a>
+<!-- Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+<!-- Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="description">description</span>
+<span>Invoices</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="bar_chart">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="calendar_clock">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<!-- Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="history">history</span>
+<span>Audit log</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer & Support Desk CTA -->
+<div class="pt-4 border-t border-outline-variant/20 space-y-2">
+<button class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-secondary-container/10 border border-secondary-container/20 text-surface text-label-md font-label-md hover:bg-secondary-container/20 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="support_agent">support_agent</span>
+<span>Support Desk</span>
+</button>
+<div class="flex items-center justify-between px-2 pt-2 text-surface-variant/70 text-body-sm font-body-sm">
+<span class="flex items-center gap-1.5 hover:text-surface cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="vital_signs">vital_signs</span>
+<span>System Health</span>
+</span>
+<span class="flex items-center gap-1.5 hover:text-surface cursor-pointer">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span>Log out</span>
+</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ========================================== -->
+<!-- MAIN WORKSPACE: Operations & Dispatch Hub   -->
+<!-- ========================================== -->
+<div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+<!-- TOP APP BAR -->
+<header class="flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest border-b border-surface-variant shadow-sm shrink-0 z-30">
+<!-- Search on Left -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface rounded-xl border border-surface-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container transition-all" placeholder="Search by consignment ID, driver, order or outlet..." type="text"/>
+</div>
+</div>
+<!-- Center / Right Status & Profile Actions -->
+<div class="flex items-center gap-5">
+<!-- Ordering Window Status Pill -->
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-low border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="text-body-sm font-body-sm text-on-surface font-medium">Ordering Open · Closes 5:00 PM</span>
+</div>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-on-tertiary-container ring-2 ring-surface-container-lowest"></span>
+</button>
+<!-- Divider -->
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Vikram Mehta Admin Master Profile -->
+<div class="flex items-center gap-3 cursor-pointer pl-1">
+<img class="w-9 h-9 rounded-full object-cover ring-2 ring-secondary-container/40" data-alt="Close up photographic portrait of Vikram Mehta, a senior operations director with a groomed beard, wearing a crisp indigo linen shirt against a soft warm daylight studio backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiOZG8KY2W1VAVLIoHD0LpTRK9U_9Bw0FU_OgJIzUPBEg8_VFyW2H9gJ7Dw25d9-CNg27727JcGrYSZe9xOg8XAP7IqWO4XVK7Xzw_i5aNqBEFe8UWDHo2QEdWJyyYZnWovhd2YSd9dRTgs2aNAJM3zeJKT8_zGPjmjFEn3z5JltWqAa91rF7gj5cP20gOnicrNHceaWMW1_tjWuDdUJ2r6i29QXUBtriH3bx6f0M"/>
+<div class="text-left hidden lg:block">
+<p class="text-label-md font-label-md text-on-surface leading-tight">Vikram Mehta</p>
+<p class="text-label-sm font-label-sm text-outline">Cold-Chain Lead (Admin)</p>
+</div>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- OPERATIONS SUBHEADER & CONTROLS -->
+<div class="px-6 py-4 bg-surface border-b border-surface-variant/80 shrink-0">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<!-- Headline and Active Status -->
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-headline-sm font-headline-sm font-semibold text-primary">Deliveries &amp; Cold-Chain Dispatch</h2>
+<span class="px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+              Live Route Pulse
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Morning Vedic consignment departures, temperature telemetry, and Nashik dairy hub exceptions.</p>
+</div>
+<!-- Operations Action Bar: Route Filter, Fleet Telemetry, Export, View Toggle -->
+<div class="flex flex-wrap items-center gap-3">
+<!-- Route Filter Dropdown -->
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-surface-variant rounded-xl pl-3 pr-8 py-2 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary cursor-pointer shadow-sm">
+<option>All Routes (118 Deliveries)</option>
+<option selected="">Route 4 Nashik East (38 Drops)</option>
+<option>Route 2 Gangapur Road (42 Drops)</option>
+<option>Route 1 Panchavati Hub (38 Drops)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-sm pointer-events-none" data-icon="unfold_more">unfold_more</span>
+</div>
+<!-- Van Fleet Telemetry Pill -->
+<div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container-lowest border border-secondary-container/50 shadow-sm text-primary">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="ac_unit">ac_unit</span>
+<span class="text-label-sm font-label-sm font-semibold tracking-tight">4 Insulated Vans Active · <span class="text-emerald-700 font-bold">Avg Temp 3.8°C</span></span>
+</div>
+<!-- Export Manifest Button -->
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container-low border border-surface-variant text-label-md font-label-md text-on-surface shadow-sm transition-colors">
+<span class="material-symbols-outlined text-base text-on-surface-variant" data-icon="download">download</span>
+<span>Export Manifest</span>
+</button>
+<!-- View Toggle: Board View Active vs Table View Inactive -->
+<div class="flex items-center p-1 bg-surface-container-high rounded-xl border border-surface-variant">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm text-label-md font-label-md">
+<span class="material-symbols-outlined text-base" data-icon="view_kanban">view_kanban</span>
+<span>Board View</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-base" data-icon="table_rows">table_rows</span>
+<span>Table View</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- MAIN KANBAN BOARD + SLIDE-OVER DRAWER AREA -->
+<!-- ========================================== -->
+<div class="flex-1 flex overflow-hidden relative">
+<!-- HORIZONTAL SCROLLING KANBAN WORKSPACE (6 DISPATCH COLUMNS) -->
+<main class="flex-1 overflow-x-auto overflow-y-hidden p-6 custom-scrollbar bg-background">
+<div class="flex gap-4.5 h-full items-start" style="min-width: 1720px;">
+<!-- COLUMN 1: Needs preparation (Count: 14) -->
+<div class="w-72 bg-surface-container-low rounded-2xl p-3 flex flex-col max-h-full border border-surface-variant/80 shrink-0">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span class="font-title-md text-title-md text-on-surface">Needs preparation</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm">14</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Prep Card 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000145</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-blue-50 text-blue-900 border border-blue-200">Dawn 05:30 AM</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Pooja Mandir Organics</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                  Nashik Central · YM-2026-000145
+                </p>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant font-medium text-xs">Pure Ghee 1L x3, Paneer 1kg x4</span>
+<span class="font-bold text-primary font-title-md">₹7,970</span>
+</div>
+<div class="mt-2 text-label-sm font-label-sm text-amber-700 bg-amber-50 px-2 py-1 rounded-lg border border-amber-200/60 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs" data-icon="hourglass_top">hourglass_top</span>
+                  Bottling line batch #VK-409
+                </div>
+</div>
+<!-- Prep Card 2 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000146</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-blue-50 text-blue-900 border border-blue-200">Dawn 05:45 AM</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Shri Krishna Dairy Parlour</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                  Indira Nagar · YM-2026-000146
+                </p>
+<div class="mt-2.5 pt-2.5 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant font-medium text-xs">Gir Cow A2 Milk 500ml x20</span>
+<span class="font-bold text-primary font-title-md">₹1,800</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMN 2: Assigned (Count: 18) -->
+<div class="w-72 bg-surface-container-low rounded-2xl p-3 flex flex-col max-h-full border border-surface-variant/80 shrink-0">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+<span class="font-title-md text-title-md text-on-surface">Assigned</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm">18</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Assigned Card 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000123</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-indigo-50 text-indigo-900 border border-indigo-200">Reefer Ready</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Rajesh Sharma</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="store">store</span>
+                  Sharma General Store · Nashik East
+                </p>
+<!-- Driver & Crate details -->
+<div class="mt-2.5 p-2 rounded-lg bg-surface-container-low border border-surface-variant text-xs space-y-1">
+<div class="flex items-center justify-between text-on-surface">
+<span class="font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="badge">badge</span>
+                      Driver #04 Suresh K.
+                    </span>
+<span class="text-outline">MH-15-EG-4402</span>
+</div>
+<div class="flex items-center justify-between text-emerald-800 font-medium">
+<span>CR-NSK-084</span>
+<span>3.4°C Chilled</span>
+</div>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant text-xs">Total: ₹2,440</span>
+<span class="text-label-sm font-label-sm text-secondary font-bold">YM-2026-000123</span>
+</div>
+</div>
+<!-- Assigned Card 2 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000128</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-indigo-50 text-indigo-900 border border-indigo-200">Reefer Ready</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Madhurima Dairy Boutique</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                  Gangapur Road · ₹4,180
+                </p>
+<div class="mt-2.5 p-2 rounded-lg bg-surface-container-low border border-surface-variant text-xs">
+<span class="font-semibold text-on-surface">Driver #02 Manoj D. · MH-15-CV-8109</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMN 3: Picked up (Count: 12) -->
+<div class="w-72 bg-surface-container-low rounded-2xl p-3 flex flex-col max-h-full border border-surface-variant/80 shrink-0">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+<span class="font-title-md text-title-md text-on-surface">Picked up</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm">12</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Picked up Card 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000130</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-cyan-50 text-cyan-900 border border-cyan-200">Departed 05:15 AM</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Vedic Bhavan Ashram</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                  Trimbak Naka · YM-2026-000130
+                </p>
+<div class="mt-2.5 py-1 px-2 rounded-lg bg-surface-container text-xs text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="local_shipping">local_shipping</span>
+<span>Vehicle #03 departing Cold Dock A</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-xs text-on-surface-variant">Raw Milk Canisters x4</span>
+<span class="font-bold text-primary font-title-md">₹6,400</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMN 4: Out for delivery (Count: 22) -->
+<div class="w-72 bg-surface-container-low rounded-2xl p-3 flex flex-col max-h-full border border-surface-variant/80 shrink-0">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+<span class="font-title-md text-title-md text-on-surface">Out for delivery</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm">22</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Out for delivery Card 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000135</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-purple-50 text-purple-900 border border-purple-200">On Transit Route</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Anand Patil</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="store">store</span>
+                  Patil Sweets · Nashik West
+                </p>
+<div class="mt-2.5 p-2 rounded-lg bg-surface-container-low border border-surface-variant flex items-center justify-between text-xs">
+<span class="text-on-surface font-medium">Van #01 · Stop 4 of 9</span>
+<span class="text-emerald-700 font-bold">3.9°C</span>
+</div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant text-xs">Paneer 5kg, Curd 10kg</span>
+<span class="font-bold text-primary font-title-md">₹5,120</span>
+</div>
+</div>
+<!-- Out for delivery Card 2 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000139</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-purple-50 text-purple-900 border border-purple-200">On Transit Route</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Sunita Gokhale</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="home">home</span>
+                  Ashoka Marg Residential
+                </p>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant text-xs">A2 Desi Cow Milk 1L x2</span>
+<span class="font-bold text-primary font-title-md">₹190</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMN 5: Delivered (Count: 48) -->
+<div class="w-72 bg-surface-container-low rounded-2xl p-3 flex flex-col max-h-full border border-surface-variant/80 shrink-0">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span>
+<span class="font-title-md text-title-md text-on-surface">Delivered</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm">48</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Delivered Card 1 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant shadow-sm hover:shadow-md transition-shadow cursor-pointer opacity-95">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-primary tracking-wide">YMD-2026-000118</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    06:40 AM
+                  </span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Rajesh Sharma</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="check">check</span>
+                  Verified: Crates Returned (x2)
+                </p>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant text-xs">Bilona Ghee &amp; Butter</span>
+<span class="font-bold text-emerald-800 font-title-md">₹3,400</span>
+</div>
+</div>
+</div>
+</div>
+<!-- COLUMN 6: Failed / Exception (Count: 2) (ACTIVE CONTEXT) -->
+<div class="w-72 bg-red-50/60 rounded-2xl p-3 flex flex-col max-h-full border-2 border-error/30 shrink-0">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-error/20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
+<span class="font-title-md text-title-md text-error font-bold">Failed</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container text-label-sm font-label-sm font-bold">2</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Failed Card 1 (SELECTED CARD IN DRAWER FOCUS) -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border-2 border-error shadow-md cursor-pointer relative ring-2 ring-error/20">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-bold text-error tracking-wide">YMD-2026-000109</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs" data-icon="report">report</span>
+                    Failed 06:55 AM
+                  </span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Godavari Sweets</h4>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs" data-icon="location_on">location_on</span>
+                  Nashik City · YM-2026-000109
+                </p>
+<div class="mt-2.5 p-2 rounded-lg bg-red-50 border border-error/20 text-xs text-error font-medium">
+                  Shutter down at dawn. Driver phone call unanswered (06:40-06:55 AM).
+                </div>
+<div class="mt-2.5 pt-2 border-t border-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface-variant text-xs">Crate CR-NSK-019 (3.9°C)</span>
+<span class="font-bold text-error font-title-md">₹8,920</span>
+</div>
+<!-- Selection indicator bar -->
+<div class="absolute -right-1 top-1/2 -translate-y-1/2 w-1.5 h-12 bg-error rounded-full"></div>
+</div>
+<!-- Failed Card 2 -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-error/40 shadow-sm cursor-pointer opacity-80">
+<div class="flex items-center justify-between mb-2">
+<span class="text-label-sm font-label-sm font-semibold text-on-surface tracking-wide">YMD-2026-000112</span>
+<span class="px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-amber-100 text-amber-900">Access Blocked</span>
+</div>
+<h4 class="font-title-md text-title-md text-primary leading-snug">Kalyan Tea House</h4>
+<p class="text-body-sm font-body-sm text-outline text-xs mt-0.5">MG Road Alley closed for pipeline work.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ======================================================= -->
+<!-- DELIVERY UPDATE SLIDE-OVER DRAWER (FOCUSED ON EXCEPTION) -->
+<!-- ======================================================= -->
+<aside class="w-96 lg:w-[420px] bg-surface-container-lowest border-l border-surface-variant shadow-2xl flex flex-col justify-between shrink-0 z-40 overflow-y-auto custom-scrollbar">
+<!-- Drawer Header -->
+<div class="p-6 border-b border-surface-variant bg-surface-container-low/50">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-semibold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+              Cold-Chain Incident
+            </span>
+<button class="p-1 rounded-lg text-outline hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="close">close</span>
+</button>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mt-3 font-semibold">Update Delivery Status</h3>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Consignment: <strong class="text-on-surface">YMD-2026-000109</strong> (Order <strong class="text-secondary">YM-2026-000109</strong>)</p>
+<!-- Customer Brief Card -->
+<div class="mt-4 p-3.5 rounded-xl bg-surface-container-lowest border border-surface-variant/80 flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary-container text-surface flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl" data-icon="storefront">storefront</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-title-md text-primary truncate">Godavari Sweets &amp; Milk Bar</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant truncate">Nashik City Market · ₹8,920 Value</p>
+</div>
+</div>
+</div>
+<!-- Drawer Form Content -->
+<div class="p-6 space-y-6 flex-1">
+<!-- Current Status Selector (Segmented Radio) -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2 font-bold">Consignment State Transition</label>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-3 rounded-xl border border-surface-variant hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<input class="text-primary focus:ring-primary border-outline" name="delivery_status" type="radio"/>
+<span class="text-label-md font-label-md text-on-surface">Delivered (Completed Drop)</span>
+</div>
+<span class="material-symbols-outlined text-emerald-600 text-lg" data-icon="check_circle">check_circle</span>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border-2 border-error bg-red-50/40 cursor-pointer transition-colors shadow-sm">
+<div class="flex items-center gap-2.5">
+<input checked="" class="text-error focus:ring-error border-error" name="delivery_status" type="radio"/>
+<span class="text-label-md font-label-md text-error font-bold">Failed / Delivery Exception</span>
+</div>
+<span class="material-symbols-outlined text-error text-lg" data-icon="error">error</span>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl border border-surface-variant hover:bg-surface cursor-pointer transition-colors">
+<div class="flex items-center gap-2.5">
+<input class="text-primary focus:ring-primary border-outline" name="delivery_status" type="radio"/>
+<span class="text-label-md font-label-md text-on-surface">Reschedule for Dusk Run</span>
+</div>
+<span class="material-symbols-outlined text-on-tertiary-container text-lg" data-icon="schedule">schedule</span>
+</label>
+</div>
+</div>
+<!-- Required Failure Reason Section -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="text-label-md font-label-md text-on-surface font-bold">Required Failure Reason</label>
+<span class="text-label-sm font-label-sm text-error font-semibold">Mandatory</span>
+</div>
+<div class="space-y-2">
+<!-- Selected Reason -->
+<div class="p-3 rounded-xl border-2 border-primary bg-primary-fixed/20 flex items-start gap-2.5 cursor-pointer">
+<input checked="" class="mt-0.5 text-primary focus:ring-primary" name="failure_reason" type="radio"/>
+<div>
+<p class="text-label-md font-label-md text-primary font-bold">Customer outlet closed / shutter down at dawn</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-0.5">Driver arrived within the 05:30-07:00 AM delivery window.</p>
+</div>
+</div>
+<!-- Other Reasons -->
+<div class="p-3 rounded-xl border border-surface-variant hover:bg-surface flex items-start gap-2.5 cursor-pointer">
+<input class="mt-0.5 text-primary focus:ring-primary" name="failure_reason" type="radio"/>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Cold-chain temp excursion &gt;6°C in van</p>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Sensor threshold exceeded, immediate quarantine required.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl border border-surface-variant hover:bg-surface flex items-start gap-2.5 cursor-pointer">
+<input class="mt-0.5 text-primary focus:ring-primary" name="failure_reason" type="radio"/>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Customer rejected consignment</p>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Crate count dispute or damaged seal upon handoff.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl border border-surface-variant hover:bg-surface flex items-start gap-2.5 cursor-pointer">
+<input class="mt-0.5 text-primary focus:ring-primary" name="failure_reason" type="radio"/>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Wrong address / gate inaccessible</p>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Vehicle unable to navigate alleyway or security barrier locked.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Required Follow-Up Action Selector -->
+<div>
+<div class="flex items-center justify-between mb-2">
+<label class="text-label-md font-label-md text-on-surface font-bold">Required Cold-Chain Follow-Up Action</label>
+<span class="text-label-sm font-label-sm text-error font-semibold">Mandatory</span>
+</div>
+<select class="w-full bg-surface-container-lowest border border-surface-variant rounded-xl p-3 text-label-md font-label-md text-on-surface focus:ring-2 focus:ring-primary focus:border-primary">
+<option selected="">Return crates to Nashik Hub Chiller (Zero spoilage)</option>
+<option>Retry on Afternoon Dusk Route (15:30 PM)</option>
+<option>Cancel order &amp; restock Vedic inventory</option>
+<option>Hold at Hub Cold Vault for direct merchant pickup</option>
+</select>
+</div>
+<!-- Dispatch Notes Textarea -->
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-2 font-bold">Dispatch Operations Notes &amp; Cold Log</label>
+<textarea class="w-full p-3 bg-surface rounded-xl border border-surface-variant text-body-sm font-body-sm text-on-surface focus:ring-2 focus:ring-primary focus:border-primary" rows="3">Driver Suresh K. waited 15 mins at shutter (06:40 - 06:55 AM). Phone unanswered. Cold box intact at 3.9°C. Consignment returning to Central Chiller B.</textarea>
+<div class="mt-1 flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span>Telemetry Timestamp: 07:02 AM</span>
+<span>Logged by Vikram Mehta</span>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Action Buttons -->
+<div class="p-6 border-t border-surface-variant bg-surface-container-low/50 flex items-center gap-3 shrink-0">
+<button class="flex-1 py-3 px-4 rounded-xl bg-surface-container-lowest border border-surface-variant text-on-surface text-label-md font-label-md hover:bg-surface-container-high transition-colors font-semibold">
+            Cancel / Dismiss
+          </button>
+<button class="flex-1 py-3 px-4 rounded-xl bg-primary-container text-surface text-label-md font-label-md hover:bg-primary transition-all shadow-md font-semibold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="save">save</span>
+<span>Confirm Update</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+</body></html>

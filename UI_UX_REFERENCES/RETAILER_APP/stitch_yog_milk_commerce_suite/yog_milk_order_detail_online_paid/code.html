@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Order Details</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "on-background": "#161b2b",
+            "background": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "tertiary-fixed-dim": "#edc15a",
+            "inverse-on-surface": "#eef0ff",
+            "tertiary": "#261a00",
+            "outline-variant": "#c6c5d2",
+            "inverse-primary": "#bbc3ff",
+            "on-tertiary-fixed": "#251a00",
+            "secondary-fixed": "#ffdbc8",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "primary": "#051256",
+            "on-tertiary-container": "#ba9331",
+            "on-surface-variant": "#454650",
+            "surface-dim": "#d5d9ef",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "on-primary-fixed-variant": "#374183",
+            "surface-container": "#eaedff",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface": "#faf8ff",
+            "surface-container-highest": "#dde1f8",
+            "on-primary-fixed": "#051256",
+            "on-secondary": "#ffffff",
+            "on-surface": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "inverse-surface": "#2b3041",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#8994db",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#ffdf9c",
+            "outline": "#767681",
+            "surface-variant": "#dde1f8",
+            "secondary-container": "#fc8127",
+            "on-secondary-fixed": "#321200",
+            "primary-container": "#1f2a6b",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "tertiary-container": "#3f2e00",
+            "secondary": "#994700",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-secondary-fixed-variant": "#753400",
+            "primary-fixed": "#dee0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "3rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Subtle Vedic texture pattern overlay */
+    .bg-vedic-grain {
+      background-image: radial-gradient(rgba(5, 18, 86, 0.04) 1px, transparent 0);
+      background-size: 20px 20px;
+    }
+    /* Hairline card boundary matching the brand guide */
+    .hairline-card {
+      border: 1px solid #E7E2D6;
+      box-shadow: 0 4px 16px -2px rgba(31, 42, 107, 0.04);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Wrapper (390px x auto) -->
+<div class="w-full max-w-[390px] min-h-screen bg-background flex flex-col relative pb-32 border-x border-outline-variant/30 shadow-2xl">
+<!-- Top App Bar (Task-focused Detail Screen: Back + Share) -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-surface/90 backdrop-blur-md shadow-sm">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-150" onclick="window.history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-semibold tracking-wide text-primary">Order Details</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">Sattvic Morning Delivery</span>
+</div>
+<button aria-label="Share order" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95 duration-150" onclick="navigator.clipboard &amp;&amp; navigator.clipboard.writeText(window.location.href); alert('Order tracking link copied!');">
+<span class="material-symbols-outlined">share</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-4 pt-3 space-y-4">
+<!-- Header Card: Order ID + Status Banner + Tri-status Chips -->
+<section class="hairline-card bg-surface-container-lowest rounded-[20px] p-4 relative overflow-hidden">
+<!-- Top row: Order Code with Copy feedback -->
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Order Reference</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="font-title-md text-title-md font-bold text-primary font-mono" id="orderCode">YM-2026-000122</span>
+<button class="text-on-surface-variant hover:text-primary transition-colors" onclick="copyToClipboard('YM-2026-000122', this)" title="Copy Code">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- Brand Vedic Motif Crest -->
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center border border-outline-variant/40">
+<span class="material-symbols-outlined text-primary text-[22px]" data-weight="fill">spa</span>
+</div>
+</div>
+<!-- Green Verified Banner -->
+<div class="mt-3 bg-surface-container-low rounded-xl p-2.5 flex items-center gap-2.5 border border-[#c6dfc8]">
+<div class="w-6 h-6 rounded-full bg-[#1b5e20] text-white flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[15px]" data-weight="fill">check</span>
+</div>
+<p class="font-label-md text-label-md text-[#1b5e20] font-semibold leading-tight">
+            Paid Online · Dispatched for Dawn Drop
+          </p>
+</div>
+<!-- 3 Distinct Status Chips -->
+<div class="mt-3.5 flex flex-wrap gap-2">
+<!-- Order Status: Soft blue pill -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-primary border border-surface-container-highest">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm font-semibold">Ready for Delivery</span>
+</div>
+<!-- Payment Status: Green outline pill with checkmark -->
+<div class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#e8f5e9] text-[#1b5e20] border border-[#a5d6a7]">
+<span class="font-label-sm text-label-sm font-bold">₹</span>
+<span class="material-symbols-outlined text-[14px]" data-weight="fill">check_circle</span>
+<span class="font-label-sm text-label-sm font-semibold">Paid (Razorpay UPI)</span>
+</div>
+<!-- Delivery Status: Indigo soft pill with truck -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container text-white"><span class="material-symbols-outlined text-[15px]">local_shipping</span><span class="font-label-sm text-label-sm font-semibold">Out for Delivery</span></div>
+</div>
+</section>
+<!-- Delivery Section Card -->
+<section class="hairline-card bg-surface-container-lowest rounded-[20px] p-4 space-y-3.5">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">delivery_dining</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Delivery Dispatch</span>
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg font-semibold text-on-surface font-mono" id="delCode">YMD-2026-000122</span>
+<button class="text-on-surface-variant hover:text-primary" onclick="copyToClipboard('YMD-2026-000122', this)" title="Copy Delivery Code">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-md bg-secondary-container/20 text-secondary font-label-sm text-label-sm font-bold">
+            Dawn Slot: 06:00 AM
+          </span>
+</div>
+<!-- Vehicle & Transit Tag -->
+<div class="flex items-center gap-2 p-2 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-secondary text-[20px]">electric_bolt</span>
+<p class="font-label-md text-label-md text-on-surface font-medium"><strong class="text-primary font-semibold">Out for delivery</strong> · In transit for morning delivery</p>
+</div>
+<!-- Note from team -->
+<div class="p-3 rounded-xl bg-surface border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[20px] mt-0.5" data-weight="fill">shield_with_heart</span>
+<div class="space-y-0.5">
+<span class="font-label-sm text-label-sm font-bold text-primary block">Note from our team</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic">“Order dispatched for morning delivery.”</p>
+</div>
+</div>
+<!-- Drop point -->
+<div class="flex items-start gap-2.5 pt-1">
+<span class="material-symbols-outlined text-secondary text-[20px] mt-0.5">location_on</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Drop point</span>
+<p class="font-title-md text-title-md font-semibold text-on-surface">
+              Sharma General Store
+            </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              College Road, Nashik, Maharashtra 422005
+            </p>
+</div>
+</div>
+</section>
+<!-- Items Ordered -->
+<section class="hairline-card bg-surface-container-lowest rounded-[20px] p-4 space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<h2 class="font-title-lg text-title-lg font-headline-sm text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[20px]">egg_alt</span>
+            Items Ordered (3)
+          </h2>
+
+</div>
+<div class="divide-y divide-outline-variant/15">
+<!-- Item 1 -->
+<div class="py-2.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">water_bottle</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-primary leading-tight">Toned Milk 1 L</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pack of 12 · Qty: 2</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md font-bold text-primary">₹960</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">₹480 / unit</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="py-2.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">inventory_2</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-primary leading-tight">Paneer 1 kg</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Qty: 2</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md font-bold text-primary">₹840</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">₹420 / unit</span>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="py-2.5 flex items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-[24px]">soup_kitchen</span>
+</div>
+<div>
+<h3 class="font-title-md text-title-md font-semibold text-primary leading-tight">Pure Ghee 1 L</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Qty: 1</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md font-bold text-primary">₹1,450</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">₹1,450 / unit</span>
+</div>
+</div>
+</div>
+<!-- Glass Bottle Deposit Pill -->
+
+</section>
+<!-- Bill Details (Non-GST format) -->
+<section class="hairline-card bg-surface-container-lowest rounded-[20px] p-4 space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt</span>
+<h2 class="font-title-lg text-title-lg font-headline-sm text-primary">Bill Details</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-surface-container-high text-primary font-semibold">
+            Non-GST Format
+          </span>
+</div>
+<div class="space-y-2 text-on-surface-variant">
+<div class="flex justify-between items-center font-body-md text-body-md">
+<span class="">Items Subtotal</span>
+<span class="font-medium text-on-surface">₹3,250</span>
+</div>
+
+<div class="flex justify-between items-center font-body-md text-body-md">
+<span class="">Dawn Delivery</span>
+<span class="text-[#1b5e20] font-semibold flex items-center gap-1">
+<span class="line-through text-outline text-[12px]">₹50</span> FREE
+            </span>
+</div>
+<div class="pt-2 border-t border-dashed border-outline-variant/40 flex justify-between items-baseline text-primary">
+<div>
+<span class="font-title-lg text-title-lg font-bold">Total Paid</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant font-normal">Inclusive of all farm charges</span>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md font-bold text-primary">₹3,450</span>
+<span class="block font-label-sm text-label-sm text-[#1b5e20] font-semibold">Paid Online</span>
+</div>
+</div>
+</div>
+<!-- Invoice row -->
+<div class="mt-2 pt-3 border-t border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">description</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Invoice Reference</span>
+<span class="font-label-md text-label-md font-bold text-on-surface font-mono">Invoice YMI-2026-000045</span>
+</div>
+</div>
+<button class="font-label-sm text-label-sm font-semibold text-primary underline underline-offset-2 flex items-center gap-1 hover:text-secondary transition-colors" onclick="alert('Downloading Non-GST Bill PDF for YMI-2026-000045...')">
+            View &amp; Download Non-GST Bill
+            <span class="material-symbols-outlined text-[14px]">download</span>
+</button>
+</div>
+</section>
+<!-- Payment Section -->
+<section class="hairline-card bg-surface-container-lowest rounded-[20px] p-4 space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">account_balance_wallet</span>
+<h2 class="font-title-lg text-title-lg font-headline-sm text-primary">Payment Section</h2>
+</div>
+<!-- Paid & Verified Green Pill -->
+<span class="px-2.5 py-1 rounded-full bg-[#e8f5e9] text-[#1b5e20] font-label-sm text-label-sm font-bold flex items-center gap-1"><span class="material-symbols-outlined text-[14px]" data-weight="fill">check_circle</span> Paid</span>
+</div>
+<div class="space-y-2 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex justify-between items-center">
+<span class="">Method</span>
+<span class="font-semibold text-on-surface">Online (Razorpay UPI)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="">Gateway Ref</span>
+<div class="flex items-center gap-1">
+<span class="font-mono font-medium text-on-surface text-[11px]" id="gatewayRef">RZP_PAY_994182904</span>
+<button class="text-on-surface-variant hover:text-primary" onclick="copyToClipboard('RZP_PAY_994182904', this)" title="Copy Ref">
+<span class="material-symbols-outlined text-[15px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="">Paid At</span>
+<span class="font-medium text-on-surface">28 Oct 2026, 03:31 PM</span>
+</div>
+<div class="flex justify-between items-center pt-1 border-t border-outline-variant/20 text-on-surface">
+<span class="font-semibold">Amount Paid</span>
+<span class="font-title-md text-title-md font-bold text-primary">₹3,450</span>
+</div>
+</div>
+</section>
+<!-- Full Vertical Timeline with timestamps -->
+<section class="hairline-card bg-surface-container-lowest rounded-[20px] p-4 space-y-4 mb-4">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">history</span>
+<h2 class="font-title-lg text-title-lg font-headline-sm text-primary">Order Journey</h2>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span> Live Transit
+          </span>
+</div>
+<!-- Vertical Timeline List -->
+<div class="relative pl-6 space-y-6 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/40">
+<!-- Node 1: Completed -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-white text-[10px]" data-weight="fill">check</span>
+</div>
+<div>
+<p class="font-title-md text-title-md font-semibold text-primary">Order Placed &amp; Confirmed</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">28 Oct 2026 · 03:30 PM</span>
+</div>
+</div>
+<!-- Node 2: Completed -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-white text-[10px]" data-weight="fill">check</span>
+</div>
+<div>
+<p class="font-title-md text-title-md font-semibold text-primary">Payment Verified via Razorpay UPI</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">28 Oct 2026 · 03:31 PM</span>
+</div>
+</div>
+<!-- Node 3: Completed -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-white text-[10px]" data-weight="fill">check</span>
+</div>
+<div>
+<p class="font-title-md text-title-md font-semibold text-primary">Batch Milked &amp; Chilled to 4°C</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">29 Oct 2026 · 04:00 AM · Processed &amp; Chilled</span>
+</div>
+</div>
+<!-- Node 4: Completed -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-primary flex items-center justify-center ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-white text-[10px]" data-weight="fill">check</span>
+</div>
+<div>
+<p class="font-title-md text-title-md font-semibold text-primary">Packed in Sanitized Crates</p>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">29 Oct 2026 · 04:45 AM · Temperature Verified 3.8°C</span>
+</div>
+</div>
+<!-- Node 5: In Progress (Saffron Glow) -->
+<div class="relative flex items-start gap-3">
+<div class="absolute -left-6 top-0.5 w-4 h-4 rounded-full bg-secondary flex items-center justify-center ring-4 ring-surface-container-lowest animate-pulse">
+<span class="material-symbols-outlined text-white text-[10px]">local_shipping</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-xl border border-secondary/30 w-full">
+<div class="flex items-center justify-between">
+<p class="font-title-md text-title-md font-bold text-secondary">Out for Delivery</p>
+<span class="material-symbols-outlined text-secondary text-[16px]">near_me</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block mt-0.5">29 Oct 2026 · 05:15 AM · Morning Delivery in Progress</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sattvic Vedic Assurance Note -->
+
+</main>
+<!-- Bottom Sticky Action Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50 flex justify-center bg-transparent pointer-events-none">
+<div class="w-full max-w-[390px] p-3 bg-surface/95 backdrop-blur-md shadow-2xl border-t border-outline-variant/30 pointer-events-auto flex gap-2.5">
+<!-- Primary Action: Track Delivery Live Status (Brand Navy) -->
+<button class="flex-1 h-[52px] bg-primary hover:bg-[#151D4D] text-white rounded-[14px] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 shadow-md active:scale-95 transition-all" onclick="trackLive()">
+<span class="">Track Delivery Live Status</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<!-- Secondary CTA: 1-Tap Reorder (Solar Saffron / Secondary) -->
+<button class="h-[52px] px-4 bg-secondary-container hover:bg-[#E06A14] text-white rounded-[14px] font-label-lg text-label-lg font-semibold flex items-center justify-center gap-1.5 shadow-md active:scale-95 transition-all shrink-0" onclick="reorderBatch()">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span class="">1-Tap Reorder</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Micro-interactions Script -->
+<script>
+    function copyToClipboard(text, btnElement) {
+      navigator.clipboard.writeText(text).then(() => {
+        const originalIcon = btnElement.innerHTML;
+        btnElement.innerHTML = '<span class="material-symbols-outlined text-[16px] text-green-600">check</span>';
+        setTimeout(() => {
+          btnElement.innerHTML = originalIcon;
+        }, 1800);
+      }).catch(err => {
+        console.error('Could not copy text: ', err);
+      });
+    }
+
+    function trackLive() {
+      alert("Redirecting to live GPS telemetry: Nashik Electric Van #02 is 1.4km away from College Road.");
+    }
+
+    function reorderBatch() {
+      alert("Added 2x A2 Desi Cow Milk, 2x Malai Paneer, 1x Bilona Ghee to tomorrow's Dawn Basket!");
+    }
+  </script>
+
+
+</body></html>

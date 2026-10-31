@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ordering Schedule - Yog Milk Admin</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#1F2A6B",
+            "primary-container": "#1F2A6B",
+            "accent": "#F47B20",
+            "accent-saffron": "#F47B20",
+            "background": "#FFFCF6",
+            "on-surface": "#1B2030",
+            "outline-border": "#E5E7EB",
+            "surface-card": "#FFFFFF",
+            "surface-subtle": "#F9F8F3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #F4F2EC;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #D1D5DB;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-[#FFFCF6] text-[#1B2030] font-body-md text-sm antialiased min-h-screen flex overflow-hidden selection:bg-[#F47B20]/20 selection:text-[#1F2A6B]">
+<!-- ========================================================================= -->
+<!-- LEFT SIDEBAR                                                              -->
+<!-- ========================================================================= -->
+<aside class="bg-[#1F2A6B] text-white docked h-screen w-64 flex flex-col justify-between shrink-0 border-r border-[#1F2A6B]/30 select-none z-30">
+<div class="h-full flex flex-col justify-between p-4">
+<!-- Brand Header -->
+<div class="space-y-6">
+<div class="flex items-center gap-3 px-2 pt-1 pb-2">
+<!-- Drop Lotus Sacred Brand Mark -->
+<div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-[#F47B20] text-2xl" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<div class="text-lg font-semibold tracking-wide text-white leading-tight font-display-lg">Yog Milk</div>
+<div class="text-[11px] text-white/70 tracking-wider font-body-sm">Vedic Pure Dairy Admin</div>
+</div>
+</div>
+<!-- System Destinations (12 tabs, active: Ordering schedule) -->
+<nav aria-label="Main Navigation" class="space-y-1 overflow-y-auto max-h-[calc(100vh-270px)] pr-1 custom-scroll">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="receipt_long">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="local_shipping">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="description">description</span>
+<span>Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="bar_chart">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- 10. Ordering schedule (ACTIVE) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/20 text-white font-medium transition-colors duration-150 relative" href="#">
+<span class="absolute left-0 top-2 bottom-2 w-1 bg-[#F47B20] rounded-r"></span>
+<span class="material-symbols-outlined text-lg text-[#F47B20]" data-icon="calendar_clock" style="font-variation-settings: 'FILL' 1;">calendar_clock</span>
+<span class="font-semibold text-white">Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+<span>Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer -->
+<div class="pt-4 border-t border-white/10 space-y-2">
+<a class="flex items-center justify-between px-3 py-2 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg" data-icon="vital_signs">vital_signs</span>
+<span>System Health</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-white/80 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+<span>Log out</span>
+</a>
+<!-- Support Desk -->
+<button class="w-full mt-2 py-2 px-3 bg-white/10 hover:bg-white/15 border border-white/15 rounded-xl text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="support_agent">support_agent</span>
+<span>Support Desk</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTAINER                                                  -->
+<!-- ========================================================================= -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-[#FFFCF6]">
+<!-- TOP APP BAR -->
+<header class="flex items-center justify-between px-8 py-3.5 w-full bg-white docked top-0 sticky z-20 shadow-xs border-b border-[#E5E7EB]">
+<!-- Search Area -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-lg" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-[#F9F8F3] border border-[#E5E7EB] rounded-xl text-xs text-[#1B2030] focus:outline-none focus:border-[#1F2A6B] transition-all" placeholder="Search orders, subscribers, delivery notes..." type="text"/>
+<kbd class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-semibold px-1.5 py-0.5 rounded bg-white border border-[#E5E7EB] text-gray-400">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<!-- Read-only status pill (automatic schedule indication) -->
+<span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+  Ordering Open · Closes 5:00 PM (automatic)
+</span>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded-xl text-gray-500 hover:bg-[#F9F8F3] transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#F47B20] ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-[#E5E7EB]"></div>
+<!-- User Profile -->
+<div class="flex items-center gap-3 pl-1">
+<div class="w-9 h-9 rounded-full bg-[#1F2A6B] text-white flex items-center justify-center font-semibold text-sm ring-2 ring-[#E5E7EB] shadow-xs overflow-hidden">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</div>
+<div class="text-left hidden lg:block">
+<div class="text-xs font-semibold text-[#1F2A6B] leading-tight">Vikram Mehta</div>
+<div class="text-[11px] text-gray-500">Operations Lead</div>
+</div>
+</div>
+</div>
+</header>
+<!-- ======================================================================= -->
+<!-- SCROLLABLE PAGE CANVAS                                                   -->
+<!-- ======================================================================= -->
+<main class="flex-1 overflow-y-auto px-8 py-6 space-y-6 custom-scroll">
+<!-- 1. PAGE HEADER -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-[#E5E7EB]">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<h1 class="text-2xl md:text-3xl font-display-lg font-semibold text-[#1F2A6B] tracking-tight">Ordering Schedule</h1>
+</div>
+<p class="text-sm text-gray-600 max-w-3xl">Configure weekly hours and scheduled holiday closures. Timezone: Asia/Kolkata (IST · UTC+05:30)</p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<!-- Fixed Timezone Badge -->
+<div class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white border border-[#E5E7EB] text-xs font-medium text-gray-600 shadow-xs">
+<span class="material-symbols-outlined text-base text-[#1F2A6B]" data-icon="language">language</span>
+<span>Asia/Kolkata (UTC+05:30) · System Clock Synced</span>
+</div>
+<!-- Primary Save Action CTA -->
+<button class="px-5 py-2.5 rounded-xl bg-[#1F2A6B] text-white hover:bg-[#1F2A6B]/90 transition-all text-xs font-semibold shadow-xs flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-base" data-icon="save">save</span>
+<span>Save Schedule Changes</span>
+</button>
+</div>
+</div>
+<!-- 2. STOREFRONT CUTOFF HEADER BANNER & NEXT OPENING PREVIEW -->
+<section class="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-xs space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+<div class="md:col-span-4">
+<label class="block text-sm font-semibold text-[#1F2A6B]">Storefront Cutoff Header Banner</label>
+<span class="text-xs text-gray-500">Live banner microcopy displayed across customer portal &amp; mobile app</span>
+</div>
+<div class="md:col-span-8">
+<div class="relative">
+<input class="w-full h-11 px-4 pr-28 rounded-xl border border-[#E5E7EB] bg-[#F9F8F3] text-[#1B2030] text-sm focus:border-[#1F2A6B] focus:ring-1 focus:ring-[#1F2A6B] focus:outline-none" type="text" value="Ordering open · closes today 5:00 PM"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] font-bold uppercase tracking-wider px-2 py-1 bg-white text-gray-600 rounded border border-[#E5E7EB]">Live Preview</span>
+</div>
+</div>
+</div>
+<!-- Next-opening message preview -->
+<div class="pt-3 border-t border-[#E5E7EB] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+<div class="flex items-center gap-2 text-gray-600">
+<span class="material-symbols-outlined text-[#F47B20] text-base" data-icon="schedule">schedule</span>
+<span class="font-medium text-[#1B2030]">Next Opening Notice Preview:</span>
+<span class="italic text-gray-500">“Ordering closed for today. Store re-opens tomorrow at 07:00 AM for fresh Vedic dispatch.”</span>
+</div>
+<span class="text-[11px] text-gray-400 font-medium">Auto-switches at 05:00 PM</span>
+</div>
+</section>
+<!-- 3. WEEKLY OPERATIONAL HOURS GRID -->
+<section class="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-xs space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-lg font-semibold text-[#1F2A6B] font-display-lg">Weekly Ordering Schedule</h2>
+<p class="text-xs text-gray-500 mt-0.5">Defines weekly storefront open windows, daily cutoff thresholds, and dispatch delivery notes.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-[#E5E7EB] hover:bg-[#F9F8F3] text-xs font-semibold text-[#1B2030] transition-colors">
+  Apply to All Weekdays
+</button>
+<button class="px-3 py-1.5 rounded-lg border border-[#E5E7EB] hover:bg-[#F9F8F3] text-xs font-semibold text-[#1B2030] transition-colors">
+  Restore Standard Vedic Dairy Hours
+</button>
+</div>
+</div>
+<!-- Tabular Grid -->
+<div class="overflow-x-auto rounded-xl border border-[#E5E7EB]">
+<table class="w-full text-left border-collapse text-xs">
+<thead>
+<tr class="bg-[#F9F8F3] font-semibold text-gray-600 border-b border-[#E5E7EB]">
+<th class="py-3 px-4">Day of Week</th>
+<th class="py-3 px-4">Storefront Open</th>
+<th class="py-3 px-4">Cutoff / Gate Close</th>
+<th class="py-3 px-4">Delivery Notes</th>
+<th class="py-3 px-4 text-center">Day Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5E7EB] text-sm">
+<!-- Monday -->
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Monday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-semibold text-[#1F2A6B]">05:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Morning batch dispatched next day 05:30 AM</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+<!-- Tuesday -->
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Tuesday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-semibold text-[#1F2A6B]">05:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Standard farm milk cooling cycle</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+<!-- Wednesday -->
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Wednesday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-semibold text-[#1F2A6B]">05:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Mid-week pure ghee and butter dispatch</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+<!-- Thursday -->
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Thursday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-semibold text-[#1F2A6B]">05:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Standard morning dairy route</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+<!-- Friday -->
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Friday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-semibold text-[#1F2A6B]">05:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Weekend subscriber batch pre-allocated</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+<!-- Saturday -->
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Saturday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-semibold text-[#1F2A6B]">05:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Full weekend residential deliveries</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+<!-- Sunday (Special Early Cutoff) -->
+<tr class="bg-[#FFFDF9] hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B] flex items-center gap-2">
+<span>Sunday</span>
+<span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-[#F47B20]/15 text-[#F47B20] border border-[#F47B20]/30">Special Cutoff</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-white border border-[#E5E7EB] text-xs font-medium text-[#1B2030]">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-[#F47B20]/10 border border-[#F47B20]/40 text-xs font-bold text-[#F47B20]">01:00 PM</span>
+</td>
+<td class="py-3.5 px-4 text-xs text-gray-500">Early afternoon cutoff for Monday morning dispatch</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">Open</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 4. TWO-COLUMN BENTO: HOLIDAY CALENDAR + BROADCAST GATE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- 4A. SCHEDULED HOLIDAY & EXCEPTION CLOSURES (7 Cols) -->
+<section class="lg:col-span-7 bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-xs space-y-5">
+<div class="flex items-center justify-between pb-4 border-b border-[#E5E7EB]">
+<div>
+<h2 class="text-lg font-semibold text-[#1F2A6B] font-display-lg">Scheduled Holiday &amp; Exception Closures</h2>
+<p class="text-xs text-gray-500 mt-0.5">Planned future dates when storefront ordering is closed.</p>
+</div>
+<!-- Add Holiday Closure Modal Trigger -->
+<button class="px-3.5 py-2 rounded-xl bg-[#F9F8F3] hover:bg-[#E5E7EB]/50 text-[#1F2A6B] font-semibold text-xs border border-[#E5E7EB] flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-base text-[#F47B20]" data-icon="add">add</span>
+<span>Add Holiday Closure</span>
+</button>
+</div>
+<div class="overflow-x-auto rounded-xl border border-[#E5E7EB]">
+<table class="w-full text-left border-collapse text-xs">
+<thead>
+<tr class="bg-[#F9F8F3] font-semibold text-gray-600 border-b border-[#E5E7EB]">
+<th class="py-3 px-4">Date</th>
+<th class="py-3 px-4">Occasion / Scheduled Closure Reason</th>
+<th class="py-3 px-4 text-center">Storefront Status</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E5E7EB]">
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Nov 1, 2026</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-[#1B2030] text-sm">Diwali</div>
+<span class="text-gray-500">Gaushala Annual Worship &amp; Special Festival</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">Closed</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-gray-400 hover:text-gray-600 p-1" title="Edit"><span class="material-symbols-outlined text-base" data-icon="edit">edit</span></button>
+</td>
+</tr>
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Mar 25, 2026</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-[#1B2030] text-sm">Holi</div>
+<span class="text-gray-500">Spring Holy Festival Closure</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">Closed</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-gray-400 hover:text-gray-600 p-1" title="Edit"><span class="material-symbols-outlined text-base" data-icon="edit">edit</span></button>
+</td>
+</tr>
+<tr class="hover:bg-[#FFFCF6] transition-colors">
+<td class="py-3.5 px-4 font-semibold text-[#1F2A6B]">Aug 15, 2026</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-[#1B2030] text-sm">Independence Day Dairy Overhaul</div>
+<span class="text-gray-500">Scheduled Logistical Equipment Sanitization</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-50 text-rose-700 border border-rose-200">Closed</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<button class="text-gray-400 hover:text-gray-600 p-1" title="Edit"><span class="material-symbols-outlined text-base" data-icon="edit">edit</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 4B. CUSTOMER BROADCAST & ALERTS (5 Cols) -->
+<section class="lg:col-span-5 bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-xs space-y-5">
+<div class="pb-3 border-b border-[#E5E7EB]">
+<h2 class="text-lg font-semibold text-[#1F2A6B] font-display-lg">Customer Notifications</h2>
+<p class="text-xs text-gray-500 mt-0.5">Broadcast schedule updates to subscribed customer accounts.</p>
+</div>
+<div class="space-y-4">
+<!-- Checkbox: 'Notify customers who enabled ordering alerts' on save -->
+<label class="flex items-start gap-3 p-3.5 rounded-xl border border-[#E5E7EB] bg-[#F9F8F3] cursor-pointer select-none hover:bg-white transition-colors">
+<input checked="" class="mt-1 w-4 h-4 text-[#1F2A6B] rounded border-[#E5E7EB] focus:ring-[#1F2A6B]" type="checkbox"/>
+<div>
+<span class="font-semibold text-sm text-[#1F2A6B] block leading-tight">Notify customers who enabled ordering alerts</span>
+<span class="text-xs text-gray-500 mt-1 block">Send push notification and banner update upon saving schedule changes.</span>
+</div>
+</label>
+<div class="p-3.5 rounded-xl bg-[#F9F8F3] border border-[#E5E7EB] space-y-1.5">
+<span class="text-[10px] font-bold text-gray-500 uppercase tracking-wider block">Notification Broadcast Preview</span>
+<div class="flex items-center gap-2 text-xs text-[#1F2A6B]">
+<span class="material-symbols-outlined text-base text-[#F47B20]" data-icon="notifications">notifications</span>
+<span class="italic text-gray-700">“Ordering schedule updated: Check revised cutoff times for your area.”</span>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full py-2.5 px-4 rounded-xl bg-[#1F2A6B] text-white hover:bg-[#1F2A6B]/90 transition-all text-xs font-semibold shadow-xs flex items-center justify-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-base" data-icon="save">save</span>
+<span>Save Schedule Changes</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- 5. RECENT SCHEDULE AUDIT HISTORY PANEL (ONLY STANDARD EDITS / ADDITIONS) -->
+<section class="bg-white rounded-2xl border border-[#E5E7EB] p-6 shadow-xs space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-[#E5E7EB]">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl text-[#1F2A6B]" data-icon="history">history</span>
+<h2 class="text-lg font-semibold text-[#1F2A6B] font-display-lg">Recent Operational Schedule Audit History</h2>
+</div>
+<span class="text-xs text-gray-500">Audit trail of cutoff modifications and scheduled closures</span>
+</div>
+<div class="divide-y divide-[#E5E7EB]">
+<!-- Audit Entry 1: Schedule edited -->
+<div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#1F2A6B]/10 text-[#1F2A6B] flex items-center justify-center font-bold text-xs shrink-0">
+  VM
+</div>
+<div>
+<span class="font-semibold text-sm text-[#1F2A6B]">Schedule edited:</span>
+<span class="text-gray-600 text-xs">Vikram Mehta (Ops Lead) adjusted Wednesday cutoff from 04:30 PM to 05:00 PM</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-gray-400 shrink-0">
+<span class="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-[11px] font-medium text-emerald-700">Notification sent</span>
+<span>27 Oct 2026, 09:15 AM</span>
+</div>
+</div>
+<!-- Audit Entry 2: Holiday closure added -->
+<div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#F47B20]/15 text-[#F47B20] flex items-center justify-center font-bold text-xs shrink-0">
+  AP
+</div>
+<div>
+<span class="font-semibold text-sm text-[#1F2A6B]">Holiday closure added:</span>
+<span class="text-gray-600 text-xs">Anand Patil (Admin) scheduled Diwali gaushala holiday closure for Nov 1, 2026</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-gray-400 shrink-0">
+<span class="px-2 py-0.5 rounded bg-[#F9F8F3] border border-[#E5E7EB] text-[11px] font-medium text-gray-600">Holiday added</span>
+<span>25 Oct 2026, 02:40 PM</span>
+</div>
+</div>
+<!-- Audit Entry 3: Schedule edited -->
+<div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-[#1F2A6B]/10 text-[#1F2A6B] flex items-center justify-center font-bold text-xs shrink-0">
+  VM
+</div>
+<div>
+<span class="font-semibold text-sm text-[#1F2A6B]">Schedule edited:</span>
+<span class="text-gray-600 text-xs">Vikram Mehta (Ops Lead) updated Sunday cutoff to 01:00 PM for Vedic weekend dispatch</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-gray-400 shrink-0">
+<span class="px-2 py-0.5 rounded bg-[#F9F8F3] border border-[#E5E7EB] text-[11px] font-medium text-gray-600">Schedule edited</span>
+<span>21 Oct 2026, 11:18 AM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Spacer -->
+<div class="h-6"></div>
+</main>
+</div>
+</body></html>

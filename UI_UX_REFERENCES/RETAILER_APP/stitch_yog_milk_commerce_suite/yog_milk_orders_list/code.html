@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Your Orders</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "on-background": "#161b2b",
+            "background": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "tertiary-fixed-dim": "#edc15a",
+            "inverse-on-surface": "#eef0ff",
+            "tertiary": "#261a00",
+            "outline-variant": "#c6c5d2",
+            "inverse-primary": "#bbc3ff",
+            "on-tertiary-fixed": "#251a00",
+            "secondary-fixed": "#ffdbc8",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "primary": "#051256",
+            "on-tertiary-container": "#ba9331",
+            "on-surface-variant": "#454650",
+            "surface-dim": "#d5d9ef",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "on-primary-fixed-variant": "#374183",
+            "surface-container": "#eaedff",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface": "#faf8ff",
+            "surface-container-highest": "#dde1f8",
+            "on-primary-fixed": "#051256",
+            "on-secondary": "#ffffff",
+            "on-surface": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "inverse-surface": "#2b3041",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#8994db",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#ffdf9c",
+            "outline": "#767681",
+            "surface-variant": "#dde1f8",
+            "secondary-container": "#fc8127",
+            "on-secondary-fixed": "#321200",
+            "primary-container": "#1f2a6b",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "tertiary-container": "#3f2e00",
+            "secondary": "#994700",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-secondary-fixed-variant": "#753400",
+            "primary-fixed": "#dee0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "3rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Container (390 x 844) -->
+<main class="w-full max-w-[390px] min-h-screen bg-surface-bright flex flex-col relative pb-24 shadow-2xl">
+<!-- Top App Bar (Shared Components Json Anchor Execution) -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-2">
+<button aria-label="Brand Icon" class="w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">spa</span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-semibold tracking-wide text-primary">Yog Milk</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal leading-none">Fresh Dairy &amp; Pure Essentials</span>
+</div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Notifications" class="w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">notifications_none</span>
+</button>
+<button aria-label="Cart" class="w-9 h-9 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95 relative" type="button">
+<span class="material-symbols-outlined text-[22px]">shopping_bag</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-secondary-container"></span>
+</button>
+</div>
+</header>
+<!-- Page Title & Sacred Header Accents -->
+<section class="px-4 pt-3 pb-2">
+<div class="flex items-center justify-between">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-primary tracking-tight">Your Orders</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Batches dispatched fresh daily</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+</div>
+<!-- Search Input Filter -->
+<div class="mt-3.5 relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-11 pl-10 pr-10 bg-surface-container-lowest border border-outline-variant/50 rounded-xl text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-2 focus:ring-primary/10 transition-all shadow-sm" placeholder="Search by Order Code (e.g. YM-2026-...)" type="text">
+<button aria-label="Filter options" class="absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary p-0.5" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+<!-- Horizontal Segment Filter Tabs -->
+<nav aria-label="Order Status Filter" class="flex items-center gap-2 mt-3.5 overflow-x-auto pb-1 no-scrollbar">
+<!-- Active Tab: Brand Navy Selected -->
+<button class="h-9 px-4 rounded-full bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center gap-1.5 shadow-sm shrink-0 active:scale-95 transition-transform" type="button">
+<span class="">Active</span>
+<span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-on-primary/20 text-on-primary text-[11px] font-bold">2</span>
+</button>
+<!-- Delivered Tab -->
+<button class="h-9 px-4 rounded-full bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant font-label-md text-label-md font-semibold flex items-center gap-1.5 shrink-0 hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="">Delivered</span>
+<span class="inline-flex items-center justify-center px-1.5 h-4 rounded-full bg-surface-container-high text-on-surface-variant text-[11px]">14</span>
+</button>
+<!-- Cancelled Tab -->
+<button class="h-9 px-4 rounded-full bg-surface-container-lowest border border-outline-variant/60 text-on-surface-variant font-label-md text-label-md font-semibold flex items-center gap-1.5 shrink-0 hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="">Cancelled</span>
+<span class="inline-flex items-center justify-center px-1.5 h-4 rounded-full bg-surface-container-high text-on-surface-variant text-[11px]">1</span>
+</button>
+</nav>
+</section>
+<!-- Orders Stream Content -->
+<div class="px-4 py-2 space-y-4">
+<!-- ================= ORDER CARD 1: ACTIVE (Today, 4:15 PM) ================= -->
+<article class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/40 shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+<!-- Subtle Vedic top bar indicator -->
+
+<!-- Header: Order Code & Time -->
+<div class="flex items-start justify-between pb-3 border-b border-surface-container">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-bold text-primary tracking-tight">YM-2026-000124</span>
+<button class="text-on-surface-variant hover:text-primary active:scale-90 transition-transform" title="Copy Order Code" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Placed Today, 4:15 PM
+            </p>
+</div>
+
+</div>
+<!-- 3 DISTINCT STATUS CHIPS: Strictly Separate -->
+<div class="pt-3 pb-2">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1.5">Consignment Status</p>
+<div class="flex flex-wrap items-center gap-1.5">
+<!-- 1. Order Chip: Soft-filled pill (blue/indigo soft fill) -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><span class="">Placed</span></div>
+<!-- 2. Payment Chip: Outlined pill with ₹ icon (Amber outline, distinct from saffron) -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-amber-500/80 bg-amber-50/50 text-amber-800 font-label-sm text-label-sm font-semibold">
+<span class="font-bold text-[11px]">₹</span>
+<span class="">Pending</span>
+</div>
+<!-- 3. Delivery Chip: Soft pill with truck icon (slate/gray soft fill) -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-100 text-slate-600 font-label-sm text-label-sm font-semibold"><span class="text-[12px]">🚚</span><span class="">Not assigned</span></div>
+</div>
+</div>
+<!-- 3 Product Thumbnails in a Row with Quantities -->
+<div class="py-2.5 border-y border-surface-container">
+<div class="grid grid-cols-3 gap-2">
+<!-- Thumb 1: Gir Cow Milk -->
+<div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-low border border-outline-variant/30"><div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden shadow-xs flex items-center justify-center relative"><img class="w-full h-full object-cover" data-alt="Full cream pasteurized milk in packaging" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChYbkfoyUFcnjSjeynULDs6b_J3wVaXSg_OUcjwvSpXwyH6CQwIsmZyhn9iPFQGzPihv8FphkI7Sq_JlaoQG3GelH2KW6C-IK_nE7Me_puxYkPetMRzvEZNy25x2ubkXsUe63gS9rsnNITwCnq4XNM1GH_Vsh4TxzurLPKrywtB-qzTcBvWzXRzo5elqsp_plv94QakQSq1i0zLMbFx4HC5U-z-JL7swvlWxMj_g"><span class="absolute bottom-0 right-0 bg-primary text-on-primary text-[10px] font-bold px-1 rounded-tl-md">×20</span></div><span class="font-label-sm text-label-sm text-on-surface font-semibold text-center mt-1.5 line-clamp-1">Full Cream Milk</span><span class="font-body-sm text-[10px] text-on-surface-variant">500 ml · pack of 20</span></div>
+<!-- Thumb 2: Cultured Ghee -->
+<div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-low border border-outline-variant/30"><div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden shadow-xs flex items-center justify-center relative"><img class="w-full h-full object-cover" data-alt="Pure ghee jar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDglmt7HjRZUIkXiyx9iTSA5jKpdEEfXsHedN7LDb8Yp57IHani4x5xWN39jnTjfjilzwPyeoJTdrgXQJdDjfyFHTP6PF0IEoUn7j67JOfl-Yjpem0hGWXsgFT1JCnPj_gIK-mfVXV_wu_mFxyLuEF0uGh1D90GqJ1BGgFx2Bkpd52B6aLImkuCHJ6WtM2zms_fmUL1523nUI4868mWjtj5UayRk08kYOreeKY3Q"><span class="absolute bottom-0 right-0 bg-primary text-on-primary text-[10px] font-bold px-1 rounded-tl-md">×2</span></div><span class="font-label-sm text-label-sm text-on-surface font-semibold text-center mt-1.5 line-clamp-1">Pure Ghee</span><span class="font-body-sm text-[10px] text-on-surface-variant">1 L · Jar</span></div>
+<!-- Thumb 3: Fresh Dahi -->
+<div class="flex flex-col items-center p-2 rounded-xl bg-surface-container-low border border-outline-variant/30"><div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden shadow-xs flex items-center justify-center relative"><img class="w-full h-full object-cover" data-alt="Fresh Dahi curd container" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjg83pIvXyJvCQZpIuon2iyngnT1Ij1YAQN5sUdy6_Wyo1tn8b643jCxBVprmW-gody-artWA-OZ5ZEOwu0u3drsMkftZOdO9r8JpDHZKtCprY4DFL73-ax1avxfINWD4uqW6TzV8Vu4J-7Ijb-eEspRd1OOPwG-fE3GtPbFFrC4iwTcAcTiNOC-JgNbYrUaBxCb0fmnoarE3axNrvvBULZkEmCIhzVDFAOjmkSw"><span class="absolute bottom-0 right-0 bg-primary text-on-primary text-[10px] font-bold px-1 rounded-tl-md">×24</span></div><span class="font-label-sm text-label-sm text-on-surface font-semibold text-center mt-1.5 line-clamp-1">Fresh Dahi</span><span class="font-body-sm text-[10px] text-on-surface-variant">400 g · pack of 24</span></div>
+</div>
+</div>
+<!-- Summary & Actions -->
+<div class="pt-3 flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">3 items · 64 units</span>
+<div class="font-title-lg text-title-lg font-bold text-primary tabular-nums">₹4,260</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-3 font-label-md text-label-md text-primary font-semibold hover:bg-surface-container rounded-xl transition-colors" type="button">
+              View Details
+            </button>
+<button class="h-10 px-4 rounded-xl bg-secondary-container text-on-secondary font-label-md text-label-md font-semibold shadow-xs hover:opacity-95 active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">location_searching</span>
+<span class="">Track Order</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= ORDER CARD 2: ACTIVE (Yesterday, 3:30 PM) ================= -->
+<article class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/40 shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+<!-- Header: Order Code & Time -->
+<div class="flex items-start justify-between pb-3 border-b border-surface-container">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-bold text-primary tracking-tight">YM-2026-000122</span>
+<button class="text-on-surface-variant hover:text-primary active:scale-90 transition-transform" title="Copy Order Code" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">history</span> Placed Yesterday, 3:30 PM
+            </p>
+</div>
+
+</div>
+<!-- 3 DISTINCT STATUS CHIPS: Strictly Separate -->
+<div class="pt-3 pb-2">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1.5">Consignment Status</p>
+<div class="flex flex-wrap items-center gap-1.5">
+<!-- 1. Order Chip: Soft blue fill -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-sky-100 text-sky-800 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px] animate-spin">sync</span>
+<span class="">Preparing</span>
+</div>
+<!-- 2. Payment Chip: Soft green outline, green text -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-emerald-400 bg-emerald-50/60 text-emerald-700 font-label-sm text-label-sm font-semibold"><span class="font-bold text-[11px]">₹</span><span class="">Paid</span></div>
+<!-- 3. Delivery Chip: Soft indigo pill -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed text-primary font-label-sm text-label-sm font-semibold">
+<span class="text-[12px]">🚚</span>
+<span class="">Assigned</span>
+</div>
+</div>
+</div>
+<!-- 2 Product Thumbnails: Toned Milk 1L (x12), Malai Paneer 1kg (x2) -->
+<div class="py-2.5 border-y border-surface-container">
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Thumb 1: Toned Milk 1L -->
+<div class="flex items-center gap-3 p-2 rounded-xl bg-surface-container-low border border-outline-variant/30">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden shadow-xs shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Cold pressed light pasteurized natural milk in glass bottles resting next to fresh organic green pasture herbs bathed in soft morning sun with clean editorial Indian dairy styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPpkxBTBfCWFcKOdoXYDewt1EAw_gyyO7MgRdfFc2YwP0Mlq2Ap-6RI4MXwzV3c0Y3iSJG5f7redtawsDTjiU4IyuzYZfgcPHtX79q19w6T0xDzcn72GzHdseMD9w3xzB7XnUkxw9gQ0-UA0vQFYac8njylrSR1-L3CNeoNCLJTPQHAOVE3e3gqxjKARYCCLRtO-z-e_RVu6-awk7zl1cJ3G4VqnHOaGHlJ93nrA">
+<span class="absolute bottom-0 right-0 bg-primary text-on-primary text-[10px] font-bold px-1 rounded-tl-md">×12</span>
+</div>
+<div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Toned Milk 1 L</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">pack of 12</span></div>
+</div>
+<!-- Thumb 2: Malai Paneer 1kg -->
+<div class="flex items-center gap-3 p-2 rounded-xl bg-surface-container-low border border-outline-variant/30">
+<div class="w-12 h-12 rounded-lg bg-surface-container-lowest overflow-hidden shadow-xs shrink-0 relative">
+<img class="w-full h-full object-cover" data-alt="Freshly pressed velvety block of malai paneer cottage cheese placed on banana leaf plate with knife cut texture detail in a bright warm serene kitchen atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHo_Cv9ZjVHfOJ2NZF1xEwGBZaLJw8Qx_8-nK4-vMpH8LlXCa8mdckytPsbL_y0g8kaJGDOuZD_HeLw0Czi8i1EL2WPrRbrV_hobia87p7eUV7FQzD0Of6fKjEwsFxogClmcbm5fvkwbcm7Me_JPQzc4rII4pHJ48mX_Wuh0LtDPEqQs5IdHB1UrUL_oRaSEeOV6qmaKxFDuhh8h1gl6Bm9lBWChK9Y1kn-jlF3g">
+<span class="absolute bottom-0 right-0 bg-primary text-on-primary text-[10px] font-bold px-1 rounded-tl-md">×2</span>
+</div>
+<div class="flex flex-col min-w-0"><span class="font-label-md text-label-md text-on-surface font-semibold truncate">Paneer 1 kg</span><span class="font-body-sm text-body-sm text-on-surface-variant truncate">Fresh pack (×2)</span></div>
+</div>
+</div>
+</div>
+<!-- Summary & Actions -->
+<div class="pt-3 flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2 items · 14 units</span>
+<div class="font-title-lg text-title-lg font-bold text-primary tabular-nums">₹3,450</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-10 px-3 font-label-md text-label-md text-primary font-semibold hover:bg-surface-container rounded-xl transition-colors" type="button">
+              View Details
+            </button>
+<button class="h-10 px-4 rounded-xl bg-secondary-container text-on-secondary font-label-md text-label-md font-semibold shadow-xs hover:opacity-95 active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+<span class="">Track Order</span>
+</button>
+</div>
+</div>
+</article>
+<!-- ================= ORDER CARD 3: DELIVERED PREVIEW CARD ================= -->
+<article class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/40 shadow-sm relative overflow-hidden transition-all hover:shadow-md">
+<!-- Header: Order Code & Delivery Timestamp -->
+<div class="flex items-start justify-between pb-3 border-b border-surface-container">
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md font-bold text-primary tracking-tight">YM-2026-000118</span>
+<button class="text-on-surface-variant hover:text-primary active:scale-90 transition-transform" title="Copy Order Code" type="button">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-emerald-800 font-medium flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+              Delivered 29 Oct 2026, 06:10 AM
+            </p>
+</div>
+
+</div>
+<!-- 3 DISTINCT STATUS CHIPS: Strictly Separate -->
+<div class="pt-3 pb-2">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1.5">Completion Badges</p>
+<div class="flex flex-wrap items-center gap-1.5">
+<!-- 1. Order Chip: Delivered (soft green) -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">check</span>
+<span class="">Delivered</span>
+</div>
+<!-- 2. Payment Chip: ₹ Paid (COD) -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-800 font-label-sm text-label-sm font-semibold"><span class="font-bold text-[11px]">₹</span><span class="">Paid</span></div>
+<!-- 3. Delivery Chip: 🚚 Delivered -->
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold">
+<span class="text-[12px]">🚚</span>
+<span class="">Delivered</span>
+</div>
+</div>
+</div>
+<!-- Item summary & invoice link -->
+<div class="py-2.5 border-y border-surface-container flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface font-semibold">Doorstep drop verified</p>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Signature authenticated by Dawn Courier</p>
+</div>
+</div>
+<button class="inline-flex items-center gap-1 font-label-md text-label-md font-semibold text-primary hover:underline" type="button">
+<span class="material-symbols-outlined text-[16px]">receipt</span>
+<span class="">View Invoice</span>
+</button>
+</div>
+<!-- Summary & Actions with Primary 1-Tap Reorder -->
+<div class="pt-3 flex items-center justify-between">
+<div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">2 items</span>
+<div class="font-title-lg text-title-lg font-bold text-primary tabular-nums">₹1,480</div>
+</div>
+<button class="h-11 px-5 rounded-[14px] bg-primary text-on-primary font-label-md text-label-md font-semibold shadow-md hover:bg-primary-container active:scale-95 transition-all flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="">Reorder in 1-Tap</span>
+</button>
+</div>
+</article>
+<!-- Sacred Vedic Assurance Capsule -->
+
+</div>
+<!-- Bottom Navigation Bar (Mandatory Shell - EXACT Shared Component Mapping) -->
+<!-- Screen intent is 'Orders', so Orders tab is ACTIVE with exact classes from JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface/95 dark:bg-surface-container-lowest/95 backdrop-blur-md shadow-lg">
+<!-- 1. Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-normal px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Home</span>
+</a>
+<!-- 2. Shop (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-normal px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150 active:scale-95" href="#shop">
+<span class="material-symbols-outlined text-[22px]">storefront</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Shop</span>
+</a>
+<!-- 3. Orders (ACTIVE: Semantic match to Orders screen) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold bg-surface-container-high dark:bg-primary-container/40 rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#orders">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Orders</span>
+</a>
+<!-- 4. Account (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-normal px-4 py-1 hover:text-primary dark:hover:text-primary-fixed transition-colors duration-150 active:scale-95" href="#account">
+<span class="material-symbols-outlined text-[22px]">person</span>
+<span class="text-label-sm font-label-sm font-semibold mt-0.5">Account</span>
+</a>
+</nav>
+</main>
+<style>
+    /* Utility to hide standard scrollbar in tab ribbon */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+
+
+</body></html>

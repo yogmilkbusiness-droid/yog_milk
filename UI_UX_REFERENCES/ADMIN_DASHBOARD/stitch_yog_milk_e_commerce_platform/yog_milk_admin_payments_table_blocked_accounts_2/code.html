@@ -1,0 +1,1073 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Admin Payments &amp; Collections Table</title>
+<!-- Material Symbols & Typography -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CDN & Config Plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed": "#0e1647",
+            "surface-container-high": "#ebe8e2",
+            "surface-container-low": "#f6f3ed",
+            "on-tertiary-fixed-variant": "#753400",
+            "on-secondary-container": "#394485",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-tint": "#535b8e",
+            "primary-fixed-dim": "#bcc3fd",
+            "primary": "#000533",
+            "on-secondary-fixed-variant": "#374183",
+            "on-secondary-fixed": "#051256",
+            "on-primary-fixed-variant": "#3b4375",
+            "surface": "#fcf9f3",
+            "on-tertiary": "#ffffff",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary-container": "#7e86bc",
+            "primary-fixed": "#dee0ff",
+            "error-container": "#ffdad6",
+            "tertiary-fixed": "#ffdbc8",
+            "surface-bright": "#fcf9f3",
+            "on-background": "#1c1c18",
+            "secondary": "#4f599c",
+            "inverse-on-surface": "#f3f0eb",
+            "surface-container": "#f0eee8",
+            "outline": "#767680",
+            "outline-variant": "#c7c5d0",
+            "secondary-fixed-dim": "#bbc3ff",
+            "on-tertiary-container": "#db6805",
+            "secondary-container": "#a9b4fe",
+            "tertiary": "#190600",
+            "primary-container": "#151d4d",
+            "inverse-surface": "#31312d",
+            "on-error-container": "#93000a",
+            "on-primary": "#ffffff",
+            "surface-variant": "#e5e2dc",
+            "on-error": "#ffffff",
+            "on-surface": "#1c1c18",
+            "background": "#fcf9f3",
+            "surface-dim": "#dcdad4",
+            "tertiary-fixed-dim": "#ffb68b",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-container": "#3c1700",
+            "secondary-fixed": "#dee0ff",
+            "inverse-primary": "#bcc3fd",
+            "on-surface-variant": "#46464f",
+            "on-tertiary-fixed": "#321200"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.25rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "display-lg-mobile": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "display-lg": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #fcf9f3;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #e5e2dc;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #c7c5d0;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md text-body-md antialiased min-h-screen flex selection:bg-secondary-container selection:text-primary-container">
+<!-- ============================================================== -->
+<!-- LEFT SIDEBAR: SHARED COMPONENT 'SideNavBar'                     -->
+<!-- ============================================================== -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary-container border-r border-outline-variant/30 sticky top-0 z-30 select-none">
+<div class="h-full flex flex-col justify-between p-4">
+<!-- Brand & Header -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2 py-1.5">
+<div class="w-10 h-10 rounded-xl bg-surface/10 border border-surface/20 flex items-center justify-center text-surface shadow-sm">
+<span class="material-symbols-outlined text-surface" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface">Yog Milk</span>
+<span class="text-label-sm font-label-sm text-surface-variant/80 font-normal">Vedic Pure Dairy Admin</span>
+</div>
+</div>
+<!-- Navigation Tabs (12 Tabs from JSON, 'Payments' Active) -->
+<nav class="flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-270px)] custom-scroll pr-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span class="">Orders</span>
+</a>
+<!-- 3. Payments (ACTIVE TAB) -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md border-l-4 border-on-tertiary-container shadow-sm transition-all duration-200 active:scale-[0.99]" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg text-on-tertiary-container" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-surface font-semibold tracking-wide">Payments</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-on-tertiary-container text-on-tertiary text-label-sm font-label-sm font-bold shadow-sm">4 COD</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span class="">Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="">Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<span class="">Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span class="">Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">bar_chart</span>
+<span class="">Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span class="">Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">calendar_clock</span>
+<span class="">Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">history</span>
+<span class="">Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Actions & Desk Support -->
+<div class="flex flex-col gap-2 pt-3 border-t border-surface/15">
+<button class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-surface/10 hover:bg-surface/20 text-surface text-label-md font-label-md transition-colors duration-150">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span class="">Support Desk</span>
+</button>
+<div class="flex items-center justify-between px-1 pt-1 text-surface-variant/70 text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 hover:text-surface cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm text-green-400">vital_signs</span>
+<span class="">System Health</span>
+</div>
+<button class="flex items-center gap-1 hover:text-surface transition-colors">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span class="">Log out</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- ============================================================== -->
+<!-- MAIN WORKSPACE CONTAINER                                       -->
+<!-- ============================================================== -->
+<div class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- ============================================================ -->
+<!-- TOP APP BAR: SHARED COMPONENT 'TopNavBar'                    -->
+<!-- ============================================================ -->
+<header class="docked full-width top-0 sticky z-40 bg-surface-container-lowest border-b border-surface-variant shadow-sm flex items-center justify-between px-6 py-3.5 w-full">
+<!-- Search Bar on Left -->
+<div class="flex items-center gap-4 flex-1 max-w-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-all" placeholder="Search by reference, order code (YM-2026-...), customer..." type="text">
+</div>
+</div>
+<!-- Right Action Trailing Cluster -->
+<div class="flex items-center gap-3">
+<!-- Status Pill -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-surface-container-highest text-primary font-label-md text-label-md">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="">Ordering Open · Closes 5:00 PM</span>
+</div>
+<!-- Emergency Freeze Button -->
+
+<div class="h-6 w-px bg-surface-container-highest"></div>
+<!-- Notification Bell (6) -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-on-tertiary-container text-on-tertiary text-[10px] font-bold flex items-center justify-center">6</span>
+</button>
+<!-- Admin Profile -->
+<div class="flex items-center gap-3 pl-2">
+<img class="w-9 h-9 rounded-full object-cover border border-surface-container-highest shadow-sm" data-alt="A dignified corporate portrait of Vikram Mehta, a seasoned Indian dairy supply-chain operations director in his late forties wearing a crisp navy collared tunic, captured in bright early dawn light against a clean rustic stainless dairy facility background, radiating calm vigilance and pristine authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJyptnHnfWPEkwflP-n794h0xAy_DHRTAjjI36yioSZS1kGheTreCMqPWq9wfJ6bxhjinYC7yf3H0fT4YskgbWkD6zyFsisZSG6Rb6OaJU2R_E9bjzjSDKwSzT25KSkLIdpYHzkQaOKyS2RhIwBFdW7HmjMOCC5wHxcZo66CvuQ4Knxj_cJnDNRqaSzHZQQ_Y36VGeM1TABzGOxXdb6zWjQi-SPiMISyIhid3quw">
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-label-md font-label-md text-on-surface font-semibold leading-tight">Vikram Mehta</span>
+<span class="text-label-sm font-label-sm text-outline font-normal">Nashik Hub Lead</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">expand_more</span>
+</div>
+</div>
+</header>
+<!-- ============================================================ -->
+<!-- MAIN CONTENT VIEW CANVAS (1440px desktop optimized)          -->
+<!-- ============================================================ -->
+<main class="flex-1 p-6 md:p-8 space-y-6 max-w-[1440px] mx-auto w-full">
+<!-- Breadcrumbs & Page Header Section -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2 border-b border-surface-container-highest/60">
+<div>
+<nav class="flex items-center gap-2 text-label-sm font-label-sm text-outline mb-1">
+<span class="">Operations Console</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Payments &amp; Settlements</span>
+</nav>
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">Payments &amp; Reconciliation</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-0.5">Track incoming online settlements, cash handovers, and payment pending policy enforcement.</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-surface-container-highest bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-md font-label-md shadow-sm transition-colors">
+<span class="material-symbols-outlined text-base">download</span>
+<span class="">Export Ledger (CSV)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-secondary-container/40 bg-surface-container-lowest text-primary hover:bg-secondary-container/10 text-label-md font-label-md shadow-sm transition-colors">
+<span class="material-symbols-outlined text-base">sync_alt</span>
+<span class="">Reconcile Razorpay Batch</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary-container/90 text-label-md font-label-md shadow-md transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base text-tertiary-fixed">add_card</span>
+<span class="">+ Record Offline / Cash Payment</span>
+</button>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- TOP SUMMARY KPI STRIP (Bento Grid Style)                      -->
+<!-- ============================================================ -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Pending COD Collections (Featured Warm Amber Alert) -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border-2 border-amber-300/80 shadow-[0_4px_20px_-2px_rgba(21,29,77,0.06)] flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-3 -top-3 w-16 h-16 bg-amber-100 rounded-full blur-xl opacity-60 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-amber-900 font-semibold tracking-wide">Pending COD Collections</span>
+<span class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-800">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">payments</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg text-primary font-bold">₹37,810</span>
+<span class="text-label-sm font-label-sm text-outline font-medium">18 morning van runs</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1.5 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+<span class="">Route 4 Nashik East: ₹14,200 pending driver handover</span>
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-amber-100 flex items-center justify-between">
+<button class="w-full py-1.5 px-3 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-900 text-label-md font-label-md font-semibold transition-colors flex items-center justify-center gap-1.5"><span class="">Review Cash Receipts</span><span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+</div>
+</div>
+<!-- Card 2: Instant Online Settled -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container-highest shadow-[0_4px_20px_-2px_rgba(21,29,77,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Instant Online Settled (Today)</span>
+<span class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">verified</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg text-primary font-bold">₹98,400</span>
+<span class="text-label-sm font-label-sm text-emerald-700 font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">100% matched</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1.5">
+              Razorpay webhook verified, 0 dropped transactions today.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest flex items-center justify-between text-label-sm font-label-sm text-outline">
+<span class="">Last batch at 07:45 AM</span>
+<span class="text-emerald-700 font-medium">Healthy</span>
+</div>
+</div>
+<!-- Card 3: Payment Exceptions & Failed -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container-highest shadow-[0_4px_20px_-2px_rgba(21,29,77,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Payment Exceptions &amp; Failed</span>
+<span class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg">error_outline</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg text-error font-bold">₹4,120</span>
+<span class="text-label-sm font-label-sm text-error font-semibold bg-red-50 px-1.5 py-0.5 rounded">3 failed UPI</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1.5">
+              Awaiting automatic retry or driver COD fallback switch.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Auto-retry in 14 min</span>
+<a class="text-primary font-semibold hover:underline" href="#">Retry All</a>
+</div>
+</div>
+<!-- Card 4: Customers Currently Blocked -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container-highest shadow-[0_4px_20px_-2px_rgba(21,29,77,0.03)] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">Customers Currently Blocked</span>
+<span class="w-8 h-8 rounded-lg bg-purple-50 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">lock</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-headline-lg font-headline-lg text-primary font-bold">3 Outlets</span>
+<span class="text-label-sm font-label-sm text-on-tertiary-container font-semibold bg-amber-50 px-1.5 py-0.5 rounded">Payment pending block</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1.5">
+              Prevents dispatch of next dawn Vedic Pure run until cleared.
+            </p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-highest flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Enforced automatically</span>
+<span class="text-primary font-medium">Policy active</span>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- SECTION: STRICT ZERO-CREDIT ACCOUNTS BLOCKED RISK STRIP       -->
+<!-- ============================================================ -->
+<div class="bg-surface-container-lowest rounded-2xl border border-amber-300 shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] overflow-hidden">
+<div class="p-4 md:px-6 bg-gradient-to-r from-amber-50/70 to-surface-container-lowest border-b border-amber-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-amber-200/70 text-amber-900 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-base">warning</span>
+</div>
+<div>
+<h2 class="text-title-md font-title-md text-on-surface flex items-center gap-2">Accounts with Payment Pending Block <span class="text-label-sm font-label-sm bg-red-100 text-error px-2 py-0.5 rounded-full font-bold">3 Dispatch Holds</span></h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Pure unpasteurized morning crates are held at Nashik cold-hub until previous dues are recorded.
+              </p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline">Next Dawn Cutoff: 04:30 AM</span>
+</div>
+</div>
+<div class="divide-y divide-surface-container-highest">
+<!-- Risk Row 1 -->
+<div class="p-4 md:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-outline-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl text-primary">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="text-title-md font-title-md text-on-surface">Sharma General Store</span>
+<span class="text-body-sm font-body-sm text-outline">(Rajesh Sharma)</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-primary font-mono text-label-sm font-label-sm font-medium border border-surface-container-highest">YM-2026-000123</span>
+</div>
+<div class="flex items-center gap-4 mt-1 text-body-sm font-body-sm text-on-surface-variant flex-wrap">
+<span class="flex items-center gap-1 font-semibold text-error">
+<span class="">Due: ₹2,440</span>
+<span class="font-normal text-outline">(Cash on Delivery)</span>
+</span>
+<span class="">•</span>
+<span class="text-amber-800 bg-amber-50 px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">Pending: 1 Day (Dawn slot passed)</span>
+<span class="">•</span>
+<span class="text-error font-medium flex items-center gap-1 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-xs">block</span>
+                    Order Blocked from Checkout
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 self-end lg:self-center shrink-0">
+<a class="px-3 py-1.5 rounded-xl border border-surface-container-highest bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-md font-label-md flex items-center gap-1.5 transition-colors" href="tel:+919823011223">
+<span class="material-symbols-outlined text-sm">call</span>
+<span class="">Call Outlet (+91 98230 11223)</span>
+</a>
+<button class="px-3.5 py-1.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary-container/90 text-label-md font-label-md flex items-center gap-1.5 transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="">Record Payment</span>
+</button>
+</div>
+</div>
+<!-- Risk Row 2 -->
+<div class="p-4 md:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-outline-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl text-primary">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="text-title-md font-title-md text-on-surface">Vasant Dairy &amp; Provisions</span>
+<span class="text-body-sm font-body-sm text-outline">(Vasant Patil)</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-primary font-mono text-label-sm font-label-sm font-medium border border-surface-container-highest">YM-2026-000098</span>
+</div>
+<div class="flex items-center gap-4 mt-1 text-body-sm font-body-sm text-on-surface-variant flex-wrap">
+<span class="flex items-center gap-1 font-semibold text-error">
+<span class="">Due: ₹1,680</span>
+<span class="font-normal text-outline">(UPI Webhook Timeout)</span>
+</span>
+<span class="">•</span>
+<span class="text-amber-800 bg-amber-50 px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">Pending: 2 Days</span>
+<span class="">•</span>
+<span class="text-error font-medium flex items-center gap-1 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-xs">block</span>
+                    Dispatch Locked
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 self-end lg:self-center shrink-0">
+<button class="px-3 py-1.5 rounded-xl border border-secondary/30 bg-surface-container-lowest text-secondary hover:bg-secondary-container/10 text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">send</span>
+<span class="">Resend Payment Link</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary-container/90 text-label-md font-label-md flex items-center gap-1.5 transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="">Record Payment</span>
+</button>
+</div>
+</div>
+<!-- Risk Row 3 -->
+<div class="p-4 md:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-outline-variant shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl text-primary">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="text-title-md font-title-md text-on-surface">Godavari Sweets &amp; Milk Bar</span>
+<span class="text-body-sm font-body-sm text-outline">(Nilesh Kulkarni)</span>
+<span class="px-2 py-0.5 rounded-md bg-surface-container text-primary font-mono text-label-sm font-label-sm font-medium border border-surface-container-highest">YM-2026-000105</span>
+</div>
+<div class="flex items-center gap-4 mt-1 text-body-sm font-body-sm text-on-surface-variant flex-wrap">
+<span class="flex items-center gap-1 font-semibold text-error">
+<span class="">Due: ₹3,150</span>
+<span class="font-normal text-outline">(Unsettled Driver Run)</span>
+</span>
+<span class="">•</span>
+<span class="text-amber-800 bg-amber-50 px-2 py-0.5 rounded text-label-sm font-label-sm font-medium">Pending: 1 Day</span>
+<span class="">•</span>
+<span class="text-error font-medium flex items-center gap-1 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-xs">block</span>
+                    Morning Run On Hold
+                  </span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 self-end lg:self-center shrink-0">
+<button class="px-3 py-1.5 rounded-xl border border-surface-container-highest bg-surface-container-lowest text-on-surface hover:bg-surface-container text-label-md font-label-md flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<span class="">View Van #02 Log</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary-container/90 text-label-md font-label-md flex items-center gap-1.5 transition-all shadow-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="">Record Payment</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- COMPREHENSIVE PAYMENTS TABLE & FILTERS                       -->
+<!-- ============================================================ -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-container-highest shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] overflow-hidden">
+<!-- Filter Bar Header -->
+<div class="p-5 border-b border-surface-container-highest flex flex-col gap-4">
+<!-- Status Tabs -->
+<div class="flex items-center justify-between flex-wrap gap-3">
+<div class="flex items-center gap-1.5 bg-surface-container-low p-1 rounded-xl border border-surface-container-highest">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md shadow-sm">
+                All <span class="text-outline font-normal ml-1">164</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="">Pending COD</span>
+<span class="px-1.5 py-0.2 bg-amber-100 text-amber-900 rounded-full text-[11px] font-bold">18</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="">Paid</span>
+<span class="px-1.5 py-0.2 bg-emerald-100 text-emerald-800 rounded-full text-[11px] font-bold">142</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md flex items-center gap-1">
+<span class="">Failed</span>
+<span class="px-1.5 py-0.2 bg-red-100 text-error rounded-full text-[11px] font-bold">3</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md">
+                Refunded <span class="text-outline font-normal ml-1">1</span>
+</button>
+</div>
+<!-- Table Quick Action -->
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-xl border border-surface-container-highest hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Reload Records">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+<button class="p-2 rounded-xl border border-surface-container-highest hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Customize Columns">
+<span class="material-symbols-outlined text-lg">view_column</span>
+</button>
+</div>
+</div>
+<!-- Secondary Filters Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-3 pt-1">
+<!-- Payment Method Filter -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Payment Method</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-surface-container-highest rounded-xl py-2 pl-3 pr-8 text-body-sm font-body-sm text-on-surface focus:ring-1 focus:ring-secondary focus:border-secondary appearance-none">
+<option selected="">All Methods</option>
+<option>Razorpay Online UPI/Card</option>
+<option>Driver Cash on Delivery</option>
+<option>Direct Bank NEFT</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range Filter -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Date Range</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-surface-container-highest rounded-xl py-2 pl-3 pr-8 text-body-sm font-body-sm text-on-surface focus:ring-1 focus:ring-secondary focus:border-secondary appearance-none">
+<option selected="">Today · 29 Oct 2026</option>
+<option>Yesterday · 28 Oct 2026</option>
+<option>Last 7 Days (Dawn Runs)</option>
+<option>Current Billing Cycle (October)</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">calendar_today</span>
+</div>
+</div>
+<!-- Settlement Hub Filter -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Settlement Hub</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-surface-container-highest rounded-xl py-2 pl-3 pr-8 text-body-sm font-body-sm text-on-surface focus:ring-1 focus:ring-secondary focus:border-secondary appearance-none">
+<option selected="">Nashik Rural Hub</option>
+<option>Panchavati Depot Hub</option>
+<option>Deolali Cantonment Route</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">location_on</span>
+</div>
+</div>
+<!-- In-Table Keyword Search -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Filter Reference / ID</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-surface-container-highest rounded-xl py-2 pl-8 pr-3 text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:ring-1 focus:ring-secondary focus:border-secondary" placeholder="e.g. pay_Nsk928, van04..." type="text">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-sm">filter_list</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Table Container (Horizontal Scroll for Responsive Rigor) -->
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-surface-container-highest text-label-sm font-label-sm text-outline uppercase tracking-wider">
+<th class="py-3 px-4 pl-6">Reference / Txn ID</th>
+<th class="py-3 px-4">Order Code</th>
+<th class="py-3 px-4">Customer &amp; Outlet</th>
+<th class="py-3 px-4">Method</th>
+<th class="py-3 px-4 text-right">Amount</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4">Confirmation Source</th>
+<th class="py-3 px-4">Date &amp; Time</th>
+<th class="py-3 px-4 pr-6 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest font-body-sm text-body-sm text-on-surface">
+<!-- ROW 1 (Pending COD - High Attention) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-amber-50/20">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-semibold text-primary">cod_van04_881</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-primary">YM-2026-000123</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Sharma General Store</div>
+<div class="text-xs text-outline">Rajesh Sharma</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-amber-900 text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+                    Cash on Delivery
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-on-surface">
+                  ₹2,440
+                </td>
+<td class="py-3.5 px-4">
+<!-- Amber Pill: Pending -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-amber-100/70 text-amber-950 text-xs font-medium"><span class="material-symbols-outlined text-xs">pending</span> Pending Admin Settlement</span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  29 Oct 2026, 06:15 AM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary font-label-sm" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2 (Instant Online Settled - Razorpay UPI) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-medium">pay_Nsk928374a</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-primary">YM-2026-000124</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Pooja Mandir Organics</div>
+<div class="text-xs text-outline">Anand Joshi</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-secondary-container/60 bg-surface-container text-primary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+                    Razorpay UPI
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-on-surface">
+                  ₹7,970
+                </td>
+<td class="py-3.5 px-4">
+<!-- Green Pill: Paid -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-secondary-fixed/50 text-on-secondary-container text-xs font-medium">
+<span class="material-symbols-outlined text-xs">webhook</span>
+                    Verified (Razorpay Webhook)
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  29 Oct 2026, 07:42 AM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3 (Offline Cash Recorded by Admin) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-medium">rec_off_00389</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-primary">YM-2026-000119</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Tapovan Vedic Ashram Kitchen</div>
+<div class="text-xs text-outline">Swami Chinmayan</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-surface-container-highest bg-surface-container text-on-surface text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">payments</span>
+                    Cash Handover
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-on-surface">
+                  ₹12,450
+                </td>
+<td class="py-3.5 px-4">
+<!-- Green Pill: Paid -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-100 text-primary-container text-xs font-medium">
+<span class="material-symbols-outlined text-xs">badge</span>
+                    Recorded by admin (Vikram Mehta)
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  29 Oct 2026, 07:15 AM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4 (Failed UPI Attempt) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-red-50/15">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-medium text-error">upi_rrn_429103</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-primary">YM-2026-000098</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Vasant Dairy &amp; Provisions</div>
+<div class="text-xs text-outline">Vasant Patil</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-red-200 bg-red-50 text-error text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+                    Razorpay UPI
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-error">
+                  ₹1,680
+                </td>
+<td class="py-3.5 px-4">
+<!-- Red Pill: Failed -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-red-100 text-error text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                    Failed
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-red-50 text-error text-xs font-medium">
+<span class="material-symbols-outlined text-xs">cancel</span>
+                    UPI Gateway Timeout (NPCI #U69)
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  28 Oct 2026, 09:12 PM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5 (Razorpay Cards Verified) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-medium">pay_Nsk881921c</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-primary">YM-2026-000125</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Shri Krishna Dairy Parlour</div>
+<div class="text-xs text-outline">Gopal Ranade</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-secondary-container/60 bg-surface-container text-primary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+                    Razorpay Cards
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-on-surface">
+                  ₹3,480
+                </td>
+<td class="py-3.5 px-4">
+<!-- Green Pill: Paid -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-secondary-fixed/50 text-on-secondary-container text-xs font-medium">
+<span class="material-symbols-outlined text-xs">webhook</span>
+                    Verified (Razorpay Webhook)
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  29 Oct 2026, 06:40 AM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6 (NEFT Direct Bank Transfer) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-medium">neft_hdbc_77218</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-primary">YM-2026-000112</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Kalyani Natural Wellness Resort</div>
+<div class="text-xs text-outline">Dr. Radhika Sen</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-surface-container-highest bg-surface-container text-on-surface text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">account_balance</span>
+                    NEFT Bank Transfer
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-on-surface">
+                  ₹24,800
+                </td>
+<td class="py-3.5 px-4">
+<!-- Green Pill: Paid -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-purple-100 text-primary-container text-xs font-medium">
+<span class="material-symbols-outlined text-xs">badge</span>
+                    Recorded by admin (Vikram Mehta)
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  29 Oct 2026, 05:50 AM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 7 (Refunded Neutral Grey) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-label-sm font-label-sm">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="font-medium text-outline">ref_Nsk004928</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono text-label-sm font-label-sm">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-highest font-medium text-outline">YM-2026-000076</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-semibold text-on-surface">Panchavati Vedic Ghee Center</div>
+<div class="text-xs text-outline">Kailash Gupta</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-surface-container-highest bg-surface-container text-outline text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-sm">qr_code_2</span>
+                    Razorpay UPI
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-semibold text-outline">
+                  ₹890
+                </td>
+<td class="py-3.5 px-4">
+<!-- Neutral Grey Pill: Refunded -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                    Refunded
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-surface-container text-outline text-xs font-medium"><span class="material-symbols-outlined text-xs">tune</span> Account Balance Adjustment</span>
+</td>
+<td class="py-3.5 px-4 text-outline text-xs whitespace-nowrap">
+                  28 Oct 2026, 04:15 PM
+                </td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-primary" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1.5 rounded-lg hover:bg-surface-container text-outline hover:text-primary" title="Download Receipt">
+<span class="material-symbols-outlined text-base">receipt</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Bar -->
+<div class="p-4 px-6 border-t border-surface-container-highest flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-body-sm font-body-sm text-outline">
+<div class="flex items-center gap-2">
+<span class="">Showing <span class="font-semibold text-on-surface">1–10</span> of <span class="font-semibold text-on-surface">164</span> transactions</span>
+<div class="h-4 w-px bg-surface-container-highest mx-2"></div>
+<div class="flex items-center gap-1">
+<span class="">Rows per page:</span>
+<select class="bg-surface-container-low border border-surface-container-highest rounded-lg py-1 px-2 text-xs font-semibold text-on-surface focus:ring-0">
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+</div>
+<!-- Page Navigation -->
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded-lg border border-surface-container-highest text-outline hover:text-on-surface hover:bg-surface-container-low disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center">
+              1
+            </button>
+<button class="w-8 h-8 rounded-lg border border-surface-container-highest text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-semibold flex items-center justify-center">
+              2
+            </button>
+<button class="w-8 h-8 rounded-lg border border-surface-container-highest text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-semibold flex items-center justify-center">
+              3
+            </button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg border border-surface-container-highest text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-semibold flex items-center justify-center">
+              7
+            </button>
+<button class="p-1.5 rounded-lg border border-surface-container-highest text-on-surface hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Informational Footer Banner: Non-GST Direct Vedic Dairy Settlement Note -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-highest flex flex-col md:flex-row md:items-center justify-between gap-3 text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-secondary text-lg">info</span><span class="">Payment pending policy ensures accounts with unsettled balances are cleared by admin prior to subsequent dispatch. Cash collections are verified upon receipt.</span></div>
+<div class="shrink-0 flex items-center gap-3 text-label-sm font-label-sm font-semibold">
+<a class="text-primary hover:underline" href="#">View Driver Bag SOP</a>
+<span class="text-outline">•</span>
+<a class="text-primary hover:underline" href="#">Audit Logs</a>
+</div>
+</div>
+</main>
+</div>
+
+
+</body></html>

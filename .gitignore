@@ -1,0 +1,9 @@
+# Ignore Next.js build and cache outputs
+yog_milk_admin/.next/
+yog_milk_admin/out/
+
+# Ignore local dependencies
+yog_milk_admin/node_modules/
+
+# Ignore local environment files
+yog_milk_admin/.env*.local

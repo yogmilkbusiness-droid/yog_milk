@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<html lang="hi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk - ऑर्डर तपशील (Order Details)</title>
+<!-- Google Fonts: Playfair Display for editorial touches, Plus Jakarta Sans, and Noto Sans Devanagari for clean Indic rendering -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-container": "#3f2e00",
+            "inverse-surface": "#2b3041",
+            "surface-container": "#eaedff",
+            "secondary-fixed": "#ffdbc8",
+            "on-error-container": "#93000a",
+            "secondary": "#994700",
+            "tertiary": "#261a00",
+            "surface-container-highest": "#dde1f8",
+            "on-surface": "#161b2b",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#251a00",
+            "background": "#faf8ff",
+            "surface-container-low": "#f2f3ff",
+            "primary-container": "#1f2a6b",
+            "surface-variant": "#dde1f8",
+            "primary-fixed": "#dee0ff",
+            "on-secondary-container": "#602a00",
+            "primary-fixed-dim": "#bbc3ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374183",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#161b2b",
+            "secondary-fixed-dim": "#ffb68b",
+            "tertiary-fixed-dim": "#edc15a",
+            "tertiary-fixed": "#ffdf9c",
+            "on-primary-container": "#8994db",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "inverse-primary": "#bbc3ff",
+            "on-surface-variant": "#454650",
+            "surface-tint": "#4f599c",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-container": "#fc8127",
+            "outline-variant": "#c6c5d2",
+            "surface-dim": "#d5d9ef",
+            "on-primary-fixed": "#051256",
+            "on-secondary-fixed-variant": "#753400",
+            "surface": "#faf8ff",
+            "primary": "#051256",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#321200",
+            "on-tertiary-container": "#ba9331",
+            "outline": "#767681",
+            "surface-bright": "#faf8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "margin-desktop": "3rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "label-sm": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display", "Noto Sans Devanagari"],
+            "headline-sm": ["Playfair Display", "Noto Sans Devanagari"],
+            "headline-lg": ["Playfair Display", "Noto Sans Devanagari"],
+            "body-sm": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "body-lg": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display", "Noto Sans Devanagari"],
+            "display-lg-mobile": ["Playfair Display", "Noto Sans Devanagari"],
+            "title-md": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display", "Noto Sans Devanagari"],
+            "body-md": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "title-lg": ["Noto Sans Devanagari", "Plus Jakarta Sans"],
+            "label-lg": ["Noto Sans Devanagari", "Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "19px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Prevent broken matra renderings and support fluid Devanagari text flow */
+    body {
+      font-feature-settings: "kern" 1, "liga" 1;
+      -webkit-font-smoothing: antialiased;
+      background-color: #FAF8FF;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Subtle Vedic watermarking pattern */
+    .sacred-pattern {
+      background-image: radial-gradient(#dee0ff 0.75px, transparent 0.75px);
+      background-size: 16px 16px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Container (Device: 390px portrait standard) -->
+<main class="w-full max-w-[390px] bg-background min-h-screen flex flex-col relative pb-10 shadow-2xl border-x border-outline-variant/30">
+<!-- Top Bar Component: Task-Focused Linear Screen (Bottom Nav Suppressed as per UX hierarchy) -->
+<header class="sticky top-0 z-40 w-full h-16 px-4 bg-surface/90 backdrop-blur-md flex justify-between items-center shadow-sm">
+<button aria-label="मागे जा" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-semibold text-primary tracking-tight">ऑर्डर तपशील</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Yog Milk • शुद्ध सात्त्विक आहार</span>
+</div>
+<button aria-label="शेअर करा" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[22px]">share</span>
+</button>
+</header>
+<!-- Main Content Area with Optimized Spacing for Indic Scripts -->
+<div class="px-4 py-4 space-y-4 flex-1">
+<!-- Order Reference Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-sm relative overflow-hidden">
+<!-- Vedic golden line accent -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-container via-tertiary-fixed-dim to-secondary-container"></div>
+<div class="flex items-center justify-between gap-2 pt-1 pb-3 border-b border-surface-container">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">ऑर्डर संदर्भ क्रमांक</span>
+<span class="font-title-md text-title-md font-bold text-primary tracking-wide">YM-2026-000124</span>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-low text-primary hover:bg-surface-container-high border border-outline-variant/30 text-label-sm font-label-sm transition-all active:scale-95" id="copy-btn">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span>कॉपी</span>
+</button>
+</div>
+<!-- Status Banner -->
+<div class="mt-3 p-3 rounded-xl bg-surface-container-low/80 border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary-container mt-0.5 text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">verified</span>
+<p class="font-body-sm text-body-sm text-on-surface font-medium leading-relaxed">
+            पहाटेच्या डिलिव्हरीसाठी ऑर्डर निश्चित · डिलिव्हरीच्या वेळी रोख रक्कम देय
+          </p>
+</div>
+</section>
+<!-- Triple Status Chips (Unmerged, Clear Devanagari, Responsive Flow) -->
+<section class="space-y-2">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">सद्य स्थिती निर्देश फलक</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">थेट अद्यतन</span>
+</div>
+<!-- Individual Badges with Flexible Layouts to Prevent Text Clippings -->
+<div class="grid grid-cols-1 gap-2.5">
+<!-- 1. Order Status Chip (Soft Blue Pill) -->
+<div class="flex items-center justify-between bg-primary-fixed/40 border border-primary-fixed-dim/60 rounded-xl px-3.5 py-2.5 shadow-xs">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-primary font-medium">ऑर्डर स्थिती:</span>
+</div>
+<div class="inline-flex items-center gap-1.5 bg-surface-container-lowest px-3 py-1 rounded-full border border-primary/20 text-primary font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>✓ ऑर्डर नोंदवली</span>
+</div>
+</div>
+<!-- 2. Payment Status Chip (Amber Outlined Chip with ₹) -->
+<div class="flex items-center justify-between bg-tertiary-fixed/30 border border-tertiary-fixed-dim/70 rounded-xl px-3.5 py-2.5 shadow-xs">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-medium">देयक स्थिती:</span>
+</div>
+<div class="inline-flex items-center gap-1.5 bg-surface-container-lowest px-3 py-1 rounded-full border border-secondary/40 text-secondary font-label-md text-label-md font-bold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">hourglass_top</span>
+<span>⏳ देयक प्रलंबित (₹)</span>
+</div>
+</div>
+<!-- 3. Delivery Status Chip (Soft Lavender/Gray Pill) -->
+<div class="flex items-center justify-between bg-surface-container-high/60 border border-outline-variant/50 rounded-xl px-3.5 py-2.5 shadow-xs">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md text-on-surface font-medium">डिलिव्हरी स्थिती:</span>
+</div>
+<div class="inline-flex items-center gap-1.5 bg-surface-container-lowest px-3 py-1 rounded-full border border-outline-variant text-on-surface-variant font-label-md text-label-md font-semibold shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-outline">local_shipping</span>
+<span>🚚 वाहन नियुक्त नाही</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Delivery Drop Details Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-sm space-y-3.5">
+<div class="flex items-center gap-2 border-b border-surface-container pb-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<h2 class="font-title-md text-title-md text-primary font-bold">डिलिव्हरी व ड्रॉप पॉईंट माहिती</h2>
+</div>
+<!-- Code row -->
+<div class="flex items-center justify-between bg-surface-container-low/70 px-3 py-2 rounded-xl">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">वितरण कोड</span>
+<span class="font-label-lg text-label-lg font-bold text-primary tracking-wide">YMD-2026-000124</span>
+</div>
+<button class="text-primary hover:text-primary-container p-1 rounded-lg text-label-sm font-label-sm flex items-center gap-1 bg-surface-container-lowest px-2 py-1 border border-outline-variant/30">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>कॉपी</span>
+</button>
+</div>
+<!-- Drop Point Address (Full expansion without ellipsis) -->
+<div class="space-y-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">store</span>
+            ड्रॉप पॉईंट पत्ता:
+          </span>
+<p class="font-body-md text-body-md text-on-surface font-medium leading-relaxed bg-surface-container-lowest pl-1">
+            शर्मा जनरल स्टोअर, कॉलेज रोड, रामकुंड जवळ, नाशिक - ४२२००५
+          </p>
+</div>
+<!-- Dawn Timing Slot Ribbon -->
+<div class="flex items-start gap-2.5 p-3 rounded-xl bg-surface-container-low border border-primary-fixed-dim/50">
+<span class="material-symbols-outlined text-secondary-container text-[20px] shrink-0">wb_twilight</span>
+<div>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">नियोजित वेळ (सकाळ):</span>
+<span class="font-body-md text-body-md font-bold text-primary">उद्या पहाटे ५:३० ते ७:०० दरम्यान</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">ब्रह्ममुहूर्तावर ताज्या काढलेल्या दुधाची थेट पोहोच.</p>
+</div>
+</div>
+<!-- Goshala Note (Authentic Farm Provenance) -->
+<div class="p-3 rounded-xl bg-surface-variant/30 border border-outline-variant/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0" style="font-variation-settings: 'FILL' 1;">spa</span>
+<div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider block">गोशाळा टिप व पॅकिंग नोंद</span>
+<p class="font-body-sm text-body-sm text-on-surface font-normal mt-0.5 leading-relaxed">
+              पहाटे ३:३० वाजता शुद्ध बिलोना मथनाचे नियोजन. कोल्ड-चेन क्रेट #१४ नियुक्त.
+            </p>
+</div>
+</div>
+</section>
+<!-- Items Ordered Table ('मागवलेली उत्पादने') -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-surface-container pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">shopping_basket</span>
+<h2 class="font-title-md text-title-md text-primary font-bold">मागवलेली उत्पादने (३)</h2>
+</div>
+<span class="font-label-sm text-label-sm px-2.5 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold">१००% सात्त्विक A2</span>
+</div>
+<div class="divide-y divide-surface-container-low">
+<!-- Item 1: Gir Cow A2 Milk -->
+<article class="py-3 flex items-start justify-between gap-2">
+<div class="space-y-1 pr-1 flex-1">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold leading-snug">गीर गाय ए२ दूध</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">५०० मिली · २० चा पॅक (काचेची बाटली)</p>
+<div class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container-low px-2 py-0.5 rounded-md text-primary font-medium mt-1">
+<span>मात्रा:</span>
+<span class="font-bold">२ पॅक</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md font-bold text-primary">₹१,४४०</span>
+<span class="block font-label-sm text-label-sm text-outline">₹७२० / पॅक</span>
+</div>
+</article>
+<!-- Item 2: Vedic Bilona A2 Desi Ghee -->
+<article class="py-3 flex items-start justify-between gap-2">
+<div class="space-y-1 pr-1 flex-1">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold leading-snug">वैदिक बिलोना ए२ देशी तूप</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">५०० मिली · २ चा पॅक (मातीचे भांडे)</p>
+<div class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container-low px-2 py-0.5 rounded-md text-primary font-medium mt-1">
+<span>मात्रा:</span>
+<span class="font-bold">१ पॅक</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md font-bold text-primary">₹१,४५०</span>
+<span class="block font-label-sm text-label-sm text-outline">₹१,४५० / पॅक</span>
+</div>
+</article>
+<!-- Item 3: Fresh Matka Dahi -->
+<article class="py-3 flex items-start justify-between gap-2">
+<div class="space-y-1 pr-1 flex-1">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold leading-snug">ताजे मटका दही</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">४०० ग्रॅम · २४ चा पॅक (दही हांडी)</p>
+<div class="inline-flex items-center gap-1 text-label-sm text-label-sm bg-surface-container-low px-2 py-0.5 rounded-md text-primary font-medium mt-1">
+<span>मात्रा:</span>
+<span class="font-bold">३ पॅक</span>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-title-md text-title-md font-bold text-primary">₹१,३७०</span>
+<span class="block font-label-sm text-label-sm text-outline">घाऊक दर लागू</span>
+</div>
+</article>
+</div>
+</section>
+<!-- Bill Breakdown Card ('बिलाचा तपशील - नॉन-जीएसटी कृषी पुरवठा') -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-surface-container pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">receipt</span>
+<h2 class="font-title-md text-title-md text-primary font-bold">बिलाचा तपशील</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container-low px-2 py-0.5 rounded">नॉन-जीएसटी कृषी पुरवठा</span>
+</div>
+<div class="space-y-2.5 pt-1">
+<div class="flex justify-between items-center text-body-md font-body-md text-on-surface">
+<span class="text-on-surface-variant">उत्पादनांची बेरीज:</span>
+<span class="font-semibold">₹४,२६०</span>
+</div>
+<div class="flex justify-between items-center text-body-md font-body-md text-on-surface">
+<span class="text-on-surface-variant flex items-center gap-1">
+<span>पहाटेची कोल्ड-चेन वाहतूक:</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" title="थंड वातावरणातील विशेष वाहतूक">ac_unit</span>
+</span>
+<span class="font-semibold text-secondary-container uppercase">विनामूल्य (₹०)</span>
+</div>
+<div class="flex justify-between items-center text-body-md font-body-md text-on-surface">
+<span class="text-on-surface-variant">पॅकेजिंग व स्वच्छता हाताळणी शुल्क:</span>
+<span class="font-semibold text-on-surface">₹० (माफ)</span>
+</div>
+<div class="border-t border-dashed border-outline-variant pt-3 mt-1 flex justify-between items-baseline">
+<div class="flex flex-col">
+<span class="font-title-lg text-title-lg font-bold text-primary">एकूण देय रक्कम:</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">(कॅश ऑन डिलिव्हरी / रोख)</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">₹४,२६०</span>
+</div>
+</div>
+</section>
+<!-- Invoice Action Card -->
+<section class="bg-surface-container-low rounded-2xl p-4 border border-outline-variant/40 flex items-center justify-between gap-3 shadow-xs">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-xs border border-outline-variant/30">
+<span class="material-symbols-outlined text-[24px]">description</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">कर इनव्हॉइस प्रत</span>
+<span class="font-title-md text-title-md font-bold text-primary">YMI-2026-000048</span>
+</div>
+</div>
+<button class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-lowest hover:bg-surface-container border border-primary/30 text-primary font-label-md text-label-md font-bold transition-all active:scale-95 shadow-xs">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>पीडीएफ पाहा</span>
+</button>
+</section>
+<!-- Payment Details Card ('देयक तपशील') -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-sm space-y-3">
+<div class="flex items-center gap-2 border-b border-surface-container pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+<h2 class="font-title-md text-title-md text-primary font-bold">देयक तपशील</h2>
+</div>
+<div class="grid grid-cols-1 gap-2.5 text-body-md font-body-md">
+<div class="flex justify-between items-center bg-surface-container-low/50 p-2.5 rounded-xl">
+<span class="text-on-surface-variant font-label-md">देयक पद्धत:</span>
+<span class="font-bold text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px] text-secondary">handshake</span>
+              डिलिव्हरीच्या वेळी रोख (COD)
+            </span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-low/50 p-2.5 rounded-xl">
+<span class="text-on-surface-variant font-label-md">निश्चित रक्कम:</span>
+<span class="font-bold text-primary">₹४,२६० (अचूक सुटे पैसे ठेवा)</span>
+</div>
+<div class="flex justify-between items-center bg-surface-container-low/50 p-2.5 rounded-xl">
+<span class="text-on-surface-variant font-label-md">सध्याची देयक स्थिती:</span>
+<span class="font-semibold text-secondary-container inline-flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+              डिलिव्हरी पार्टनरकडे देय
+            </span>
+</div>
+</div>
+</section>
+<!-- Vertical Order Timeline ('ऑर्डर प्रवासाचे टप्पे') -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-surface-container pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">route</span>
+<h2 class="font-title-md text-title-md text-primary font-bold">ऑर्डर प्रवासाचे टप्पे</h2>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">टप्पे ४ पैकी २ पूर्ण</span>
+</div>
+<!-- Vertical Rail -->
+<div class="relative pl-6 space-y-6 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-outline-variant/40">
+<!-- Node 1: Completed -->
+<div class="relative flex flex-col group">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-title-md text-title-md font-bold text-on-surface">ऑर्डर यशस्वीरीत्या नोंदवली</span>
+<time class="font-label-sm text-label-sm text-on-surface-variant">४:१५ PM</time>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">गोशाळा केंद्रीय प्रणालीमध्ये बॅच #N43 अंतर्गत पुष्टी केली.</p>
+</div>
+<!-- Node 2: Completed -->
+<div class="relative flex flex-col">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center shadow-xs ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check</span>
+</span>
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-title-md text-title-md font-bold text-on-surface">स्टॉक आरक्षित केला</span>
+<time class="font-label-sm text-label-sm text-on-surface-variant">४:१६ PM</time>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">शुद्ध बिलोना तूप व ताज्या दह्याचे भांडे राखून ठेवले.</p>
+</div>
+<!-- Node 3: Upcoming (Dawn Churning & Milking) -->
+<div class="relative flex flex-col">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-secondary-fixed border-2 border-secondary-container flex items-center justify-center shadow-xs ring-4 ring-surface-container-lowest">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</span>
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-title-md text-title-md font-bold text-primary">दूध काढणे व पॅकिंग</span>
+<time class="font-label-sm text-label-sm text-secondary-container font-semibold">पहाटे ३:३० (आगामी)</time>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">अहिंसक पद्धतीचे दोहन व निर्जंतुक काचेच्या बाटल्यांमध्ये पॅकिंग.</p>
+</div>
+<!-- Node 4: Upcoming (Out for Dawn Delivery) -->
+<div class="relative flex flex-col">
+<span class="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center shadow-xs ring-4 ring-surface-container-lowest">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+</span>
+<div class="flex items-baseline justify-between gap-1">
+<span class="font-title-md text-title-md font-semibold text-outline">पहाटेच्या वितरणासाठी रवाना</span>
+<time class="font-label-sm text-label-sm text-outline">पहाटे ५:३० (आगामी)</time>
+</div>
+<p class="font-body-sm text-body-sm text-outline-variant mt-0.5">कोल्ड-चेन व्हॅन #०४ द्वारे शर्मा स्टोअर नाशिककडे मार्गस्थ होईल.</p>
+</div>
+</div>
+</section>
+<!-- Bottom Interactive Action Buttons (Fixed or Inline Flow with High Contrast) -->
+<section class="pt-2 pb-6 space-y-3">
+<!-- Support CTA Button (Solid Navy) -->
+<button class="w-full h-[52px] rounded-[14px] bg-primary-container text-on-primary font-title-md text-title-md font-semibold flex items-center justify-center gap-2 shadow-md hover:bg-primary transition-all active:scale-[0.98] focus:ring-4 focus:ring-primary-container/20" type="button">
+<span class="material-symbols-outlined text-[22px]">support_agent</span>
+<span>मदत हवी आहे? (सपोर्ट)</span>
+</button>
+<!-- Cancel Order Button (Outline Muted Red / Gray with High Contrast Safety) -->
+<button class="w-full h-[48px] rounded-[14px] border-1.5 border-outline-variant/80 bg-surface-container-lowest text-error font-title-md text-title-md font-semibold flex items-center justify-center gap-2 hover:bg-error-container/20 transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px]">cancel</span>
+<span>ऑर्डर रद्द करा</span>
+</button>
+<!-- Sattvic Commitment Microcopy -->
+<div class="text-center pt-2">
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-[15px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span>योग मिल्क: भारतीय देशी गीर गायींचे १००% शुद्ध नैसर्गिक संवर्धन</span>
+</p>
+</div>
+</section>
+</div>
+</main>
+<script>
+    // Lightweight micro-interaction for order reference copy
+    document.getElementById('copy-btn')?.addEventListener('click', function() {
+      const btn = this;
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[16px] text-secondary">done</span><span>कॉपी झाले!</span>`;
+      btn.classList.add('bg-secondary-fixed');
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+        btn.classList.remove('bg-secondary-fixed');
+      }, 2000);
+    });
+  </script>
+</body></html>

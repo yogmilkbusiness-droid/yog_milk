@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk — Dairy Design System Specification &amp; Admin Prototype</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Noto+Serif+Devanagari:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Play CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary-navy": "#1F2A6B",
+            "navy-dark": "#151D4D",
+            "saffron-accent": "#F47B20",
+            "gold": "#C9A03D",
+            "cream": "#FBF1DC",
+            "page-bg": "#FFFCF6",
+            "app-text": "#1B2030",
+            "app-border": "#E5E7EB",
+            "status-success": "#1F9D63",
+            "status-amber": "#E8A317",
+            "status-error": "#D64545"
+          },
+          fontFamily: {
+            display: ["Playfair Display", "serif"],
+            body: ["Plus Jakarta Sans", "sans-serif"],
+            devanagari: ["Noto Serif Devanagari", "serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      vertical-align: middle;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #FBF1DC;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #E5E7EB;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-page-bg text-app-text antialiased font-body selection:bg-cream selection:text-primary-navy">
+<!-- ========================================================================= -->
+<!-- TOP APP BAR                                                              -->
+<!-- ========================================================================= -->
+<header class="top-0 sticky z-40 bg-[#FFFFFF] border-b border-app-border shadow-sm">
+<div class="flex items-center justify-between px-6 py-3.5 w-full">
+<!-- Left: Logo & Search -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-navy text-white flex items-center justify-center font-display text-base">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div>
+<span class="text-lg font-bold font-display text-primary-navy tracking-tight">Yog Milk Admin</span>
+<span class="hidden sm:inline-block ml-2 text-xs bg-cream text-app-text px-2 py-0.5 rounded-full font-medium">Design System v2.5</span>
+</div>
+</div>
+<div class="hidden md:flex items-center bg-[#F9FAFB] px-3 py-1.5 rounded-lg border border-app-border text-sm w-72">
+<span class="material-symbols-outlined text-gray-400 mr-2 text-base">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-sm text-app-text w-full placeholder:text-gray-400 outline-none" placeholder="Search tokens, components..." type="text"/>
+<kbd class="text-[10px] bg-white px-1.5 py-0.5 rounded border border-app-border font-mono text-gray-400">⌘K</kbd>
+</div>
+</div>
+<!-- Right: Action & Profile -->
+<div class="flex items-center gap-4">
+<!-- Read-only status pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 bg-cream/70 text-app-text rounded-full text-xs font-semibold border border-app-border/80">
+<span class="w-2 h-2 rounded-full bg-saffron-accent animate-pulse"></span>
+<span>Ordering Open · Closes 5:00 PM (automatic)</span>
+</div>
+<button aria-label="Notifications" class="p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-status-error"></span>
+</button>
+<div class="flex items-center gap-2 pl-2 border-l border-app-border">
+<div class="w-8 h-8 rounded-full bg-primary-navy text-white flex items-center justify-center text-xs font-bold">
+          YM
+        </div>
+<div class="hidden lg:block text-left">
+<p class="text-xs font-bold text-app-text leading-tight">Operations Manager</p>
+<p class="text-[10px] text-gray-500">Distribution Ops</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-65px)]">
+<!-- ========================================================================= -->
+<!-- SIDE NAV BAR                                                              -->
+<!-- ========================================================================= -->
+<aside class="h-[calc(100vh-65px)] w-64 flex flex-col justify-between shrink-0 sticky top-[65px] bg-navy-dark text-white border-r border-navy-dark p-4 custom-scroll overflow-y-auto">
+<div class="space-y-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2">
+<div class="w-9 h-9 rounded-lg bg-primary-navy flex items-center justify-center border border-white/10 text-white">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div>
+<h1 class="text-base font-bold font-display tracking-wide text-white leading-none">Yog Milk</h1>
+<p class="text-[11px] text-gray-300 mt-0.5">Dairy Operations Platform</p>
+</div>
+</div>
+<!-- Spec Jump Links -->
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-wider text-gray-400 px-3 pb-1">Spec Index</p>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white text-xs transition-colors" href="#brand-identity">
+<span class="material-symbols-outlined text-sm">palette</span> 1. Brand &amp; Identity
+        </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white text-xs transition-colors" href="#color-tokens">
+<span class="material-symbols-outlined text-sm">colorize</span> 2. Color Architecture
+        </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white text-xs transition-colors" href="#typography-specimen">
+<span class="material-symbols-outlined text-sm">format_size</span> 3. Typography
+        </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white text-xs transition-colors" href="#component-matrix">
+<span class="material-symbols-outlined text-sm">widgets</span> 4. Component Matrix
+        </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-saffron-accent text-white text-xs font-semibold shadow-sm transition-colors" href="#interactive-prototype">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">play_circle</span> 5. Admin Simulator
+        </a>
+</div>
+<div class="border-t border-white/10 my-2"></div>
+<!-- App Tabs -->
+<div class="space-y-1">
+<p class="text-[10px] font-bold uppercase tracking-wider text-gray-400 px-3 pb-1">Operations Hub</p>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-navy text-white text-xs font-medium" href="#interactive-prototype" onclick="switchStep(0)">
+<span class="material-symbols-outlined text-base">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:text-white text-xs hover:bg-white/10 transition-colors" href="#interactive-prototype" onclick="switchStep(1)">
+<span class="material-symbols-outlined text-base">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:text-white text-xs hover:bg-white/10 transition-colors" href="#interactive-prototype" onclick="switchStep(3)">
+<span class="material-symbols-outlined text-base">payments</span>
+<span>Record Payment</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:text-white text-xs hover:bg-white/10 transition-colors" href="#interactive-prototype" onclick="switchStep(4)">
+<span class="material-symbols-outlined text-base">local_shipping</span>
+<span>Delivery Queue</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:text-white text-xs hover:bg-white/10 transition-colors" href="#component-matrix">
+<span class="material-symbols-outlined text-base">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-300 hover:text-white text-xs hover:bg-white/10 transition-colors" href="#brand-identity">
+<span class="material-symbols-outlined text-base">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="pt-4 border-t border-white/10 space-y-2">
+<div class="p-2.5 rounded-lg bg-white/5 border border-white/10 text-xs text-gray-300">
+<p class="font-semibold text-white">Daily Order Cutoff</p>
+<p class="text-[11px] text-gray-400 mt-0.5">Closes strictly at 5:00 PM</p>
+</div>
+<button class="w-full py-2 px-3 rounded-lg bg-white/10 hover:bg-white/15 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-base">help</span>
+<span>Ops Support</span>
+</button>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN CONTENT CANVAS                                                       -->
+<!-- ========================================================================= -->
+<main class="flex-1 p-6 md:p-10 space-y-14 max-w-7xl mx-auto overflow-x-hidden">
+<!-- HERO HEADER -->
+<section class="bg-white p-8 md:p-10 rounded-2xl border border-app-border shadow-sm relative overflow-hidden">
+<div class="relative z-10 flex flex-col lg:flex-row justify-between lg:items-center gap-6">
+<div class="space-y-3">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cream text-app-text text-xs font-bold uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-saffron-accent"></span>
+<span>Production System Specification</span>
+</div>
+<h1 class="text-3xl md:text-4xl font-bold font-display text-primary-navy tracking-tight">Yog Milk Design System</h1>
+<p class="text-sm md:text-base text-gray-600 max-w-2xl leading-relaxed">
+            Standardized user experience framework for Yog Milk distribution, inventory administration, delivery queues, and payment settlement workflows.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+<div class="bg-cream/60 p-4 rounded-xl border border-app-border text-right">
+<span class="text-xs font-semibold text-gray-500 block">SYSTEM VERSION</span>
+<span class="text-base font-bold text-primary-navy">v2.5 Refactored Master</span>
+<span class="text-xs text-saffron-accent font-semibold block mt-0.5">Automated Daily Cutoff: 5:00 PM</span>
+</div>
+<a class="px-5 py-3 rounded-xl bg-primary-navy text-white hover:bg-navy-dark transition text-xs font-bold text-center flex items-center justify-center gap-2 shadow-sm" href="#interactive-prototype">
+<span class="material-symbols-outlined text-base">play_arrow</span>
+<span>Launch Admin Simulator</span>
+</a>
+</div>
+</div>
+<!-- Quick Anchor Pills -->
+<div class="flex flex-wrap gap-2 pt-6 mt-6 border-t border-app-border">
+<a class="px-3 py-1.5 rounded-lg bg-page-bg hover:bg-cream/50 text-app-text text-xs font-medium border border-app-border transition-colors" href="#brand-identity">1. Brand &amp; Identity</a>
+<a class="px-3 py-1.5 rounded-lg bg-page-bg hover:bg-cream/50 text-app-text text-xs font-medium border border-app-border transition-colors" href="#color-tokens">2. Color Tokens</a>
+<a class="px-3 py-1.5 rounded-lg bg-page-bg hover:bg-cream/50 text-app-text text-xs font-medium border border-app-border transition-colors" href="#typography-specimen">3. Typography Specimens</a>
+<a class="px-3 py-1.5 rounded-lg bg-page-bg hover:bg-cream/50 text-app-text text-xs font-medium border border-app-border transition-colors" href="#component-matrix">4. Component Matrix</a>
+<a class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-bold shadow-sm transition-colors" href="#interactive-prototype">5. Interactive Simulator</a>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 1: BRAND IDENTITY & LOGO GUIDELINES                              -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="brand-identity">
+<div class="border-b border-app-border pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy">1. Brand Identity &amp; Logo Guidelines</h2>
+<p class="text-sm text-gray-500">Official lockup, clean emblem, clear space constraints, and typography marks</p>
+</div>
+<span class="text-xs font-bold text-gray-400">Section 01 / 05</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Full Brand Lockup -->
+<div class="bg-white p-6 rounded-2xl border border-app-border flex flex-col justify-between">
+<div class="space-y-1">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">PRIMARY FULL LOCKUP</span>
+<p class="text-sm font-bold text-app-text">Mark + Brand Wordmark</p>
+</div>
+<div class="py-10 flex items-center justify-center bg-page-bg rounded-xl my-4 border border-app-border">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary-navy text-white flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<div>
+<span class="text-2xl font-bold font-display text-primary-navy tracking-tight leading-none block">Yog Milk</span>
+<span class="text-[10px] tracking-widest uppercase font-bold text-saffron-accent block mt-1">Pure Fresh Dairy</span>
+</div>
+</div>
+</div>
+<p class="text-xs text-gray-500">Primary presentation across administrative consoles, product crates, invoices, and shipping labels.</p>
+</div>
+<!-- Emblem Only -->
+<div class="bg-white p-6 rounded-2xl border border-app-border flex flex-col justify-between">
+<div class="space-y-1">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">ISOLATED EMBLEM</span>
+<p class="text-sm font-bold text-app-text">Dairy Drop Purity Symbol</p>
+</div>
+<div class="py-10 flex items-center justify-center bg-navy-dark rounded-xl my-4 text-white">
+<div class="relative p-4 border-2 border-dashed border-white/20 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-cream" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+<span class="absolute -top-3 -right-3 text-[10px] bg-primary-navy text-white px-2 py-0.5 rounded font-mono border border-white/20">1X Padding</span>
+</div>
+</div>
+<p class="text-xs text-gray-500">Requires 1X radius bounding clearance on all surfaces. Minimum size: 24×24px, app icon 48×48px.</p>
+</div>
+<!-- Devanagari Bilingual Lockup -->
+<div class="bg-white p-6 rounded-2xl border border-app-border flex flex-col justify-between">
+<div class="space-y-1">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">BILINGUAL REGISTRY SEAL</span>
+<p class="text-sm font-bold text-app-text">Regional Delivery Packaging</p>
+</div>
+<div class="py-10 flex items-center justify-center bg-cream/50 rounded-xl my-4 text-center border border-app-border">
+<div class="border border-app-border px-6 py-3 rounded-xl bg-white shadow-sm">
+<p class="font-devanagari text-lg font-bold text-primary-navy">योग मिल्क · शुद्ध डेअरी</p>
+<p class="text-[11px] font-bold tracking-wider uppercase text-gray-500 mt-0.5">Fresh Dairy Products</p>
+</div>
+</div>
+<p class="text-xs text-gray-500">Approved for regional delivery invoices, shipping crates, and bulk packaging cartons.</p>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 2: COLOR TOKENS                                                   -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="color-tokens">
+<div class="border-b border-app-border pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy">2. Color Tokens &amp; Palette Architecture</h2>
+<p class="text-sm text-gray-500">Standard 1-to-1 operational palette tokens and system contrast specifications</p>
+</div>
+<span class="text-xs font-bold text-gray-400">Section 02 / 05</span>
+</div>
+<!-- Color Swatches Grid -->
+<div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+<!-- Primary Navy -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-primary-navy flex items-end p-2 text-white font-mono text-xs font-semibold">#1F2A6B</div>
+<div>
+<p class="text-xs font-bold text-app-text">Primary Navy</p>
+<p class="text-[11px] font-mono text-gray-400">primary-navy</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Core brand &amp; headers</p>
+</div>
+</div>
+<!-- Navy Dark -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-navy-dark flex items-end p-2 text-white font-mono text-xs font-semibold">#151D4D</div>
+<div>
+<p class="text-xs font-bold text-app-text">Navy Dark</p>
+<p class="text-[11px] font-mono text-gray-400">navy-dark</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Sidebar &amp; dark chrome</p>
+</div>
+</div>
+<!-- Saffron Accent -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-saffron-accent flex items-end p-2 text-white font-mono text-xs font-semibold">#F47B20</div>
+<div>
+<p class="text-xs font-bold text-app-text">Saffron Accent</p>
+<p class="text-[11px] font-mono text-gray-400">saffron-accent</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Secondary action &amp; emphasis</p>
+</div>
+</div>
+<!-- Gold -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-gold flex items-end p-2 text-white font-mono text-xs font-semibold">#C9A03D</div>
+<div>
+<p class="text-xs font-bold text-app-text">Gold</p>
+<p class="text-[11px] font-mono text-gray-400">gold</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Badges &amp; premium tags</p>
+</div>
+</div>
+<!-- Cream -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-cream border border-app-border flex items-end p-2 text-app-text font-mono text-xs font-semibold">#FBF1DC</div>
+<div>
+<p class="text-xs font-bold text-app-text">Cream</p>
+<p class="text-[11px] font-mono text-gray-400">cream</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Containers &amp; soft fills</p>
+</div>
+</div>
+<!-- Canvas Background -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-page-bg border border-app-border flex items-end p-2 text-app-text font-mono text-xs font-semibold">#FFFCF6</div>
+<div>
+<p class="text-xs font-bold text-app-text">Canvas Background</p>
+<p class="text-[11px] font-mono text-gray-400">page-bg</p>
+<p class="text-[10px] text-gray-500 mt-0.5">App page canvas</p>
+</div>
+</div>
+<!-- Text -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-app-text flex items-end p-2 text-white font-mono text-xs font-semibold">#1B2030</div>
+<div>
+<p class="text-xs font-bold text-app-text">Text</p>
+<p class="text-[11px] font-mono text-gray-400">app-text</p>
+<p class="text-[10px] text-gray-500 mt-0.5">High-contrast body text</p>
+</div>
+</div>
+<!-- Success -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-status-success flex items-end p-2 text-white font-mono text-xs font-semibold">#1F9D63</div>
+<div>
+<p class="text-xs font-bold text-app-text">Success</p>
+<p class="text-[11px] font-mono text-gray-400">status-success</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Paid, active, delivered</p>
+</div>
+</div>
+<!-- Amber / Pending -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-status-amber flex items-end p-2 text-white font-mono text-xs font-semibold">#E8A317</div>
+<div>
+<p class="text-xs font-bold text-app-text">Amber / Pending</p>
+<p class="text-[11px] font-mono text-gray-400">status-amber</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Processing &amp; on hold</p>
+</div>
+</div>
+<!-- Error -->
+<div class="bg-white p-3.5 rounded-xl border border-app-border space-y-2">
+<div class="h-16 rounded-lg bg-status-error flex items-end p-2 text-white font-mono text-xs font-semibold">#D64545</div>
+<div>
+<p class="text-xs font-bold text-app-text">Error</p>
+<p class="text-[11px] font-mono text-gray-400">status-error</p>
+<p class="text-[10px] text-gray-500 mt-0.5">Payment pending block / failed</p>
+</div>
+</div>
+</div>
+<!-- Color Token Table -->
+<div class="bg-white rounded-2xl border border-app-border overflow-x-auto shadow-sm">
+<table class="w-full text-left border-collapse text-xs">
+<thead>
+<tr class="bg-cream/40 border-b border-app-border text-[11px] font-bold uppercase tracking-wider text-gray-500">
+<th class="p-3.5">Token Name</th>
+<th class="p-3.5">Hex Code</th>
+<th class="p-3.5">Tailwind Class</th>
+<th class="p-3.5">Application Role</th>
+<th class="p-3.5">Status / State Mapping</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-app-border">
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Primary Navy</td>
+<td class="p-3.5 font-mono">#1F2A6B</td>
+<td class="p-3.5 font-mono text-gray-500">bg-primary-navy</td>
+<td class="p-3.5">Primary brand headers, key CTA buttons, active sidebar tabs</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-cream font-medium">Standard</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Navy Dark</td>
+<td class="p-3.5 font-mono">#151D4D</td>
+<td class="p-3.5 font-mono text-gray-500">bg-navy-dark</td>
+<td class="p-3.5">Navigation drawer backdrop, deep contrast panels</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-cream font-medium">Navigation</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Saffron Accent</td>
+<td class="p-3.5 font-mono">#F47B20</td>
+<td class="p-3.5 font-mono text-gray-500">bg-saffron-accent</td>
+<td class="p-3.5">Secondary action buttons, cutoff indicators, order notices</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-orange-100 text-saffron-accent font-medium">Active Accent</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Gold</td>
+<td class="p-3.5 font-mono">#C9A03D</td>
+<td class="p-3.5 font-mono text-gray-500">bg-gold</td>
+<td class="p-3.5">Packaging tags, quality verification seals</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-amber-50 text-gold font-medium">Verification</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Cream</td>
+<td class="p-3.5 font-mono">#FBF1DC</td>
+<td class="p-3.5 font-mono text-gray-500">bg-cream</td>
+<td class="p-3.5">Neutral card containers, tonal button fills, status backgrounds</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-cream font-medium">Neutral Fill</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Page Background</td>
+<td class="p-3.5 font-mono">#FFFCF6</td>
+<td class="p-3.5 font-mono text-gray-500">bg-page-bg</td>
+<td class="p-3.5">Global screen canvas background</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-page-bg border border-app-border font-medium">Global Canvas</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Success</td>
+<td class="p-3.5 font-mono">#1F9D63</td>
+<td class="p-3.5 font-mono text-gray-500">bg-status-success</td>
+<td class="p-3.5">Delivered status, Paid indicator, Active account status</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#E3F6EC] text-status-success font-medium">Success State</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Amber / Pending</td>
+<td class="p-3.5 font-mono">#E8A317</td>
+<td class="p-3.5 font-mono text-gray-500">bg-status-amber</td>
+<td class="p-3.5">Pending payment, Processing delivery, On hold accounts</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#FFF8E6] text-status-amber font-medium">Pending State</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono font-bold text-primary-navy">Error</td>
+<td class="p-3.5 font-mono">#D64545</td>
+<td class="p-3.5 font-mono text-gray-500">bg-status-error</td>
+<td class="p-3.5">Payment pending block, Failed transaction, Cancelled order</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#FDE8E8] text-status-error font-medium">Blocked / Alert</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 3: TYPOGRAPHY SPECIMENS                                          -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="typography-specimen">
+<div class="border-b border-app-border pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy">3. Typography Specimens</h2>
+<p class="text-sm text-gray-500">Playfair Display titles, Plus Jakarta Sans interface body, and Tabular numerals</p>
+</div>
+<span class="text-xs font-bold text-gray-400">Section 03 / 05</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Display & Heading Type -->
+<div class="bg-white p-6 rounded-2xl border border-app-border space-y-4">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">DISPLAY HEADINGS (PLAYFAIR DISPLAY)</span>
+<div class="space-y-2 border-b border-app-border pb-4">
+<p class="text-3xl font-display font-bold text-primary-navy">Full Cream Milk &amp; Fresh Dahi</p>
+<p class="text-xl font-display font-semibold text-primary-navy">Operational Order Management System</p>
+<p class="text-base font-display text-app-text">Daily Doorstep Dairy Dispatch</p>
+</div>
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">BODY TEXT &amp; INTERFACE (PLUS JAKARTA SANS)</span>
+<p class="text-sm text-gray-600 leading-relaxed">
+            All daily orders must be finalized and confirmed prior to the 5:00 PM cutoff window. Deliveries are batched automatically into morning distribution queues for early doorstep delivery.
+          </p>
+</div>
+<!-- Devanagari & Tabular Numerals -->
+<div class="bg-white p-6 rounded-2xl border border-app-border space-y-4">
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">DEVANAGARI SCRIPT (NOTO SERIF DEVANAGARI)</span>
+<div class="space-y-1 font-devanagari border-b border-app-border pb-4">
+<p class="text-2xl font-bold text-primary-navy">योग मिल्क डेअरी ऑपरेशन्स</p>
+<p class="text-base text-gray-700">दररोज सकाळी वेळेवर ताजे दूध आणि दुग्धजन्य पदार्थ वितरण सेवा.</p>
+</div>
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wide">TABULAR NUMERALS &amp; CURRENCY (₹ RUPEE)</span>
+<div class="grid grid-cols-3 gap-3 pt-1">
+<div class="p-3 rounded-xl bg-page-bg border border-app-border text-center">
+<span class="text-[11px] text-gray-500 block">Unit Price</span>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹34.00</span>
+</div>
+<div class="p-3 rounded-xl bg-page-bg border border-app-border text-center">
+<span class="text-[11px] text-gray-500 block">Pack of 20</span>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹680.00</span>
+</div>
+<div class="p-3 rounded-xl bg-page-bg border border-app-border text-center">
+<span class="text-[11px] text-gray-500 block">Daily Invoiced</span>
+<span class="text-base font-bold text-status-success tabular-nums">₹32,450.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 4: COMPONENT MATRIX                                               -->
+<!-- ========================================================================= -->
+<section class="space-y-8" id="component-matrix">
+<div class="border-b border-app-border pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy">4. UI Component Matrix</h2>
+<p class="text-sm text-gray-500">Status pill models, interactive buttons, form controls, steppers, and neutral product cards</p>
+</div>
+<span class="text-xs font-bold text-gray-400">Section 04 / 05</span>
+</div>
+<!-- 4.1 STATUS PILLS -->
+<div class="bg-white p-6 rounded-2xl border border-app-border space-y-5">
+<h3 class="text-base font-bold text-primary-navy">Status Pill Sets</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Order Status Set -->
+<div class="space-y-3 p-4 rounded-xl bg-page-bg border border-app-border">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-gray-500 uppercase">ORDER STATUS</span>
+<span class="text-[10px] text-gray-400">4 states</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFF8E6] text-status-amber text-xs font-semibold border border-status-amber/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-amber"></span>
+                Scheduled
+              </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-primary-navy text-xs font-semibold border border-primary-navy/20">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-navy"></span>
+                Ready for delivery
+              </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E3F6EC] text-status-success text-xs font-semibold border border-status-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-success"></span>
+                Delivered
+              </span>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FDE8E8] text-status-error text-xs font-semibold border border-status-error/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-error"></span>
+                Cancelled
+              </span>
+</div>
+</div>
+<!-- Payment Status Set (NO Partially Paid) -->
+<div class="space-y-3 p-4 rounded-xl bg-page-bg border border-app-border">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-gray-500 uppercase">PAYMENT STATUS</span>
+<span class="text-[10px] text-gray-400">5 states (No Partially Paid)</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#FFF8E6] text-status-amber text-xs font-semibold border border-status-amber/30">
+<span>₹</span> Pending
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-50 text-primary-navy text-xs font-semibold border border-primary-navy/30">
+<span class="material-symbols-outlined text-xs">sync</span> Processing
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#E3F6EC] text-status-success text-xs font-semibold border border-status-success/30">
+<span class="material-symbols-outlined text-xs">check_circle</span> Paid
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#FDE8E8] text-status-error text-xs font-semibold border border-status-error/30">
+<span class="material-symbols-outlined text-xs">cancel</span> Failed
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-semibold border border-gray-300">
+<span class="material-symbols-outlined text-xs">undo</span> Refunded
+              </span>
+</div>
+</div>
+<!-- Account Status Set -->
+<div class="space-y-3 p-4 rounded-xl bg-page-bg border border-app-border">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-gray-500 uppercase">ACCOUNT STATUS</span>
+<span class="text-[10px] text-gray-400">4 states</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#E3F6EC] text-status-success text-xs font-semibold border border-status-success/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-success"></span> Active
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-amber-50 text-status-amber text-xs font-semibold border border-status-amber/20">
+<span class="w-1.5 h-1.5 rounded-full bg-status-amber"></span> Pending approval
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gray-100 text-gray-700 text-xs font-semibold border border-gray-300">
+<span class="w-1.5 h-1.5 rounded-full bg-gray-500"></span> On hold
+              </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#FDE8E8] text-status-error text-xs font-semibold border border-status-error/30">
+<span class="material-symbols-outlined text-xs">lock</span> Payment pending block
+              </span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4.2 BUTTONS, FORM INPUTS & ADD-TO-STEPPER -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Buttons & Actions -->
+<div class="bg-white p-6 rounded-2xl border border-app-border space-y-4">
+<h3 class="text-base font-bold text-primary-navy">Action Buttons</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<span class="text-[11px] font-semibold text-gray-400 block mb-1">PRIMARY NAVY</span>
+<button class="w-full py-2.5 px-4 rounded-xl bg-primary-navy text-white hover:bg-navy-dark transition text-xs font-bold flex items-center justify-center gap-2 shadow-sm">
+<span>Confirm Order</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div>
+<span class="text-[11px] font-semibold text-gray-400 block mb-1">SECONDARY SAFFRON</span>
+<button class="w-full py-2.5 px-4 rounded-xl bg-saffron-accent text-white hover:bg-[#e06c14] transition text-xs font-bold flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Update Schedule</span>
+</button>
+</div>
+<div>
+<span class="text-[11px] font-semibold text-gray-400 block mb-1">TONAL CREAM</span>
+<button class="w-full py-2.5 px-4 rounded-xl bg-cream text-app-text hover:bg-[#fae9c5] border border-app-border transition text-xs font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">receipt</span>
+<span>View Invoice</span>
+</button>
+</div>
+<div>
+<span class="text-[11px] font-semibold text-gray-400 block mb-1">DESTRUCTIVE RED</span>
+<button class="w-full py-2.5 px-4 rounded-xl bg-[#FDE8E8] text-status-error hover:bg-red-100 border border-status-error/20 transition text-xs font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">block</span>
+<span>Payment pending block</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Form Inputs & Stepper Component -->
+<div class="bg-white p-6 rounded-2xl border border-app-border space-y-4">
+<h3 class="text-base font-bold text-primary-navy">Form Controls &amp; Stepper</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div>
+<label class="text-xs font-semibold text-gray-600 block mb-1">Customer Phone</label>
+<div class="flex rounded-xl border border-app-border overflow-hidden bg-page-bg">
+<span class="px-3 py-2 text-xs font-bold text-gray-500 bg-gray-100 border-r border-app-border">+91</span>
+<input class="w-full px-3 py-2 text-xs text-app-text bg-transparent outline-none border-none focus:ring-0 font-medium" type="text" value="98201 55420"/>
+</div>
+</div>
+<div>
+<label class="text-xs font-semibold text-gray-600 block mb-1">Route Assignment</label>
+<select class="w-full px-3 py-2 text-xs text-app-text rounded-xl border border-app-border bg-page-bg outline-none focus:ring-0 font-medium">
+<option>Route #04 — Western Suburbs</option>
+<option>Route #08 — South Mumbai</option>
+<option>Route #12 — Central Line</option>
+</select>
+</div>
+</div>
+<!-- Add to Stepper Demo -->
+<div class="pt-2 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-xs font-bold text-app-text block">Quantity Stepper Component</span>
+<span class="text-[11px] text-gray-500">Add to basket micro-interaction</span>
+</div>
+<div id="standalone-stepper-box">
+<button class="py-2 px-4 rounded-xl bg-primary-navy text-white text-xs font-bold hover:bg-navy-dark transition flex items-center gap-1.5" id="matrix-add-btn" onclick="toggleMatrixStepper(true)">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>Add Item</span>
+</button>
+<div class="hidden flex items-center bg-cream/70 border border-app-border rounded-xl px-2 py-1 gap-3" id="matrix-active-stepper">
+<button class="w-6 h-6 rounded bg-white text-primary-navy font-bold flex items-center justify-center border border-app-border text-sm" onclick="changeMatrixQty(-1)">-</button>
+<span class="text-xs font-bold text-primary-navy tabular-nums" id="matrix-qty-count">1</span>
+<button class="w-6 h-6 rounded bg-white text-primary-navy font-bold flex items-center justify-center border border-app-border text-sm" onclick="changeMatrixQty(1)">+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 4.3 NEUTRAL PRODUCT CARDS (6 Products) -->
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-base font-bold text-primary-navy">Neutral Product Cards</h3>
+<span class="text-xs text-gray-500">6 catalog SKUs</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+<!-- 1. Full Cream Milk 500 ml (pack of 20) -->
+<div class="bg-white p-5 rounded-2xl border border-app-border shadow-sm flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded-full bg-cream text-app-text text-[11px] font-bold">Pasteurized</span>
+<span class="text-xs font-mono text-gray-400">SKU-MLK-01</span>
+</div>
+<h4 class="text-base font-bold text-primary-navy">Full Cream Milk 500 ml (pack of 20)</h4>
+<p class="text-xs text-gray-500">Daily pouch crate for retail &amp; residential distribution.</p>
+</div>
+<div class="pt-4 mt-3 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹680.00</span>
+<span class="text-[10px] text-gray-400 block">₹34.00 / unit</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-semibold hover:bg-navy-dark transition">Add to Order</button>
+</div>
+</div>
+<!-- 2. Toned Milk 1 L (pack of 12) -->
+<div class="bg-white p-5 rounded-2xl border border-app-border shadow-sm flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded-full bg-cream text-app-text text-[11px] font-bold">Standard</span>
+<span class="text-xs font-mono text-gray-400">SKU-MLK-02</span>
+</div>
+<h4 class="text-base font-bold text-primary-navy">Toned Milk 1 L (pack of 12)</h4>
+<p class="text-xs text-gray-500">Daily pouch carton with secure hygienic seal.</p>
+</div>
+<div class="pt-4 mt-3 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹648.00</span>
+<span class="text-[10px] text-gray-400 block">₹54.00 / unit</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-semibold hover:bg-navy-dark transition">Add to Order</button>
+</div>
+</div>
+<!-- 3. Fresh Dahi 400 g (pack of 24) -->
+<div class="bg-white p-5 rounded-2xl border border-app-border shadow-sm flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded-full bg-cream text-app-text text-[11px] font-bold">Cultured Curd</span>
+<span class="text-xs font-mono text-gray-400">SKU-DAH-03</span>
+</div>
+<h4 class="text-base font-bold text-primary-navy">Fresh Dahi 400 g (pack of 24)</h4>
+<p class="text-xs text-gray-500">Consistent set curd packed in hygienic food-grade tubs.</p>
+</div>
+<div class="pt-4 mt-3 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹840.00</span>
+<span class="text-[10px] text-gray-400 block">₹35.00 / tub</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-semibold hover:bg-navy-dark transition">Add to Order</button>
+</div>
+</div>
+<!-- 4. Paneer 1 kg -->
+<div class="bg-white p-5 rounded-2xl border border-app-border shadow-sm flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded-full bg-cream text-app-text text-[11px] font-bold">Fresh Cottage</span>
+<span class="text-xs font-mono text-gray-400">SKU-PAN-04</span>
+</div>
+<h4 class="text-base font-bold text-primary-navy">Paneer 1 kg</h4>
+<p class="text-xs text-gray-500">Vacuum packed fresh block cottage cheese.</p>
+</div>
+<div class="pt-4 mt-3 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹380.00</span>
+<span class="text-[10px] text-gray-400 block">1 kg vacuum pack</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-semibold hover:bg-navy-dark transition">Add to Order</button>
+</div>
+</div>
+<!-- 5. Pure Ghee 1 L -->
+<div class="bg-white p-5 rounded-2xl border border-app-border shadow-sm flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded-full bg-cream text-app-text text-[11px] font-bold">Clarified Butter</span>
+<span class="text-xs font-mono text-gray-400">SKU-GHE-05</span>
+</div>
+<h4 class="text-base font-bold text-primary-navy">Pure Ghee 1 L</h4>
+<p class="text-xs text-gray-500">Traditional golden clarified butter in sealed tin pack.</p>
+</div>
+<div class="pt-4 mt-3 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹620.00</span>
+<span class="text-[10px] text-gray-400 block">1 Liter sealed tin</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-semibold hover:bg-navy-dark transition">Add to Order</button>
+</div>
+</div>
+<!-- 6. Butter 500 g -->
+<div class="bg-white p-5 rounded-2xl border border-app-border shadow-sm flex flex-col justify-between">
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="px-2 py-0.5 rounded-full bg-cream text-app-text text-[11px] font-bold">Salted Table</span>
+<span class="text-xs font-mono text-gray-400">SKU-BUT-06</span>
+</div>
+<h4 class="text-base font-bold text-primary-navy">Butter 500 g</h4>
+<p class="text-xs text-gray-500">Pasteurized table butter block wrapped in foil carton.</p>
+</div>
+<div class="pt-4 mt-3 border-t border-app-border flex items-center justify-between">
+<div>
+<span class="text-base font-bold text-primary-navy tabular-nums">₹275.00</span>
+<span class="text-[10px] text-gray-400 block">500 g carton</span>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-primary-navy text-white text-xs font-semibold hover:bg-navy-dark transition">Add to Order</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 5: INTERACTIVE FLOW PROTOTYPE (ADMIN OPERATIONS SIMULATOR)        -->
+<!-- ========================================================================= -->
+<section class="space-y-6 pt-4" id="interactive-prototype">
+<div class="border-b border-app-border pb-3 flex flex-col md:flex-row md:items-baseline justify-between gap-2">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cream text-primary-navy text-xs font-bold uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-xs text-saffron-accent" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Interactive Admin Operations Flow</span>
+</div>
+<h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy">5. Operations Flow Simulator</h2>
+<p class="text-sm text-gray-500">Dashboard → Orders → Order Detail → Record Payment → Delivery Queue</p>
+</div>
+<span class="text-xs font-bold text-gray-400">Section 05 / 05</span>
+</div>
+<!-- Timeline Carousel -->
+<div class="bg-white p-4 rounded-2xl border border-app-border overflow-x-auto custom-scroll">
+<div class="flex items-center gap-2 min-w-max py-1" id="step-timeline">
+<!-- Populated by JS -->
+</div>
+</div>
+<!-- Simulator & Metadata Panel -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- SIMULATOR VIEWPORT -->
+<div class="lg:col-span-6 flex justify-center">
+<div class="w-full max-w-[420px] h-[640px] bg-white rounded-3xl border-4 border-navy-dark shadow-xl overflow-hidden flex flex-col relative">
+<!-- Simulated Chrome Top Bar -->
+<div class="bg-navy-dark text-white px-4 py-3 flex items-center justify-between shrink-0">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-saffron-accent text-sm">local_drink</span>
+<span class="text-xs font-bold tracking-tight">Yog Milk Admin Portal</span>
+</div>
+<span class="text-[10px] bg-white/20 px-2 py-0.5 rounded font-mono">Cutoff: 5:00 PM</span>
+</div>
+<!-- Canvas Screen Injected by JS -->
+<div class="flex-1 overflow-y-auto custom-scroll p-4 bg-page-bg flex flex-col justify-between" id="simulator-canvas">
+<!-- Rendered via JS -->
+</div>
+<!-- Bottom Navigation Bar for Mobile Shell -->
+<div class="bg-white border-t border-app-border px-3 py-2 flex items-center justify-around shrink-0 text-xs">
+<button class="flex flex-col items-center text-primary-navy font-bold" onclick="switchStep(0)">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span class="text-[10px]">Dashboard</span>
+</button>
+<button class="flex flex-col items-center text-gray-400 hover:text-primary-navy" onclick="switchStep(1)">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span class="text-[10px]">Orders</span>
+</button>
+<button class="flex flex-col items-center text-gray-400 hover:text-primary-navy" onclick="switchStep(3)">
+<span class="material-symbols-outlined text-lg">payments</span>
+<span class="text-[10px]">Payment</span>
+</button>
+<button class="flex flex-col items-center text-gray-400 hover:text-primary-navy" onclick="switchStep(4)">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span class="text-[10px]">Queue</span>
+</button>
+</div>
+</div>
+</div>
+<!-- SPECIFICATION & INVARIANT PANEL -->
+<div class="lg:col-span-6 bg-white p-6 rounded-2xl border border-app-border space-y-6 shadow-sm">
+<div class="border-b border-app-border pb-4 flex items-start justify-between">
+<div>
+<span class="text-xs font-bold text-gray-400 uppercase tracking-wider block" id="inspect-step-num">Step 01 of 05</span>
+<h3 class="text-lg font-bold font-display text-primary-navy mt-1" id="inspect-title">Admin Dashboard</h3>
+<p class="text-xs font-mono text-saffron-accent mt-0.5" id="inspect-route">Route: /admin/dashboard</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-app-text transition" onclick="prevStep()">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="p-2 rounded-xl bg-primary-navy text-white hover:bg-navy-dark transition" onclick="nextStep()">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Deep Specs -->
+<div class="space-y-4">
+<div>
+<h4 class="text-xs font-bold text-primary-navy uppercase tracking-wide">Purpose &amp; Operations Function</h4>
+<p class="text-xs text-gray-600 mt-1 leading-relaxed" id="inspect-desc">
+                Central distribution overview tracking daily milk crate volumes, scheduled dispatch routes, pending payments, and the 5:00 PM cutoff counter.
+              </p>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<div class="p-3.5 rounded-xl bg-page-bg border border-app-border">
+<h5 class="text-xs font-bold text-primary-navy flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-status-success">check_circle</span>
+                  Permitted Admin Actions
+                </h5>
+<ul class="text-xs text-gray-600 mt-2 space-y-1 list-disc list-inside" id="inspect-actions">
+<li>Review daily route volume</li>
+<li>Check payment collection balance</li>
+</ul>
+</div>
+<div class="p-3.5 rounded-xl bg-page-bg border border-app-border">
+<h5 class="text-xs font-bold text-primary-navy flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-saffron-accent">lock_clock</span>
+                  System Invariants
+                </h5>
+<ul class="text-xs text-gray-600 mt-2 space-y-1 list-disc list-inside" id="inspect-invariants">
+<li>Ordering strictly closes at 5:00 PM (automatic)</li>
+<li>Accounts on Payment pending block cannot be dispatched</li>
+</ul>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-cream/40 border border-app-border">
+<h5 class="text-xs font-bold text-primary-navy">Tokens &amp; Components Applied</h5>
+<p class="text-xs font-mono text-gray-600 mt-1" id="inspect-tokens">
+                primary-navy (#1F2A6B), cream (#FBF1DC), status-success (#1F9D63), Metric Stat Cards
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- FOOTER SPECIFICATION AUDIT                                                -->
+<!-- ========================================================================= -->
+<footer class="pt-8 border-t border-app-border flex flex-col md:flex-row items-center justify-between gap-4 text-gray-500 text-xs">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-md bg-primary-navy text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_drink</span>
+</div>
+<span class="font-medium">Yog Milk Admin &amp; Operations Design Specification</span>
+</div>
+<div class="flex items-center gap-4 font-mono text-[11px] text-gray-400">
+<span>Daily Cutoff: 5:00 PM Automatic</span>
+<span>•</span>
+<span>Standard Dairy Distribution System</span>
+</div>
+</footer>
+</main>
+</div>
+<!-- ========================================================================= -->
+<!-- JAVASCRIPT: PROTOTYPE ENGINE & STEPPER LOGIC                              -->
+<!-- ========================================================================= -->
+<script>
+  // --- 1. Matrix Stepper Logic ---
+  let matrixQty = 1;
+  function toggleMatrixStepper(showActive) {
+    const addBtn = document.getElementById('matrix-add-btn');
+    const stepper = document.getElementById('matrix-active-stepper');
+    if (showActive) {
+      addBtn.classList.add('hidden');
+      stepper.classList.remove('hidden');
+    } else {
+      addBtn.classList.remove('hidden');
+      stepper.classList.add('hidden');
+    }
+  }
+
+  function changeMatrixQty(delta) {
+    matrixQty += delta;
+    if (matrixQty <= 0) {
+      matrixQty = 1;
+      toggleMatrixStepper(false);
+    } else {
+      document.getElementById('matrix-qty-count').textContent = matrixQty;
+    }
+  }
+
+  // --- 2. Admin Operations 5-Step Flow Definition ---
+  const adminSteps = [
+    {
+      id: 0,
+      title: "Admin Dashboard",
+      route: "/admin/dashboard",
+      desc: "Central operations summary tracking daily milk crates, scheduled runs, pending payments, and the 5:00 PM cutoff countdown.",
+      actions: [
+        "Monitor route capacity (Route #04 and Route #08)",
+        "Review daily collections and pending amounts",
+        "Inspect accounts flagged with Payment pending block"
+      ],
+      invariants: [
+        "Ordering automatically locks at 5:00 PM",
+        "Only Paid or verified Pending accounts are included in the night dispatch run"
+      ],
+      tokens: "primary-navy (#1F2A6B), saffron-accent (#F47B20), status-amber (#E8A317), status-success (#1F9D63)",
+      render: `
+        <div class="space-y-3">
+          <div class="p-3.5 rounded-xl bg-primary-navy text-white space-y-1">
+            <div class="flex justify-between items-center">
+              <span class="text-[11px] text-gray-300">Daily Intake Volume</span>
+              <span class="px-2 py-0.5 rounded bg-status-success text-[10px] font-bold">Optimal</span>
+            </div>
+            <p class="text-2xl font-bold font-display tabular-nums">4,820 Liters</p>
+            <p class="text-[11px] text-gray-300">14 Routes · 2,410 Deliveries Scheduled</p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2 text-xs">
+            <div class="p-2.5 rounded-xl bg-white border border-app-border">
+              <span class="text-gray-400 block text-[10px]">Realized Payments</span>
+              <span class="font-bold text-status-success text-sm tabular-nums">₹1,48,200</span>
+              <span class="text-[10px] text-gray-500 block mt-0.5">Paid accounts</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-white border border-app-border">
+              <span class="text-gray-400 block text-[10px]">Payment Pending</span>
+              <span class="font-bold text-status-amber text-sm tabular-nums">₹12,400</span>
+              <span class="text-[10px] text-gray-500 block mt-0.5">8 Invoices pending</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[#FFF8E6] border border-status-amber/30 text-xs flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-status-amber text-base">schedule</span>
+              <span class="font-semibold text-app-text">5:00 PM Daily Cutoff Status</span>
+            </div>
+            <span class="px-2 py-0.5 rounded bg-white text-status-amber text-[10px] font-bold border border-status-amber/20">Open (Automatic)</span>
+          </div>
+
+          <div class="p-3 rounded-xl bg-white border border-app-border text-xs space-y-1.5">
+            <div class="flex justify-between items-center">
+              <span class="font-bold text-primary-navy">Accounts on Hold / Block</span>
+              <span class="text-[10px] text-status-error font-bold">2 Accounts</span>
+            </div>
+            <p class="text-[11px] text-gray-500">2 customers flagged with Payment pending block.</p>
+          </div>
+        </div>
+
+        <button onclick="nextStep()" class="w-full py-2.5 rounded-xl bg-primary-navy text-white text-xs font-bold hover:bg-navy-dark transition flex items-center justify-center gap-1.5 shadow-sm mt-3">
+          <span>Go to Orders Table</span>
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      `
+    },
+    {
+      id: 1,
+      title: "Orders Table",
+      route: "/admin/orders",
+      desc: "Live ledger of daily household delivery orders, customer details, package types, and payment statuses.",
+      actions: [
+        "Filter orders by route and delivery slot",
+        "View status pills: Scheduled, Ready for delivery, Delivered, Cancelled",
+        "Click on an order to view comprehensive detail"
+      ],
+      invariants: [
+        "Orders cannot be modified after 5:00 PM cutoff",
+        "Payment status displayed: Pending, Processing, Paid, Failed, Refunded"
+      ],
+      tokens: "Status pill set (Order & Payment), border #E5E7EB, font tabular-nums",
+      render: `
+        <div class="space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-xs font-bold text-primary-navy">Orders (Route #04 Suburbs)</span>
+            <span class="text-[10px] bg-cream px-2 py-0.5 rounded font-bold text-app-text">Total: 42 Orders</span>
+          </div>
+
+          <!-- Order Item 1 -->
+          <div onclick="nextStep()" class="p-2.5 rounded-xl bg-white border border-app-border hover:border-primary-navy cursor-pointer transition space-y-1.5 shadow-sm">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-primary-navy">#YM-1042 · Rajesh Sharma</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#E3F6EC] text-status-success text-[10px] font-bold">Paid</span>
+            </div>
+            <p class="text-[11px] text-gray-500">Full Cream Milk 500 ml (pack of 20)</p>
+            <div class="flex justify-between items-center text-[10px] pt-1 border-t border-gray-100">
+              <span class="text-gray-400">Slot: 05:30 – 07:00 AM</span>
+              <span class="px-2 py-0.5 rounded bg-blue-50 text-primary-navy font-semibold">Ready for delivery</span>
+            </div>
+          </div>
+
+          <!-- Order Item 2 -->
+          <div onclick="nextStep()" class="p-2.5 rounded-xl bg-white border border-app-border hover:border-primary-navy cursor-pointer transition space-y-1.5 shadow-sm">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-primary-navy">#YM-1043 · Priya Desai</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#FFF8E6] text-status-amber text-[10px] font-bold">Pending</span>
+            </div>
+            <p class="text-[11px] text-gray-500">Toned Milk 1 L (pack of 12) + Fresh Dahi</p>
+            <div class="flex justify-between items-center text-[10px] pt-1 border-t border-gray-100">
+              <span class="text-gray-400">Slot: 05:30 – 07:00 AM</span>
+              <span class="px-2 py-0.5 rounded bg-[#FFF8E6] text-status-amber font-semibold">Scheduled</span>
+            </div>
+          </div>
+
+          <!-- Order Item 3 (Payment pending block) -->
+          <div onclick="nextStep()" class="p-2.5 rounded-xl bg-white border border-status-error/30 hover:border-status-error cursor-pointer transition space-y-1.5 shadow-sm">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-app-text">#YM-1044 · Amit Verma</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#FDE8E8] text-status-error text-[10px] font-bold">Failed</span>
+            </div>
+            <p class="text-[11px] text-gray-500">Paneer 1 kg + Pure Ghee 1 L</p>
+            <div class="flex justify-between items-center text-[10px] pt-1 border-t border-gray-100">
+              <span class="text-status-error font-medium">Payment pending block</span>
+              <span class="px-2 py-0.5 rounded bg-[#FDE8E8] text-status-error font-semibold">Cancelled</span>
+            </div>
+          </div>
+        </div>
+
+        <button onclick="nextStep()" class="w-full py-2.5 rounded-xl bg-primary-navy text-white text-xs font-bold hover:bg-navy-dark transition flex items-center justify-center gap-1.5 shadow-sm mt-3">
+          <span>Inspect Selected Order</span>
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      `
+    },
+    {
+      id: 2,
+      title: "Order Detail",
+      route: "/admin/orders/YM-1042",
+      desc: "Detailed ledger breakdown of customer items, quantities, assigned driver route, and fulfillment checklist.",
+      actions: [
+        "Inspect ordered line items and packs",
+        "Verify delivery address and delivery slot",
+        "Check account status and payment verification"
+      ],
+      invariants: [
+        "Account status: Active, Pending approval, On hold, or Payment pending block",
+        "Dispatches are locked if account is under Payment pending block"
+      ],
+      tokens: "Account Status Badges, Playfair Display titles, Tonal cream cards",
+      render: `
+        <div class="space-y-3">
+          <div class="p-3 rounded-xl bg-white border border-app-border space-y-2">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-mono text-gray-400">ORDER #YM-1042</span>
+                <h4 class="text-sm font-bold text-primary-navy">Rajesh Sharma</h4>
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-[#E3F6EC] text-status-success text-[10px] font-bold">Active Account</span>
+            </div>
+            <p class="text-[11px] text-gray-500">Flat 402, Greenfield Heights, Andheri West, Mumbai</p>
+            <div class="p-2 rounded-lg bg-page-bg text-[11px] text-gray-600 flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm text-saffron-accent">schedule</span>
+              <span>Delivery Slot: 05:30 – 07:00 AM (Dawn Slot)</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-white border border-app-border space-y-2 text-xs">
+            <span class="font-bold text-primary-navy block">Order Items</span>
+            <div class="space-y-1.5">
+              <div class="flex justify-between">
+                <span>Full Cream Milk 500 ml (pack of 20)</span>
+                <span class="font-bold tabular-nums">₹680.00</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Fresh Dahi 400 g (pack of 24)</span>
+                <span class="font-bold tabular-nums">₹840.00</span>
+              </div>
+              <div class="flex justify-between font-bold pt-1.5 border-t border-app-border text-primary-navy">
+                <span>Total Invoiced</span>
+                <span class="tabular-nums">₹1,520.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-cream/70 border border-app-border flex items-center justify-between text-xs">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-status-success text-base">check_circle</span>
+              <span class="font-semibold text-app-text">Payment Status: Paid</span>
+            </div>
+            <span class="text-[10px] font-mono text-gray-500">Ref: PAY-8849</span>
+          </div>
+        </div>
+
+        <button onclick="nextStep()" class="w-full py-2.5 rounded-xl bg-primary-navy text-white text-xs font-bold hover:bg-navy-dark transition flex items-center justify-center gap-1.5 shadow-sm mt-3">
+          <span>Proceed to Record Payment</span>
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      `
+    },
+    {
+      id: 3,
+      title: "Record Payment",
+      route: "/admin/payments/record",
+      desc: "Administrative interface for logging settled customer payments, reconciling bank transfers, and clearing accounts.",
+      actions: [
+        "Enter settled transaction amount",
+        "Select payment method: UPI, Net Banking, or Direct Cash",
+        "Clear account status from Pending to Paid"
+      ],
+      invariants: [
+        "Failed settlement updates account to Payment pending block",
+        "No partially paid status permitted in ledger"
+      ],
+      tokens: "status-amber, status-success, Input Form Controls, Primary Navy Button",
+      render: `
+        <div class="space-y-3">
+          <div class="p-3 rounded-xl bg-white border border-app-border space-y-2">
+            <h4 class="text-xs font-bold text-primary-navy">Reconcile Customer Payment</h4>
+            <div class="space-y-2 text-xs">
+              <div>
+                <label class="text-[10px] font-semibold text-gray-500 block mb-1">Invoice / Customer Ref</label>
+                <input type="text" value="#YM-1043 · Priya Desai" readonly class="w-full p-2 rounded-lg bg-page-bg border border-app-border text-xs font-medium"/>
+              </div>
+              <div>
+                <label class="text-[10px] font-semibold text-gray-500 block mb-1">Settlement Amount (₹)</label>
+                <input type="text" value="₹648.00" class="w-full p-2 rounded-lg bg-white border border-primary-navy font-bold text-xs text-primary-navy tabular-nums"/>
+              </div>
+              <div>
+                <label class="text-[10px] font-semibold text-gray-500 block mb-1">Settlement Channel</label>
+                <select class="w-full p-2 rounded-lg bg-page-bg border border-app-border text-xs">
+                  <option>UPI / Bank Transfer (Verified)</option>
+                  <option>Cash on Delivery Receipt</option>
+                  <option>Direct Deposit</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-[#E3F6EC] border border-status-success/30 text-[11px] text-status-success flex items-center gap-2">
+            <span class="material-symbols-outlined text-base">verified</span>
+            <span>Recording full settlement releases order to active delivery queue.</span>
+          </div>
+        </div>
+
+        <button onclick="nextStep()" class="w-full py-2.5 rounded-xl bg-status-success text-white text-xs font-bold hover:bg-[#198252] transition flex items-center justify-center gap-1.5 shadow-sm mt-3">
+          <span>Submit Payment &amp; Queue Order</span>
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      `
+    },
+    {
+      id: 4,
+      title: "Delivery Queue",
+      route: "/admin/deliveries/queue",
+      desc: "Final distribution queue grouping approved orders by vehicle route, delivery sequence, and morning slot timing.",
+      actions: [
+        "Inspect assigned delivery vehicles and drivers",
+        "Verify complete driver manifest for Route #04",
+        "Confirm all queued crates are scheduled for morning dispatch"
+      ],
+      invariants: [
+        "Only orders confirmed before 5:00 PM are queued",
+        "Orders flagged with Payment pending block are excluded from manifest"
+      ],
+      tokens: "Route manifest badge, status-success, primary-navy CTA",
+      render: `
+        <div class="space-y-3">
+          <div class="p-3 rounded-xl bg-white border border-app-border space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-primary-navy">Delivery Queue · Route #04</span>
+              <span class="px-2 py-0.5 rounded bg-[#E3F6EC] text-status-success font-bold text-[10px]">100% Manifest Ready</span>
+            </div>
+            <div class="p-2 rounded-lg bg-page-bg text-[11px] space-y-1">
+              <div class="flex justify-between">
+                <span class="text-gray-500">Assigned Driver:</span>
+                <span class="font-bold text-primary-navy">Suresh Patil (Van #04)</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Departure Window:</span>
+                <span class="font-semibold text-app-text">04:30 AM Tomorrow</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-gray-500">Total Crates Loaded:</span>
+                <span class="font-bold text-primary-navy tabular-nums">42 Crates (840L)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[#E3F6EC] border border-status-success/30 text-center space-y-1 text-xs">
+            <span class="material-symbols-outlined text-2xl text-status-success">local_shipping</span>
+            <p class="font-bold text-status-success">Manifest Successfully Sealed</p>
+            <p class="text-[10px] text-gray-600">All scheduled drops reconciled before 5:00 PM cutoff.</p>
+          </div>
+        </div>
+
+        <button onclick="switchStep(0)" class="w-full py-2.5 rounded-xl bg-primary-navy text-white text-xs font-bold hover:bg-navy-dark transition flex items-center justify-center gap-1.5 shadow-sm mt-3">
+          <span>↺ Restart Simulator from Dashboard</span>
+        </button>
+      `
+    }
+  ];
+
+  let currentStepIndex = 0;
+
+  function renderTimeline() {
+    const container = document.getElementById('step-timeline');
+    container.innerHTML = '';
+
+    adminSteps.forEach((step, idx) => {
+      const btn = document.createElement('button');
+      btn.onclick = () => switchStep(idx);
+
+      const isActive = idx === currentStepIndex;
+      btn.className = `flex items-center gap-2 px-3 py-1.5 rounded-xl text-xs font-bold transition-all whitespace-nowrap ${
+        isActive
+          ? 'bg-primary-navy text-white shadow-sm'
+          : 'bg-page-bg hover:bg-cream/60 text-gray-600 border border-app-border'
+      }`;
+
+      btn.innerHTML = `
+        <span class="w-4 h-4 rounded-full flex items-center justify-center text-[10px] ${
+          isActive ? 'bg-saffron-accent text-white' : 'bg-gray-200 text-gray-700'
+        }">${idx + 1}</span>
+        <span>${step.title}</span>
+      `;
+      container.appendChild(btn);
+    });
+  }
+
+  function switchStep(index) {
+    currentStepIndex = index;
+    renderTimeline();
+    updateSimulator();
+  }
+
+  function prevStep() {
+    if (currentStepIndex > 0) {
+      currentStepIndex--;
+      renderTimeline();
+      updateSimulator();
+    }
+  }
+
+  function nextStep() {
+    if (currentStepIndex < adminSteps.length - 1) {
+      currentStepIndex++;
+      renderTimeline();
+      updateSimulator();
+    }
+  }
+
+  function updateSimulator() {
+    const step = adminSteps[currentStepIndex];
+
+    // Phone canvas content
+    document.getElementById('simulator-canvas').innerHTML = step.render;
+
+    // Inspection panel updates
+    document.getElementById('inspect-step-num').textContent = `Step 0${currentStepIndex + 1} of 05 · ADMIN OPERATIONS FLOW`;
+    document.getElementById('inspect-title').textContent = step.title;
+    document.getElementById('inspect-route').textContent = `Route: ${step.route}`;
+    document.getElementById('inspect-desc').textContent = step.desc;
+    document.getElementById('inspect-tokens').textContent = step.tokens;
+
+    // Permitted actions list
+    const actionsList = document.getElementById('inspect-actions');
+    actionsList.innerHTML = '';
+    step.actions.forEach(act => {
+      const li = document.createElement('li');
+      li.textContent = act;
+      actionsList.appendChild(li);
+    });
+
+    // Invariants list
+    const invariantsList = document.getElementById('inspect-invariants');
+    invariantsList.innerHTML = '';
+    step.invariants.forEach(inv => {
+      const li = document.createElement('li');
+      li.textContent = inv;
+      invariantsList.appendChild(li);
+    });
+  }
+
+  // Initialize on dom ready
+  document.addEventListener('DOMContentLoaded', () => {
+    renderTimeline();
+    updateSimulator();
+  });
+</script>
+</body></html>

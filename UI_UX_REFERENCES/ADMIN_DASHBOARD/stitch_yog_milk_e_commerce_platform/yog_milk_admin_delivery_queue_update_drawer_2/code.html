@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Deliveries Queue &amp; Dispatch</title>
+<!-- Material Symbols Outlined Font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: "#1F2A6B",
+              bg: "#FFFCF6",
+              card: "#FFFFFF",
+              text: "#1B2030",
+              success: "#1F9D63",
+              amber: "#E8A317",
+              error: "#D64545"
+            }
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+            display: ["Playfair Display", "serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1ede4;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #d8d3c7;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #b5afa2;
+    }
+</style>
+</head>
+<body class="bg-[#FFFCF6] text-[#1B2030] font-sans antialiased min-h-screen overflow-x-hidden flex">
+<!-- ========================================== -->
+<!-- LEFT SIDEBAR: Yog Milk Admin Navy Dock     -->
+<!-- ========================================== -->
+<aside class="bg-[#1F2A6B] text-white h-screen w-64 flex flex-col justify-between shrink-0 border-r border-[#1F2A6B]/20 sticky top-0 z-50">
+<div class="h-full flex flex-col justify-between p-4">
+<div>
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2 py-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-inner">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<h1 class="text-xl font-display font-semibold tracking-wide text-white leading-tight">Yog Milk</h1>
+<p class="text-[10px] text-white/70 tracking-wider uppercase font-semibold">Dairy Operations Admin</p>
+</div>
+</div>
+<!-- Navigation Items -->
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span>Payments</span>
+</a>
+<!-- Deliveries Active -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-white/20 text-white font-semibold text-sm border border-white/25 shadow-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">local_shipping</span>
+<span>Deliveries</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#E8A317] text-[#1B2030] text-xs font-bold shadow-sm">8 due</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span>Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">bar_chart</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">history</span>
+<span>Audit log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer CTA -->
+<div class="pt-4 border-t border-white/15 space-y-2">
+<button class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-white/10 border border-white/20 text-white text-xs font-semibold hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span>Support Desk</span>
+</button>
+<div class="flex items-center justify-between px-2 pt-2 text-white/60 text-xs">
+<span class="flex items-center gap-1.5 hover:text-white cursor-pointer">
+<span class="material-symbols-outlined text-sm">vital_signs</span>
+<span>System Health</span>
+</span>
+<span class="flex items-center gap-1.5 hover:text-white cursor-pointer">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span>Log out</span>
+</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- ========================================== -->
+<!-- MAIN WORKSPACE                             -->
+<!-- ========================================== -->
+<div class="flex-1 flex flex-col min-w-0 h-screen overflow-hidden bg-[#FFFCF6]">
+<!-- TOP APP BAR -->
+<header class="flex items-center justify-between px-6 py-3.5 w-full bg-white border-b border-[#e9e4da] shadow-sm shrink-0 z-30">
+<!-- Search -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-[#767680] text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-[#FFFCF6] rounded-xl border border-[#e9e4da] text-xs text-[#1B2030] focus:outline-none focus:ring-2 focus:ring-[#1F2A6B]/20 focus:border-[#1F2A6B] transition-all placeholder:text-[#888b94]" placeholder="Search by delivery code, customer, order or phone..." type="text"/>
+</div>
+</div>
+<!-- Read-only status pill & Profile -->
+<div class="flex items-center gap-5">
+<!-- Requirement 2: Read-only status pill -->
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#f4f7f2] border border-[#d6e5d8]">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63] animate-pulse"></span>
+<span class="text-xs text-[#1B2030] font-semibold">Ordering Open · Closes 5:00 PM (automatic)</span>
+</div>
+<!-- Notifications -->
+<button class="relative p-2 rounded-xl text-[#767680] hover:bg-[#FFFCF6] hover:text-[#1F2A6B] transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#E8A317] ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-[#e9e4da]"></div>
+<!-- Profile -->
+<div class="flex items-center gap-3 cursor-pointer pl-1">
+<img alt="Vikram Mehta portrait" class="w-9 h-9 rounded-full object-cover ring-2 ring-[#1F2A6B]/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiOZG8KY2W1VAVLIoHD0LpTRK9U_9Bw0FU_OgJIzUPBEg8_VFyW2H9gJ7Dw25d9-CNg27727JcGrYSZe9xOg8XAP7IqWO4XVK7Xzw_i5aNqBEFe8UWDHo2QEdWJyyYZnWovhd2YSd9dRTgs2aNAJM3zeJKT8_zGPjmjFEn3z5JltWqAa91rF7gj5cP20gOnicrNHceaWMW1_tjWuDdUJ2r6i29QXUBtriH3bx6f0M"/>
+<div class="text-left hidden lg:block">
+<p class="text-xs font-semibold text-[#1B2030] leading-tight">Vikram Mehta</p>
+<p class="text-[11px] text-[#767680]">Operations Lead (Admin)</p>
+</div>
+<span class="material-symbols-outlined text-[#767680] text-sm">expand_more</span>
+</div>
+</div>
+</header>
+<!-- SUBHEADER -->
+<div class="px-6 py-4 bg-white/70 border-b border-[#e9e4da] shrink-0">
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+<div>
+<div class="flex items-center gap-3">
+<h2 class="text-2xl font-display font-semibold text-[#1F2A6B]">Deliveries Queue</h2>
+<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#1F9D63]/10 text-[#1F9D63] border border-[#1F9D63]/20 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+            Active Queue
+          </span>
+</div>
+<p class="text-xs text-[#767680] mt-0.5">Manage daily delivery assignments, drop progress, exceptions and recipient status.</p>
+</div>
+<!-- Actions -->
+<div class="flex flex-wrap items-center gap-3">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-[#FFFCF6] border border-[#e9e4da] text-xs font-semibold text-[#1B2030] shadow-sm transition-colors">
+<span class="material-symbols-outlined text-base text-[#767680]">download</span>
+<span>Export Manifest</span>
+</button>
+<div class="flex items-center p-1 bg-[#f1ede4] rounded-xl border border-[#e9e4da]">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-[#1F2A6B] shadow-sm text-xs font-semibold">
+<span class="material-symbols-outlined text-base">view_kanban</span>
+<span>Board View</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[#767680] hover:text-[#1B2030] text-xs font-semibold transition-colors">
+<span class="material-symbols-outlined text-base">table_rows</span>
+<span>Table View</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- KANBAN BOARD + DRAWER                      -->
+<!-- ========================================== -->
+<div class="flex-1 flex overflow-hidden relative">
+<!-- 6 BOARD COLUMNS -->
+<main class="flex-1 overflow-x-auto overflow-y-hidden p-6 custom-scrollbar bg-[#FFFCF6]">
+<div class="flex gap-4 h-full items-start" style="min-width: 1680px;">
+<!-- 1. Needs preparation -->
+<div class="w-68 bg-[#f5f1e8]/70 rounded-2xl p-3 flex flex-col max-h-full border border-[#e8e2d5] shrink-0" style="width: 275px;">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-[#e8e2d5]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#E8A317]"></span>
+<span class="text-sm font-semibold text-[#1B2030]">Needs preparation</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-white text-[#767680] text-xs font-semibold border border-[#e8e2d5]">2</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Card 1 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00101</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-[#f5f1e8] text-[#767680]">Order #8812</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Pooja Mandir Organics</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 98230 44102
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Full Cream Milk 500 ml (pack of 20), Fresh Dahi 400 g (pack of 12)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Leave at front reception desk
+              </div>
+<div class="mt-2 text-xs text-[#767680]">
+<span class="text-[11px] text-[#888b94]">Assigned to:</span> <span class="font-medium text-[#1B2030]">Unassigned</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00104</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-[#f5f1e8] text-[#767680]">Order #8816</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Shri Krishna Dairy Parlour</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 98451 22910
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Toned Fresh Milk 1 L (pack of 12), Paneer 1 kg (pack of 4)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Ring back entrance bell twice
+              </div>
+<div class="mt-2 text-xs text-[#767680]">
+<span class="text-[11px] text-[#888b94]">Assigned to:</span> <span class="font-medium text-[#1B2030]">Unassigned</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. Assigned -->
+<div class="w-68 bg-[#f5f1e8]/70 rounded-2xl p-3 flex flex-col max-h-full border border-[#e8e2d5] shrink-0" style="width: 275px;">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-[#e8e2d5]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1F2A6B]"></span>
+<span class="text-sm font-semibold text-[#1B2030]">Assigned</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-white text-[#767680] text-xs font-semibold border border-[#e8e2d5]">2</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Card 1 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00123</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-[#1F2A6B]/10 text-[#1F2A6B]">Allocated</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Rajesh Sharma</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 97631 88204
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Full Cream Milk 500 ml (pack of 20), Fresh Dahi 400 g (pack of 24)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Leave at front reception desk
+              </div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1F2A6B] bg-[#1F2A6B]/10 px-2 py-0.5 rounded">Suresh M.</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00128</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-[#1F2A6B]/10 text-[#1F2A6B]">Allocated</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Madhurima Dairy Boutique</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 98224 55901
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Cow Butter 500 g (pack of 10), Fresh Paneer 500 g (pack of 15)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Collect signed invoice from cashier
+              </div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1F2A6B] bg-[#1F2A6B]/10 px-2 py-0.5 rounded">Manoj D.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. Picked up -->
+<div class="w-68 bg-[#f5f1e8]/70 rounded-2xl p-3 flex flex-col max-h-full border border-[#e8e2d5] shrink-0" style="width: 275px;">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-[#e8e2d5]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-cyan-600"></span>
+<span class="text-sm font-semibold text-[#1B2030]">Picked up</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-white text-[#767680] text-xs font-semibold border border-[#e8e2d5]">1</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Card 1 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00130</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-cyan-50 text-cyan-800">Picked</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Vedic Bhavan Ashram</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 94222 17830
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">A2 Cow Milk 1 L (pack of 30), Pure Ghee 1 L (pack of 6)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Unload at kitchen side corridor
+              </div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1F2A6B] bg-[#1F2A6B]/10 px-2 py-0.5 rounded">Ramesh K.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Out for delivery -->
+<div class="w-68 bg-[#f5f1e8]/70 rounded-2xl p-3 flex flex-col max-h-full border border-[#e8e2d5] shrink-0" style="width: 275px;">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-[#e8e2d5]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+<span class="text-sm font-semibold text-[#1B2030]">Out for delivery</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-white text-[#767680] text-xs font-semibold border border-[#e8e2d5]">2</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Card 1 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00135</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-50 text-indigo-800">In Transit</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Anand Patil</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 98901 33412
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Fresh Paneer 1 kg (pack of 5), Fresh Dahi 400 g (pack of 10)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Call customer before drop
+              </div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1F2A6B] bg-[#1F2A6B]/10 px-2 py-0.5 rounded">Deepak V.</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00139</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-indigo-50 text-indigo-800">In Transit</span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Sunita Gokhale</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 98233 71092
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Full Cream Milk 500 ml (pack of 4), Fresh Dahi 400 g (pack of 2)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Gate pass required at security booth
+              </div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1F2A6B] bg-[#1F2A6B]/10 px-2 py-0.5 rounded">Deepak V.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 5. Delivered -->
+<div class="w-68 bg-[#f5f1e8]/70 rounded-2xl p-3 flex flex-col max-h-full border border-[#e8e2d5] shrink-0" style="width: 275px;">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-[#e8e2d5]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#1F9D63]"></span>
+<span class="text-sm font-semibold text-[#1B2030]">Delivered</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-white text-[#767680] text-xs font-semibold border border-[#e8e2d5]">1</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Card 1 -->
+<div class="bg-white p-3.5 rounded-xl border border-[#e9e4da] shadow-sm hover:shadow-md transition-shadow cursor-pointer">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#1F2A6B]">DEL-2026-00118</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-[#1F9D63]/10 text-[#1F9D63] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">check_circle</span> Completed
+                </span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Aditi Deshpande</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 97655 43210
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Full Cream Milk 500 ml (pack of 10), Cow Butter 500 g (pack of 2)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Handed directly to kitchen staff
+              </div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1B2030]">Manoj D.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. Failed (Requirement: Card highlights in red/error with mandatory failure reason) -->
+<div class="w-68 bg-[#D64545]/5 rounded-2xl p-3 flex flex-col max-h-full border-2 border-[#D64545]/30 shrink-0" style="width: 275px;">
+<div class="flex items-center justify-between pb-3 px-1 border-b border-[#D64545]/20">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#D64545]"></span>
+<span class="text-sm font-bold text-[#D64545]">Failed</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-[#D64545]/15 text-[#D64545] text-xs font-bold">1</span>
+</div>
+<div class="space-y-3 pt-3 overflow-y-auto custom-scrollbar flex-1 pr-1">
+<!-- Failed Card (Active selection) -->
+<div class="bg-white p-3.5 rounded-xl border-2 border-[#D64545] shadow-md cursor-pointer relative ring-2 ring-[#D64545]/15">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-xs font-bold text-[#D64545]">DEL-2026-00109</span>
+<span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-[#D64545]/10 text-[#D64545] flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">error</span> Failed
+                </span>
+</div>
+<h4 class="text-sm font-semibold text-[#1B2030]">Godavari Sweets &amp; Milk Bar</h4>
+<p class="text-xs text-[#767680] flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-xs">call</span>
+                +91 98220 11988
+              </p>
+<div class="mt-2.5 pt-2 border-t border-[#f5f1e8] text-xs text-[#1B2030]">
+<p class="text-[11px] font-medium text-[#767680] uppercase tracking-wider">Items</p>
+<p class="font-medium mt-0.5">Full Cream Milk 500 ml (pack of 20), Fresh Dahi 400 g (pack of 24)</p>
+</div>
+<div class="mt-2 p-2 rounded-lg bg-[#FFFCF6] border border-[#e9e4da] text-xs text-[#767680]">
+<span class="font-semibold text-[#1B2030]">Note:</span> Leave at front reception desk
+              </div>
+<!-- Mandatory Failure Reason Highlight -->
+<div class="mt-2.5 p-2 rounded-lg bg-[#D64545]/10 border border-[#D64545]/20 text-xs text-[#D64545] font-semibold flex items-start gap-1.5">
+<span class="material-symbols-outlined text-sm shrink-0">report_problem</span>
+<div>
+<span class="font-bold block">Failure reason:</span>
+                  Customer address locked upon arrival
+                </div>
+</div>
+<div class="mt-2 flex items-center justify-between text-xs">
+<span class="text-[#767680]">Assigned to:</span>
+<span class="font-semibold text-[#1B2030]">Suresh M.</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ======================================================= -->
+<!-- REQUIREMENT 4: SLIDE-OVER UPDATE DRAWER                 -->
+<!-- ======================================================= -->
+<aside class="w-96 lg:w-[430px] bg-white border-l border-[#e9e4da] shadow-2xl flex flex-col justify-between shrink-0 z-40 overflow-y-auto custom-scrollbar">
+<!-- Drawer Header -->
+<div class="p-6 border-b border-[#e9e4da] bg-[#FFFCF6]">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-[#D64545]/10 text-[#D64545] flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">edit</span>
+            Update Status
+          </span>
+<button class="p-1 rounded-lg text-[#767680] hover:text-[#1B2030] hover:bg-[#f1ede4] transition-colors">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<h3 class="text-xl font-display text-[#1F2A6B] mt-3 font-semibold">Update Delivery Status</h3>
+<p class="text-xs text-[#767680] mt-0.5">Delivery Code: <strong class="text-[#1B2030]">DEL-2026-00109</strong></p>
+<!-- Customer Summary -->
+<div class="mt-4 p-3.5 rounded-xl bg-white border border-[#e9e4da] flex items-center gap-3 shadow-sm">
+<div class="w-10 h-10 rounded-xl bg-[#1F2A6B] text-white flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">storefront</span>
+</div>
+<div class="min-w-0">
+<h4 class="text-sm font-semibold text-[#1B2030] truncate">Godavari Sweets &amp; Milk Bar</h4>
+<p class="text-xs text-[#767680] truncate">+91 98220 11988 · 2 Order Packages</p>
+</div>
+</div>
+</div>
+<!-- Drawer Form Content -->
+<div class="p-6 space-y-5 flex-1">
+<!-- Status Selector: Not assigned, Assigned, Picked up, Out for delivery, Delivered, Failed -->
+<div>
+<label class="block text-xs font-bold text-[#1B2030] uppercase tracking-wider mb-2">Delivery Status</label>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center gap-2 p-2.5 rounded-xl border border-[#e9e4da] hover:bg-[#FFFCF6] cursor-pointer text-xs">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] border-[#767680]" name="delivery_status" type="radio" value="not_assigned"/>
+<span class="text-[#1B2030] font-medium">Not assigned</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-xl border border-[#e9e4da] hover:bg-[#FFFCF6] cursor-pointer text-xs">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] border-[#767680]" name="delivery_status" type="radio" value="assigned"/>
+<span class="text-[#1B2030] font-medium">Assigned</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-xl border border-[#e9e4da] hover:bg-[#FFFCF6] cursor-pointer text-xs">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] border-[#767680]" name="delivery_status" type="radio" value="picked_up"/>
+<span class="text-[#1B2030] font-medium">Picked up</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-xl border border-[#e9e4da] hover:bg-[#FFFCF6] cursor-pointer text-xs">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] border-[#767680]" name="delivery_status" type="radio" value="out_for_delivery"/>
+<span class="text-[#1B2030] font-medium">Out for delivery</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-xl border border-[#e9e4da] hover:bg-[#FFFCF6] cursor-pointer text-xs">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] border-[#767680]" name="delivery_status" type="radio" value="delivered"/>
+<span class="text-[#1B2030] font-medium">Delivered</span>
+</label>
+<label class="flex items-center gap-2 p-2.5 rounded-xl border-2 border-[#D64545] bg-[#D64545]/10 cursor-pointer text-xs shadow-sm">
+<input checked="" class="text-[#D64545] focus:ring-[#D64545] border-[#D64545]" name="delivery_status" type="radio" value="failed"/>
+<span class="text-[#D64545] font-bold">Failed</span>
+</label>
+</div>
+</div>
+<!-- Person Assigned Text Input -->
+<div>
+<label class="block text-xs font-bold text-[#1B2030] uppercase tracking-wider mb-1.5">Assigned to</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[#767680] text-sm">person</span>
+<input class="w-full pl-9 pr-3 py-2 bg-[#FFFCF6] rounded-xl border border-[#e9e4da] text-xs font-medium text-[#1B2030] focus:ring-2 focus:ring-[#1F2A6B] focus:border-[#1F2A6B]" placeholder="e.g. Suresh M." type="text" value="Suresh M."/>
+</div>
+</div>
+<!-- Delivery Note Text Input -->
+<div>
+<label class="block text-xs font-bold text-[#1B2030] uppercase tracking-wider mb-1.5">Delivery note</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-[#767680] text-sm">edit_note</span>
+<textarea class="w-full pl-9 pr-3 py-2 bg-[#FFFCF6] rounded-xl border border-[#e9e4da] text-xs font-medium text-[#1B2030] focus:ring-2 focus:ring-[#1F2A6B] focus:border-[#1F2A6B]" placeholder="Delivery instructions or drop notes" rows="2">Leave at front reception desk</textarea>
+</div>
+</div>
+<!-- Failure Reason Section (Required because Failed is selected) -->
+<div class="p-4 rounded-xl border-2 border-[#D64545] bg-[#D64545]/5 space-y-3">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-[#D64545] uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">warning</span>
+              Failure Reason
+            </label>
+<span class="text-[11px] font-bold text-[#D64545] bg-[#D64545]/15 px-2 py-0.5 rounded">Mandatory</span>
+</div>
+<div class="space-y-2">
+<label class="p-2.5 rounded-lg border-2 border-[#D64545] bg-white flex items-start gap-2 cursor-pointer shadow-xs">
+<input checked="" class="mt-0.5 text-[#D64545] focus:ring-[#D64545]" name="failure_reason" type="radio"/>
+<div>
+<p class="text-xs font-bold text-[#1B2030]">Customer address locked upon arrival</p>
+<p class="text-[11px] text-[#767680]">Store shutter down, recipient unavailable by phone.</p>
+</div>
+</label>
+<label class="p-2.5 rounded-lg border border-[#e9e4da] bg-white hover:bg-[#FFFCF6] flex items-start gap-2 cursor-pointer">
+<input class="mt-0.5 text-[#1F2A6B] focus:ring-[#1F2A6B]" name="failure_reason" type="radio"/>
+<div>
+<p class="text-xs font-medium text-[#1B2030]">Customer rejected consignment</p>
+<p class="text-[11px] text-[#767680]">Quantity dispute or incorrect order contents.</p>
+</div>
+</label>
+<label class="p-2.5 rounded-lg border border-[#e9e4da] bg-white hover:bg-[#FFFCF6] flex items-start gap-2 cursor-pointer">
+<input class="mt-0.5 text-[#1F2A6B] focus:ring-[#1F2A6B]" name="failure_reason" type="radio"/>
+<div>
+<p class="text-xs font-medium text-[#1B2030]">Incorrect delivery address</p>
+<p class="text-[11px] text-[#767680]">Unable to locate destination premises.</p>
+</div>
+</label>
+</div>
+<div>
+<label class="block text-[11px] font-bold text-[#767680] uppercase tracking-wider mb-1">Additional Reason Details</label>
+<textarea class="w-full p-2.5 bg-white rounded-lg border border-[#D64545]/30 text-xs text-[#1B2030] focus:ring-2 focus:ring-[#D64545] focus:border-[#D64545]" placeholder="Additional context on why delivery could not be completed" rows="2">Customer address locked upon arrival. Shutter down and phone went straight to voicemail.</textarea>
+</div>
+</div>
+</div>
+<!-- Drawer Footer Action Buttons -->
+<div class="p-6 border-t border-[#e9e4da] bg-[#FFFCF6] flex items-center gap-3 shrink-0">
+<button class="flex-1 py-2.5 px-4 rounded-xl bg-white border border-[#e9e4da] text-[#1B2030] text-xs hover:bg-[#f1ede4] transition-colors font-semibold">
+          Cancel
+        </button>
+<button class="flex-1 py-2.5 px-4 rounded-xl bg-[#1F2A6B] text-white text-xs hover:bg-[#151d4d] transition-all shadow-md font-semibold flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-base">save</span>
+<span>Save Changes</span>
+</button>
+</div>
+</aside>
+</div>
+</div>
+</body></html>

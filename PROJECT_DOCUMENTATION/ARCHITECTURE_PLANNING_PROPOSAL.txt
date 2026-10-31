@@ -1,0 +1,2067 @@
+The project should now be frozen as a complete B2B dairy commerce + retailer management platform, rather than continuing to add features informally.
+
+Below is the master product definition I would use before development starts.
+
+YOG MILK — MASTER PROJECT BLUEPRINT
+
+1. What are we actually building?
+
+Yog Milk is a B2B dairy ordering and retailer management platform.
+
+It has two primary applications:
+
+1. Retailer App
+
+Used by dairy shops/retailers to:
+
+Browse Yog Milk products 
+
+Place normal and bulk orders 
+
+Quickly reorder previous purchases 
+
+Use available credit 
+
+Track orders and deliveries 
+
+Make payments 
+
+View invoices 
+
+Track credit 
+
+View purchase/payment history 
+
+Receive notifications and payment alerts 
+
+View useful purchasing analytics 
+
+Manage profile and addresses 
+
+Use English/Marathi 
+
+2. Admin App
+
+Used by Yog Milk administrators to control the entire business:
+
+Retailers 
+
+Products 
+
+Pricing 
+
+Orders 
+
+Payments 
+
+Credit 
+
+Deliveries 
+
+Invoices 
+
+Notifications 
+
+Analytics 
+
+Reports 
+
+Retailer history 
+
+Audit logs 
+
+Business settings 
+
+The admin is effectively the central control center.
+
+2. Core philosophy of Yog Milk
+
+The system should follow these principles from day one.
+
+Principle 1 — B2B first
+
+This is not Amazon for milk.
+
+The system is designed around recurring business purchases by retailers.
+
+Therefore:
+
+Bulk quantities 
+
+Repeat orders 
+
+Retailer-specific pricing 
+
+Credit 
+
+Outstanding payments 
+
+Delivery management 
+
+Purchase history 
+
+are more important than consumer-style shopping features.
+
+Principle 2 — Every transaction must be traceable
+
+Whenever something important happens, the system should record it.
+
+For example:
+
+Retailer placed order → Admin confirmed → Credit applied → Delivery assigned → Order delivered → Payment received.
+
+Nothing important should simply disappear.
+
+Principle 3 — Financial data must be accurate
+
+Credit and payments are sensitive.
+
+We should never calculate financial history only from the current balance.
+
+Instead:
+
+Transaction
+
+      ↓
+
+Ledger
+
+      ↓
+
+Current Balance
+
+      ↓
+
+Analytics
+
+Credit, payments and outstanding amounts should have proper transaction records.
+
+Principle 4 — Admin controls business rules
+
+The app shouldn't hard-code business decisions wherever possible.
+
+Admin should control things such as:
+
+Product availability 
+
+Product prices 
+
+Retailer pricing 
+
+Credit eligibility 
+
+Credit percentage 
+
+Credit expiry 
+
+Payment terms 
+
+Order status 
+
+Delivery assignment 
+
+Notification settings 
+
+Principle 5 — Automation handles repetitive work
+
+The system should automatically handle:
+
+Credit allocation 
+
+Credit expiry 
+
+Payment deadlines 
+
+Payment reminders 
+
+Overdue alerts 
+
+Order notifications 
+
+Delivery notifications 
+
+Credit notifications 
+
+Analytics calculations 
+
+Admin shouldn't have to manually check every retailer.
+
+3. User roles
+
+We should keep the initial role structure simple.
+
+                    YOG MILK
+
+                       │
+
+              ┌────────┴────────┐
+
+              │                 │
+
+           RETAILER           ADMIN
+
+              │                 │
+
+          Retailer App      Admin App
+
+Retailer
+
+Can:
+
+Browse products 
+
+Create orders 
+
+Use credit 
+
+Make payments 
+
+Track own orders 
+
+View own history 
+
+View own analytics 
+
+Receive notifications 
+
+Cannot:
+
+Modify prices 
+
+Modify credit rules 
+
+View other retailers 
+
+Access business-wide analytics 
+
+Modify orders belonging to others 
+
+Admin
+
+Can manage the complete platform.
+
+4. Retailer App
+
+Main navigation
+
+I recommend:
+
+Home
+
+Orders
+
+Products
+
+Credit
+
+Profile
+
+Notifications should be accessible globally rather than taking permanent navigation space.
+
+5. Retailer Home
+
+The home screen should immediately answer:
+
+"What do I need to know right now?"
+
+Example:
+
+GOOD MORNING, ABC DAIRY
+
+Available Credit
+
+₹2,450
+
+Expires in 8 days
+
+Outstanding Payment
+
+₹6,500
+
+Due in 3 days
+
+────────────────────
+
+Quick Add
+
+Milk 500ml     [-] 10 [+]
+
+Curd 1kg       [-] 5  [+]
+
+[ ADD TO CART ]
+
+────────────────────
+
+Last Order
+
+#YM10482
+
+₹8,500
+
+06 Oct
+
+[ REORDER ]
+
+────────────────────
+
+Recent Orders
+
+...
+
+This is much more useful for a retailer than a promotional e-commerce homepage.
+
+6. Product Catalog
+
+Admin creates products.
+
+Retailer sees:
+
+Milk
+
+Curd
+
+Paneer
+
+Butter
+
+Ghee
+
+Lassi
+
+Other Dairy Products
+
+Each product can have:
+
+Product name 
+
+Marathi name 
+
+Description 
+
+Images 
+
+Category 
+
+Unit 
+
+Pack size 
+
+Base price 
+
+Wholesale price 
+
+Retailer-specific price 
+
+Availability 
+
+Stock/inventory information where applicable 
+
+7. B2B pricing
+
+Pricing should support multiple levels.
+
+BASE PRICE
+
+     ↓
+
+WHOLESALE PRICE
+
+     ↓
+
+RETAILER-SPECIFIC PRICE
+
+Example:
+
+Milk 500ml
+
+Base:              ₹60
+
+Wholesale:         ₹55
+
+ABC Dairy:         ₹53
+
+The final price used in an order should be snapshotted into the order item.
+
+This is extremely important.
+
+If admin changes today's price from ₹53 to ₹56, an old order must still show ₹53.
+
+8. Cart
+
+The retailer can:
+
+Increase/decrease quantities 
+
+Remove products 
+
+See subtotal 
+
+See applicable pricing 
+
+See credit available 
+
+Select payment method 
+
+Select delivery address 
+
+Example:
+
+Milk 500ml       20 × ₹53
+
+Curd 1kg          5 × ₹75
+
+Paneer 1kg        3 × ₹320
+
+Subtotal              ₹2,935
+
+Credit Available      ₹2,450
+
+[ USE CREDIT ]
+
+Payment                ₹485
+
+9. Normal order vs credit order
+
+This distinction is fundamental.
+
+Normal order
+
+ORDER
+
+ ↓
+
+PAYMENT
+
+ ↓
+
+CONFIRMED
+
+ ↓
+
+PROCESSING
+
+ ↓
+
+DELIVERY
+
+ ↓
+
+DELIVERED
+
+Credit order
+
+ORDER
+
+ ↓
+
+CREDIT APPLIED
+
+ ↓
+
+ORDER ON CREDIT
+
+ ↓
+
+7-DAY PAYMENT PERIOD
+
+ ↓
+
+PAYMENT
+
+ ↓
+
+PAID
+
+ ↓
+
+DELIVERED
+
+The exact financial calculation should be stored with the order.
+
+10. Credit system
+
+This is one of Yog Milk's defining features.
+
+Credit allocation
+
+Admin defines a percentage for a retailer.
+
+Example:
+
+Credit Percentage = 10%
+
+If an eligible completed purchase is:
+
+₹20,000
+
+then:
+
+₹20,000 × 10%
+
+= ₹2,000 credit
+
+That allocation receives an expiry date.
+
+11. Credit is not just a balance
+
+We should maintain:
+
+Credit Account
+
+      │
+
+      ├── Allocations
+
+      ├── Usage
+
+      ├── Expiry
+
+      ├── Adjustments
+
+      └── Reversals
+
+Example:
+
+Allocated       +₹2,000
+
+Used            -₹800
+
+Adjustment      +₹500
+
+Expired         -₹300
+
+────────────────────
+
+Remaining       ₹1,400
+
+The admin can therefore reconstruct the complete credit history.
+
+12. Monthly credit expiry
+
+Every allocation needs:
+
+allocated_at
+
+expires_at
+
+amount
+
+used_amount
+
+remaining_amount
+
+status
+
+Example:
+
+Credit: ₹2,000
+
+Allocated:
+
+1 Oct
+
+Expires:
+
+31 Oct
+
+Used:
+
+₹1,200
+
+Remaining:
+
+₹800
+
+At expiry:
+
+₹800 → EXPIRED
+
+It cannot subsequently be used.
+
+13. Seven-day credit payment
+
+When credit is used for an order:
+
+Order Amount       ₹8,000
+
+Credit Used        ₹2,000
+
+Payable             ₹6,000
+
+The system creates:
+
+Credit Order
+
+Payment Due Date = Order Date + 7 days
+
+The retailer sees:
+
+₹6,000 payment due in 7 days.
+
+14. Credit restrictions
+
+The system should protect Yog Milk.
+
+For example:
+
+Expired credit
+
+      ↓
+
+Cannot use
+
+Credit exhausted
+
+      ↓
+
+Cannot use
+
+Overdue credit order
+
+      ↓
+
+Credit ordering may be restricted
+
+Disabled retailer
+
+      ↓
+
+Cannot use credit
+
+The exact restriction rules should be configurable by admin.
+
+15. Payment system
+
+Payment has its own lifecycle.
+
+PENDING
+
+   ↓
+
+PROCESSING
+
+   ↓
+
+PAID
+
+Possible states:
+
+PENDING
+
+PAID
+
+FAILED
+
+PARTIALLY_PAID
+
+REFUNDED
+
+Payment status must remain separate from order status.
+
+Example:
+
+Order:
+
+OUT_FOR_DELIVERY
+
+Payment:
+
+PAID
+
+Delivery:
+
+OUT_FOR_DELIVERY
+
+16. Online payment
+
+The initial architecture should support an Indian payment gateway such as Razorpay or Cashfree.
+
+But we should not lock the entire database around one gateway.
+
+Instead:
+
+Yog Milk Payment Service
+
+          ↓
+
+Payment Gateway
+
+          ↓
+
+Transaction
+
+          ↓
+
+Webhook/Verification
+
+          ↓
+
+Payment Record
+
+The gateway can be finalized during implementation after checking current pricing, settlement, APIs, webhooks and B2B requirements.
+
+17. Payment alerts
+
+Payment-related events are important enough to become their own notification category.
+
+Retailer
+
+Payment due in 7 days
+
+Payment due in 3 days
+
+Payment due tomorrow
+
+Payment overdue
+
+Payment received
+
+Payment failed
+
+Partial payment received
+
+Admin
+
+Payment approaching
+
+Payment overdue
+
+Payment received
+
+Payment failed
+
+Large outstanding balance
+
+18. Order lifecycle
+
+Order status should be controlled rather than allowing arbitrary text.
+
+PLACED
+
+   ↓
+
+CONFIRMED
+
+   ↓
+
+PROCESSING
+
+   ↓
+
+READY_FOR_DELIVERY
+
+   ↓
+
+OUT_FOR_DELIVERY
+
+   ↓
+
+DELIVERED
+
+Possible exception states:
+
+CANCELLED
+
+REJECTED
+
+FAILED
+
+Every status transition should be recorded.
+
+19. Delivery lifecycle
+
+Delivery should be independent from order and payment.
+
+NOT_ASSIGNED
+
+      ↓
+
+ASSIGNED
+
+      ↓
+
+PICKED_UP
+
+      ↓
+
+OUT_FOR_DELIVERY
+
+      ↓
+
+DELIVERED
+
+Possible:
+
+FAILED
+
+CANCELLED
+
+This allows:
+
+Order = CONFIRMED
+
+Payment = PAID
+
+Delivery = ASSIGNED
+
+without mixing unrelated concepts.
+
+20. Quick Reorder
+
+This should be a major UX feature.
+
+Last order
+
+Order #YM10482
+
+Milk       12
+
+Curd        5
+
+Paneer      3
+
+[ REORDER ]
+
+The system copies the previous products/quantities into a new cart.
+
+It does NOT duplicate the old order.
+
+Current pricing and availability are checked again.
+
+That's an important business rule.
+
+21. Quick Add
+
+Retailers can maintain a fast ordering workflow:
+
+Frequently Ordered
+
+Milk 500ml
+
+Curd 1kg
+
+Paneer 1kg
+
+Butter 500g
+
+Quantity controls:
+
+[-] 10 [+]
+
+Then:
+
+ADD TO CART
+
+This makes the application genuinely useful for repeat B2B ordering.
+
+22. Retailer Order History
+
+Retailer can see:
+
+All
+
+Pending
+
+Processing
+
+Delivered
+
+Cancelled
+
+Credit Orders
+
+Each order contains:
+
+Order ID
+
+Date
+
+Items
+
+Quantity
+
+Amount
+
+Payment status
+
+Credit used
+
+Delivery status
+
+Invoice
+
+23. Retailer analytics
+
+Keep it simple and useful.
+
+THIS MONTH
+
+₹24,850
+
+Total Purchase
+
+18
+
+Orders
+
+₹3,500
+
+Outstanding
+
+15
+
+Delivered
+
+Then:
+
+Most Purchased
+
+Milk       120 units
+
+Curd        75 units
+
+Paneer      42 units
+
+And:
+
+Monthly Spending
+
+Jan   ₹18,200
+
+Feb   ₹21,400
+
+Mar   ₹24,850
+
+24. Admin Dashboard
+
+The admin dashboard is the operational command center.
+
+TODAY
+
+Sales              ₹1,48,250
+
+Orders                   84
+
+Pending Orders           16
+
+Deliveries               43
+
+Active Retailers        328
+
+Outstanding          ₹38,500
+
+Then:
+
+Sales Analytics
+
+Order Analytics
+
+Payment Analytics
+
+Credit Analytics
+
+Delivery Analytics
+
+With filters:
+
+Today
+
+7 Days
+
+30 Days
+
+3 Months
+
+Custom
+
+25. Admin Retailer Management
+
+Admin should have:
+
+Retailers
+
+with:
+
+Search
+
+Filter
+
+Sort
+
+Status
+
+Outstanding
+
+Credit
+
+Order volume
+
+Opening a retailer gives a Retailer 360° view.
+
+26. Retailer 360° view
+
+This is one of the most important admin screens.
+
+ABC DAIRY
+
+Overview
+
+Orders
+
+Payments
+
+Credit
+
+Delivery
+
+Analytics
+
+Activity
+
+Overview
+
+126 Orders
+
+₹2,48,500 Purchase
+
+₹38,500 Outstanding
+
+₹25,000 Credit Allocated
+
+₹19,500 Credit Used
+
+Orders
+
+Complete order history.
+
+Payments
+
+Complete payment history.
+
+Credit
+
+Every allocation/use/expiry.
+
+Delivery
+
+Every delivery.
+
+Analytics
+
+Purchasing behavior.
+
+Activity
+
+Complete audit/activity timeline.
+
+27. Audit log
+
+The system should record important administrative actions.
+
+Example:
+
+07 Oct 2026
+
+11:32 AM
+
+Admin Rahul
+
+Changed ABC Dairy
+
+Credit Percentage
+
+10% → 12%
+
+Another:
+
+02:15 PM
+
+Admin Rahul
+
+Order #YM10482
+
+PROCESSING
+
+→
+
+OUT_FOR_DELIVERY
+
+And:
+
+04:20 PM
+
+Admin Rahul
+
+Credit adjustment
+
+ABC Dairy
+
++₹500
+
+Reason:
+
+Promotional adjustment
+
+This protects both the business and the development system.
+
+28. Notifications architecture
+
+Notifications should be event-driven.
+
+BUSINESS EVENT
+
+      ↓
+
+Notification Engine
+
+      ↓
+
+Determine recipients
+
+      ↓
+
+Create notification
+
+      ↓
+
+Push notification
+
+      ↓
+
+In-app notification
+
+For example:
+
+Payment received
+
+       ↓
+
+Retailer notification
+
+       +
+
+Admin notification
+
+29. Notification center
+
+Both apps get a notification center.
+
+Categories:
+
+Orders
+
+Payments
+
+Credit
+
+Delivery
+
+System
+
+Announcements
+
+Notifications should have:
+
+title
+
+message
+
+type
+
+created_at
+
+read_at
+
+related_entity
+
+priority
+
+This allows tapping:
+
+Payment overdue
+
+and opening the exact order/payment.
+
+30. Frequent reminders — but controlled
+
+"Frequent notifications" should not mean spam.
+
+Instead, define notification rules.
+
+Example:
+
+Credit expiry
+
+7 days before
+
+3 days before
+
+1 day before
+
+Expired
+
+Payment
+
+3 days before
+
+1 day before
+
+Due today
+
+Overdue
+
+Order
+
+Placed
+
+Confirmed
+
+Out for delivery
+
+Delivered
+
+Admin should eventually be able to control notification preferences.
+
+31. Marathi + English
+
+The UI should support:
+
+English
+
+Marathi
+
+But we should separate:
+
+UI translation
+
+Orders
+
+→
+
+ऑर्डर्स
+
+from:
+
+Business data
+
+Product name
+
+Price
+
+Description
+
+Product data can have English and Marathi fields.
+
+This prevents localization from becoming messy later.
+
+32. Invoice system
+
+Every completed order should have an invoice/receipt representation.
+
+It should contain:
+
+Yog Milk
+
+Invoice Number
+
+Retailer
+
+Order ID
+
+Date
+
+Product
+
+Quantity
+
+Unit Price
+
+Amount
+
+Subtotal
+
+Credit Used
+
+Discount
+
+Tax, if applicable
+
+Total
+
+Paid
+
+Outstanding
+
+Payment Status
+
+Historical invoices must remain unchanged.
+
+33. Reports
+
+Admin should be able to generate/report:
+
+Sales
+
+Daily sales
+
+Monthly sales
+
+Product sales
+
+Retailer sales
+
+Payments
+
+Collected
+
+Pending
+
+Overdue
+
+Refunded
+
+Credit
+
+Allocated
+
+Used
+
+Expired
+
+Outstanding
+
+Orders
+
+Total
+
+Delivered
+
+Pending
+
+Cancelled
+
+Credit orders
+
+34. Database architecture
+
+The database should be designed around actual business entities.
+
+A high-level model:
+
+USERS
+
+  │
+
+  └── RETAILERS
+
+        │
+
+        ├── ADDRESSES
+
+        │
+
+        ├── ORDERS
+
+        │     └── ORDER_ITEMS
+
+        │
+
+        ├── PAYMENTS
+
+        │
+
+        ├── CREDIT_ACCOUNT
+
+        │       ├── ALLOCATIONS
+
+        │       └── TRANSACTIONS
+
+        │
+
+        ├── DELIVERIES
+
+        │
+
+        ├── INVOICES
+
+        │
+
+        └── NOTIFICATIONS
+
+Additional:
+
+PRODUCTS
+
+CATEGORIES
+
+PRICES
+
+INVENTORY
+
+ADMINS
+
+AUDIT_LOGS
+
+SETTINGS
+
+35. Technology architecture
+
+The agreed direction should be:
+
+Layer
+
+Technology
+
+Retailer App
+
+Flutter
+
+Admin App
+
+Flutter
+
+Backend
+
+Supabase
+
+Database
+
+PostgreSQL
+
+Authentication
+
+Supabase Auth
+
+Storage
+
+Supabase Storage
+
+Realtime
+
+Supabase Realtime
+
+Push
+
+Firebase Cloud Messaging
+
+State
+
+Riverpod
+
+Navigation
+
+GoRouter
+
+Charts
+
+Flutter chart library
+
+Maps
+
+Google Maps
+
+Payment
+
+Razorpay/Cashfree
+
+Languages
+
+English + Marathi
+
+36. Flutter architecture
+
+I recommend a modular architecture rather than putting everything inside screens.
+
+Conceptually:
+
+lib/
+
+│
+
+├── core/
+
+│   ├── theme/
+
+│   ├── localization/
+
+│   ├── routing/
+
+│   ├── constants/
+
+│   ├── errors/
+
+│   └── services/
+
+│
+
+├── features/
+
+│   ├── auth/
+
+│   ├── products/
+
+│   ├── cart/
+
+│   ├── orders/
+
+│   ├── payments/
+
+│   ├── credit/
+
+│   ├── delivery/
+
+│   ├── notifications/
+
+│   ├── analytics/
+
+│   ├── invoices/
+
+│   └── profile/
+
+│
+
+└── main.dart
+
+Admin gets the same principle but with admin-specific modules.
+
+37. Supabase security
+
+This cannot be treated as an afterthought.
+
+We need proper Row Level Security.
+
+Retailer
+
+Can only access their own:
+
+Profile
+
+Orders
+
+Payments
+
+Credit
+
+Invoices
+
+Notifications
+
+Analytics
+
+Admin
+
+Can access authorized business data.
+
+The database must enforce this—not merely Flutter UI.
+
+For example:
+
+Hiding another retailer's order from the UI is not security.
+
+The database must reject unauthorized access.
+
+38. What we are NOT building initially
+
+To keep the freelance project controlled, I would explicitly exclude unnecessary features from V1.
+
+For example:
+
+Consumer marketplace 
+
+Public seller marketplace 
+
+Complex loyalty program 
+
+Social features 
+
+Product reviews 
+
+Retailer-to-retailer communication 
+
+AI chatbot unless separately required 
+
+Complex warehouse ERP 
+
+Multi-company marketplace 
+
+Advanced route optimization 
+
+Unnecessary gamification 
+
+The focus stays on:
+
+B2B ordering + credit + payment + delivery + retailer management + analytics.
+
+39. Complete retailer journey
+
+The actual user journey becomes:
+
+LOGIN
+
+  ↓
+
+HOME
+
+  ↓
+
+VIEW CREDIT / OUTSTANDING
+
+  ↓
+
+QUICK ADD / PRODUCTS / REORDER
+
+  ↓
+
+CART
+
+  ↓
+
+CHECKOUT
+
+  ↓
+
+SELECT PAYMENT METHOD
+
+  │
+
+  ├───────────────┐
+
+  │               │
+
+ONLINE PAYMENT   CREDIT
+
+  │               │
+
+PAYMENT          CREDIT APPLIED
+
+CONFIRMED            │
+
+  │               7-DAY DUE DATE
+
+  │                  │
+
+  └──────────┬───────┘
+
+             ↓
+
+         ORDER CREATED
+
+             ↓
+
+          CONFIRMED
+
+             ↓
+
+         PROCESSING
+
+             ↓
+
+      READY FOR DELIVERY
+
+             ↓
+
+       OUT FOR DELIVERY
+
+             ↓
+
+          DELIVERED
+
+             ↓
+
+       HISTORY / INVOICE
+
+40. Complete admin journey
+
+ADMIN LOGIN
+
+     ↓
+
+DASHBOARD
+
+     ↓
+
+────────────────────────────
+
+│       │       │          │
+
+Retailers Products Orders Payments
+
+│       │       │          │
+
+Credit  Delivery Analytics Reports
+
+     ↓
+
+Retailer 360°
+
+     ↓
+
+Complete history
+
+     ↓
+
+Actions + Audit Log
+
+41. The most important system relationship
+
+Everything ultimately connects back to the retailer.
+
+                    RETAILER
+
+                       │
+
+       ┌───────────────┼────────────────┐
+
+       │               │                │
+
+     ORDERS          CREDIT          PAYMENTS
+
+       │               │                │
+
+       │               │                │
+
+    DELIVERY       ALLOCATION        TRANSACTION
+
+       │               │                │
+
+       └───────────────┼────────────────┘
+
+                       │
+
+                   ANALYTICS
+
+                       │
+
+                  ADMIN DASHBOARD
+
+This is why the retailer history becomes so powerful.
+
+42. Example of a complete real-world transaction
+
+Suppose ABC Dairy buys products worth ₹20,000.
+
+Step 1
+
+Order created.
+
+Order = ₹20,000
+
+Step 2
+
+Retailer uses ₹2,000 available credit.
+
+Credit Used = ₹2,000
+
+Step 3
+
+Remaining payment:
+
+₹18,000
+
+Step 4
+
+Order becomes:
+
+ORDER ON CREDIT
+
+Step 5
+
+Payment deadline:
+
+14 Oct
+
+Step 6
+
+System notifies:
+
+Retailer
+
+Your ₹18,000 payment is due on 14 Oct.
+
+Admin
+
+ABC Dairy has a new credit order of ₹20,000.
+
+Step 7
+
+Delivery proceeds.
+
+CONFIRMED
+
+→ PROCESSING
+
+→ READY
+
+→ OUT_FOR_DELIVERY
+
+→ DELIVERED
+
+Step 8
+
+Retailer pays ₹18,000.
+
+Payment = PAID
+
+Step 9
+
+Both receive confirmation.
+
+Step 10
+
+Admin's retailer profile automatically updates:
+
+Orders +1
+
+Purchase +₹20,000
+
+Credit Used +₹2,000
+
+Payments +₹18,000
+
+Step 11
+
+Every important event is available in the retailer's history/audit trail.
+
+That is the core Yog Milk system.
+
+43. What makes this project professional
+
+The professional aspect isn't simply having many screens.
+
+It comes from the fact that the system has:
+
+Transactional integrity
+
+→ Orders, payments and credit are connected correctly.
+
+Financial traceability
+
+→ Every credit/payment movement has a record.
+
+Operational visibility
+
+→ Admin knows what's happening.
+
+Retailer intelligence
+
+→ Admin understands each retailer's purchasing behavior.
+
+Automation
+
+→ Reminders and expiry don't require manual work.
+
+Security
+
+→ Retailers cannot access other retailers' data.
+
+Auditability
+
+→ Administrative changes are recorded.
+
+Scalability
+
+→ The architecture can support more retailers/products later.
+
+44. Final product definition
+
+I would officially define Yog Milk as:
+
+Yog Milk is a B2B dairy commerce and retailer management platform that enables retailers to purchase dairy products in bulk, reorder frequently purchased products, use admin-defined monthly credit, manage payments and outstanding balances, track deliveries and invoices, and monitor their purchasing history. The admin platform provides centralized control over retailers, products, pricing, orders, payments, credit, deliveries, notifications, analytics, reports, and audit history.
+
+45. Development phases
+
+We should not give Antigravity one giant "build everything" prompt and let it improvise.
+
+The development should follow controlled phases.
+
+PHASE 0 — Product Definition
+
+Freeze:
+
+PRD 
+
+Business rules 
+
+Roles 
+
+Workflows 
+
+Credit rules 
+
+Payment rules 
+
+Notification rules 
+
+Database architecture 
+
+PHASE 1 — UI/UX
+
+Design:
+
+Retailer app 
+
+Admin app 
+
+Design system 
+
+English/Marathi 
+
+Responsive layouts 
+
+Loading/error/empty states 
+
+No backend yet.
+
+PHASE 2 — Frontend with mock data
+
+Build the complete interfaces.
+
+Screens
+
+↓
+
+Navigation
+
+↓
+
+State
+
+↓
+
+Mock data
+
+This lets us validate UX before backend complexity.
+
+PHASE 3 — Supabase
+
+Implement:
+
+Auth
+
+Database
+
+RLS
+
+Storage
+
+Realtime
+
+PHASE 4 — Core commerce
+
+Implement:
+
+Products
+
+Cart
+
+Orders
+
+Pricing
+
+Order lifecycle
+
+PHASE 5 — Credit
+
+Implement:
+
+Credit allocation
+
+Credit ledger
+
+Expiry
+
+Credit orders
+
+7-day payment period
+
+Restrictions
+
+PHASE 6 — Payments
+
+Implement:
+
+Online payments
+
+Payment transactions
+
+Verification
+
+Webhooks
+
+Payment history
+
+Refund/failed states
+
+PHASE 7 — Delivery
+
+Implement:
+
+Assignment
+
+Status tracking
+
+Delivery history
+
+Notifications
+
+PHASE 8 — Notifications
+
+Implement:
+
+FCM
+
+In-app notifications
+
+Payment reminders
+
+Credit expiry
+
+Order updates
+
+Admin alerts
+
+PHASE 9 — Analytics & reports
+
+Implement:
+
+Retailer analytics
+
+Admin analytics
+
+Reports
+
+Retailer 360°
+
+PHASE 10 — Audit & security
+
+Test:
+
+RLS
+
+Roles
+
+Financial calculations
+
+Credit expiry
+
+Payment consistency
+
+Audit logs
+
+PHASE 11 — Production QA
+
+Test the complete real-world workflows.
+
+46. The final development rule
+
+There should be one very important rule for the entire project:
+
+Do not add a feature merely because it looks useful. Every feature must have a defined business purpose, database representation, workflow, permission model, notification behavior, and audit/history behavior where applicable.
+
+That will prevent Yog Milk from becoming a collection of disconnected Flutter screens.
+
+The end result should feel like a real B2B business platform, not a college-style shopping application.
+
+Top of Form
+
+Bottom of Form

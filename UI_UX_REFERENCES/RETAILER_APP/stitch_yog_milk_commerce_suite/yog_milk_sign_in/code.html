@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Sign in to Yog Milk</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#454650",
+            "on-background": "#161b2b",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#051256",
+            "error": "#ba1a1a",
+            "tertiary": "#261a00",
+            "on-secondary-fixed": "#321200",
+            "surface-dim": "#d5d9ef",
+            "surface-container": "#eaedff",
+            "primary-fixed": "#dee0ff",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#2b3041",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "outline-variant": "#c6c5d2",
+            "tertiary-container": "#3f2e00",
+            "surface-container-low": "#f2f3ff",
+            "surface-tint": "#4f599c",
+            "surface-container-high": "#e3e7fe",
+            "secondary-container": "#fc8127",
+            "outline": "#767681",
+            "on-tertiary-container": "#ba9331",
+            "on-error": "#ffffff",
+            "on-surface": "#161b2b",
+            "primary-fixed-dim": "#bbc3ff",
+            "on-secondary-container": "#602a00",
+            "primary-container": "#1f2a6b",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "tertiary-fixed-dim": "#edc15a",
+            "surface": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "secondary-fixed": "#ffdbc8",
+            "on-primary-fixed-variant": "#374183",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-fixed-dim": "#ffb68b",
+            "secondary": "#994700",
+            "surface-variant": "#dde1f8",
+            "on-primary-container": "#8994db",
+            "background": "#faf8ff",
+            "surface-container-highest": "#dde1f8",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#251a00",
+            "on-secondary-fixed-variant": "#753400",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "gutter-desktop": "1.5rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-tablet": "2rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex justify-center selection:bg-surface-container-high selection:text-primary">
+<!-- Mobile Viewport Canvas Container (390 x 844 max proportions) -->
+<main class="w-full max-w-[420px] min-h-screen bg-surface-container-lowest flex flex-col justify-between relative shadow-sm overflow-hidden px-5 py-6">
+<!-- Subtle Vedic Watermark / Radiance Layer in Background -->
+<div class="absolute -top-16 -right-16 w-64 h-64 rounded-full bg-surface-container opacity-40 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-10 -left-20 w-72 h-72 rounded-full bg-surface-container-low opacity-60 blur-3xl pointer-events-none"></div>
+<!-- Top App Navigation / Minimal Header -->
+<header class="relative z-10 w-full flex items-center justify-between pt-2 pb-4">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary bg-surface-container-low hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Language Switcher Pill -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/40">
+<span class="material-symbols-outlined text-[15px] text-primary" data-icon="language">language</span>
+<button class="font-label-sm text-label-sm text-primary font-semibold" type="button">EN</button>
+<span class="text-outline-variant text-[11px] leading-none">|</span>
+<button class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" type="button">हिं</button>
+</div>
+</header>
+<!-- Main Content Cluster -->
+<div class="relative z-10 flex-1 flex flex-col justify-center my-auto pt-2 pb-6">
+<!-- Identity & Emblem Showcase -->
+<div class="flex flex-col items-center text-center">
+<!-- Brand Insignia (Sacred Drop, Sun, and Lotus Pad) -->
+<div class="relative w-24 h-24 mb-5 flex items-center justify-center">
+<div class="absolute inset-0 rounded-full bg-surface-container-high/60 scale-110 blur-sm"></div>
+<div class="relative w-20 h-20 rounded-full bg-surface-container-lowest border border-outline-variant/50 flex flex-col items-center justify-center shadow-sm">
+<!-- Stylized Dawn Drop & Lotus Silhouette Motif -->
+<div class="flex flex-col items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[36px] text-primary leading-none" data-icon="spa" data-weight="fill" style="font-variation-settings: 'FILL' 1;">spa</span>
+<div class="flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[13px] text-secondary-container" data-icon="wb_sunny" data-weight="fill" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+<span class="font-label-sm text-[10px] tracking-widest font-bold text-primary">YOG</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Typography Branding -->
+<p class="font-label-sm text-label-sm tracking-[0.2em] uppercase text-on-tertiary-container mb-1.5 font-bold">
+          Sattvic Daily Ritual
+        </p>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-semibold tracking-tight mb-2.5">
+          Welcome to Yog Milk
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[290px] mx-auto leading-relaxed">
+          Pure, conscious dairy directly from certified Nashik pastures.
+        </p>
+</div>
+<!-- Action & Auth Section (Google Sign-In Only) -->
+<div class="mt-8 flex flex-col gap-4">
+<!-- Google Sign-In Primary Button -->
+<button class="w-full h-[52px] bg-surface-container-lowest hover:bg-surface border-2 border-primary/20 hover:border-primary active:scale-[0.98] transition-all rounded-[14px] px-4 flex items-center justify-center gap-3.5 shadow-sm group" type="button">
+<!-- Official Multi-colored Google SVG Icon -->
+<svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24">
+<path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z" fill="#34A853"></path>
+<path d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.16 0 9.94 0 12s.45 3.84 1.25 5.42l4.03-3.15z" fill="#FBBC05"></path>
+<path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+</svg>
+<span class="font-title-md text-title-md text-primary font-semibold group-hover:text-primary-container transition-colors">
+            Continue with Google
+          </span>
+</button>
+<!-- Critical Business Rule Callout Notice Card -->
+<div class="rounded-[16px] bg-surface-container-low border border-outline-variant/40 p-3.5 flex items-start gap-3 mt-1">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center flex-shrink-0 text-primary mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-primary font-semibold mb-0.5">
+              Account Approval Note
+            </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">New accounts are reviewed by our team before ordering to ensure fresh dawn supply availability in your area.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Compliance & Trust Footer -->
+<footer class="relative z-10 pt-2 flex flex-col items-center text-center">
+<!-- Terms of Service & Privacy Policy -->
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[320px] mb-4">
+        By continuing, you agree to Yog Milk's 
+        <a class="text-primary font-semibold underline underline-offset-2 hover:text-secondary-container transition-colors" href="#terms">Terms of Service</a> 
+        and 
+        <a class="text-primary font-semibold underline underline-offset-2 hover:text-secondary-container transition-colors" href="#privacy">Privacy Policy</a>.
+      </p>
+<!-- Trust Badges Capsule -->
+<div class="w-full pt-3 border-t border-outline-variant/30 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-normal">
+          Certified A2 Vedic Gir Cows · FSSAI Monitored
+        </span>
+</div>
+</footer>
+</main>
+
+
+</body></html>

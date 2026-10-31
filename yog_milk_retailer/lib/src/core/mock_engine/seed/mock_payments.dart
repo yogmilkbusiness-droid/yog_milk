@@ -1,0 +1,77 @@
+library;
+
+import '../contracts/order_repository.dart';
+import '../contracts/payment_repository.dart';
+
+final mockInitialPaymentsList = <PaymentTransactionEntity>[
+  PaymentTransactionEntity(
+    id: 'pay-001',
+    orderId: 'ord-8841',
+    orderCode: 'YM-2026-8841',
+    invoiceNumber: 'INV-2026-1049',
+    amount: 2450.00,
+    amountReceived: 0.00,
+    methodType: PaymentMethodType.cod,
+    status: PaymentLifecycleStatus.pending,
+    referenceNumber: 'COD-PENDING-8841',
+    timestamp: DateTime.now().subtract(const Duration(hours: 3)),
+    collectorStaffName: 'Santosh Jadhav (MH 12 QX 4812)',
+    settlementNote:
+        'Pending physical cash collection at doorstep drop. Triggers Rule 4.4 ordering restriction until settled.',
+  ),
+  PaymentTransactionEntity(
+    id: 'pay-002',
+    orderId: 'ord-8812',
+    orderCode: 'YM-2026-8812',
+    invoiceNumber: 'INV-2026-1035',
+    amount: 3168.00,
+    amountReceived: 3168.00,
+    methodType: PaymentMethodType.razorpayUpi,
+    status: PaymentLifecycleStatus.paid,
+    referenceNumber: 'RZP_PAY_994182904',
+    timestamp: DateTime.now().subtract(const Duration(days: 1, hours: 14)),
+    settlementNote: 'Verified Razorpay UPI payment · Autogeneration of Commercial Invoice INV-2026-1035.',
+  ),
+  PaymentTransactionEntity(
+    id: 'pay-003',
+    orderId: 'ord-8790',
+    orderCode: 'YM-2026-8790',
+    invoiceNumber: 'INV-2026-1011',
+    amount: 5820.00,
+    amountReceived: 5820.00,
+    methodType: PaymentMethodType.razorpayNetbanking,
+    status: PaymentLifecycleStatus.paid,
+    referenceNumber: 'RZP_PAY_991820491',
+    timestamp: DateTime.now().subtract(const Duration(days: 3)),
+    settlementNote: 'Settled via HDFC Netbanking gateway · Dawn crate batch confirmed.',
+  ),
+  PaymentTransactionEntity(
+    id: 'pay-004',
+    orderId: 'ord-8841',
+    orderCode: 'YM-2026-8841',
+    invoiceNumber: 'INV-2026-1049',
+    amount: 2450.00,
+    amountReceived: 0.00,
+    methodType: PaymentMethodType.razorpayUpi,
+    status: PaymentLifecycleStatus.failed,
+    referenceNumber: 'RZP_ATTEMPT_8829',
+    timestamp: DateTime.now().subtract(const Duration(hours: 3, minutes: 15)),
+    failureReason: 'Bank server timeout at NPCI gateway. Zero funds debited from account.',
+    settlementNote: 'Interrupted online transaction attempt prior to retailer choosing COD.',
+  ),
+  PaymentTransactionEntity(
+    id: 'pay-005',
+    orderId: 'ord-8650',
+    orderCode: 'YM-2026-8650',
+    invoiceNumber: 'INV-2026-0988',
+    amount: 1980.00,
+    amountReceived: 1980.00,
+    methodType: PaymentMethodType.cod,
+    status: PaymentLifecycleStatus.paid,
+    referenceNumber: 'COD-DEPOT-REC-4019',
+    timestamp: DateTime.now().subtract(const Duration(days: 6)),
+    collectorStaffName: 'Santosh Jadhav (Driver)',
+    settlementNote: 'Admin manual payment recording confirmed · Cash voucher #4019 verified at depot desk.',
+  ),
+];
+

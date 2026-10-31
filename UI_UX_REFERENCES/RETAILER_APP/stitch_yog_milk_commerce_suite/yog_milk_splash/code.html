@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk - Splash</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface-variant": "#454650",
+            "on-background": "#161b2b",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#051256",
+            "error": "#ba1a1a",
+            "tertiary": "#261a00",
+            "on-secondary-fixed": "#321200",
+            "surface-dim": "#d5d9ef",
+            "surface-container": "#eaedff",
+            "primary-fixed": "#dee0ff",
+            "error-container": "#ffdad6",
+            "inverse-surface": "#2b3041",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "outline-variant": "#c6c5d2",
+            "tertiary-container": "#3f2e00",
+            "surface-container-low": "#f2f3ff",
+            "surface-tint": "#4f599c",
+            "surface-container-high": "#e3e7fe",
+            "secondary-container": "#fc8127",
+            "outline": "#767681",
+            "on-tertiary-container": "#ba9331",
+            "on-error": "#ffffff",
+            "on-surface": "#161b2b",
+            "primary-fixed-dim": "#bbc3ff",
+            "on-secondary-container": "#602a00",
+            "primary-container": "#1f2a6b",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "tertiary-fixed-dim": "#edc15a",
+            "surface": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "secondary-fixed": "#ffdbc8",
+            "on-primary-fixed-variant": "#374183",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-fixed-dim": "#ffb68b",
+            "secondary": "#994700",
+            "surface-variant": "#dde1f8",
+            "on-primary-container": "#8994db",
+            "background": "#faf8ff",
+            "surface-container-highest": "#dde1f8",
+            "on-secondary": "#ffffff",
+            "on-tertiary-fixed": "#251a00",
+            "on-secondary-fixed-variant": "#753400",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "gutter-desktop": "1.5rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-sm": "0.5rem",
+            "margin": "1rem",
+            "margin-tablet": "2rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    @keyframes subtlePulse {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 0.75; transform: scale(1.02); }
+    }
+    
+    @keyframes floatDrop {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-4px); }
+    }
+
+    .animate-gentle-pulse {
+      animation: subtlePulse 4s ease-in-out infinite;
+    }
+
+    .animate-float {
+      animation: floatDrop 5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="bg-[#FAF8FF] text-on-surface antialiased min-h-screen flex items-center justify-center p-0 md:p-6 overflow-x-hidden selection:bg-secondary-fixed selection:text-primary">
+<!-- Mobile Frame Screen Container (390 x 844 ratio canvas) -->
+<main class="relative w-full max-w-[390px] h-[844px] bg-[#FAF8FF] shadow-2xl md:rounded-[40px] overflow-hidden flex flex-col justify-between border border-outline-variant/30 select-none">
+<!-- Ambient Vedic Aura Gradient Elements -->
+<div class="absolute -top-24 -left-20 w-72 h-72 rounded-full bg-secondary-fixed/30 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/3 -right-24 w-80 h-80 rounded-full bg-tertiary-fixed/35 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-20 left-10 w-80 h-80 rounded-full bg-surface-container/60 blur-2xl pointer-events-none"></div>
+<!-- Status Bar Safe Area Placeholder -->
+<header class="relative z-20 w-full px-7 pt-4 pb-2 flex justify-between items-center text-primary/70">
+<span class="font-label-sm text-label-sm tracking-wider font-semibold">9:41</span>
+<div class="flex items-center space-x-1.5 opacity-80">
+<span class="material-symbols-outlined text-[15px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[15px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[17px]" data-icon="battery_full">battery_full</span>
+</div>
+</header>
+<!-- Top Delicate Vedic Seal Indicator -->
+<section class="relative z-10 w-full flex flex-col items-center pt-3 pb-1">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-lowest/80 border border-outline-variant/40 shadow-sm backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-container text-[14px]" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">SATTVIC DAIRY PURITY</span>
+</div>
+</section>
+<!-- Central Branding Showcase Core -->
+<section class="relative z-10 flex-1 flex flex-col items-center justify-center px-6 -mt-4 text-center">
+<!-- Brand Reference Emblem Container -->
+<div class="relative w-64 h-64 sm:w-68 sm:h-68 flex items-center justify-center mb-2 animate-float">
+<!-- Sacred Lotus Mandala Glow Rings -->
+<div class="absolute inset-0 rounded-full border border-secondary-fixed/50 animate-gentle-pulse"></div>
+<div class="absolute inset-3 rounded-full border border-outline-variant/35 border-dashed opacity-60"></div>
+<!-- Primary Brand Logo Reference using https://lh3.googleusercontent.com/aida-public/AB6AXuDUHqPp9NegAT4rzrHzeF8kvBFSL4vUkkMXsnMbcOu5FdglA_NHn5jpJHhMVW9Hy7RSpBJ_UYyBgeVWx4Dqi-sYKQWEpsCWsk-MrOhLy-uc-VjZ6o2pM1US8JjuVZoBWlcdqQL5EL_ESjNWODa3ojdC4ICl1xDodculGIMvbN-HT1ltcBM2tEULkhNW84OvVb9tfPgtosOxkC4at3USIIren4xIHrw8hbOJ2CSHpXJ5qYwKXi02bho -->
+<div class="relative z-10 w-56 h-56 rounded-full bg-surface-container-lowest p-2 shadow-sm border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+<img alt="Yog Milk Logo" class="w-full h-full object-contain filter contrast-[1.03]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUHqPp9NegAT4rzrHzeF8kvBFSL4vUkkMXsnMbcOu5FdglA_NHn5jpJHhMVW9Hy7RSpBJ_UYyBgeVWx4Dqi-sYKQWEpsCWsk-MrOhLy-uc-VjZ6o2pM1US8JjuVZoBWlcdqQL5EL_ESjNWODa3ojdC4ICl1xDodculGIMvbN-HT1ltcBM2tEULkhNW84OvVb9tfPgtosOxkC4at3USIIren4xIHrw8hbOJ2CSHpXJ5qYwKXi02bho"/>
+</div>
+</div>
+<!-- Editorial Tagline Cluster -->
+<div class="space-y-2 max-w-[310px] mt-1">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight font-medium">
+          From Nature to Nourish You
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant font-normal leading-relaxed px-2">
+          Pure Indian A2 whole milk &amp; bilona ghee, collected at dawn for conscious living.
+        </p>
+</div>
+<!-- Sacred Quality Pillars Chips -->
+<div class="flex items-center justify-center gap-2 mt-5">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#FBF1DC] border border-outline-variant/40 text-tertiary font-label-sm text-label-sm tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container mr-1.5"></span>
+          Gir Cow A2
+        </span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#FBF1DC] border border-outline-variant/40 text-tertiary font-label-sm text-label-sm tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container mr-1.5"></span>
+          Non-Homogenized
+        </span>
+<span class="inline-flex items-center px-2.5 py-1 rounded-full bg-[#FBF1DC] border border-outline-variant/40 text-tertiary font-label-sm text-label-sm tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container mr-1.5"></span>
+          Zero Hormones
+        </span>
+</div>
+</section>
+<!-- Bottom Botanical Yoga Art Frame & Purity Provenance -->
+<footer class="relative z-10 w-full overflow-hidden flex flex-col items-center justify-end pb-5 pt-2">
+<!-- Subtle Vedic Yoga & Flora Illustration Border Backdrop -->
+<div class="relative w-full h-24 mb-2 flex items-end justify-center pointer-events-none opacity-20 px-4">
+<!-- SVG Botanical Linework echoing the packaging yoga silhouettes -->
+<svg class="w-full h-full text-primary" fill="none" viewbox="0 0 360 85" xmlns="http://www.w3.org/2000/svg">
+<path d="M180 82C180 65 170 48 152 48C134 48 126 65 126 82" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<path d="M180 82C180 65 190 48 208 48C226 48 234 65 234 82" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<!-- Central Yoga Tree Pose Archetype -->
+<circle cx="180" cy="22" fill="currentColor" r="4.5"></circle>
+<path d="M180 27V52M180 34L171 42M180 34L189 42M180 52L173 68M180 52L187 68" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M176 14L180 18L184 14" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+<!-- Lateral Lotus Elements -->
+<path d="M70 82C70 60 85 45 100 45C100 65 85 82 70 82Z" fill="currentColor" opacity="0.4"></path>
+<path d="M290 82C290 60 275 45 260 45C260 65 275 82 290 82Z" fill="currentColor" opacity="0.4"></path>
+<!-- Yoga Vrikshasana Silhouettes Left & Right -->
+<circle cx="50" cy="40" fill="currentColor" r="3.5"></circle>
+<path d="M50 44V64M50 50L43 56M50 50L57 56M50 64L45 78M50 64L54 74" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<circle cx="310" cy="40" fill="currentColor" r="3.5"></circle>
+<path d="M310 44V64M310 50L303 56M310 50L317 56M310 64L305 78M310 64L314 74" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+<!-- Baseline Floral Swirls -->
+<path d="M10 82C50 82 70 78 120 78M240 78C290 78 310 82 350 82" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+</svg>
+</div>
+<!-- Dawn Chilled Timestamp & Traceability Pulse -->
+<div class="flex items-center gap-2 mb-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-container"></span>
+</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-wide">
+          Next Dawn Drop · 06:00 AM
+        </span>
+</div>
+<!-- Provenance Anchor Footer Line -->
+<div class="flex items-center gap-1.5 opacity-65">
+<span class="font-label-sm text-label-sm text-primary tracking-wider uppercase font-semibold">Pure A2 Dairy</span>
+<span class="text-outline-variant font-bold">·</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase">Nashik Farms</span>
+</div>
+<!-- iOS Home Indicator Pill -->
+<div class="w-32 h-1 bg-primary/20 rounded-full mt-4"></div>
+</footer>
+</main>
+<script>
+    // Atmospheric micro-interaction: smooth splash transition feel
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('main');
+      if (container) {
+        container.classList.add('opacity-0');
+        container.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        requestAnimationFrame(() => {
+          container.classList.remove('opacity-0');
+          container.classList.add('opacity-100');
+        });
+      }
+    });
+  </script>
+</body></html>

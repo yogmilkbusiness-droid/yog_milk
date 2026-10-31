@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Customers List &amp; Approval Dialog</title>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: "#1F2A6B",
+              cream: "#FBF1DC",
+              bg: "#FFFCF6",
+              text: "#1B2030",
+              success: "#1F9D63",
+              amber: "#E8A317",
+              error: "#D64545",
+            },
+            surface: "#FFFCF6",
+            "on-surface": "#1B2030",
+            primary: "#1F2A6B",
+            "primary-container": "#151D4D",
+          },
+          fontFamily: {
+            "display-lg": ["Playfair Display", "serif"],
+            "headline-lg": ["Playfair Display", "serif"],
+            "headline-md": ["Playfair Display", "serif"],
+            "headline-sm": ["Playfair Display", "serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "title-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "title-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D9D5CC;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+  </style>
+</head>
+<body class="bg-[#FFFCF6] text-[#1B2030] font-['Plus_Jakarta_Sans',sans-serif] antialiased min-h-screen flex overflow-x-hidden selection:bg-[#FBF1DC] selection:text-[#1F2A6B]">
+<!-- LEFT NAV -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-[#1F2A6B] border-r border-[#151D4D] shadow-none sticky top-0 z-30 select-none text-white">
+<div class="h-full flex flex-col justify-between p-4">
+<!-- Brand & Header -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2 pt-1">
+<div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-inner">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div class="flex flex-col">
+<span class="font-['Playfair_Display'] text-[20px] font-semibold tracking-wide text-white leading-none">Yog Milk Admin</span>
+<span class="text-[10px] text-white/70 tracking-wider uppercase mt-1">Pure Dairy Operations</span>
+</div>
+</div>
+<!-- Navigation Items -->
+<nav class="flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-260px)] custom-scrollbar pr-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- Customers (Active Tab) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-[#FBF1DC]/15 text-white text-sm font-semibold border-l-2 border-[#FBF1DC] transition-all" href="#">
+<span class="material-symbols-outlined text-[#FBF1DC]" style="font-variation-settings: 'FILL' 1;">group</span>
+<span>Customers</span>
+<span class="ml-auto bg-[#E8A317] text-[#1B2030] text-[11px] font-bold px-2 py-0.5 rounded-full">4 pending</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>Audit log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white text-sm hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer & Support Desk -->
+<div class="flex flex-col gap-3 pt-3 border-t border-white/15">
+<a class="w-full py-2 px-3 rounded-lg bg-white/10 hover:bg-white/15 text-white text-sm flex items-center justify-center gap-2 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span>Support Desk</span>
+</a>
+<div class="flex flex-col gap-1 text-xs">
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-white/70 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">vital_signs</span>
+<span>System Health</span>
+<span class="w-2 h-2 rounded-full bg-[#1F9D63] ml-auto"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-1.5 rounded-lg text-white/70 hover:text-white transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span>Log out</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT -->
+<div class="flex-1 flex flex-col min-w-0 bg-[#FFFCF6] overflow-y-auto">
+<!-- TOP BAR -->
+<header class="docked full-width top-0 sticky z-40 bg-white border-b border-[#E9E4D8] shadow-sm">
+<div class="flex items-center justify-between px-8 py-3.5 w-full">
+<!-- Search bar -->
+<div class="flex items-center gap-4 flex-1 max-w-xl">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-[20px]">search</span>
+<input class="w-full h-10 pl-10 pr-12 rounded-xl bg-[#F8F5EE] border border-[#E4DFD3] focus:border-[#1F2A6B] focus:ring-1 focus:ring-[#1F2A6B] text-sm placeholder:text-gray-400 text-[#1B2030] transition-all" placeholder="Search by customer name, phone, address, ID..." type="text"/>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center">
+<kbd class="px-1.5 py-0.5 text-[10px] font-semibold bg-[#EBE6DC] text-gray-600 rounded">⌘K</kbd>
+</div>
+</div>
+</div>
+<!-- Actions & Status Pill -->
+<div class="flex items-center gap-5">
+<!-- Strictly read-only status pill -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1F9D63]/10 border border-[#1F9D63]/30 select-none cursor-default" title="Status: Automatic schedule active">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63] animate-pulse"></span>
+<span class="text-xs font-semibold text-[#1F9D63]">Ordering Open · Closes 5:00 PM (automatic)</span>
+</div>
+<button aria-label="Notifications" class="relative p-2 rounded-lg text-gray-500 hover:bg-[#F8F5EE] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-[#E8A317] rounded-full"></span>
+</button>
+<div class="h-6 w-px bg-[#E9E4D8]"></div>
+<!-- User Profile -->
+<div class="flex items-center gap-3 cursor-pointer pl-1 group">
+<div class="w-9 h-9 rounded-full bg-[#1F2A6B] text-white flex items-center justify-center font-bold text-sm shadow-sm">
+VM
+</div>
+<div class="flex flex-col text-left">
+<span class="text-xs font-semibold text-[#1B2030] group-hover:text-[#1F2A6B] leading-tight">Vikram Mehta</span>
+<span class="text-[11px] text-gray-500 leading-tight">Admin Master · Nashik Hub</span>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[18px]">expand_more</span>
+</div>
+</div>
+</div>
+</header>
+<!-- MAIN VIEW -->
+<main class="p-8 max-w-[1400px] w-full mx-auto flex flex-col gap-6">
+<!-- PAGE HEADER -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[11px] font-bold uppercase tracking-widest text-[#1F2A6B] bg-[#FBF1DC] px-2.5 py-0.5 rounded border border-[#E8A317]/30">Customer Management</span>
+<span class="text-xs text-gray-500">· Live Nashik Distribution Network</span>
+</div>
+<h1 class="text-3xl font-['Playfair_Display'] font-semibold text-[#1F2A6B] tracking-tight">Customers List &amp; Account Control</h1>
+<p class="text-sm text-gray-600 mt-1">Manage customer profiles, order status eligibility, and daily delivery area permissions.</p>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<button class="h-10 px-4 rounded-xl border border-[#D9D5CC] bg-white hover:bg-[#FBF1DC]/40 text-[#1F2A6B] text-sm font-semibold flex items-center gap-2 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export CSV</span>
+</button>
+<button class="h-10 px-4 rounded-xl bg-[#1F2A6B] hover:bg-[#151D4D] text-white text-sm font-semibold flex items-center gap-2 shadow-sm transition-all">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span>+ Add Customer</span>
+</button>
+</div>
+</div>
+<!-- STATUS TABS: STRICTLY All, Active, Pending approval, On hold -->
+<div class="flex items-center justify-between border-b border-[#E7E2D6] pb-1">
+<div class="flex items-center gap-2">
+<!-- Tab: All -->
+<button class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-[#1F2A6B] hover:bg-white transition-all flex items-center gap-2">
+<span>All</span>
+<span class="text-xs bg-gray-200/80 text-gray-700 font-bold px-2 py-0.5 rounded-full">312</span>
+</button>
+<!-- Tab: Active -->
+<button class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-[#1F2A6B] hover:bg-white transition-all flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63]"></span>
+<span>Active</span>
+<span class="text-xs bg-[#1F9D63]/10 text-[#1F9D63] font-bold px-2 py-0.5 rounded-full">298</span>
+</button>
+<!-- Tab: Pending approval (Highlighted active filter) -->
+<button class="px-4 py-2 rounded-lg text-sm font-bold text-[#1F2A6B] bg-[#FBF1DC] border border-[#E8A317]/50 shadow-sm transition-all flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#E8A317] animate-ping"></span>
+<span>Pending approval</span>
+<span class="text-xs bg-[#E8A317] text-white font-bold px-2 py-0.5 rounded-full">4</span>
+</button>
+<!-- Tab: On hold -->
+<button class="px-4 py-2 rounded-lg text-sm font-semibold text-gray-600 hover:text-[#1F2A6B] hover:bg-white transition-all flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-gray-400"></span>
+<span>On hold</span>
+<span class="text-xs bg-gray-200 text-gray-700 font-bold px-2 py-0.5 rounded-full">10</span>
+</button>
+</div>
+<div class="text-xs text-gray-500">
+Showing accounts updated in last 24h
+</div>
+</div>
+<!-- TABLE CONTAINER -->
+<div class="bg-white rounded-2xl border border-[#E7E2D6] shadow-[0_4px_20px_-2px_rgba(31,42,107,0.05)] overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#F8F5EE] border-b border-[#E7E2D6] text-gray-500 text-[11px] font-bold uppercase tracking-wider">
+<th class="py-3.5 px-5">Customer Name &amp; Contact</th>
+<th class="py-3.5 px-5">Account Status</th>
+<th class="py-3.5 px-5">Total Orders</th>
+<th class="py-3.5 px-5">Total Spend</th>
+<th class="py-3.5 px-5">Delivery Address</th>
+<th class="py-3.5 px-5 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#EFECE3] text-sm">
+<!-- ROW 1: Pending Approval (Sunil Deshmukh - Subject of Dialog) -->
+<tr class="bg-[#FBF1DC]/20 hover:bg-[#FBF1DC]/40 transition-colors">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#FBF1DC] border border-[#E8A317]/50 text-[#1F2A6B] font-bold flex items-center justify-center text-sm shadow-sm">
+SD
+</div>
+<div>
+<div class="font-semibold text-[#1F2A6B] flex items-center gap-2">
+<span>Sunil Deshmukh</span>
+<span class="bg-[#FBF1DC] border border-[#E8A317]/40 text-[#1B2030] text-[10px] font-bold px-1.5 py-0.5 rounded">New</span>
+</div>
+<div class="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">phone</span>
++91 98221 44556
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<!-- Badge: Pending approval -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF8E7] border border-[#E8A317] text-[#9E6500]">
+<span class="material-symbols-outlined text-[15px] text-[#E8A317]">pending_actions</span>
+<span class="text-xs font-bold">Pending approval</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-medium text-[#1B2030]">0 orders</span>
+<div class="text-[11px] text-gray-400">Newly registered</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-semibold text-[#1B2030]">₹0.00</span>
+<div class="text-[11px] text-gray-400">No transactions</div>
+</td>
+<td class="py-4 px-5">
+<div class="text-xs font-medium text-[#1B2030] max-w-[220px] truncate">Godavari Dairy Hub, Shop 4, College Rd</div>
+<div class="text-[11px] text-gray-500">Area: Nashik Central</div>
+</td>
+<td class="py-4 px-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-2.5 py-1.5 rounded-lg border border-[#D9D5CC] hover:bg-[#F8F5EE] text-[#1F2A6B] text-xs font-semibold transition-colors">
+View Customer 360
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-[#1F2A6B] hover:bg-[#151D4D] text-white text-xs font-bold transition-all shadow-sm">
+Update Status
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: Active Customer (Pooja Anand Joshi) -->
+<tr class="hover:bg-[#F8F5EE]/60 transition-colors">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#E8EDFA] text-[#1F2A6B] font-bold flex items-center justify-center text-sm shadow-sm">
+PJ
+</div>
+<div>
+<div class="font-semibold text-[#1F2A6B]">Pooja Anand Joshi</div>
+<div class="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">phone</span>
++91 94220 88991
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<!-- Badge: Active -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1F9D63]/10 border border-[#1F9D63]/40 text-[#1F9D63]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+<span class="text-xs font-bold">Active</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-medium text-[#1B2030]">38 orders</span>
+<div class="text-[11px] text-gray-400">Dispatch today</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-semibold text-[#1F9D63]">₹48,220.00</span>
+<div class="text-[11px] text-[#1F9D63]">All settled · Receipt no. #RC-8819</div>
+</td>
+<td class="py-4 px-5">
+<div class="text-xs font-medium text-[#1B2030] max-w-[220px] truncate">Pooja Mandir Organics, MG Road</div>
+<div class="text-[11px] text-gray-500">Area: Western Suburbs</div>
+</td>
+<td class="py-4 px-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-2.5 py-1.5 rounded-lg border border-[#D9D5CC] hover:bg-[#F8F5EE] text-[#1F2A6B] text-xs font-semibold transition-colors">
+View Customer 360
+</button>
+<button class="px-3 py-1.5 rounded-lg border border-[#1F2A6B]/30 hover:bg-[#1F2A6B]/5 text-[#1F2A6B] text-xs font-semibold transition-all">
+Update Status
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: Active / Cash pending (Rajesh Sharma) -->
+<tr class="hover:bg-[#F8F5EE]/60 transition-colors">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#D64545]/15 text-[#D64545] font-bold flex items-center justify-center text-sm shadow-sm">
+RS
+</div>
+<div>
+<div class="font-semibold text-[#1F2A6B]">Rajesh Sharma</div>
+<div class="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">phone</span>
++91 98230 11223
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<!-- Badge: On hold -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 border border-gray-300 text-gray-700">
+<span class="material-symbols-outlined text-[15px] text-gray-600">pause_circle</span>
+<span class="text-xs font-bold">On hold</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-medium text-[#1B2030]">14 orders</span>
+<div class="text-[11px] text-[#D64545]">Pending Cash</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-semibold text-[#D64545]">₹2,440.00 unpaid</span>
+<div class="text-[11px] text-[#D64545]">Cash due · Receipt no. #RC-9021</div>
+</td>
+<td class="py-4 px-5">
+<div class="text-xs font-medium text-[#1B2030] max-w-[220px] truncate">Sharma General Store, Dwarka Circle</div>
+<div class="text-[11px] text-gray-500">Area: Eastern Ring</div>
+</td>
+<td class="py-4 px-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-2.5 py-1.5 rounded-lg border border-[#D9D5CC] hover:bg-[#F8F5EE] text-[#1F2A6B] text-xs font-semibold transition-colors">
+View Customer 360
+</button>
+<button class="px-3 py-1.5 rounded-lg border border-[#1F2A6B]/30 hover:bg-[#1F2A6B]/5 text-[#1F2A6B] text-xs font-semibold transition-all">
+Update Status
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: On Hold Customer (Kailash Gupta) -->
+<tr class="hover:bg-[#F8F5EE]/60 transition-colors">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gray-200 text-gray-700 font-bold flex items-center justify-center text-sm shadow-sm">
+KG
+</div>
+<div>
+<div class="font-semibold text-[#1F2A6B]">Kailash Gupta</div>
+<div class="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">phone</span>
++91 94222 55667
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<!-- Badge: On hold -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 border border-gray-300 text-gray-700">
+<span class="material-symbols-outlined text-[15px] text-gray-600">pause_circle</span>
+<span class="text-xs font-bold">On hold</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-medium text-[#1B2030]">19 orders</span>
+<div class="text-[11px] text-gray-400">Paused voluntarily</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-semibold text-[#1B2030]">₹18,500.00</span>
+<div class="text-[11px] text-gray-400">Cash settled · Receipt no. #RC-7412</div>
+</td>
+<td class="py-4 px-5">
+<div class="text-xs font-medium text-[#1B2030] max-w-[220px] truncate">Panchavati Ghee Center, Goda Ghat</div>
+<div class="text-[11px] text-gray-500">Area: Panchavati North</div>
+</td>
+<td class="py-4 px-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-2.5 py-1.5 rounded-lg border border-[#D9D5CC] hover:bg-[#F8F5EE] text-[#1F2A6B] text-xs font-semibold transition-colors">
+View Customer 360
+</button>
+<button class="px-3 py-1.5 rounded-lg border border-[#1F2A6B]/30 hover:bg-[#1F2A6B]/5 text-[#1F2A6B] text-xs font-semibold transition-all">
+Update Status
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5: Active Customer (Anand Patil) -->
+<tr class="hover:bg-[#F8F5EE]/60 transition-colors">
+<td class="py-4 px-5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#E8EDFA] text-[#1F2A6B] font-bold flex items-center justify-center text-sm shadow-sm">
+AP
+</div>
+<div>
+<div class="font-semibold text-[#1F2A6B]">Anand Patil</div>
+<div class="text-xs text-gray-500 mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">phone</span>
++91 98901 33445
+</div>
+</div>
+</div>
+</td>
+<td class="py-4 px-5">
+<!-- Badge: Active -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1F9D63]/10 border border-[#1F9D63]/40 text-[#1F9D63]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+<span class="text-xs font-bold">Active</span>
+</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-medium text-[#1B2030]">45 orders</span>
+<div class="text-[11px] text-gray-400">Regular buyer</div>
+</td>
+<td class="py-4 px-5">
+<span class="font-semibold text-[#1F9D63]">₹86,400.00</span>
+<div class="text-[11px] text-[#1F9D63]">Cash settled · Receipt no. #RC-6204</div>
+</td>
+<td class="py-4 px-5">
+<div class="text-xs font-medium text-[#1B2030] max-w-[220px] truncate">Patil Sweets &amp; Bakers, Gangapur Rd</div>
+<div class="text-[11px] text-gray-500">Area: Gangapur Road Sector</div>
+</td>
+<td class="py-4 px-5 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="px-2.5 py-1.5 rounded-lg border border-[#D9D5CC] hover:bg-[#F8F5EE] text-[#1F2A6B] text-xs font-semibold transition-colors">
+View Customer 360
+</button>
+<button class="px-3 py-1.5 rounded-lg border border-[#1F2A6B]/30 hover:bg-[#1F2A6B]/5 text-[#1F2A6B] text-xs font-semibold transition-all">
+Update Status
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- PAGINATION -->
+<div class="px-6 py-3.5 bg-[#F8F5EE] border-t border-[#E7E2D6] flex items-center justify-between">
+<div class="text-xs text-gray-500">
+Showing <span class="font-semibold text-[#1B2030]">1 to 5</span> of <span class="font-semibold text-[#1B2030]">312</span> customers
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-lg border border-[#D9D5CC] text-gray-400 text-xs disabled:opacity-50" disabled="">
+Previous
+</button>
+<span class="px-2 text-xs font-semibold text-[#1F2A6B]">1 of 63</span>
+<button class="px-3 py-1 rounded-lg border border-[#D9D5CC] text-[#1F2A6B] text-xs font-semibold hover:bg-white transition-colors">
+Next
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- APPROVAL / STATUS DIALOG MODAL -->
+<!-- Dialog Title: 'Customer Account Status', Strictly: Pending approval, Active, On hold. Admin note input, Confirm button. Clean styling and brand palette. -->
+<div aria-modal="true" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#1B2030]/60 backdrop-blur-sm transition-opacity" role="dialog">
+<div class="w-full max-w-lg bg-white rounded-2xl border border-[#E7E2D6] shadow-[0_20px_40px_-6px_rgba(31,42,107,0.25)] overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
+<!-- Dialog Header -->
+<div class="px-6 py-5 bg-[#F8F5EE] border-b border-[#E7E2D6] flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-[#FBF1DC] border border-[#E8A317]/40 flex items-center justify-center text-[#1F2A6B]">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+</div>
+<h2 class="font-['Playfair_Display'] text-xl font-semibold text-[#1F2A6B]">Customer Account Status</h2>
+</div>
+<button aria-label="Close dialog" class="p-1 rounded-lg text-gray-400 hover:text-[#1B2030] hover:bg-white transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Dialog Body -->
+<div class="p-6 flex flex-col gap-5">
+<!-- Customer Identifier Snapshot -->
+<div class="p-4 rounded-xl bg-[#FBF1DC]/40 border border-[#E8A317]/30 flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-[#1F2A6B] text-white flex items-center justify-center font-bold text-sm shrink-0">
+SD
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-semibold text-sm text-[#1B2030]">Sunil Deshmukh</h3>
+<span class="text-[11px] font-bold bg-[#FBF1DC] border border-[#E8A317] text-[#9E6500] px-2 py-0.5 rounded-full">Current: Pending approval</span>
+</div>
+<div class="text-xs text-gray-600 mt-0.5">+91 98221 44556 · Godavari Dairy Hub</div>
+<div class="text-xs text-gray-500 mt-1">Delivery Address: Shop 4, College Rd, Area: Nashik Central</div>
+</div>
+</div>
+<!-- Status Radio Selector (STRICTLY: Pending approval, Active, On hold) -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-[#1F2A6B] mb-2.5">
+Select Account Status <span class="text-[#D64545]">*</span>
+</label>
+<div class="grid grid-cols-1 gap-2.5">
+<!-- Option 1: Active -->
+<label class="relative flex items-center justify-between p-3.5 rounded-xl border-2 border-[#1F2A6B] bg-[#1F2A6B]/5 cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<input checked="" class="text-[#1F2A6B] focus:ring-[#1F2A6B] h-4 w-4" name="account_status" type="radio" value="Active"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 text-sm font-bold text-[#1F2A6B]">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63]"></span>
+Active
+</div>
+<span class="text-xs text-gray-500">Customer can place orders and receives scheduled deliveries.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#1F9D63] text-[20px]">check_circle</span>
+</label>
+<!-- Option 2: Pending approval -->
+<label class="relative flex items-center justify-between p-3.5 rounded-xl border border-[#E7E2D6] hover:bg-[#F8F5EE] cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] h-4 w-4" name="account_status" type="radio" value="Pending approval"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 text-sm font-semibold text-[#1B2030]">
+<span class="w-2 h-2 rounded-full bg-[#E8A317]"></span>
+Pending approval
+</div>
+<span class="text-xs text-gray-500">Account queued for admin review before order dispatch is permitted.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-[#E8A317] text-[20px]">hourglass_top</span>
+</label>
+<!-- Option 3: On hold -->
+<label class="relative flex items-center justify-between p-3.5 rounded-xl border border-[#E7E2D6] hover:bg-[#F8F5EE] cursor-pointer transition-all">
+<div class="flex items-center gap-3">
+<input class="text-[#1F2A6B] focus:ring-[#1F2A6B] h-4 w-4" name="account_status" type="radio" value="On hold"/>
+<div class="flex flex-col">
+<div class="flex items-center gap-2 text-sm font-semibold text-[#1B2030]">
+<span class="w-2 h-2 rounded-full bg-gray-400"></span>
+On hold
+</div>
+<span class="text-xs text-gray-500">Temporarily pause account deliveries without closing profile ledger.</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-gray-400 text-[20px]">pause_circle</span>
+</label>
+</div>
+</div>
+<!-- Admin Note Input -->
+<div>
+<label class="block text-xs font-bold uppercase tracking-wider text-[#1F2A6B] mb-1.5" for="admin-note">
+Admin Note <span class="text-[#D64545]">*</span>
+</label>
+<textarea class="w-full p-3 rounded-xl bg-[#FFFCF6] border border-[#D9D5CC] focus:border-[#1F2A6B] focus:ring-1 focus:ring-[#1F2A6B] text-sm text-[#1B2030] placeholder:text-gray-400 resize-none transition-all" id="admin-note" placeholder="Provide reason or operational details for this account status update..." rows="3">Approved account for fresh milk delivery starting tomorrow.</textarea>
+<p class="text-[11px] text-gray-400 mt-1">This note is recorded in the customer history log.</p>
+</div>
+</div>
+<!-- Dialog Footer Action Buttons (Confirm Button) -->
+<div class="px-6 py-4 bg-[#F8F5EE] border-t border-[#E7E2D6] flex items-center justify-end gap-3">
+<button class="h-10 px-4 rounded-xl text-gray-600 hover:text-[#1B2030] hover:bg-white text-sm font-semibold transition-colors">
+Cancel
+</button>
+<button class="h-10 px-5 rounded-xl bg-[#1F2A6B] hover:bg-[#151D4D] text-white text-sm font-bold flex items-center gap-2 shadow-sm transition-all active:scale-[0.99]">
+<span class="material-symbols-outlined text-[18px]">check</span>
+<span>Confirm</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

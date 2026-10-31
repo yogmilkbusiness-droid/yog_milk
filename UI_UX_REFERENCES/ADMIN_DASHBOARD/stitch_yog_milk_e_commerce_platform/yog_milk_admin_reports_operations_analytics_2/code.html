@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Reports &amp; Operations Analytics</title>
+<!-- Fonts -->
+<link href="https://fonts.preconnect.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "navy-primary": "#1F2A6B",
+            "saffron": "#F47B20",
+            "brand-bg": "#FFFCF6",
+            "brand-text": "#1B2030",
+            "brand-border": "#E5E7EB",
+            "brand-success": "#1F9D63",
+            "brand-error": "#D64545",
+          },
+          fontFamily: {
+            "title-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Playfair Display", "serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-sm": ["Playfair Display", "serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-[#FFFCF6] text-[#1B2030] antialiased flex h-screen overflow-hidden selection:bg-[#F47B20]/20 selection:text-[#1F2A6B]">
+<!-- LEFT SIDEBAR COMPONENT -->
+<aside class="bg-[#1F2A6B] text-white docked h-screen w-64 flex flex-col justify-between shrink-0 border-r border-[#E5E7EB]/20 z-50">
+<div class="h-full flex flex-col justify-between p-4">
+<!-- Top Brand Anchor -->
+<div>
+<div class="flex items-center gap-3 px-3 py-3 mb-4 rounded-xl bg-white/10 border border-white/10">
+<div class="w-10 h-10 rounded-full bg-[#FFFCF6] flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-[#1F2A6B]" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="overflow-hidden">
+<div class="text-[18px] font-headline-sm font-semibold tracking-wide text-white truncate">Yog Milk</div>
+<div class="text-[12px] text-white/70 truncate">Dairy Operations Admin</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="space-y-1 overflow-y-auto max-h-[calc(100vh-270px)] pr-1 text-[14px]">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="receipt_long">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="description">description</span>
+<span>Invoices</span>
+</a>
+<!-- 8. Reports (ACTIVE NAVIGATION ITEM) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/20 text-white font-semibold border-l-4 border-[#F47B20] shadow-sm" href="#">
+<span class="material-symbols-outlined text-[#F47B20] text-[20px]" data-icon="bar_chart" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="calendar_clock">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="history">history</span>
+<span>Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white/80 text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer Module -->
+<div class="pt-4 border-t border-white/10 space-y-2">
+<a class="w-full flex items-center justify-between px-3 py-2 rounded-xl bg-white/10 text-white text-[13px] hover:bg-white/20 transition-colors" href="#">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-[#F47B20]" data-icon="support_agent">support_agent</span>
+<span>Support Desk</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-[#1F9D63] animate-pulse"></span>
+</a>
+<div class="flex items-center justify-between px-2 pt-1 text-white/70 text-[12px]">
+<div class="flex items-center gap-1.5 hover:text-white cursor-pointer">
+<span class="material-symbols-outlined text-[16px]" data-icon="dns">dns</span>
+<span>System Online</span>
+</div>
+<button class="flex items-center gap-1 hover:text-rose-300 transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span>Log out</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS & HEADER WRAPPER -->
+<div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+<!-- TOP NAVBAR -->
+<header class="top-0 sticky z-40 bg-white border-b border-[#E5E7EB] shadow-xs flex items-center justify-between px-6 py-3 w-full">
+<div class="flex items-center gap-6">
+<span class="text-[20px] font-bold text-[#1F2A6B] tracking-tight font-headline-sm">Yog Milk Admin</span>
+<!-- Omni Search Bar -->
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-2.5 text-[#1B2030]/40 text-[18px]" data-icon="search">search</span>
+<input class="w-full h-9 pl-9 pr-4 bg-[#FFFCF6] rounded-lg text-[13px] border border-[#E5E7EB] text-[#1B2030] placeholder:text-[#1B2030]/40 focus:outline-none focus:border-[#1F2A6B] focus:ring-1 focus:ring-[#1F2A6B] transition-all" placeholder="Search orders, invoices, accounts..." type="text"/>
+</div>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<!-- Read-only status pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FFF7EE] border border-[#F47B20]/40 text-[#F47B20] text-[12px] font-semibold select-none shadow-xs">
+<span class="w-2 h-2 rounded-full bg-[#F47B20]"></span>
+<span>Ordering Open · Closes 5:00 PM (automatic)</span>
+</div>
+<!-- Notifications Action -->
+<button class="relative p-2 rounded-lg text-[#1B2030]/70 hover:bg-[#FFFCF6] border border-transparent hover:border-[#E5E7EB] transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-[#F47B20]"></span>
+</button>
+<div class="h-6 w-px bg-[#E5E7EB]"></div>
+<!-- Admin Profile Avatar -->
+<div class="flex items-center gap-3 pl-1">
+<div class="w-8 h-8 rounded-full bg-[#1F2A6B] text-white flex items-center justify-center font-bold text-[13px] shadow-sm">
+  YM
+</div>
+<div class="hidden xl:block text-left leading-tight">
+<div class="text-[13px] font-semibold text-[#1B2030]">Purohit Shastry</div>
+<div class="text-[11px] text-[#1B2030]/60">Operations Admin</div>
+</div>
+</div>
+</div>
+</header>
+<!-- REPORT & ANALYTICS CANVAS -->
+<main class="flex-1 overflow-y-auto p-8 space-y-6 bg-[#FFFCF6]">
+<!-- 1. TOP CONTROL BAR -->
+<section class="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-2 border-b border-[#E5E7EB]">
+<div>
+<!-- Breadcrumb -->
+<div class="flex items-center gap-2 text-[12px] text-[#1B2030]/60 mb-1">
+<span class="hover:text-[#1F2A6B] cursor-pointer transition-colors">Operations Console</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-[#1F2A6B] font-semibold">Reports &amp; Analytics</span>
+</div>
+<h1 class="text-[28px] font-headline-lg font-bold text-[#1F2A6B] tracking-tight">Reports &amp; Operations Analytics</h1>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<!-- Granular Date Range Filter Segmented Control -->
+<div class="inline-flex p-1 bg-white rounded-lg border border-[#E5E7EB] text-[12px] font-semibold text-[#1B2030]/70 shadow-xs">
+<button class="px-3 py-1.5 rounded-md hover:text-[#1B2030] transition-colors">Today</button>
+<button class="px-3 py-1.5 rounded-md hover:text-[#1B2030] transition-colors">Last 7 Days</button>
+<button class="px-3 py-1.5 rounded-md bg-[#1F2A6B] text-white shadow-xs">Current Month</button>
+<button class="px-3 py-1.5 rounded-md hover:text-[#1B2030] transition-colors">Custom Range</button>
+</div>
+<!-- Export Actions -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-[#E5E7EB] text-[#1B2030] hover:bg-gray-50 rounded-lg text-[13px] font-medium transition-colors shadow-xs">
+<span class="material-symbols-outlined text-[16px] text-[#1B2030]/70" data-icon="table_view">table_view</span>
+<span>Export CSV</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-[#1F2A6B] text-white hover:bg-[#1F2A6B]/90 rounded-lg text-[13px] font-medium transition-all shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span>Export PDF</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 2. REPORT TABS BAR -->
+<section class="border-b border-[#E5E7EB]">
+<div class="flex items-center gap-8 text-[14px] font-semibold">
+<button class="pb-3 border-b-2 border-[#1F2A6B] text-[#1F2A6B] flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span>Sales</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-[#1B2030]/60 hover:text-[#1B2030] flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span>Collections</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-[#1B2030]/60 hover:text-[#1B2030] flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="pending_actions">pending_actions</span>
+<span>Outstanding</span>
+<span class="ml-1 px-2 py-0.5 rounded-full bg-[#D64545]/10 text-[#D64545] text-[11px] font-bold">24 Blocked</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-[#1B2030]/60 hover:text-[#1B2030] flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="local_shipping">local_shipping</span>
+<span>Deliveries</span>
+</button>
+<button class="pb-3 border-b-2 border-transparent text-[#1B2030]/60 hover:text-[#1B2030] flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+<span>Customer history</span>
+</button>
+</div>
+</section>
+<!-- 3. THREE DISTINCT FINANCIAL MEASURES (SEPARATE CARDS) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- CARD 1: Total Order Value -->
+<div class="relative bg-white rounded-xl p-6 shadow-sm border border-[#E5E7EB] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded bg-[#1F2A6B]/10 text-[#1F2A6B] text-[11px] font-bold uppercase tracking-wider">Gross Sales Realization</span>
+<span class="flex items-center gap-1 text-[#1F9D63] text-[12px] font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="north_east">north_east</span> +14.2% MTD
+  </span>
+</div>
+<div>
+<div class="text-[13px] text-[#1B2030]/60">Total Order Value</div>
+<div class="text-[32px] font-bold text-[#1F2A6B] font-headline-lg mt-1 tracking-tight">₹18,42,850 <span class="text-[16px] font-semibold font-body-md text-[#1B2030]/60">MTD</span></div>
+</div>
+<div class="pt-4 mt-4 border-t border-[#E5E7EB] flex items-center justify-between text-[12px] text-[#1B2030]/70">
+<span>Total Fulfilled Orders: <strong class="text-[#1B2030]">1,280 Orders</strong></span>
+<span>Avg Order: <strong class="text-[#1B2030]">₹1,439.72</strong></span>
+</div>
+</div>
+<!-- CARD 2: Payments Collected -->
+<div class="relative bg-white rounded-xl p-6 shadow-sm border border-[#E5E7EB] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded bg-[#1F9D63]/10 text-[#1F9D63] text-[11px] font-bold uppercase tracking-wider">Settled &amp; Reconciled</span>
+<span class="px-2 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] text-[11px] font-bold">91.9% Realized</span>
+</div>
+<div>
+<div class="text-[13px] text-[#1B2030]/60">Payments Collected</div>
+<div class="text-[32px] font-bold text-[#1F9D63] font-headline-lg mt-1 tracking-tight">₹16,94,410</div>
+</div>
+<div class="pt-4 mt-4 border-t border-[#E5E7EB] grid grid-cols-2 gap-3 text-[12px]">
+<div class="flex items-center gap-1.5 text-[#1B2030]/70">
+<span class="material-symbols-outlined text-[15px] text-[#1F2A6B]" data-icon="qr_code">qr_code</span>
+<span>Razorpay UPI: <strong class="text-[#1B2030]">₹12,40,210</strong></span>
+</div>
+<div class="flex items-center gap-1.5 text-[#1B2030]/70">
+<span class="material-symbols-outlined text-[15px] text-[#F47B20]" data-icon="payments">payments</span>
+<span>COD Cash: <strong class="text-[#1B2030]">₹4,54,200</strong></span>
+</div>
+</div>
+</div>
+<!-- CARD 3: Outstanding / Payment Pending Block Balance -->
+<div class="relative bg-white rounded-xl p-6 shadow-sm border border-[#E5E7EB] flex flex-col justify-between">
+<div class="flex items-center justify-between mb-3">
+<span class="px-2.5 py-1 rounded bg-[#D64545]/10 text-[#D64545] text-[11px] font-bold uppercase tracking-wider">Pending Block Balance</span>
+<span class="px-2 py-0.5 rounded-full bg-[#D64545]/10 text-[#D64545] text-[11px] font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="block">block</span> Payment Pending Block
+  </span>
+</div>
+<div>
+<div class="text-[13px] text-[#1B2030]/60">Outstanding / Pending Block Balance</div>
+<div class="text-[32px] font-bold text-[#D64545] font-headline-lg mt-1 tracking-tight">₹1,48,440</div>
+</div>
+<div class="pt-4 mt-4 border-t border-[#E5E7EB] flex items-center justify-between text-[12px] text-[#1B2030]/70">
+<span>Accounts under 'Payment pending block': <strong class="text-[#D64545]">24 Accounts</strong></span>
+<span>Overdue: <strong class="text-[#1B2030]">1–3 Days</strong></span>
+</div>
+</div>
+</section>
+<!-- 4. CHARTS & GRAPHS + DELIVERY METRICS -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left: Daily Volume vs Realized Revenue Settlements Chart (7 Cols) -->
+<div class="lg:col-span-7 bg-white p-6 rounded-xl border border-[#E5E7EB] shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+<div>
+<h3 class="text-[18px] font-bold text-[#1F2A6B]">Daily Volume vs Realized Settlements</h3>
+<p class="text-[12px] text-[#1B2030]/60">Dispatched milk volume (Liters) plotted alongside daily realized collections</p>
+</div>
+<div class="flex items-center gap-4 text-[12px]">
+<div class="flex items-center gap-1.5 text-[#1B2030]">
+<span class="w-3 h-3 rounded-sm bg-[#1F2A6B]"></span>
+<span>Dispatched Volume (L)</span>
+</div>
+<div class="flex items-center gap-1.5 text-[#1B2030]">
+<span class="w-3 h-3 rounded-sm bg-[#1F9D63]"></span>
+<span>Realized Settlements (₹)</span>
+</div>
+</div>
+</div>
+<!-- Bar Visualizer -->
+<div class="h-60 flex items-end justify-between gap-2 pt-6 border-b border-[#E5E7EB] relative px-2">
+<div class="absolute inset-x-0 top-0 border-b border-dashed border-[#E5E7EB]"></div>
+<div class="absolute inset-x-0 top-1/2 border-b border-dashed border-[#E5E7EB]"></div>
+<!-- Oct 22 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[68%] group-hover:bg-[#1F2A6B] transition-all" title="1,650 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[65%] group-hover:bg-[#1F9D63] transition-all" title="₹62,400"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">22 Oct</span>
+</div>
+<!-- Oct 23 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[74%] group-hover:bg-[#1F2A6B] transition-all" title="1,780 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[72%] group-hover:bg-[#1F9D63] transition-all" title="₹67,800"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">23 Oct</span>
+</div>
+<!-- Oct 24 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[80%] group-hover:bg-[#1F2A6B] transition-all" title="1,890 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[78%] group-hover:bg-[#1F9D63] transition-all" title="₹71,200"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">24 Oct</span>
+</div>
+<!-- Oct 25 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[82%] group-hover:bg-[#1F2A6B] transition-all" title="1,920 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[80%] group-hover:bg-[#1F9D63] transition-all" title="₹73,400"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">25 Oct</span>
+</div>
+<!-- Oct 26 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[86%] group-hover:bg-[#1F2A6B] transition-all" title="1,960 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[85%] group-hover:bg-[#1F9D63] transition-all" title="₹72,000"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">26 Oct</span>
+</div>
+<!-- Oct 27 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[78%] group-hover:bg-[#1F2A6B] transition-all" title="1,810 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[74%] group-hover:bg-[#1F9D63] transition-all" title="₹68,900"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">27 Oct</span>
+</div>
+<!-- Oct 28 -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B]/80 rounded-t-sm h-[88%] group-hover:bg-[#1F2A6B] transition-all" title="2,020 L"></div>
+<div class="w-2.5 bg-[#1F9D63]/80 rounded-t-sm h-[88%] group-hover:bg-[#1F9D63] transition-all" title="₹73,850"></div>
+</div>
+<span class="text-[10px] text-[#1B2030]/60 font-medium">28 Oct</span>
+</div>
+<!-- Oct 29 (Today) -->
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full flex items-end justify-center gap-1 h-40">
+<div class="w-3 bg-[#1F2A6B] rounded-t-sm h-[84%]" title="1,940 L"></div>
+<div class="w-2.5 bg-[#1F9D63] rounded-t-sm h-[80%]" title="₹68,120"></div>
+</div>
+<span class="text-[10px] text-[#1F2A6B] font-bold">Today</span>
+</div>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-between text-[12px] text-[#1B2030]/60">
+<span>Avg Dispatched Daily: <strong class="text-[#1B2030]">1,870 Liters</strong></span>
+<span>Collection Ratio: <strong class="text-[#1F9D63]">98.2% Collected</strong></span>
+</div>
+</div>
+<!-- Right: Delivery Metrics by Status & SLA (5 Cols) -->
+<div class="lg:col-span-5 bg-white p-6 rounded-xl border border-[#E5E7EB] shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div>
+<h3 class="text-[18px] font-bold text-[#1F2A6B]">Delivery Metrics &amp; Status</h3>
+<p class="text-[12px] text-[#1B2030]/60">Morning delivery cycle breakdown with on-time SLA</p>
+</div>
+<span class="material-symbols-outlined text-[#1F2A6B] text-[22px]" data-icon="local_shipping">local_shipping</span>
+</div>
+<!-- SLA Highlight Pill Card -->
+<div class="p-3.5 rounded-lg bg-[#FFFCF6] border border-[#E5E7EB] flex items-center justify-between mb-5">
+<div>
+<div class="text-[11px] font-semibold text-[#1B2030]/60 uppercase tracking-wider">Morning Delivery SLA</div>
+<div class="text-[20px] font-bold text-[#1F9D63]">98.4% On-Time</div>
+</div>
+<div class="text-right text-[11px] text-[#1B2030]/60">
+<div>Target: Before 7:00 AM</div>
+<div class="text-[#1F9D63] font-semibold">1,260 of 1,280 within window</div>
+</div>
+</div>
+<!-- Delivery Status Breakdown -->
+<div class="space-y-3">
+<!-- Status 1: Delivered -->
+<div>
+<div class="flex justify-between text-[13px] mb-1">
+<span class="font-medium text-[#1B2030] flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63]"></span> Delivered
+        </span>
+<span class="font-bold text-[#1F9D63]">1,218 <span class="text-[11px] font-normal text-[#1B2030]/60">(95.2%)</span></span>
+</div>
+<div class="w-full bg-[#E5E7EB] rounded-full h-2 overflow-hidden">
+<div class="bg-[#1F9D63] h-2 rounded-full" style="width: 95.2%"></div>
+</div>
+</div>
+<!-- Status 2: Out for delivery -->
+<div>
+<div class="flex justify-between text-[13px] mb-1">
+<span class="font-medium text-[#1B2030] flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#F47B20]"></span> Out for delivery
+        </span>
+<span class="font-bold text-[#F47B20]">38 <span class="text-[11px] font-normal text-[#1B2030]/60">(3.0%)</span></span>
+</div>
+<div class="w-full bg-[#E5E7EB] rounded-full h-2 overflow-hidden">
+<div class="bg-[#F47B20] h-2 rounded-full" style="width: 3.0%"></div>
+</div>
+</div>
+<!-- Status 3: Assigned -->
+<div>
+<div class="flex justify-between text-[13px] mb-1">
+<span class="font-medium text-[#1B2030] flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#1F2A6B]"></span> Assigned
+        </span>
+<span class="font-bold text-[#1F2A6B]">16 <span class="text-[11px] font-normal text-[#1B2030]/60">(1.2%)</span></span>
+</div>
+<div class="w-full bg-[#E5E7EB] rounded-full h-2 overflow-hidden">
+<div class="bg-[#1F2A6B] h-2 rounded-full" style="width: 1.2%"></div>
+</div>
+</div>
+<!-- Status 4: Failed -->
+<div>
+<div class="flex justify-between text-[13px] mb-1">
+<span class="font-medium text-[#1B2030] flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-[#D64545]"></span> Failed
+        </span>
+<span class="font-bold text-[#D64545]">8 <span class="text-[11px] font-normal text-[#1B2030]/60">(0.6%)</span></span>
+</div>
+<div class="w-full bg-[#E5E7EB] rounded-full h-2 overflow-hidden">
+<div class="bg-[#D64545] h-2 rounded-full" style="width: 0.6%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-[#E5E7EB] flex items-center justify-between text-[12px]">
+<span class="text-[#1B2030]/60">Total Daily Scheduled: <strong>1,280 Deliveries</strong></span>
+<span class="text-[#1F2A6B] font-semibold cursor-pointer hover:underline">View Live Delivery Board →</span>
+</div>
+</div>
+</section>
+<!-- 5. RECONCILIATION BREAKDOWN TABLE -->
+<section class="bg-white rounded-xl border border-[#E5E7EB] shadow-xs overflow-hidden">
+<!-- Table Header & Controls -->
+<div class="p-5 border-b border-[#E5E7EB] flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h3 class="text-[18px] font-bold text-[#1F2A6B]">Daily Batch Reconciliation Ledger</h3>
+<p class="text-[12px] text-[#1B2030]/60">Reconciliation records for daily dispatches, realization statuses, and pending blocks</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-2 text-[#1B2030]/40 text-[18px]" data-icon="filter_list">filter_list</span>
+<select class="pl-9 pr-8 py-1.5 bg-[#FFFCF6] border border-[#E5E7EB] rounded-lg text-[13px] text-[#1B2030] focus:outline-none focus:ring-1 focus:ring-[#1F2A6B]">
+<option>All Batch Statuses</option>
+<option>Payment Pending Block</option>
+<option>Fully Settled</option>
+</select>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-[#FFFCF6] border border-[#E5E7EB] rounded-lg text-[13px] font-medium text-[#1B2030] hover:bg-gray-50 transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="tune">tune</span>
+<span>Filter</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#FFFCF6] text-[12px] font-semibold text-[#1B2030]/70 border-b border-[#E5E7EB]">
+<th class="py-3 px-4">Date / Batch ID</th>
+<th class="py-3 px-4 text-center">Deliveries</th>
+<th class="py-3 px-4">Total Order Value</th>
+<th class="py-3 px-4">Collected (UPI + Cash)</th>
+<th class="py-3 px-4">Pending Block Balance</th>
+<th class="py-3 px-4 text-center">Status</th>
+<th class="py-3 px-4 text-right pr-6">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y border-[#E5E7EB] text-[13px]">
+<!-- Row 1 (Today) -->
+<tr class="hover:bg-[#FFFCF6]/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#1F2A6B]">29 Oct 2026</div>
+<div class="text-[#1B2030]/50 text-[11px]">BATCH #DAWN-261029-A</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2.5 py-0.5 rounded-full bg-gray-100 text-[#1B2030] font-semibold text-[12px]">482 Orders</span>
+</td>
+<td class="py-3.5 px-4 font-bold text-[#1F2A6B]">₹72,480</td>
+<td class="py-3.5 px-4">
+<div class="text-[#1F9D63] font-semibold">₹68,120</div>
+<div class="text-[11px] text-[#1B2030]/50">Razorpay: ₹51k · COD: ₹17.1k</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-[#D64545]/10 text-[#D64545] font-semibold text-[11px]">₹4,360</span>
+<span class="text-[11px] text-[#1B2030]/60">(6 accts blocked)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span> 99.4% Delivered
+</span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<button class="p-1 hover:bg-gray-100 rounded text-[#1B2030]/60 hover:text-[#1F2A6B] transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-[#FFFCF6]/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#1F2A6B]">28 Oct 2026</div>
+<div class="text-[#1B2030]/50 text-[11px]">BATCH #DAWN-261028-A</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2.5 py-0.5 rounded-full bg-gray-100 text-[#1B2030] font-semibold text-[12px]">490 Orders</span>
+</td>
+<td class="py-3.5 px-4 font-bold text-[#1F2A6B]">₹73,850</td>
+<td class="py-3.5 px-4">
+<div class="text-[#1F9D63] font-semibold">₹73,850</div>
+<div class="text-[11px] text-[#1B2030]/50">Razorpay: ₹58k · COD: ₹15.8k</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] font-semibold text-[11px]">₹0 Settled</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span> 100% Delivered
+</span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<button class="p-1 hover:bg-gray-100 rounded text-[#1B2030]/60 hover:text-[#1F2A6B] transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-[#FFFCF6]/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#1F2A6B]">27 Oct 2026</div>
+<div class="text-[#1B2030]/50 text-[11px]">BATCH #DAWN-261027-B</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2.5 py-0.5 rounded-full bg-gray-100 text-[#1B2030] font-semibold text-[12px]">475 Orders</span>
+</td>
+<td class="py-3.5 px-4 font-bold text-[#1F2A6B]">₹71,200</td>
+<td class="py-3.5 px-4">
+<div class="text-[#1F9D63] font-semibold">₹68,900</div>
+<div class="text-[11px] text-[#1B2030]/50">Razorpay: ₹52k · COD: ₹16.9k</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded-full bg-[#D64545]/10 text-[#D64545] font-semibold text-[11px]">₹2,300</span>
+<span class="text-[11px] text-[#D64545] font-medium">(2 blocked)</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span> 98.9% Delivered
+</span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<button class="p-1 hover:bg-gray-100 rounded text-[#1B2030]/60 hover:text-[#1F2A6B] transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-[#FFFCF6]/80 transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-bold text-[#1F2A6B]">26 Oct 2026</div>
+<div class="text-[#1B2030]/50 text-[11px]">BATCH #DAWN-261026-A</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="px-2.5 py-0.5 rounded-full bg-gray-100 text-[#1B2030] font-semibold text-[12px]">480 Orders</span>
+</td>
+<td class="py-3.5 px-4 font-bold text-[#1F2A6B]">₹72,000</td>
+<td class="py-3.5 px-4">
+<div class="text-[#1F9D63] font-semibold">₹72,000</div>
+<div class="text-[11px] text-[#1B2030]/50">Razorpay: ₹59.4k · COD: ₹12.6k</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] font-semibold text-[11px]">₹0 Settled</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1F9D63]/10 text-[#1F9D63] font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span> 100% Delivered
+</span>
+</td>
+<td class="py-3.5 px-4 text-right pr-6">
+<button class="p-1 hover:bg-gray-100 rounded text-[#1B2030]/60 hover:text-[#1F2A6B] transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Controls -->
+<div class="px-6 py-3.5 border-t border-[#E5E7EB] flex items-center justify-between text-[12px] text-[#1B2030]/60">
+<div>
+  Showing <span class="font-bold text-[#1B2030]">1 to 4</span> of <span class="font-bold text-[#1B2030]">29</span> batch dispatches
+</div>
+<div class="flex items-center gap-1.5">
+<button class="px-2.5 py-1 border border-[#E5E7EB] rounded hover:bg-gray-50 text-[#1B2030] disabled:opacity-40" disabled="">Previous</button>
+<button class="px-2.5 py-1 bg-[#1F2A6B] text-white rounded font-bold">1</button>
+<button class="px-2.5 py-1 border border-[#E5E7EB] rounded hover:bg-gray-50 text-[#1B2030]">2</button>
+<button class="px-2.5 py-1 border border-[#E5E7EB] rounded hover:bg-gray-50 text-[#1B2030]">3</button>
+<button class="px-2.5 py-1 border border-[#E5E7EB] rounded hover:bg-gray-50 text-[#1B2030]">Next</button>
+</div>
+</div>
+</section>
+<!-- FOOTNOTE -->
+<footer class="pt-2 pb-6 flex items-center justify-between text-[12px] text-[#1B2030]/50 border-t border-[#E5E7EB]">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-[#1F9D63]" data-icon="check_circle">check_circle</span>
+<span>Yog Milk Operations Intelligence · Audited dispatch &amp; realization records</span>
+</div>
+<div>All metrics updated in real-time</div>
+</footer>
+</main>
+</div>
+</body></html>

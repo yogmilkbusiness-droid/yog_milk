@@ -1,0 +1,929 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Customer 360 · Rajesh Sharma | Yog Milk Admin</title>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined (Exact literal notation) -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "on-tertiary-fixed-variant": "#753400",
+            "inverse-surface": "#31312d",
+            "on-primary-fixed": "#0e1647",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#321200",
+            "outline": "#767680",
+            "surface-container": "#f0eee8",
+            "surface-bright": "#fcf9f3",
+            "surface-container-highest": "#e5e2dc",
+            "surface-tint": "#535b8e",
+            "inverse-on-surface": "#f3f0eb",
+            "on-tertiary": "#ffffff",
+            "primary": "#000533",
+            "primary-fixed": "#dee0ff",
+            "on-background": "#1c1c18",
+            "on-primary": "#ffffff",
+            "primary-container": "#151d4d",
+            "surface-variant": "#e5e2dc",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#dcdad4",
+            "secondary-container": "#a9b4fe",
+            "on-primary-fixed-variant": "#3b4375",
+            "secondary-fixed": "#dee0ff",
+            "outline-variant": "#c7c5d0",
+            "secondary-fixed-dim": "#bbc3ff",
+            "on-secondary-fixed-variant": "#374183",
+            "surface-container-high": "#ebe8e2",
+            "on-surface-variant": "#46464f",
+            "on-primary-container": "#7e86bc",
+            "tertiary": "#190600",
+            "on-secondary-fixed": "#051256",
+            "surface": "#fcf9f3",
+            "surface-container-low": "#f6f3ed",
+            "tertiary-fixed-dim": "#ffb68b",
+            "on-surface": "#1c1c18",
+            "secondary": "#4f599c",
+            "background": "#fcf9f3",
+            "primary-fixed-dim": "#bcc3fd",
+            "tertiary-fixed": "#ffdbc8",
+            "inverse-primary": "#bcc3fd",
+            "tertiary-container": "#3c1700",
+            "on-secondary-container": "#394485",
+            "on-tertiary-container": "#db6805"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "margin-desktop": "3rem",
+            "margin": "1rem",
+            "margin-tablet": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": [
+              "Plus Jakarta Sans"
+            ],
+            "body-lg": [
+              "Plus Jakarta Sans"
+            ],
+            "display-lg": [
+              "Playfair Display"
+            ],
+            "label-sm": [
+              "Plus Jakarta Sans"
+            ],
+            "display-lg-mobile": [
+              "Playfair Display"
+            ],
+            "body-sm": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-sm": [
+              "Playfair Display"
+            ],
+            "headline-lg-mobile": [
+              "Playfair Display"
+            ],
+            "title-md": [
+              "Plus Jakarta Sans"
+            ],
+            "title-lg": [
+              "Plus Jakarta Sans"
+            ],
+            "label-md": [
+              "Plus Jakarta Sans"
+            ],
+            "headline-lg": [
+              "Playfair Display"
+            ],
+            "headline-md": [
+              "Playfair Display"
+            ],
+            "label-lg": [
+              "Plus Jakarta Sans"
+            ]
+          },
+          "fontSize": {
+            "body-md": [
+              "14px",
+              {
+                "lineHeight": "22px",
+                "fontWeight": "400"
+              }
+            ],
+            "body-lg": [
+              "16px",
+              {
+                "lineHeight": "26px",
+                "fontWeight": "400"
+              }
+            ],
+            "display-lg": [
+              "44px",
+              {
+                "lineHeight": "52px",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "label-sm": [
+              "10px",
+              {
+                "lineHeight": "14px",
+                "letterSpacing": "0.06em",
+                "fontWeight": "700"
+              }
+            ],
+            "display-lg-mobile": [
+              "34px",
+              {
+                "lineHeight": "42px",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-sm": [
+              "12px",
+              {
+                "lineHeight": "18px",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-sm": [
+              "20px",
+              {
+                "lineHeight": "28px",
+                "fontWeight": "500"
+              }
+            ],
+            "headline-lg-mobile": [
+              "26px",
+              {
+                "lineHeight": "34px",
+                "fontWeight": "600"
+              }
+            ],
+            "title-md": [
+              "16px",
+              {
+                "lineHeight": "24px",
+                "fontWeight": "600"
+              }
+            ],
+            "title-lg": [
+              "18px",
+              {
+                "lineHeight": "26px",
+                "fontWeight": "700"
+              }
+            ],
+            "label-md": [
+              "12px",
+              {
+                "lineHeight": "16px",
+                "letterSpacing": "0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-lg": [
+              "32px",
+              {
+                "lineHeight": "40px",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-md": [
+              "24px",
+              {
+                "lineHeight": "32px",
+                "fontWeight": "600"
+              }
+            ],
+            "label-lg": [
+              "14px",
+              {
+                "lineHeight": "20px",
+                "letterSpacing": "0.01em",
+                "fontWeight": "600"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(21, 29, 77, 0.03);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md selection:bg-secondary-container selection:text-primary">
+<div class="flex h-screen w-full overflow-hidden bg-background">
+<!-- ========================================================================= -->
+<!-- PREDICTED COMPONENT: SideNavBar (Authoritative exact mapping from JSON)  -->
+<!-- Tab 5 'Customers' is active (Customer 360 page context)                  -->
+<!-- ========================================================================= -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary-container dark:bg-primary border-r border-outline-variant/30 dark:border-outline-variant/10 text-surface select-none z-30">
+<!-- Top Brand Anchor -->
+<div class="p-4 border-b border-surface-container-highest/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/10 border border-surface-container-highest/20 flex items-center justify-center text-surface-bright shadow-sm">
+<span class="material-symbols-outlined text-surface" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface dark:text-surface-bright leading-none">Yog Milk</div>
+<div class="text-label-sm font-label-sm text-surface-variant/70 tracking-wider mt-1">Vedic Pure Dairy Admin</div>
+</div>
+</div>
+</div>
+<!-- Navigation Menu Items (Exact 12 tabs from JSON) -->
+<nav class="flex-1 overflow-y-auto px-3 py-3 space-y-1 custom-scroll">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+<span class="">Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="">Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span class="">Deliveries</span>
+</a>
+<!-- 5. Customers (ACTIVE: Customers 360 screen) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md transition-all duration-200 active:scale-[0.99] border-l-2 border-secondary-container" href="#">
+<span class="material-symbols-outlined text-[20px] text-secondary-container" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-title-md text-surface">Customers</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">inventory_2</span>
+<span class="">Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="">Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">bar_chart</span>
+<span class="">Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="">Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_clock</span>
+<span class="">Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="">Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+<!-- Sidebar Footer Cluster with CTA & System Health -->
+<div class="p-3 border-t border-surface-container-highest/10 space-y-1">
+<!-- CTA: Support Desk -->
+<button class="w-full mb-2 flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-surface-container-lowest/10 hover:bg-surface-container-lowest/15 text-surface font-label-md text-label-md border border-surface-container-highest/20 transition-all duration-150">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+<span class="">Support Desk</span>
+</button>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/70 hover:text-surface font-body-sm text-body-sm hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">vital_signs</span>
+<span class="">System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/70 hover:text-surface font-body-sm text-body-sm hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+<span class="">Log out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN APPLICATION CANVAS AREA                                              -->
+<!-- ========================================================================= -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- ========================================================================= -->
+<!-- PREDICTED COMPONENT: TopNavBar (Exact mapping from JSON)                   -->
+<!-- ========================================================================= -->
+<header class="docked full-width top-0 sticky z-40 flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest dark:bg-inverse-surface border-b border-surface-variant dark:border-outline-variant/20 shadow-sm shrink-0">
+<!-- Left: Search Bar with Product Identity indicator -->
+<div class="flex items-center gap-6 w-1/3">
+<div class="relative w-full max-w-md">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant/50 rounded-xl font-body-sm text-body-sm text-on-surface focus:outline-none focus:border-secondary transition-colors" placeholder="Search customers, van runs, GST-exempt slips, SKU..." type="text" value="Rajesh Sharma">
+</div>
+</div>
+<!-- Center: Quick Status Badge / Ordering Window -->
+<div class="flex items-center gap-3">
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-primary font-label-md text-label-md border border-outline-variant/40">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="">Ordering Open · Closes 5:00 PM</span>
+</div>
+</div>
+<!-- Right: Notifications & Admin Profile Avatar (Vikram Mehta) -->
+<div class="flex items-center gap-4">
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors duration-150" title="Notifications">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+</button>
+<div class="h-6 w-[1px] bg-outline-variant/40"></div>
+<div class="flex items-center gap-3 pl-1">
+<div class="w-9 h-9 rounded-full bg-primary-container text-surface flex items-center justify-center font-title-md text-title-md shadow-sm ring-2 ring-primary-container/20">
+              VM
+            </div>
+<div class="text-left hidden lg:block">
+<div class="font-label-lg text-label-lg text-on-surface leading-snug">Vikram Mehta</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Operations Master</div>
+</div>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+<!-- SCROLLABLE INTERIOR CANVAS                                                -->
+<!-- ========================================================================= -->
+<main class="flex-1 overflow-y-auto px-8 py-6 space-y-6 custom-scroll">
+<!-- Breadcrumbs Navigation -->
+<nav class="flex items-center gap-2 text-on-surface-variant font-body-sm text-body-sm">
+<a class="hover:text-primary transition-colors" href="#">Operations Console</a>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Customers</a>
+<span class="material-symbols-outlined text-[16px] text-outline">chevron_right</span>
+<span class="text-on-surface font-title-md text-title-md">Rajesh Sharma (Sharma General Store)</span>
+</nav>
+<!-- ========================================================================= -->
+<!-- CUSTOMER 360 HEADER BANNER (Editorial Card Tier 1)                        -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-lowest rounded-2xl p-6 border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] space-y-5">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 pb-5 border-b border-surface-container">
+<!-- Left Info Cluster -->
+<div class="flex items-start gap-4">
+<!-- Avatar / Initials Badge -->
+<div class="w-16 h-16 rounded-2xl bg-primary-container text-surface flex items-center justify-center font-display-lg text-headline-lg shadow-sm border border-secondary/20 shrink-0">
+                RS
+              </div>
+<div class="space-y-1">
+<div class="flex flex-wrap items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Rajesh Sharma</h1>
+<span class="font-body-md text-body-md text-on-surface-variant">·</span>
+<span class="font-title-lg text-title-lg text-on-surface font-semibold">Sharma General Store</span>
+<!-- Order Status Badge (Soft Green Pill) -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E3F6EC] text-[#1F9D63] font-label-md text-label-md">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+                    Active Account
+                  </span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant">
+                  Retail Outlet · Member since Feb 2025 · Account ID: <span class="font-semibold text-on-surface font-label-md">YM-CUST-8839</span>
+</div>
+</div>
+</div>
+<!-- Action Controls Group -->
+<div class="flex flex-wrap items-center gap-2.5 self-stretch lg:self-auto justify-end">
+<!-- Secondary Action: Resend Dawn Slip -->
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-[14px] bg-surface text-primary border border-outline-variant/40 hover:bg-surface-container-low font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+<span class="">Resend Dawn Slip</span>
+</button>
+<!-- Secondary Action: Edit Account -->
+<button class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-[14px] bg-surface text-primary border border-outline-variant/40 hover:bg-surface-container-low font-label-md text-label-md transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">edit_note</span>
+<span class="">Edit Account</span>
+</button>
+<!-- Danger Action: Suspend Account -->
+<button class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-[14px] text-error hover:bg-error-container/30 border border-error/20 font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">block</span>
+<span class="">Suspend</span>
+</button>
+<!-- Primary Action CTA: Record Payment (Navy Dark #151D4D) -->
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-[14px] bg-primary-container text-on-primary font-label-lg text-label-lg hover:bg-primary-container/90 active:scale-[0.99] transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="">Record Payment</span>
+</button>
+</div>
+</div>
+<!-- Secondary Line: Route, Slot & Contact Details -->
+<div class="flex flex-wrap items-center justify-between gap-4 pt-1 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex flex-wrap items-center gap-y-2 gap-x-4">
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-outline text-[18px]">call</span>
+<span class="font-medium">+91 98230 11223</span>
+</div>
+<span class="">·</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[18px]">mail</span>
+<span class="">rajesh.sharma@gmail.com</span>
+</div>
+<span class="">·</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-outline text-[18px]">storefront</span>
+<span class="">Shop #4, College Road, Nashik East</span>
+</div>
+<span class="">·</span>
+<!-- Delivery Slot Badge with Truck Icon -->
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6E8F5] text-primary-container font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">local_shipping</span>
+<span class="">Route 4 (Van #04) · Dawn Slot (05:30 – 07:00 AM)</span>
+</div>
+</div>
+</div>
+<!-- PROMINENT HARD ZERO-CREDIT POLICY ALERT BLOCK -->
+<div class="rounded-xl border border-on-tertiary-container/30 bg-[#FFF4DB] px-4 py-3 flex items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-on-tertiary-container/15 text-on-tertiary-container flex items-center justify-center shrink-0"><span class="font-title-md text-title-md text-on-tertiary-fixed font-semibold">Payment Pending Block Active</span>
+<p class="font-body-sm text-body-sm text-on-tertiary-fixed-variant mt-0.5">
+  Reason: Unpaid Order <strong>YM-2026-000123</strong> (<span class="font-semibold">₹2,440 COD due</span>). Automatic dispatch hold enacted under payment pending policy.
+</p></div>
+<div><span class="font-title-md text-title-md text-on-tertiary-fixed font-semibold">Payment Pending Block Active</span>
+<p class="font-body-sm text-body-sm text-on-tertiary-fixed-variant mt-0.5">
+  Reason: Unpaid Order <strong>YM-2026-000123</strong> (<span class="font-semibold">₹2,440 COD due</span>). Automatic dispatch hold enacted under payment pending policy.
+</p></div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-on-tertiary-container border border-on-tertiary-container/30 font-label-md text-label-md hover:bg-surface transition-colors">
+                Override Block
+              </button>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- EXECUTIVE METRICS STRIP (8 Key Performance & Lifecycle Counters)          -->
+<!-- ========================================================================= -->
+<section class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-3">
+<!-- Metric 1: Total Orders -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant">
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Total Orders</div>
+<div class="mt-1.5 font-headline-sm text-headline-sm text-primary font-semibold">14</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-on-surface-variant">13 delivered, 1 pending</div>
+</div>
+<!-- Metric 2: Total Billed -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant">
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Total Billed</div>
+<div class="mt-1.5 font-headline-sm text-headline-sm text-primary font-semibold">₹32,480</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-on-surface-variant">Direct farm billing</div>
+</div>
+<!-- Metric 3: Payments Received -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant">
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Payments Recv</div>
+<div class="mt-1.5 font-headline-sm text-headline-sm text-[#1F9D63] font-semibold">₹30,040</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-[#1F9D63]">92.5% settlement rate</div>
+</div>
+<!-- Metric 4: Pending Amount (Amber Alert State) -->
+<div class="bg-[#FFF4DB] p-3.5 rounded-xl border border-on-tertiary-container/30">
+<div class="text-on-tertiary-fixed font-label-sm text-label-sm uppercase tracking-wider flex items-center justify-between">
+<span class="">Pending Amount</span>
+<span class="material-symbols-outlined text-[16px] text-on-tertiary-container">warning</span>
+</div>
+<div class="mt-1.5 font-headline-sm text-headline-sm text-on-tertiary-container font-semibold">₹2,440</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-on-tertiary-fixed-variant">1 unpaid dawn run</div>
+</div>
+<!-- Metric 5: Delivered Orders -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant">
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Delivered Drops</div>
+<div class="mt-1.5 font-headline-sm text-headline-sm text-primary font-semibold">13</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-[#1F9D63]">100% on-time dawn rate</div>
+</div>
+<!-- Metric 6: Last Order Placed -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant">
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Last Placed</div>
+<div class="mt-1.5 font-title-md text-title-md text-primary font-semibold truncate">29 Oct, 07:45 AM</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-on-surface-variant">YM-2026-000123</div>
+</div>
+<!-- Metric 7: Last Payment Recorded -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant">
+<div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">Last Settled</div>
+<div class="mt-1.5 font-title-md text-title-md text-primary font-semibold truncate">28 Oct, 08:15 AM</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-on-surface-variant">₹2,290 via Cash</div>
+</div>
+<!-- Metric 8: Bottle Return Ratio -->
+<div class="bg-surface-container-lowest p-3.5 rounded-xl border border-surface-variant"><div class="text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">On-Time Dispatch</div>
+<div class="mt-1.5 font-headline-sm text-headline-sm text-[#1F9D63] font-semibold">100%</div>
+<div class="mt-0.5 font-body-sm text-body-sm text-on-surface-variant">13/13 Delivered</div></div>
+</section>
+<!-- ========================================================================= -->
+<!-- FREQUENT PRODUCTS & DAILY QUOTA PANEL                                    -->
+<!-- ========================================================================= -->
+<section class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)]">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">inventory</span>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold">Frequent Order Breakdown &amp; Daily Quotas</h2>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Recurring wholesale preference for Sharma General Store</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Item 1: Full Cream Milk 500ml -->
+<div class="p-4 rounded-xl bg-surface border border-surface-container-highest flex items-start justify-between">
+<div>
+<div class="font-title-md text-title-md text-primary font-semibold font-display-lg">Full Cream Milk 500ml</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Avg 20 units/day</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-[#1F9D63] bg-[#E3F6EC] px-2 py-0.5 rounded-md mt-2">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+                  6.0% Fat Gir Cow Milk
+                </div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary font-title-lg">
+                20x
+              </div>
+</div>
+<!-- Item 2: Fresh Dahi 400g -->
+<div class="p-4 rounded-xl bg-surface border border-surface-container-highest flex items-start justify-between">
+<div>
+<div class="font-title-md text-title-md text-primary font-semibold font-display-lg">Fresh Dahi 400g</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Avg 12 clay pots/day</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-primary bg-[#E6E8F5] px-2 py-0.5 rounded-md mt-2">
+                  Clay Set · Slow Ferment
+                </div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary font-title-lg">
+                12x
+              </div>
+</div>
+<!-- Item 3: Pure Bilona Ghee 1L -->
+<div class="p-4 rounded-xl bg-surface border border-surface-container-highest flex items-start justify-between">
+<div>
+<div class="font-title-md text-title-md text-primary font-semibold font-display-lg">Pure Bilona Ghee 1L</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Bi-weekly stock requirement</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-tertiary-container bg-[#FFF4DB] px-2 py-0.5 rounded-md mt-2">
+                  A2 Churned Batch
+                </div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary font-title-lg">
+                2x
+              </div>
+</div>
+<!-- Item 4: Fresh Malai Paneer 1kg -->
+<div class="p-4 rounded-xl bg-surface border border-surface-container-highest flex items-start justify-between">
+<div>
+<div class="font-title-md text-title-md text-primary font-semibold font-display-lg">Fresh Malai Paneer 1kg</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-1">Weekend delivery cycle</div>
+<div class="inline-flex items-center gap-1 text-[11px] font-semibold text-secondary bg-surface-container-highest px-2 py-0.5 rounded-md mt-2">
+                  Zero Preservative
+                </div>
+</div>
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest border border-outline-variant/30 flex items-center justify-center text-primary font-title-lg">
+                3x
+              </div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- TABBED NAVIGATION BAR                                                     -->
+<!-- ========================================================================= -->
+<div class="border-b border-surface-variant">
+<nav class="flex space-x-8 font-title-md text-title-md">
+<!-- Active Tab: Orders (14) -->
+<button class="flex items-center gap-2 py-3 border-b-2 border-primary font-semibold text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="">Orders (14)</span>
+</button>
+<!-- Other tabs -->
+<button class="flex items-center gap-2 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+<span class="">Payments (14)</span>
+</button>
+<button class="flex items-center gap-2 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="">Invoices (14)</span>
+</button>
+<button class="flex items-center gap-2 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span class="">Deliveries (14)</span>
+</button>
+<button class="flex items-center gap-2 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">query_stats</span>
+<span class="">Analytics &amp; Intake</span>
+</button>
+<button class="flex items-center gap-2 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="">Notifications (6)</span>
+</button>
+<button class="flex items-center gap-2 py-3 border-b-2 border-transparent text-on-surface-variant hover:text-on-surface hover:border-outline-variant transition-colors">
+<span class="material-symbols-outlined text-[20px]">history</span>
+<span class="">Activity Timeline</span>
+</button>
+</nav>
+</div>
+<!-- ========================================================================= -->
+<!-- ACTIVE TAB CONTENT: ORDERS & FULFILLMENT OVERVIEW                         -->
+<!-- 2-Column Asymmetric Layout (Main List & Ledger/Instructions Column)       -->
+<!-- ========================================================================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- LEFT MAIN COLUMN: RECENT ORDERS (8 Columns) -->
+<div class="lg:col-span-8 space-y-4">
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] overflow-hidden">
+<div class="p-4 bg-surface-container-low border-b border-surface-variant flex items-center justify-between">
+<div>
+<h3 class="font-title-lg text-title-lg text-primary font-semibold">Order Fulfillment Registry</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing latest verified morning dispatch runs</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface font-label-md text-label-md hover:bg-surface transition-colors">
+                    Filter by Status
+                  </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-on-surface font-label-md text-label-md hover:bg-surface transition-colors">
+                    Export Ledger (CSV)
+                  </button>
+</div>
+</div>
+<!-- Orders Table -->
+<div class="divide-y divide-surface-container">
+<!-- ROW 1: YM-2026-000123 (CURRENT PENDING / COD BLOCK REASON) -->
+<div class="p-5 hover:bg-surface/50 transition-colors bg-[#FFF4DB]/20">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1.5">
+<div class="flex items-center gap-3">
+<span class="font-title-md text-title-md text-primary font-semibold">YM-2026-000123</span>
+<!-- Status Badge: Soft Filled Pill -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FFF4DB] text-[#E8A317] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E8A317]"></span>
+                          Preparing
+                        </span>
+<!-- Payment Status Badge (₹ Pending) -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[#E8A317] bg-[#FFF4DB] text-[#E8A317] font-label-sm text-label-sm font-semibold">
+<span class="">₹</span> Pending (COD)
+                        </span>
+</div>
+<div class="font-body-md text-body-md text-on-surface">
+                        Full Cream Milk x2 packs (10L), Fresh Dahi x1 pack (4.8kg crate)
+                      </div>
+<div class="flex items-center gap-3 font-body-sm text-body-sm text-on-surface-variant">
+<span class="">29 Oct 2026 · 07:45 AM</span>
+<span class="">·</span>
+<!-- Delivery Slot Badge with Truck Icon -->
+<span class="inline-flex items-center gap-1 text-primary-container font-medium">
+<span class="material-symbols-outlined text-[15px]">local_shipping</span>
+                          Assigned Route 4 (Van #04 · Driver: Suresh K.)
+                        </span>
+</div>
+</div>
+<div class="flex md:flex-col items-end justify-between md:justify-center gap-2 shrink-0">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">₹2,440</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-xl bg-primary-container text-surface hover:bg-primary-container/90 font-label-md text-label-md transition-colors shadow-sm">
+                          Record Cash
+                        </button>
+<button class="px-2.5 py-1.5 rounded-xl bg-surface border border-outline-variant/40 hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-colors" title="View Slip">
+<span class="material-symbols-outlined text-[18px]">receipt</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 2: YM-2026-000118 (DELIVERED & PAID) -->
+<div class="p-5 hover:bg-surface/50 transition-colors">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1.5">
+<div class="flex items-center gap-3">
+<span class="font-title-md text-title-md text-primary font-semibold">YM-2026-000118</span>
+<!-- Status Badge: Soft Filled Pill -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E3F6EC] text-[#1F9D63] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+                          Delivered
+                        </span>
+<!-- Payment Status Badge (Paid) -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[#1F9D63] bg-[#E3F6EC] text-[#1F9D63] font-label-sm text-label-sm font-semibold">
+<span class="">₹</span> Paid · Online
+                        </span>
+</div>
+<div class="font-body-md text-body-md text-on-surface">
+                        Pure Bilona Ghee 1L x1, Fresh Malai Paneer 1kg x2
+                      </div>
+<div class="flex items-center gap-3 font-body-sm text-body-sm text-on-surface-variant">
+<span class="">28 Oct 2026 · 06:15 AM</span>
+<span class="">·</span>
+<span class="inline-flex items-center gap-1 text-[#1F9D63] font-medium">
+<span class="material-symbols-outlined text-[15px]">check_circle</span>
+                          Delivered 06:40 AM (Dawn Run Complete)
+                        </span>
+</div>
+</div>
+<div class="flex md:flex-col items-end justify-between md:justify-center gap-2 shrink-0">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">₹2,290</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-xl bg-surface border border-outline-variant/40 hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-colors">
+                          View Slip
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- ROW 3: YM-2026-000104 (DELIVERED & CASH HANDOVER) -->
+<div class="p-5 hover:bg-surface/50 transition-colors">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="space-y-1.5">
+<div class="flex items-center gap-3">
+<span class="font-title-md text-title-md text-primary font-semibold">YM-2026-000104</span>
+<!-- Status Badge: Soft Filled Pill -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E3F6EC] text-[#1F9D63] font-label-sm text-label-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+                          Delivered
+                        </span>
+<!-- Payment Status Badge (Paid) -->
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[#1F9D63] bg-[#E3F6EC] text-[#1F9D63] font-label-sm text-label-sm font-semibold">
+<span class="">₹</span> Paid · Cash Handover
+                        </span>
+</div>
+<div class="font-body-md text-body-md text-on-surface">
+                        Full Cream Milk x2 packs (20 units 500ml)
+                      </div>
+<div class="flex items-center gap-3 font-body-sm text-body-sm text-on-surface-variant">
+<span class="">27 Oct 2026 · 06:00 AM</span>
+<span class="">·</span>
+<span class="inline-flex items-center gap-1 text-[#1F9D63] font-medium"><span class="material-symbols-outlined text-[15px]">check_circle</span> Delivered 06:35 AM · Morning Slot Completed</span>
+</div>
+</div>
+<div class="flex md:flex-col items-end justify-between md:justify-center gap-2 shrink-0">
+<div class="font-headline-sm text-headline-sm text-primary font-bold">₹1,360</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-xl bg-surface border border-outline-variant/40 hover:bg-surface-container-low text-on-surface font-label-md text-label-md transition-colors">
+                          View Slip
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Total Summary Strip -->
+<div class="p-4 bg-surface-container-low border-t border-surface-variant flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="">Showing 3 of 14 orders</span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1 rounded-lg border border-outline-variant/40 bg-surface-container-lowest disabled:opacity-50" disabled="">Previous</button>
+<span class="px-2 font-medium text-on-surface">1</span>
+<button class="px-3 py-1 rounded-lg border border-outline-variant/40 bg-surface-container-lowest hover:bg-surface">Next</button>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT AUXILIARY COLUMN: LEDGER ALERT, TIMELINE & DELIVERY NOTES (4 Columns) -->
+<div class="lg:col-span-4 space-y-6">
+<!-- 1. PENDING LEDGER CARD (₹2,440 COD Due) -->
+<div class="bg-[#FFF4DB] rounded-2xl p-5 border border-on-tertiary-container/30 shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 text-on-tertiary-fixed font-title-md text-title-md font-semibold">
+<span class="material-symbols-outlined text-on-tertiary-container text-[20px]">account_balance_wallet</span>
+<span class="">Pending Ledger Action</span>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-on-tertiary-container/20 text-on-tertiary-container">Urgent</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-baseline">
+<span class="text-on-tertiary-fixed-variant font-body-sm text-body-sm">Pending COD Balance</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container">₹2,440</span>
+</div>
+<div class="flex justify-between items-baseline font-body-sm text-body-sm">
+<span class="text-on-tertiary-fixed-variant">Associated Driver:</span>
+<span class="font-medium text-on-tertiary-fixed">Suresh K. (Van #04)</span>
+</div>
+<div class="flex justify-between items-baseline font-body-sm text-body-sm">
+<span class="text-on-tertiary-fixed-variant">Collection Window:</span>
+<span class="font-medium text-on-tertiary-fixed">Dawn Run (by 07:00 AM)</span>
+</div>
+</div>
+<div class="pt-2 border-t border-on-tertiary-container/20 flex gap-2">
+<button class="w-full py-2.5 px-3 rounded-xl bg-on-tertiary-container text-surface-container-lowest font-label-md text-label-md hover:bg-on-tertiary-container/90 transition-all font-semibold flex items-center justify-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span class="">Confirm Cash Handoff</span>
+</button>
+</div>
+</div>
+<!-- 2. RECENT ACTIVITY TIMELINE FEED -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] space-y-4">
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">history</span>
+<h3 class="font-title-md text-title-md text-primary font-semibold">Recent Activity Feed</h3>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Live telemetry</span>
+</div>
+<!-- Timeline nodes -->
+<div class="space-y-4 relative pl-4 border-l-2 border-surface-container-highest">
+<!-- Event 1: Today 07:45 AM -->
+<div class="relative group">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-secondary ring-4 ring-surface-container-lowest"></div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Today · 07:45 AM</div>
+<div class="font-title-md text-body-md text-on-surface font-medium mt-0.5">Order YM-2026-000123 placed</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Initiated via Yog Milk Customer Partner App.</div>
+</div>
+<!-- Event 2: Today 07:46 AM -->
+<div class="relative group">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-[#E8A317] ring-4 ring-surface-container-lowest"></div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Today · 07:46 AM</div>
+<div class="font-title-md text-body-md text-on-surface font-medium mt-0.5">Online gateway timed out</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Razorpay attempt expired; failover to Cash on Delivery (COD).</div>
+</div>
+<!-- Event 3: Today 07:50 AM -->
+<div class="relative group">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-error ring-4 ring-surface-container-lowest"></div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Today · 07:50 AM</div>
+<div class="font-title-md text-body-md text-error font-medium mt-0.5">Payment Pending Block enacted</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">System auto-locked checkout privileges pending cash handoff.</div>
+</div>
+<!-- Event 4: 28 Oct -->
+<div class="relative group">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-[#1F9D63] ring-4 ring-surface-container-lowest"></div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">28 Oct 2026 · 08:15 AM</div>
+<div class="font-title-md text-body-md text-on-surface font-medium mt-0.5">Payment ₹2,290 verified</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Audited and closed by Admin Vikram Mehta.</div>
+</div>
+</div>
+</div>
+<!-- 3. DELIVERY PREFERENCES & INSTRUCTIONS CARD -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] space-y-3">
+<div class="flex items-center justify-between border-b border-surface-container pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment</span>
+<h3 class="font-title-md text-title-md text-primary font-semibold">Delivery Instructions</h3>
+</div>
+<button class="text-label-md font-label-md text-secondary hover:underline">Edit</button>
+</div>
+<div class="p-3 rounded-xl bg-surface border border-outline-variant/30 space-y-2">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px] shrink-0 mt-0.5">wb_twilight</span>
+<p class="font-body-md text-body-md text-on-surface italic">
+                    “Shutter opens 05:45 AM. Place milk crates inside chilled vestibule. Hand receipt slip to Rajesh directly.”
+                  </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 text-center pt-1 font-body-sm text-body-sm">
+<div class="p-2 rounded-lg bg-surface-container-low border border-surface-variant">
+<span class="text-on-surface-variant block text-label-sm">Key Holder</span>
+<span class="font-medium text-on-surface">Rajesh Sharma</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container-low border border-surface-variant">
+<span class="text-on-surface-variant block text-label-sm">Crate Deposit</span>
+<span class="font-medium text-on-surface">Standard 4-Box</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer System Timestamp -->
+<div class="pt-6 pb-4 border-t border-surface-container flex flex-wrap items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<div class="">Yog Milk Vedic Pure Dairy System · v4.12.0 · Single-Origin Cold Chain Protocol</div>
+<div class="">Session authenticated: Vikram Mehta (Nashik East Hub Console)</div>
+</div>
+</main>
+</div>
+</div>
+
+
+</body></html>

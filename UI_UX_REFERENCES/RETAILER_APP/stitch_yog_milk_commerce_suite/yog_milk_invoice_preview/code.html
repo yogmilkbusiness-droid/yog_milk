@@ -1,0 +1,348 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Invoice Memo</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#767681",
+            "surface-bright": "#faf8ff",
+            "secondary": "#994700",
+            "outline-variant": "#c6c5d2",
+            "on-tertiary-fixed": "#251a00",
+            "surface-variant": "#dde1f8",
+            "tertiary": "#261a00",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374183",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "on-secondary": "#ffffff",
+            "background": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-primary-container": "#8994db",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2b3041",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "primary-fixed": "#dee0ff",
+            "surface-container": "#eaedff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "on-secondary-fixed-variant": "#753400",
+            "tertiary-fixed": "#ffdf9c",
+            "surface": "#faf8ff",
+            "on-background": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "on-surface": "#161b2b",
+            "on-tertiary-container": "#ba9331",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#3f2e00",
+            "inverse-on-surface": "#eef0ff",
+            "surface-dim": "#d5d9ef",
+            "on-primary-fixed": "#051256"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "margin-tablet": "2rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Mobile Simulator Canvas Container (max 390px, screen focused) -->
+<main class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col pb-28 shadow-2xl">
+<!-- TopAppBar (Back-action task screen, BottomNav suppressed per Dest Rule) -->
+<header class="sticky top-0 z-40 w-full h-16 px-4 flex justify-between items-center bg-surface/90 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-title-lg">arrow_back</span>
+</button>
+<div class="flex flex-col"><h1 class="font-headline-sm text-headline-sm font-semibold tracking-wide text-primary">Invoice</h1></div>
+</div>
+<div class="flex items-center gap-1">
+<button aria-label="Share invoice" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-title-lg">share</span>
+</button>
+<button aria-label="Download receipt" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-title-lg">download</span>
+</button>
+</div>
+</header>
+<!-- Main Scrollable Invoice Document -->
+<div class="px-3 pt-3 flex-1 flex flex-col gap-3">
+<!-- Status Toast / Batch Badge -->
+
+<!-- Sacred Farm Memo Paper Base -->
+<article class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden relative">
+<!-- Watermark / Subtle Header Floral Accent -->
+<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary via-secondary-container to-primary"></div>
+<div class="p-4 flex flex-col gap-4">
+<!-- Brand Emblem and Sacred Header -->
+<div class="text-center pt-2 pb-1 border-b border-outline-variant/30 flex flex-col items-center">
+<!-- Graphic Emblem Inspired by Vedic Logo Mark -->
+<div class="w-16 h-16 rounded-full bg-surface-container-low flex items-center justify-center relative mb-1.5 shadow-sm border border-outline-variant/40">
+<span class="material-symbols-outlined text-secondary-container text-[32px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="material-symbols-outlined text-primary text-[18px] absolute top-1 right-2">wb_sunny</span>
+</div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile font-bold tracking-tight text-primary">YOG MILK</h2>
+<p class="font-label-sm text-label-sm tracking-widest text-secondary font-bold uppercase mt-0.5">FROM NATURE TO NOURISH YOU</p>
+<address class="not-italic text-center mt-2.5 font-body-sm text-body-sm text-on-surface-variant max-w-[310px] leading-relaxed">
+              Yog Milk Gaushala &amp; Dairy Farm, Survey No. 42,<br>Devlali Agro Corridor, Nashik, Maharashtra - 422401
+            </address>
+<p class="font-label-sm text-label-sm text-on-surface-variant/80 mt-1">
+              care@yogmilk.in · +91 98201 54321
+            </p>
+<!-- Formal Supply Badge (NO GST, Agricultural pure raw) -->
+<div class="mt-3 inline-flex flex-col items-center bg-surface-container-low px-3 py-1.5 rounded-lg border border-outline-variant/30 w-full max-w-[320px]"><span class="font-label-md text-label-md text-primary font-bold tracking-widest">INVOICE YMI-2026-000045</span></div>
+</div>
+<!-- Metadata 2-Column Grid -->
+<div class="grid grid-cols-2 gap-2 bg-surface-container-low/70 p-3 rounded-xl border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Invoice Number</span>
+<span class="font-title-md text-title-md text-primary font-bold">YMI-2026-000045</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Invoice Date</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">28 Oct 2026, 03:31 PM</span>
+</div>
+<div class="flex flex-col pt-1.5 border-t border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Order Code</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">YM-2026-000122</span>
+</div>
+<div class="flex flex-col text-right pt-1.5 border-t border-outline-variant/20">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dawn Delivery Code</span>
+<span class="font-label-md text-label-md text-secondary-container font-semibold">YMD-2026-000122</span>
+</div>
+</div>
+<!-- Customer & Delivery Box -->
+<div class="bg-surface-bright p-3.5 rounded-xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-secondary-container tracking-wider uppercase">Billed &amp; Delivered To</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">home_pin</span> Direct Drop
+              </span>
+</div>
+<div class="flex justify-between items-baseline">
+<span class="font-title-lg text-title-lg text-primary font-bold">Rajesh Sharma</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Sharma General Store</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-tight">
+              Shop #4, College Road, Near Ram Kund, Nashik - 422005
+            </p>
+<div class="flex items-center gap-1 text-on-surface-variant pt-0.5">
+<span class="material-symbols-outlined text-sm">call</span>
+<span class="font-label-sm text-label-sm font-medium">+91 98201 54321</span>
+</div>
+</div>
+<!-- Structured Items Table -->
+<div class="flex flex-col overflow-hidden rounded-xl border border-outline-variant/30">
+<!-- Table Header -->
+<div class="grid grid-cols-12 bg-primary text-on-primary px-3 py-2 text-label-sm font-label-sm font-semibold">
+<div class="col-span-6">Product &amp; Pack</div>
+<div class="col-span-2 text-center">Qty</div>
+<div class="col-span-2 text-right">Rate</div>
+<div class="col-span-2 text-right">Total</div>
+</div>
+<!-- Table Rows -->
+<div class="divide-y divide-outline-variant/20 bg-surface-container-lowest font-body-sm text-body-sm"><!-- Item 1 --><div class="grid grid-cols-12 px-3 py-2.5 items-center"><div class="col-span-6 pr-1"><p class="font-label-md text-label-md font-semibold text-primary">Toned Milk</p><p class="font-label-sm text-label-sm text-on-surface-variant">1 L (Pack of 12)</p></div><div class="col-span-2 text-center font-label-sm text-label-sm text-on-surface">2 packs</div><div class="col-span-2 text-right font-label-sm text-label-sm text-on-surface">₹480</div><div class="col-span-2 text-right font-label-md text-label-md font-bold text-primary">₹960</div></div><!-- Item 2 --><div class="grid grid-cols-12 px-3 py-2.5 items-center bg-surface-container-low/30"><div class="col-span-6 pr-1"><p class="font-label-md text-label-md font-semibold text-primary">Paneer</p><p class="font-label-sm text-label-sm text-on-surface-variant">1 kg</p></div><div class="col-span-2 text-center font-label-sm text-label-sm text-on-surface">2 packs</div><div class="col-span-2 text-right font-label-sm text-label-sm text-on-surface">₹420</div><div class="col-span-2 text-right font-label-md text-label-md font-bold text-primary">₹840</div></div><!-- Item 3 --><div class="grid grid-cols-12 px-3 py-2.5 items-center"><div class="col-span-6 pr-1"><p class="font-label-md text-label-md font-semibold text-primary">Pure Ghee</p><p class="font-label-sm text-label-sm text-on-surface-variant">1 L</p></div><div class="col-span-2 text-center font-label-sm text-label-sm text-on-surface">1 unit</div><div class="col-span-2 text-right font-label-sm text-label-sm text-on-surface">₹1,650</div><div class="col-span-2 text-right font-label-md text-label-md font-bold text-primary">₹1,650</div></div></div>
+</div>
+<!-- Summary & Calculations Card -->
+<div class="bg-surface-bright rounded-xl p-3.5 border border-outline-variant/30 flex flex-col gap-2">
+<div class="flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant">
+<span class="">Subtotal</span>
+<span class="font-semibold text-on-surface">₹3,450</span>
+</div>
+<div class="flex justify-between items-center font-body-sm text-body-sm text-on-surface-variant">
+<span class="flex items-center gap-1">
+                Dawn Express Cold-Chain
+                <span class="material-symbols-outlined text-sm text-secondary-container" style="font-variation-settings: 'FILL' 1;">flare</span>
+</span>
+<span class="font-semibold text-primary">₹0 <span class="text-label-sm text-on-surface-variant font-normal">(FREE · Sattvic Member)</span></span>
+</div>
+<div class="h-px bg-outline-variant/30 my-0.5"></div>
+<div class="flex justify-between items-center font-title-lg text-title-lg text-primary font-bold">
+<span class="">Total Invoice Value</span>
+<span class="text-primary text-[20px]">₹3,450</span>
+</div>
+<div class="pt-2 mt-1 border-t border-dashed border-outline-variant/40 flex flex-col gap-1.5">
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Payment Mode</span>
+<span class="font-label-sm text-label-sm font-semibold text-primary">Online (Razorpay UPI)</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Transaction Ref</span>
+<span class="font-label-sm text-label-sm text-on-surface font-mono">RZP_PAY_994182904</span>
+</div>
+<div class="flex justify-between items-center pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Payment Status</span>
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm font-bold text-on-primary bg-primary px-2.5 py-0.5 rounded-full"><span class="material-symbols-outlined text-[13px]">check_circle</span> Paid</span>
+</div>
+<div class="flex justify-between items-center pt-1 font-label-md text-label-md">
+<span class="text-on-surface-variant font-medium">Amount Paid</span>
+<span class="font-bold text-primary">₹3,450</span>
+</div>
+<div class="flex justify-between items-center font-label-md text-label-md">
+<span class="text-on-surface-variant font-medium">Balance Due</span>
+<span class="font-bold text-on-surface-variant">₹0.00</span>
+</div>
+</div>
+</div>
+<!-- Purity & Batch Assurance Card -->
+
+<!-- End of Bill Seal -->
+<div class="py-2 flex flex-col items-center justify-center border-t border-outline-variant/30">
+<div class="flex items-center gap-1.5 text-secondary-container">
+<span class="material-symbols-outlined text-sm">spa</span>
+<span class="material-symbols-outlined text-sm">flare</span>
+<span class="material-symbols-outlined text-sm">spa</span>
+</div>
+<p class="font-headline-sm text-headline-sm italic text-primary mt-1 text-center font-medium">
+              From Nature to Nourish You
+            </p>
+<p class="font-label-sm text-label-sm text-on-surface-variant/70 mt-0.5">Computer Generated Invoice · No Physical Signature Required</p>
+</div>
+</div>
+</article>
+<!-- Trust Badges -->
+<div class="flex justify-around items-center py-2 px-1 text-on-surface-variant font-label-sm text-label-sm">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">lock</span>
+<span class="">Encrypted Record</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">local_shipping</span>
+<span class="">6:00 AM Delivery Drop</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-primary">eco</span>
+<span class="">Zero Preservatives</span>
+</div>
+</div>
+</div>
+<!-- Sticky Floating Bottom Action Bar (Dual Button Action for Mobile) -->
+<nav class="fixed bottom-0 max-w-[390px] w-full z-50 px-4 py-3 bg-surface/95 backdrop-blur-md shadow-lg flex items-center gap-2.5">
+<!-- Download Primary Navy Button -->
+<button class="flex-1 h-12 rounded-[14px] bg-primary text-on-primary font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-primary-container active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-title-md">download</span>
+<span class="">Download PDF</span>
+</button>
+<!-- Share Secondary Outlined Navy/Cream Button -->
+<button class="flex-1 h-12 rounded-[14px] border-2 border-primary text-primary bg-surface font-label-lg text-label-lg font-semibold flex items-center justify-center gap-2 hover:bg-surface-container-high active:scale-95 transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-title-md">share</span>
+<span class="">Share Invoice</span>
+</button>
+</nav>
+</main>
+<script>
+    // Lightweight tactile ripple & action confirmation
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        if (this.textContent.includes('Download PDF')) {
+          const originalText = this.innerHTML;
+          this.innerHTML = '<span class="material-symbols-outlined text-title-md animate-spin">sync</span><span>Preparing PDF...</span>';
+          setTimeout(() => {
+            this.innerHTML = '<span class="material-symbols-outlined text-title-md">check</span><span>Downloaded!</span>';
+            setTimeout(() => {
+              this.innerHTML = originalText;
+            }, 1800);
+          }, 900);
+        } else if (this.textContent.includes('Share Invoice')) {
+          if (navigator.share) {
+            navigator.share({
+              title: 'Yog Milk - Bill of Supply YMI-2026-000045',
+              text: 'Invoice for Rajesh Sharma (Sharma General Store) - Total ₹3,450',
+              url: window.location.href
+            }).catch(() => {});
+          } else {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<span class="material-symbols-outlined text-title-md">content_copy</span><span>Link Copied!</span>';
+            setTimeout(() => {
+              this.innerHTML = originalText;
+            }, 1500);
+          }
+        }
+      });
+    });
+  </script>
+
+
+
+
+</body></html>

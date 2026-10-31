@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk — Vedic Wellness &amp; Pure Dairy Design System Specification v2.4</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Rozha+One&amp;family=Noto+Serif+Devanagari:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS Play CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-high": "#ebe8e2",
+            "inverse-on-surface": "#f3f0eb",
+            "surface-bright": "#fcf9f3",
+            "on-secondary-fixed-variant": "#374183",
+            "secondary-container": "#a9b4fe",
+            "tertiary-fixed": "#ffdbc8",
+            "surface-container-lowest": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-container": "#f0eee8",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#394485",
+            "tertiary-fixed-dim": "#ffb68b",
+            "primary-fixed": "#dee0ff",
+            "secondary": "#4f599c",
+            "primary-container": "#151d4d",
+            "on-primary-fixed": "#0e1647",
+            "primary": "#000533",
+            "surface-tint": "#535b8e",
+            "on-surface-variant": "#46464f",
+            "surface-container-highest": "#e5e2dc",
+            "surface": "#fcf9f3",
+            "tertiary-container": "#3c1700",
+            "secondary-fixed-dim": "#bbc3ff",
+            "on-secondary-fixed": "#051256",
+            "primary-fixed-dim": "#bcc3fd",
+            "on-tertiary-container": "#db6805",
+            "surface-container-low": "#f6f3ed",
+            "surface-variant": "#e5e2dc",
+            "error-container": "#ffdad6",
+            "error": "#ba1a1a",
+            "on-surface": "#1c1c18",
+            "inverse-surface": "#31312d",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "background": "#fcf9f3",
+            "outline-variant": "#c7c5d0",
+            "on-background": "#1c1c18",
+            "outline": "#767680",
+            "tertiary": "#190600",
+            "inverse-primary": "#bcc3fd",
+            "on-primary-fixed-variant": "#3b4375",
+            "on-tertiary-fixed-variant": "#753400",
+            "on-tertiary-fixed": "#321200",
+            "on-primary-container": "#7e86bc",
+            "surface-dim": "#dcdad4",
+            "secondary-fixed": "#dee0ff",
+            "on-error-container": "#93000a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin-tablet": "1.5rem",
+            "margin-desktop": "3rem",
+            "space-sm": "0.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-xl": "2.25rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "display-lg": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "devanagari": ["Noto Serif Devanagari", "Rozha One", "serif"]
+          },
+          "fontSize": {
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      vertical-align: middle;
+    }
+    .lotus-glow {
+      box-shadow: 0 10px 30px -4px rgba(21, 29, 77, 0.08);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #f0eee8;
+      border-radius: 9999px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased selection:bg-secondary-container selection:text-primary-container">
+<!-- ========================================================================= -->
+<!-- TOP APP BAR (from Shared Components JSON: TopNavBar)                     -->
+<!-- ========================================================================= -->
+<header class="docked full-width top-0 sticky z-40 bg-surface-container-lowest dark:bg-inverse-surface shadow-sm">
+<div class="flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest dark:bg-inverse-surface">
+<!-- Left: Logo & Search -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-surface flex items-center justify-center font-headline-sm text-headline-sm">
+<span class="material-symbols-outlined text-surface" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<span class="text-headline-sm font-headline-sm text-primary dark:text-inverse-primary tracking-tight">Yog Milk Admin</span>
+<span class="hidden sm:inline-block ml-2 text-label-sm font-label-sm bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-full">v2.4 Production Certified</span>
+</div>
+</div>
+<div class="hidden md:flex items-center bg-surface-container-low px-3 py-1.5 rounded-xl border border-surface-variant text-on-surface-variant text-body-sm font-body-sm w-72">
+<span class="material-symbols-outlined text-outline mr-2 text-base">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-body-sm font-body-sm text-on-surface w-full placeholder:text-outline outline-none" placeholder="Search tokens, components, audits..." type="text"/>
+<kbd class="text-[10px] bg-surface-container px-1.5 py-0.5 rounded border border-outline-variant/40 font-mono text-outline">⌘K</kbd>
+</div>
+</div>
+<!-- Right: Action & Profile -->
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-surface-container text-on-surface rounded-full text-label-md font-label-md border border-surface-variant">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span>Ordering Open · Closes 5:00 PM</span>
+</div>
+<button aria-label="Notifications" class="p-2 rounded-xl text-on-surface-variant dark:text-outline hover:bg-surface-container-low transition-colors duration-150 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<div class="flex items-center gap-2 pl-2 border-l border-surface-variant">
+<div class="w-8 h-8 rounded-full bg-primary-container text-surface flex items-center justify-center font-label-md text-label-md font-bold">
+            YM
+          </div>
+<div class="hidden lg:block text-left">
+<p class="text-label-md font-label-md text-on-surface leading-tight">Admin Master Profile Avatar</p>
+<p class="text-[10px] text-outline">Vedic Master Keyholder</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-65px)]">
+<!-- ========================================================================= -->
+<!-- SIDE NAV BAR (from Shared Components JSON: SideNavBar)                    -->
+<!-- ========================================================================= -->
+<aside class="docked h-[calc(100vh-65px)] w-64 flex flex-col justify-between shrink-0 sticky top-[65px] bg-primary-container dark:bg-primary border-r border-outline-variant/30 dark:border-outline-variant/10 p-4 custom-scroll overflow-y-auto">
+<div class="space-y-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2">
+<div class="w-9 h-9 rounded-xl bg-surface-container-lowest/10 flex items-center justify-center border border-surface-variant/20 text-surface">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<h1 class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface dark:text-surface-bright leading-none">Yog Milk</h1>
+<p class="text-[11px] font-body-sm text-surface-variant/70 mt-0.5">Vedic Pure Dairy Admin</p>
+</div>
+</div>
+<!-- System Jump Anchors (Spec Guide Navigation) -->
+<div class="space-y-1">
+<p class="text-[10px] font-label-sm uppercase tracking-wider text-surface-variant/60 px-3 pb-1">Spec Quick Nav</p>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-surface-variant/80 hover:bg-surface-container-highest/10 hover:text-surface text-body-sm font-body-sm transition-colors" href="#identity-tokens">
+<span class="material-symbols-outlined text-base">palette</span> 1. Brand &amp; Tokens
+          </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-surface-variant/80 hover:bg-surface-container-highest/10 hover:text-surface text-body-sm font-body-sm transition-colors" href="#typography-specimen">
+<span class="material-symbols-outlined text-base">format_size</span> 2. Vedic Typography
+          </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-surface-variant/80 hover:bg-surface-container-highest/10 hover:text-surface text-body-sm font-body-sm transition-colors" href="#components-library">
+<span class="material-symbols-outlined text-base">widgets</span> 3. Component Kit
+          </a>
+<a class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-secondary-container/30 text-surface text-label-md font-label-md transition-colors" href="#interactive-prototype">
+<span class="material-symbols-outlined text-base" style="font-variation-settings: 'FILL' 1;">play_circle</span> 4. Clickable Simulator
+          </a>
+</div>
+<div class="border-t border-outline-variant/20 my-2"></div>
+<!-- 12 Side Nav Tab Items from JSON -->
+<div class="space-y-1">
+<p class="text-[10px] font-label-sm uppercase tracking-wider text-surface-variant/60 px-3 pb-1">App Shell Tabs</p>
+<!-- Active tab: Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md transition-all duration-200 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span>Orders</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">payments</span>
+<span>Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span>Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<span>Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">bar_chart</span>
+<span>Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">history</span>
+<span>Audit log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</div>
+</div>
+<!-- Footer Action & Nav Tabs -->
+<div class="pt-4 border-t border-outline-variant/20 space-y-2">
+<button class="w-full py-2 px-3 rounded-xl bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-surface text-label-md font-label-md flex items-center justify-center gap-2 border border-surface-variant/20 transition-all">
+<span class="material-symbols-outlined text-base">support_agent</span>
+<span>Support Desk</span>
+</button>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/80 hover:text-surface font-body-sm text-body-sm hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">vital_signs</span>
+<span>System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/80 hover:text-surface font-body-sm text-body-sm hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-base">logout</span>
+<span>Log out</span>
+</a>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN CONTENT CANVAS: DESIGN SYSTEM SPECIFICATION & PROTOTYPE             -->
+<!-- ========================================================================= -->
+<main class="flex-1 bg-surface-container-low/40 p-6 md:p-10 space-y-16 max-w-7xl mx-auto overflow-x-hidden">
+<!-- HERO SPECIFICATION HEADER -->
+<section class="bg-surface-container-lowest p-8 md:p-10 rounded-2xl border border-surface-variant shadow-sm relative overflow-hidden">
+<div class="absolute -right-16 -bottom-16 w-80 h-80 rounded-full bg-secondary-container/10 pointer-events-none blur-2xl"></div>
+<div class="relative z-10 flex flex-col lg:flex-row justify-between lg:items-center gap-6">
+<div class="space-y-3">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-on-surface-variant text-label-sm font-label-sm uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span>Design System Specification &amp; Interactive Simulator</span>
+</div>
+<h1 class="text-display-lg font-display-lg text-primary tracking-tight">Yog Milk Design System</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">
+              "From Nature to Nourish You" — An authoritative design language bridging ancient Vedic pure dairy traditions with pristine editorial wellness, unhomogenized A2 supply tracking, zero-credit rigor, and dawn delivery rituals.
+            </p>
+</div>
+<div class="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+<div class="bg-surface-container p-4 rounded-xl border border-surface-variant text-right">
+<span class="text-label-sm font-label-sm text-outline block">SYSTEM VERSION</span>
+<span class="text-title-lg font-title-lg text-primary">v2.4 Production Certified</span>
+<span class="text-body-sm font-body-sm text-on-tertiary-container block mt-0.5">Vedic Pure Dairy Admin</span>
+</div>
+<a class="px-5 py-3 rounded-xl bg-primary-container text-surface hover:bg-primary transition text-label-md font-label-md text-center flex items-center justify-center gap-2 shadow-sm" href="#interactive-prototype">
+<span class="material-symbols-outlined text-base">touch_app</span>
+<span>Launch Flow Prototype</span>
+</a>
+</div>
+</div>
+<!-- Quick Anchor Pill Bar -->
+<div class="flex flex-wrap gap-2 pt-6 mt-6 border-t border-surface-variant">
+<a class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-md font-label-md border border-surface-variant/80 transition-colors" href="#identity-tokens">1. Logo &amp; Identity</a>
+<a class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-md font-label-md border border-surface-variant/80 transition-colors" href="#color-tokens">2. Color Architecture</a>
+<a class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-md font-label-md border border-surface-variant/80 transition-colors" href="#typography-specimen">3. Multi-Script Typography</a>
+<a class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-md font-label-md border border-surface-variant/80 transition-colors" href="#geometry-elevation">4. Geometry &amp; Elevation</a>
+<a class="px-3 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-on-surface text-label-md font-label-md border border-surface-variant/80 transition-colors" href="#components-library">5. UI Component Kit</a>
+<a class="px-3 py-1.5 rounded-lg bg-primary-container text-surface text-label-md font-label-md shadow-sm transition-colors" href="#interactive-prototype">6. Flow Prototype Simulator</a>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 1: LOGO USAGE & IDENTITY MARKS                                    -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="identity-tokens">
+<div class="border-b border-surface-variant pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">1. Brand Identity &amp; Logo Guidelines</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Sacred Drop Lotus Emblem, Clear Space Constraints, and Purity Mark Ratios</p>
+</div>
+<span class="text-label-md font-label-md text-outline">Section 01 / 06</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Full Logo Card -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant flex flex-col justify-between">
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline">PRIMARY FULL IDENTITY</span>
+<p class="text-title-md font-title-md text-on-surface">Lockup: Mark + Divine Serif</p>
+</div>
+<div class="py-10 flex items-center justify-center bg-surface-container-low rounded-xl my-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-surface flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<span class="text-headline-md font-headline-md text-primary tracking-tight leading-none block">Yog Milk</span>
+<span class="text-[10px] tracking-widest uppercase font-label-sm text-on-tertiary-container block mt-0.5">From Nature to Nourish You</span>
+</div>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Used across consumer product glass caps, master bills, invoices, and desktop hero views.</p>
+</div>
+<!-- Mark Only (Sacred Drop & Lotus) -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant flex flex-col justify-between">
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline">SACRED DROP &amp; LOTUS</span>
+<p class="text-title-md font-title-md text-on-surface">Isolated Emblem</p>
+</div>
+<div class="py-10 flex items-center justify-center bg-primary-container rounded-xl my-4 text-surface">
+<div class="relative p-3 border-2 border-dashed border-secondary-container/40 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-surface" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="absolute -top-3 -right-3 text-[10px] bg-secondary-container text-on-secondary-container px-1.5 py-0.2 rounded font-mono">1X Margin</span>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Minimum Clear Space: 1X radius bounding box. Minimum digital size: 24×24px; favicon: 16×16px.</p>
+</div>
+<!-- Wordmark & Bilingual Seal -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant flex flex-col justify-between">
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline">DEVAMRIT HERITAGE SEAL</span>
+<p class="text-title-md font-title-md text-on-surface">Bilingual Devanagari Seal</p>
+</div>
+<div class="py-10 flex items-center justify-center bg-surface-container-high rounded-xl my-4 text-center">
+<div class="border border-outline/30 px-6 py-3 rounded-full bg-surface-container-lowest">
+<p class="font-devanagari text-title-lg font-bold text-primary">योग मिल्क · शुद्ध वेदामृत</p>
+<p class="text-[11px] font-label-sm tracking-wider uppercase text-outline">A2 Gir Cow Vedic Milk</p>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Approved for glass bottle shrink sleeves, tamper-evident seals, and batch test reports.</p>
+</div>
+</div>
+<!-- Prohibited Usages -->
+<div class="bg-surface-container p-4 rounded-xl border border-surface-variant flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-error text-2xl">gpp_maybe</span>
+<span class="text-body-md font-body-md text-on-surface">
+<strong class="font-semibold">Brand Protection Rule:</strong> Never rotate lotus mark, never tint in neon colors, never apply drop shadows exceeding 8% opacity, and never compress wordmark tracking.
+            </span>
+</div>
+<span class="px-3 py-1 rounded bg-error-container text-error text-label-sm font-label-sm uppercase">Zero Tolerance Policy</span>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 2: COLOR TOKENS & ARCHITECTURE                                    -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="color-tokens">
+<div class="border-b border-surface-variant pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">2. Color Tokens &amp; Palette Architecture</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Vedic Dawn Hues, Warm Unhomogenized Creams, and Saffron Cold-Chain Cues</p>
+</div>
+<span class="text-label-md font-label-md text-outline">Section 02 / 06</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<!-- Primary Navy -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-variant space-y-2">
+<div class="h-20 rounded-lg bg-primary-container flex items-end p-2 text-surface font-mono text-xs">#151D4D</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Primary Navy</p>
+<p class="text-[11px] font-mono text-outline">primary-container</p>
+<p class="text-[10px] text-on-tertiary-container mt-1">WCAG AAA (14.2:1)</p>
+</div>
+</div>
+<!-- Deep Absolute Navy -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-variant space-y-2">
+<div class="h-20 rounded-lg bg-primary flex items-end p-2 text-surface font-mono text-xs">#000533</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Midnight Vedic</p>
+<p class="text-[11px] font-mono text-outline">primary</p>
+<p class="text-[10px] text-on-tertiary-container mt-1">Headlines &amp; Logos</p>
+</div>
+</div>
+<!-- Vedic Saffron / Kesari -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-variant space-y-2">
+<div class="h-20 rounded-lg bg-[#db6805] flex items-end p-2 text-surface font-mono text-xs">#DB6805</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Vedic Kesari</p>
+<p class="text-[11px] font-mono text-outline">on-tertiary-container</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Purity Badge / Alerts</p>
+</div>
+</div>
+<!-- Farm Cream (Surface) -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-variant space-y-2">
+<div class="h-20 rounded-lg bg-surface border border-surface-variant flex items-end p-2 text-on-surface font-mono text-xs">#FCF9F3</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Unhomogenized Cream</p>
+<p class="text-[11px] font-mono text-outline">surface / background</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Base Canvas Ivory</p>
+</div>
+</div>
+<!-- Soft Surface Container -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-variant space-y-2">
+<div class="h-20 rounded-lg bg-surface-container-high border border-surface-variant flex items-end p-2 text-on-surface font-mono text-xs">#EBE8E2</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Porcelain Milk Glass</p>
+<p class="text-[11px] font-mono text-outline">surface-container-high</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Card Layers &amp; Shelves</p>
+</div>
+</div>
+<!-- Cold-Chain Lavender Container -->
+<div class="bg-surface-container-lowest p-3 rounded-xl border border-surface-variant space-y-2">
+<div class="h-20 rounded-lg bg-secondary-container flex items-end p-2 text-primary-container font-mono text-xs">#A9B4FE</div>
+<div>
+<p class="text-label-md font-label-md text-on-surface">Dawn Dew / Cold-Chain</p>
+<p class="text-[11px] font-mono text-outline">secondary-container</p>
+<p class="text-[10px] text-on-surface-variant mt-1">Reefer Telemetry &amp; Tabs</p>
+</div>
+</div>
+</div>
+<!-- Token Table Breakdown -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant overflow-x-auto shadow-sm">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-[11px] font-label-sm uppercase tracking-wider text-outline">
+<th class="p-3.5">Token Key</th>
+<th class="p-3.5">Hex Code</th>
+<th class="p-3.5">Role in Yog Milk Ecosystem</th>
+<th class="p-3.5">Accessibility Contrast</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body-sm font-body-sm">
+<tr>
+<td class="p-3.5 font-mono text-primary font-semibold">colors.primary-container</td>
+<td class="p-3.5 font-mono">#151D4D</td>
+<td class="p-3.5">Primary actions, SideNavBar dock, Subscription confirming CTA</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">14.2:1 (Pass AAA)</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono text-primary font-semibold">colors.surface</td>
+<td class="p-3.5 font-mono">#FCF9F3</td>
+<td class="p-3.5">Base dawn canvas, unbleached cotton background, sensory calm</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">16.1:1 on #151D4D</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono text-primary font-semibold">colors.on-tertiary-container</td>
+<td class="p-3.5 font-mono">#DB6805</td>
+<td class="p-3.5">Kesari Vedic badge, temperature warnings, milk fat certification</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">4.8:1 (Pass AA)</span></td>
+</tr>
+<tr>
+<td class="p-3.5 font-mono text-primary font-semibold">colors.error</td>
+<td class="p-3.5 font-mono">#BA1A1A</td>
+<td class="p-3.5">Cold-chain exception (&gt;8°C), Zero-credit delivery lockout, pause confirmation</td>
+<td class="p-3.5"><span class="px-2 py-0.5 rounded bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">7.1:1 (Pass AAA)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 3: MULTI-SCRIPT TYPOGRAPHY & TABULAR NUMBERS                     -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="typography-specimen">
+<div class="border-b border-surface-variant pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">3. Typography &amp; Multi-Script Specimen</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Editorial Playfair Display, Devanagari Pairings, and Tabular Currency Microcopy</p>
+</div>
+<span class="text-label-md font-label-md text-outline">Section 03 / 06</span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- English Editorial Specimen -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant space-y-4">
+<span class="text-label-sm font-label-sm text-outline">EDITORIAL SERIF HEADINGS (PLAYFAIR DISPLAY)</span>
+<div class="space-y-2">
+<p class="text-display-lg font-display-lg text-primary">A2 Gir Cow Vedic Milk</p>
+<p class="text-headline-lg font-headline-lg text-primary">Unhomogenized &amp; Single-Origin</p>
+<p class="text-headline-sm font-headline-sm text-on-surface">Pure Whole Milk with 4.8% Natural Cream Fat</p>
+</div>
+<div class="pt-4 border-t border-surface-variant space-y-2">
+<span class="text-label-sm font-label-sm text-outline">BODY &amp; MICROCOPY (PLUS JAKARTA SANS)</span>
+<p class="text-body-lg font-body-lg text-on-surface">
+                Our morning runs begin at 03:30 AM at the Gir sanctuary farm. Bottled warm in sanitized glass carboys and transported via calibrated cold-chain reefers to ensure living enzymes remain undisturbed.
+              </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                Batch: GIR-AUR-9021 · Chilled at 3.4°C · Zero Reconstitution · Lab Certificate #88392-A
+              </p>
+</div>
+</div>
+<!-- Devanagari Bilingual Specimen -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant space-y-4">
+<span class="text-label-sm font-label-sm text-outline">DEVAMRIT DEVANAGARI PAIRING (ROZHA ONE / NOTO SERIF)</span>
+<div class="space-y-3 font-devanagari">
+<p class="text-4xl text-primary font-bold">शुद्ध वेदामृत गोदुग्ध</p>
+<p class="text-2xl text-primary">देशी गीर गाईचे सात्विक दुग्धपान</p>
+<p class="text-lg text-on-surface">नैसर्गिक चरणी, सुवर्ण-सूर्य नाडीने पुष्ट आणि रसायनमुक्त पवित्र आहार.</p>
+</div>
+<div class="pt-4 border-t border-surface-variant space-y-3">
+<span class="text-label-sm font-label-sm text-outline">MONETARY LEDGER TABULAR NUMBERS (₹ RUPEE)</span>
+<div class="grid grid-cols-3 gap-3">
+<div class="p-3 rounded-xl bg-surface-container text-center">
+<span class="text-xs text-outline block">1 Liter Pure</span>
+<span class="text-title-lg font-title-lg text-primary tabular-nums">₹110.00</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container text-center">
+<span class="text-xs text-outline block">Monthly Run (30L)</span>
+<span class="text-title-lg font-title-lg text-primary tabular-nums">₹3,300.00</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container text-center">
+<span class="text-xs text-outline block">Glass Return Cr.</span>
+<span class="text-title-lg font-title-lg text-[#1F9D63] tabular-nums">-₹300.00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 4: GEOMETRY, SPACING, RADIUS & ELEVATION                         -->
+<!-- ========================================================================= -->
+<section class="space-y-6" id="geometry-elevation">
+<div class="border-b border-surface-variant pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">4. Geometry, Elevation &amp; Spacing Tokens</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Calm Morning Ambient Shadows, Tactile Radii, and Uncluttered Spatial Rhythm</p>
+</div>
+<span class="text-label-md font-label-md text-outline">Section 04 / 06</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+<!-- Tier 0 -->
+<div class="bg-surface p-5 rounded-xl border border-surface-variant flex flex-col justify-between h-44">
+<div>
+<span class="text-label-sm font-label-sm text-outline">TIER 0 BASE</span>
+<p class="text-title-md font-title-md text-on-surface mt-1">Base Canvas</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">0px shadow. Tinted Ivory Canvas (#FCF9F3). Soft dawn surface.</p>
+<span class="text-[11px] font-mono text-outline">shadow-none</span>
+</div>
+<!-- Tier 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] flex flex-col justify-between h-44">
+<div>
+<span class="text-label-sm font-label-sm text-outline">TIER 1 CARDS</span>
+<p class="text-title-md font-title-md text-on-surface mt-1">Catalog &amp; Orders</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">0 4px 20px -2px rgba(21,29,77,0.04) with 1px #E7E2D6 border.</p>
+<span class="text-[11px] font-mono text-outline">radius: lg (16px) / 20px</span>
+</div>
+<!-- Tier 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant shadow-[0_10px_30px_-4px_rgba(21,29,77,0.08)] flex flex-col justify-between h-44">
+<div>
+<span class="text-label-sm font-label-sm text-outline">TIER 2 DRAWERS</span>
+<p class="text-title-md font-title-md text-on-surface mt-1">Sticky Morning Bar</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">0 10px 30px -4px rgba(21,29,77,0.08). Elevated cart &amp; schedule drawers.</p>
+<span class="text-[11px] font-mono text-outline">shadow-md</span>
+</div>
+<!-- Tier 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-surface-variant shadow-[0_20px_40px_-6px_rgba(21,29,77,0.12)] flex flex-col justify-between h-44">
+<div>
+<span class="text-label-sm font-label-sm text-outline">TIER 3 MODALS</span>
+<p class="text-title-md font-title-md text-on-surface mt-1">Hold &amp; Cash Record</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant">0 20px 40px -6px rgba(21,29,77,0.12). 8px blur ivory backdrop.</p>
+<span class="text-[11px] font-mono text-outline">shadow-xl</span>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 5: INTERACTIVE UI COMPONENT LIBRARY                               -->
+<!-- ========================================================================= -->
+<section class="space-y-8" id="components-library">
+<div class="border-b border-surface-variant pb-3 flex items-baseline justify-between">
+<div>
+<h2 class="text-headline-md font-headline-md text-primary">5. Interactive UI Component Library</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Production States: Buttons, Steppers, Farm Badges, Filter Bars, and Cards</p>
+</div>
+<span class="text-label-md font-label-md text-outline">Section 05 / 06</span>
+</div>
+<!-- 5.1 BUTTON SUITE -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-title-lg font-title-lg text-primary">Button Matrix (Interactive States)</h3>
+<span class="text-body-sm font-body-sm text-outline">Click buttons to test micro-interactions</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 pt-2">
+<!-- Primary Navy -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline block">1. PRIMARY NAVY</span>
+<button class="w-full py-3 px-4 rounded-xl bg-primary-container text-surface hover:bg-primary active:scale-[0.98] transition-all text-label-md font-label-md flex items-center justify-center gap-2 shadow-sm">
+<span>Confirm Morning Run</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Secondary Kesari Saffron -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline block">2. SECONDARY SAFFRON</span>
+<button class="w-full py-3 px-4 rounded-xl bg-[#FDEBDC] text-[#DB6805] hover:bg-[#FCD8BD] active:scale-[0.98] transition-all text-label-md font-label-md flex items-center justify-center gap-2 border border-[#DB6805]/20">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+<span>Pause Schedule</span>
+</button>
+</div>
+<!-- Tonal Cream Surface -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline block">3. WARM SURFACE BORDER</span>
+<button class="w-full py-3 px-4 rounded-xl bg-surface border border-surface-variant text-on-surface hover:bg-surface-container active:scale-[0.98] transition-all text-label-md font-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">receipt</span>
+<span>View Lab Report</span>
+</button>
+</div>
+<!-- Destructive Red -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline block">4. DESTRUCTIVE / ZERO-CREDIT</span>
+<button class="w-full py-3 px-4 rounded-xl bg-error-container text-error hover:bg-red-200 active:scale-[0.98] transition-all text-label-md font-label-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">block</span>
+<span>Lock Delivery</span>
+</button>
+</div>
+<!-- Loading State -->
+<div class="space-y-2">
+<span class="text-label-sm font-label-sm text-outline block">5. SPINNER / LOADING</span>
+<button class="w-full py-3 px-4 rounded-xl bg-primary-container/80 text-surface/80 cursor-wait text-label-md font-label-md flex items-center justify-center gap-2" disabled="">
+<span class="w-4 h-4 border-2 border-surface border-t-transparent rounded-full animate-spin"></span>
+<span>Calibrating Reefer...</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 5.2 STATUS BADGE & PILL SYSTEM (3 Models from Guidance) -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant space-y-4">
+<h3 class="text-title-lg font-title-lg text-primary">Three Distinct Status Pill Models</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Order Status Badges -->
+<div class="space-y-3 p-4 rounded-xl bg-surface-container-low border border-surface-variant">
+<span class="text-label-sm font-label-sm text-outline block">MODEL A: ORDER STATUS (SOFT FILLED + DOT)</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E3F6EC] text-[#1F9D63] text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63] animate-pulse"></span>
+                  Scheduled (Active)
+                </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFF4DB] text-[#DB6805] text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-[#DB6805]"></span>
+                  Paused by Customer
+                </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6E8F5] text-primary-container text-label-md font-label-md">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                  Dispatched in Reefer
+                </span>
+</div>
+</div>
+<!-- Payment Status Badges -->
+<div class="space-y-3 p-4 rounded-xl bg-surface-container-low border border-surface-variant">
+<span class="text-label-sm font-label-sm text-outline block">MODEL B: PAYMENT STATUS (OUTLINED + ₹ GLYPH)</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-[#1F9D63] bg-[#E3F6EC]/50 text-[#1F9D63] text-label-md font-label-md">
+<span class="font-bold">₹</span> Paid (Verified)
+                </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-[#DB6805] bg-[#FFF4DB]/50 text-[#DB6805] text-label-md font-label-md">
+<span class="font-bold">₹</span> Cash on Delivery
+                </span>
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-error bg-error-container/40 text-error text-label-md font-label-md">
+<span class="font-bold">₹</span> Zero-Credit Hold
+                </span>
+</div>
+</div>
+<!-- Delivery Slot Badges -->
+<div class="space-y-3 p-4 rounded-xl bg-surface-container-low border border-surface-variant">
+<span class="text-label-sm font-label-sm text-outline block">MODEL C: TIME-SLOT (MICRO TRUCK ICON)</span>
+<div class="flex flex-wrap gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#E6E8F5] text-primary-container text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+                  05:30 – 07:00 AM (Dawn Slot)
+                </span>
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant text-label-md font-label-md">
+<span class="material-symbols-outlined text-sm">schedule</span>
+                  Cutoff: 05:00 PM Daily
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- 5.3 CARD ARCHETYPES & STEPPERS -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Live Interactive Product Offering Card -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant shadow-[0_4px_20px_-2px_rgba(21,29,77,0.04)] flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2.5 py-0.5 rounded-full bg-[#E3F6EC] text-[#1F9D63] text-label-sm font-label-sm">4.8% Natural Fat</span>
+<span class="text-[11px] text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-[#1F9D63]">verified</span> Glass Bottle Batch
+                </span>
+</div>
+<!-- Product Image Representation -->
+<div class="h-44 rounded-xl overflow-hidden relative bg-surface-container flex items-center justify-center">
+<img class="w-full h-full object-cover" data-alt="A tranquil, high-key photograph of a pristine sealed glass milk bottle containing rich whole milk with a visible thick cream top line, resting on a raw linen cloth with soft warm morning sunlight casting gentle golden shadows in an editorial wellness aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeuaBLEQBvI-4nMHMt1P2-hQvevgiWjtWzlUd_fZ_NqsQtrWqSeHGb-u6w7uUmIyjvTC3f4A9kY7bAqUaM_QgTjbkw55F0lhD6TxKZIAlsENEXnLmQKYRP-n12ySBI6LDwmTNiACM5zffq14IVjVNZT5WJUkZFxQR17dZp5KadYRnyh3PMzDBOEVO6rnqPa5OyMroAfMkp8hQNR1MSe8NvCIwdj6c_dbbB64xKuz8"/>
+<div class="absolute bottom-2 left-2 px-2 py-1 rounded bg-primary-container/90 text-surface text-[10px] font-mono">
+                  Origin: Gir Sanctuary, Gujarat
+                </div>
+</div>
+<div>
+<h4 class="text-headline-sm font-headline-sm text-primary">A2 Gir Cow Whole Milk</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Raw, single-origin unhomogenized milk. Natural beta-casein purity.</p>
+</div>
+<div class="flex items-baseline justify-between pt-1">
+<div>
+<span class="text-title-lg font-title-lg text-primary tabular-nums">₹110</span>
+<span class="text-body-sm text-outline"> / 1000ml</span>
+</div>
+<span class="text-[11px] text-[#1F9D63] font-semibold">Glass Exchange ₹0</span>
+</div>
+</div>
+<!-- Add-to-Cart Stepper Component (Interactive JS Powered) -->
+<div class="pt-4 mt-2 border-t border-surface-variant" id="stepper-demo">
+<!-- Dormant button state -->
+<button class="w-full py-2.5 px-4 rounded-xl bg-primary-container text-surface hover:bg-primary transition text-label-md font-label-md flex items-center justify-center gap-2" id="add-to-cart-btn" onclick="toggleStepper(true)">
+<span class="material-symbols-outlined text-base">add</span>
+<span>+ Add to Morning Basket</span>
+</button>
+<!-- Active Stepper Container (Initially hidden) -->
+<div class="hidden flex items-center justify-between bg-surface-container px-3 py-1.5 rounded-xl border border-surface-variant" id="active-stepper">
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high flex items-center justify-center text-primary-container text-lg font-bold" onclick="changeQty(-1)">
+                  -
+                </button>
+<div class="text-center">
+<span class="text-title-md font-title-md text-primary" id="qty-count">1</span>
+<span class="text-[10px] text-outline block leading-none">Liter / Day</span>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high flex items-center justify-center text-primary-container text-lg font-bold" onclick="changeQty(1)">
+                  +
+                </button>
+</div>
+</div>
+</div>
+<!-- KPI Metric Card (Admin Financial & Operational Integrity) -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-label-sm font-label-sm text-outline">COLD-CHAIN AUDIT &amp; REVENUE</span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#1F9D63]"></span>
+</div>
+<div>
+<p class="text-display-lg font-display-lg text-primary tracking-tight tabular-nums">4,820 L</p>
+<p class="text-label-md font-label-md text-on-surface">Dawn Intake Calibrated</p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">100% Gir herd verified; avg chill temp 3.2°C across 14 routes.</p>
+</div>
+<div class="grid grid-cols-2 gap-2 pt-2 border-t border-surface-variant">
+<div class="p-2.5 rounded-lg bg-surface-container">
+<span class="text-[11px] text-outline block">Realized Cash (COD)</span>
+<span class="text-label-md font-label-md text-primary font-bold tabular-nums">₹4,28,400</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container">
+<span class="text-[11px] text-outline block">Zero-Credit Holds</span>
+<span class="text-label-md font-label-md text-[#DB6805] font-bold tabular-nums">0 Accounts</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-variant flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span>Primary Produce non-GST</span>
+<span class="text-[#1F9D63] font-semibold">Exempt Sec. 2(1)</span>
+</div>
+</div>
+<!-- Non-GST Direct Farmer Ledger Invoice Box -->
+<div class="bg-[#FCF9F3] p-6 rounded-2xl border border-surface-variant shadow-sm flex flex-col justify-between">
+<div class="space-y-3">
+<div class="flex items-center justify-between border-b border-surface-variant/80 pb-2">
+<div>
+<h4 class="text-title-md font-title-md text-primary">Farm Produce Ledger</h4>
+<span class="text-[10px] text-outline">Direct Producer Invoice #YM-9921</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface text-[10px] font-mono">NON-GST</span>
+</div>
+<div class="space-y-1.5 text-body-sm font-body-sm">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">A2 Whole Milk (30 Days × 1L)</span>
+<span class="tabular-nums font-semibold">₹3,300.00</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Dawn Insulated Delivery</span>
+<span class="tabular-nums text-[#1F9D63] font-semibold">FREE (Farm Direct)</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Glass Bottle Return Credit (28)</span>
+<span class="tabular-nums text-[#1F9D63] font-semibold">-₹280.00</span>
+</div>
+</div>
+<div class="pt-3 border-t border-surface-variant flex justify-between items-baseline">
+<span class="text-label-md font-label-md text-primary">Total Balance Settled</span>
+<span class="text-title-lg font-title-lg text-primary tabular-nums">₹3,020.00</span>
+</div>
+</div>
+<div class="mt-4 p-3 rounded-xl bg-surface-container text-[11px] text-on-surface-variant leading-relaxed">
+              Vedic Milk is pure agricultural produce directly delivered from farm to family doorstep without middlemen or cold storage additives.
+            </div>
+</div>
+</div>
+<!-- 5.4 SYSTEM ICONOGRAPHY GRID -->
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant space-y-4">
+<h3 class="text-title-lg font-title-lg text-primary">Vedic Dairy Iconography Tokens</h3>
+<div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-3 text-center">
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">spa</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">local_shipping</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">local_shipping</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">receipt_long</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">receipt_long</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">ac_unit</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">ac_unit</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">payments</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">payments</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">verified</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">verified</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">calendar_clock</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">calendar_clock</span>
+</div>
+<div class="p-3 rounded-xl bg-surface-container hover:bg-surface-container-high transition">
+<span class="material-symbols-outlined text-primary-container text-2xl">emergency_home</span>
+<span class="text-[11px] text-on-surface block mt-1 font-mono">doorstep</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- SECTION 6: INTERACTIVE CLICKABLE FLOW PROTOTYPE (THE MAIN SIMULATOR)      -->
+<!-- ========================================================================= -->
+<section class="space-y-6 pt-4" id="interactive-prototype">
+<div class="border-b border-surface-variant pb-3 flex flex-col md:flex-row md:items-baseline justify-between gap-2">
+<div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-secondary-container text-primary-container text-label-sm font-label-sm uppercase tracking-wider mb-1">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span>Fully Clickable Simulator</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-primary">6. Production Interactive Flow Prototype</h2>
+<p class="text-body-md font-body-md text-on-surface-variant">Switch Journeys, Click Steps, and Inspect Real-time Wireframes with Operational Invariants</p>
+</div>
+<span class="text-label-md font-label-md text-outline">Section 06 / 06</span>
+</div>
+<!-- Prototype Mode Switcher (Journey Tab Selection) -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-variant flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="text-label-md font-label-md text-primary">Select Architecture Journey:</span>
+<div class="flex p-1 bg-surface-container rounded-xl border border-surface-variant">
+<button class="px-4 py-2 rounded-lg bg-primary-container text-surface text-label-md font-label-md transition-all shadow-sm" id="tab-cust" onclick="switchJourney('customer')">
+                A) Customer Mobile Journey (11 Steps)
+              </button>
+<button class="px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary text-label-md font-label-md transition-all" id="tab-adm" onclick="switchJourney('admin')">
+                B) Admin Operations Journey (5 Steps)
+              </button>
+</div>
+</div>
+<div class="text-body-sm font-body-sm text-outline flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-[#1F9D63]"></span>
+<span>Interactive Node Engine Active</span>
+</div>
+</div>
+<!-- Node Timeline Step Carousel -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-variant overflow-x-auto custom-scroll">
+<div class="flex items-center gap-2 min-w-max py-1" id="step-timeline">
+<!-- Dynamically populated via JS -->
+</div>
+</div>
+<!-- SIMULATOR VIEWPORT & METADATA SPLIT -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- MOBILE / SCREEN SIMULATOR FRAME (Cols 5) -->
+<div class="lg:col-span-5 flex justify-center">
+<div class="w-[360px] h-[680px] bg-background rounded-[40px] border-[8px] border-inverse-surface shadow-2xl overflow-hidden flex flex-col relative">
+<!-- Phone Island Notch -->
+<div class="bg-inverse-surface h-5 w-full flex justify-center items-center">
+<div class="w-24 h-3.5 bg-black rounded-b-xl flex items-center justify-center">
+<div class="w-2 h-2 rounded-full bg-slate-800"></div>
+</div>
+</div>
+<!-- Phone Status Bar -->
+<div class="px-5 py-1.5 flex justify-between items-center text-[11px] font-semibold text-on-surface bg-surface-container-low border-b border-surface-variant/40">
+<span>05:30 AM</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-xs">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-xs">wifi</span>
+<span class="material-symbols-outlined text-xs">battery_full</span>
+</div>
+</div>
+<!-- Screen Dynamic Canvas -->
+<div class="flex-1 overflow-y-auto custom-scroll p-4 flex flex-col justify-between" id="simulator-canvas">
+<!-- Screen Content Injected by switchStep() -->
+</div>
+<!-- Phone Home Indicator Bar -->
+<div class="h-5 w-full bg-surface-container-lowest flex justify-center items-center shrink-0">
+<div class="w-28 h-1 bg-on-surface/30 rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- SPECIFICATION & INVARIANT INSPECTION PANEL (Cols 7) -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-6 rounded-2xl border border-surface-variant space-y-6 shadow-sm">
+<!-- Node Header -->
+<div class="border-b border-surface-variant pb-4 flex items-start justify-between">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider block" id="inspect-step-num">Step 01 of 11</span>
+<h3 class="text-headline-md font-headline-md text-primary mt-1" id="inspect-title">Splash Ritual Screen</h3>
+<p class="text-body-sm font-mono text-on-tertiary-container mt-0.5" id="inspect-route">Route: /auth/splash</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface" onclick="prevStep()">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="p-2 rounded-xl bg-primary-container text-surface hover:bg-primary" onclick="nextStep()">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Deep Architectural Invariants -->
+<div class="space-y-4">
+<div>
+<h4 class="text-label-md font-label-md text-primary uppercase tracking-wide">Purpose &amp; User Mindset</h4>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1 leading-relaxed" id="inspect-desc">
+                  Immersive sensory grounding in Vedic dawn milk purity before prompting transactional mechanics.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="p-4 rounded-xl bg-surface-container border border-surface-variant">
+<h5 class="text-label-md font-label-md text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-[#1F9D63]">task_alt</span>
+                    Permitted User Actions
+                  </h5>
+<ul class="text-body-sm font-body-sm text-on-surface-variant mt-2 space-y-1 list-disc list-inside" id="inspect-actions">
+<li>Observe dawn mist brand reveal</li>
+<li>Automatic push to Welcome onboarding</li>
+</ul>
+</div>
+<div class="p-4 rounded-xl bg-surface-container border border-surface-variant">
+<h5 class="text-label-md font-label-md text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-on-tertiary-container">lock_clock</span>
+                    Operational Invariants
+                  </h5>
+<ul class="text-body-sm font-body-sm text-on-surface-variant mt-2 space-y-1 list-disc list-inside" id="inspect-invariants">
+<li>Strict 5:00 PM cutoff awareness banner</li>
+<li>No loyalty gimmicks or gamified coins</li>
+</ul>
+</div>
+</div>
+<!-- UI Component State Used in this screen -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant">
+<h5 class="text-label-md font-label-md text-primary">Tokens &amp; Components Engaged</h5>
+<p class="text-body-sm font-mono text-outline mt-1" id="inspect-tokens">
+                  Brand Anchor Sacred Drop, Editorial Playfair Display-LG, Warm Surface Canvas (#FCF9F3).
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================================================= -->
+<!-- FOOTER SPECIFICATION AUDIT & CERTIFICATION STAMP                         -->
+<!-- ========================================================================= -->
+<footer class="pt-10 border-t border-surface-variant flex flex-col md:flex-row items-center justify-between gap-4 text-on-surface-variant text-body-sm">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-lg bg-primary-container text-surface flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<span>Yog Milk Vedic Pure Dairy Design System Spec · Authored for Production Master Pipeline</span>
+</div>
+<div class="flex items-center gap-4 text-[11px] font-mono text-outline">
+<span>Non-GST Direct Agriculture Produce</span>
+<span>•</span>
+<span>ISO 22000 &amp; Vedic Dairy Norms</span>
+</div>
+</footer>
+</main>
+</div>
+<!-- ========================================================================= -->
+<!-- JAVASCRIPT: INTERACTIVE PROTOTYPE ENGINE & STEPPER MICRO-INTERACTIONS     -->
+<!-- ========================================================================= -->
+<script>
+    // --- 1. Stepper Micro-Interaction Logic ---
+    let currentQty = 1;
+    function toggleStepper(showActive) {
+      const addBtn = document.getElementById('add-to-cart-btn');
+      const stepper = document.getElementById('active-stepper');
+      if (showActive) {
+        addBtn.classList.add('hidden');
+        stepper.classList.remove('hidden');
+      } else {
+        addBtn.classList.remove('hidden');
+        stepper.classList.add('hidden');
+      }
+    }
+
+    function changeQty(delta) {
+      currentQty += delta;
+      if (currentQty <= 0) {
+        currentQty = 1;
+        toggleStepper(false);
+      } else {
+        document.getElementById('qty-count').textContent = currentQty;
+      }
+    }
+
+    // --- 2. Interactive Prototype State Machine ---
+    const customerSteps = [
+      {
+        id: 0,
+        title: "Splash Ritual Screen",
+        route: "/auth/splash",
+        desc: "Opening cinematic calm featuring unhomogenized milk fat imagery and the sacred lotus emblem.",
+        actions: ["Automatic 1.5s transition", "Tap anywhere to skip immediately"],
+        invariants: ["No flashing ads or third-party SDK trackers", "Background strictly tinted in Warm White #FCF9F3"],
+        tokens: "Playfair Display, primary-container, lotus-glow",
+        render: `
+          <div class="flex-1 flex flex-col items-center justify-center text-center space-y-4 my-auto">
+            <div class="w-20 h-20 rounded-2xl bg-primary-container text-surface flex items-center justify-center shadow-xl">
+              <span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+            </div>
+            <div>
+              <h3 class="text-headline-md font-headline-md text-primary">Yog Milk</h3>
+              <p class="text-label-sm uppercase tracking-widest text-on-tertiary-container mt-1">From Nature to Nourish You</p>
+            </div>
+            <p class="text-body-sm text-outline max-w-[200px]">A2 Vedic Dairy from Desi Gir Herds</p>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md">
+            Begin Sacred Ritual →
+          </button>
+        `
+      },
+      {
+        id: 1,
+        title: "Welcome Onboarding",
+        route: "/auth/welcome",
+        desc: "Educates the user on our morning dawn distribution protocol and zero adulteration commitment.",
+        actions: ["Review cold-chain purity guarantees", "Continue to phone sign-in"],
+        invariants: ["Highlight 05:30 AM door drops", "Non-homogenized single farm provenance"],
+        tokens: "surface-container-high, text-body-md, button primary",
+        render: `
+          <div class="space-y-4">
+            <div class="h-44 rounded-2xl overflow-hidden relative bg-surface-container flex items-center justify-center">
+              <img src="placeholder" data-alt="A peaceful dawn landscape of a traditional Indian dairy farm sanctuary with healthy Gir cows grazing in golden morning mist with warm serene lighting in an editorial style." class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-3 text-surface">
+                <span class="text-label-md font-label-md">Dawn Harvest Rituals</span>
+              </div>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-primary">Untouched by Machinery</h3>
+            <p class="text-body-sm text-on-surface-variant">Bottled in sterilized glass carboys within 60 minutes of dawn harvest. Kept cold at 3.2°C.</p>
+          </div>
+          <div class="space-y-2 mt-4">
+            <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md">
+              Enter with Mobile Number
+            </button>
+          </div>
+        `
+      },
+      {
+        id: 2,
+        title: "OTP Sign-in",
+        route: "/auth/otp",
+        desc: "Passwordless frictionless phone verification tied to consumer delivery address and bottle deposit registry.",
+        actions: ["Input 10-digit Indian Mobile (+91)", "Auto-verify 4-digit SMS OTP"],
+        invariants: ["No social login or tracking cookies", "Zero credit risk check initialized"],
+        tokens: "Input Focus Ring #DB6805, Tabular Nums",
+        render: `
+          <div class="space-y-4 my-auto">
+            <div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+              <span class="material-symbols-outlined">lock</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-primary">Enter Doorstep Phone</h3>
+            <p class="text-body-sm text-outline">We link your daily subscription schedule to your registered mobile.</p>
+            <div class="space-y-2">
+              <label class="text-label-sm text-outline">Mobile Number</label>
+              <div class="flex gap-2">
+                <span class="px-3 py-2.5 rounded-xl bg-surface-container border border-surface-variant text-body-md font-semibold">+91</span>
+                <input type="text" value="98201 44820" class="flex-1 px-3 py-2.5 rounded-xl bg-surface-container-lowest border border-surface-variant text-body-md font-semibold">
+              </div>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md">
+            Verify OTP →
+          </button>
+        `
+      },
+      {
+        id: 3,
+        title: "Storefront Home",
+        route: "/store/home",
+        desc: "Editorial storefront with daily milk delivery status banner and quick subscription toggles.",
+        actions: ["View tomorrow morning run status", "Browse single-origin products", "Check ordering cutoff"],
+        invariants: ["Ordering strictly closes at 5:00 PM", "Cold-chain telemetry live on top"],
+        tokens: "surface-container-low, chip order-active, badge truck",
+        render: `
+          <div class="space-y-4">
+            <div class="p-3 rounded-xl bg-[#E6E8F5] flex items-center justify-between text-primary-container">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-sm">local_shipping</span>
+                <span class="text-label-sm font-label-sm">Tomorrow: 05:30 – 07:00 AM</span>
+              </div>
+              <span class="text-label-sm font-bold text-[#1F9D63]">Confirmed</span>
+            </div>
+            <div>
+              <h3 class="text-headline-sm font-headline-sm text-primary">Daily Harvest</h3>
+              <p class="text-body-sm text-outline">Direct from the Gir Sanctuary</p>
+            </div>
+            <div class="p-3 rounded-xl bg-surface-container-lowest border border-surface-variant flex gap-3 items-center">
+              <div class="w-14 h-14 rounded-lg bg-surface-container flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-2xl text-primary" style="font-variation-settings: 'FILL' 1;">spa</span>
+              </div>
+              <div class="flex-1">
+                <p class="text-label-md font-label-md text-primary">A2 Gir Cow Milk (1L)</p>
+                <p class="text-[11px] text-[#1F9D63]">4.8% Natural Fat · ₹110/L</p>
+              </div>
+              <button onclick="nextStep()" class="px-3 py-1.5 rounded-lg bg-primary-container text-surface text-xs font-semibold">
+                View
+              </button>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-primary text-label-md font-label-md mt-4">
+            Explore Full Dairy Catalog →
+          </button>
+        `
+      },
+      {
+        id: 4,
+        title: "Shop Catalog",
+        route: "/store/catalog",
+        desc: "Bento shelf of A2 milk, cultured bilona ghee, cultured chaas (buttermilk), and raw paneer.",
+        actions: ["Filter by batch origin", "Add items to morning run", "Inspect glass bottle deposits"],
+        invariants: ["No synthetic products or flavored milks with refined sugars", "All prices include bottle recycling"],
+        tokens: "Bento Grid, Card Tier 1, Playfair Display",
+        render: `
+          <div class="space-y-3">
+            <h3 class="text-headline-sm font-headline-sm text-primary">Pure Vedic Catalog</h3>
+            <div class="grid grid-cols-2 gap-2 text-left">
+              <div class="p-2.5 rounded-xl bg-surface-container-lowest border border-surface-variant">
+                <span class="text-[9px] bg-[#E3F6EC] text-[#1F9D63] px-1.5 py-0.5 rounded font-bold">A2 MILK</span>
+                <p class="text-label-md text-primary mt-1">Gir Whole Milk</p>
+                <p class="text-xs font-semibold tabular-nums mt-0.5">₹110 / L</p>
+              </div>
+              <div class="p-2.5 rounded-xl bg-surface-container-lowest border border-surface-variant">
+                <span class="text-[9px] bg-[#FFF4DB] text-[#DB6805] px-1.5 py-0.5 rounded font-bold">BILONA</span>
+                <p class="text-label-md text-primary mt-1">Vedic Cultured Ghee</p>
+                <p class="text-xs font-semibold tabular-nums mt-0.5">₹1,450 / 500ml</p>
+              </div>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Select A2 Whole Milk →
+          </button>
+        `
+      },
+      {
+        id: 5,
+        title: "Product Detail",
+        route: "/product/gir-cow-milk",
+        desc: "Exhaustive lab analysis, fat percentage, single-origin telemetry, and subscription frequency selector.",
+        actions: ["Select Daily / Alternate Days frequency", "Toggle glass bottle exchange", "View batch report"],
+        invariants: ["Display certified 4.8% fat report", "Non-homogenized natural cream warning"],
+        tokens: "Tier 1 Card, Tag Soft-Pill, Rozha Devanagari",
+        render: `
+          <div class="space-y-3">
+            <div class="h-36 rounded-xl overflow-hidden bg-surface-container flex items-center justify-center">
+              <img src="placeholder" data-alt="A close up editorial photo of a crystal clear glass bottle with rich fresh milk showing the golden unhomogenized cream layer on top against a soft neutral background." class="w-full h-full object-cover">
+            </div>
+            <div>
+              <span class="text-[10px] bg-[#E3F6EC] text-[#1F9D63] px-2 py-0.5 rounded font-bold">LAB CERTIFIED A2</span>
+              <h3 class="text-title-lg font-title-lg text-primary mt-1">A2 Gir Cow Vedic Milk</h3>
+              <p class="text-body-sm text-outline">₹110 / bottle (1000ml)</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-surface-container text-body-sm text-on-surface">
+              <span class="font-bold">Subscription:</span> Daily Morning Drop (05:30 AM)
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Add to Basket & Review →
+          </button>
+        `
+      },
+      {
+        id: 6,
+        title: "Cart Drawer",
+        route: "/checkout/cart",
+        desc: "Elevated bottom sheet drawer aggregating monthly liters, delivery slot, and bottle deposit credit.",
+        actions: ["Adjust liter volume", "Apply glass bottle return credits", "Proceed to address confirmation"],
+        invariants: ["Strict cutoff reminder: Order before 5:00 PM for tomorrow", "Deposit refund policy visible"],
+        tokens: "Tier 2 Elevation, Stepper pill, Tabular nums",
+        render: `
+          <div class="space-y-4">
+            <div class="flex justify-between items-center border-b border-surface-variant pb-2">
+              <h3 class="text-title-md font-title-md text-primary">Morning Basket</h3>
+              <span class="text-xs text-outline">30 Days Cycle</span>
+            </div>
+            <div class="space-y-2 text-body-sm">
+              <div class="flex justify-between">
+                <span>A2 Gir Milk (30 × 1L)</span>
+                <span class="font-bold tabular-nums">₹3,300</span>
+              </div>
+              <div class="flex justify-between text-[#1F9D63]">
+                <span>Glass Bottle Deposit (Waived)</span>
+                <span class="font-bold">₹0</span>
+              </div>
+              <div class="flex justify-between text-outline">
+                <span>Dawn Cold-Chain Transport</span>
+                <span class="font-bold">FREE</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-surface-container text-xs text-on-tertiary-container">
+              ⚡ Order before 5:00 PM today to guarantee dawn drop.
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Proceed to Checkout (₹3,300) →
+          </button>
+        `
+      },
+      {
+        id: 7,
+        title: "Checkout & Address",
+        route: "/checkout/confirm",
+        desc: "Address confirmation with doorstep morning instructions (e.g. 'Leave in insulated milk bag').",
+        actions: ["Set doorstep drop instruction", "Select Payment: UPI or Cash on Delivery (COD)"],
+        invariants: ["Zero credit: First 7 deliveries must be pre-paid or confirmed COD", "Non-GST invoice declaration"],
+        tokens: "Payment Status badge, Dropdown selector",
+        render: `
+          <div class="space-y-3">
+            <h3 class="text-title-md font-title-md text-primary">Doorstep Instructions</h3>
+            <div class="p-3 rounded-xl bg-surface-container text-body-sm space-y-1">
+              <p class="font-bold text-primary">Flat 402, Lotus Residency</p>
+              <p class="text-outline text-xs">Juhu Tara Road, Mumbai 400049</p>
+              <p class="text-[11px] text-[#DB6805] mt-1">Note: Hang bottle in porch cooler bag.</p>
+            </div>
+            <div class="space-y-1.5">
+              <label class="text-xs text-outline">Payment Method</label>
+              <div class="p-2.5 rounded-xl border border-primary-container bg-surface-container-low flex justify-between items-center text-body-sm">
+                <span>UPI Auto-mandate / GPay</span>
+                <span class="material-symbols-outlined text-primary-container">check_circle</span>
+              </div>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Authorize & Schedule Run →
+          </button>
+        `
+      },
+      {
+        id: 8,
+        title: "Order Placed Splash",
+        route: "/orders/success",
+        desc: "Tranquil affirmation of upcoming morning run schedule with sunrise delivery confirmation.",
+        actions: ["View real-time farm packing status", "Set pause schedule if away"],
+        invariants: ["Zero gamification: no scratch cards or lottery spin wheels", "Direct ledger entry generated"],
+        tokens: "lotus-glow, text-headline-sm, Green status badge",
+        render: `
+          <div class="my-auto text-center space-y-3">
+            <div class="w-16 h-16 rounded-full bg-[#E3F6EC] text-[#1F9D63] flex items-center justify-center mx-auto">
+              <span class="material-symbols-outlined text-3xl">check</span>
+            </div>
+            <h3 class="text-headline-sm font-headline-sm text-primary">Morning Run Confirmed</h3>
+            <p class="text-body-sm text-on-surface-variant max-w-[220px] mx-auto">
+              First bottle arrives tomorrow between 05:30 and 07:00 AM in sanitized cold packaging.
+            </p>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Track Delivery & Reefer →
+          </button>
+        `
+      },
+      {
+        id: 9,
+        title: "Order Detail & Tracking",
+        route: "/orders/YM-9921",
+        desc: "Cold-chain telemetry dashboard tracking the refrigerated delivery van and temperature sensors.",
+        actions: ["Monitor Reefer Temp (Target: 3-4°C)", "Pause delivery for vacation", "Call delivery partner"],
+        invariants: ["If reefer temp exceeds 8°C, an emergency batch discard alert triggers", "5:00 PM pause cutoff"],
+        tokens: "Reefer chip, Truck micro-icon, Pause CTA",
+        render: `
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-label-sm font-bold text-primary">ROUTE #14 - REEFER 04</span>
+              <span class="px-2 py-0.5 rounded-full bg-[#E3F6EC] text-[#1F9D63] text-xs font-bold">3.2°C OPTIMAL</span>
+            </div>
+            <div class="p-3 rounded-xl bg-surface-container border border-surface-variant space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[#1F9D63]">local_shipping</span>
+                <span class="text-body-sm font-bold text-primary">Delivery Partner: Ramesh G.</span>
+              </div>
+              <p class="text-xs text-outline">Departed Chilling Hub at 04:45 AM. Estimated Doorstep: 06:10 AM.</p>
+            </div>
+            <button class="w-full py-2 rounded-xl bg-[#FDEBDC] text-[#DB6805] text-xs font-semibold">
+              Pause Tomorrow's Drop (Before 5 PM)
+            </button>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            View Non-GST Farm Invoice →
+          </button>
+        `
+      },
+      {
+        id: 10,
+        title: "Non-GST Farm Invoice",
+        route: "/invoice/YM-9921",
+        desc: "Official direct-from-farmer non-GST ledger bill certified under primary agricultural produce rules.",
+        actions: ["Download PDF bill", "Verify bottle returns", "Review agricultural exemption clause"],
+        invariants: ["No GST charged (Exempt under Primary Agricultural Produce laws)", "Clear bottle credit ledger"],
+        tokens: "Cream background #FCF9F3, Ledger Border, Rozha One seal",
+        render: `
+          <div class="p-3 rounded-xl bg-surface-container border border-surface-variant space-y-3 text-body-sm">
+            <div class="flex justify-between items-baseline border-b border-surface-variant pb-2">
+              <span class="font-bold text-primary">YOG MILK PRODUCER CO.</span>
+              <span class="text-[10px] text-outline font-mono">INV-2024-9921</span>
+            </div>
+            <div class="space-y-1 text-xs">
+              <div class="flex justify-between">
+                <span>Produce: Raw Gir Cow Milk (30L)</span>
+                <span class="tabular-nums font-bold">₹3,300.00</span>
+              </div>
+              <div class="flex justify-between text-[#1F9D63]">
+                <span>Empty Glass Returned: 2 bottles</span>
+                <span class="tabular-nums font-bold">-₹20.00</span>
+              </div>
+              <div class="flex justify-between font-bold pt-1 border-t border-surface-variant">
+                <span>Net Settled Amount:</span>
+                <span class="tabular-nums text-primary">₹3,280.00</span>
+              </div>
+            </div>
+            <p class="text-[10px] text-outline leading-tight">GST: 0% EXEMPT (Section 2(1) Farm Gate Fresh Produce).</p>
+          </div>
+          <button onclick="switchStep(0)" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            ↺ Restart Customer Flow
+          </button>
+        `
+      }
+    ];
+
+    const adminSteps = [
+      {
+        id: 0,
+        title: "Admin Dashboard",
+        route: "/admin/dashboard",
+        desc: "Operational mission control showing morning volume intake, fleet cold-chain health, and cash settlements.",
+        actions: ["Inspect total route milk volume", "Check 5:00 PM cutoff status", "Monitor pending cash collections"],
+        invariants: ["Strict zero-credit lock enforces order halt on unpaid COD accounts", "Live Reefer telemetry"],
+        tokens: "SideNavBar Active Dashboard, TopNavBar",
+        render: `
+          <div class="space-y-3">
+            <div class="p-3 rounded-xl bg-primary-container text-surface flex justify-between items-center">
+              <div>
+                <p class="text-xs text-surface-variant/80">Morning Run #14</p>
+                <p class="text-title-lg font-bold">4,820 Liters</p>
+              </div>
+              <span class="px-2 py-0.5 rounded bg-emerald-500 text-[10px] font-bold">100% Chilled</span>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-xs">
+              <div class="p-2.5 rounded-xl bg-surface-container">
+                <span class="text-outline block">Active Runs</span>
+                <span class="font-bold text-primary text-sm">2,410 Bottles</span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-surface-container">
+                <span class="text-outline block">COD Pending</span>
+                <span class="font-bold text-[#DB6805] text-sm">₹48,200</span>
+              </div>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            View Live Orders Table →
+          </button>
+        `
+      },
+      {
+        id: 1,
+        title: "Orders Table",
+        route: "/admin/orders",
+        desc: "Master ledger of all household subscriptions, route assignments, bottle exchange flags, and COD tags.",
+        actions: ["Filter by Route 14 (Juhu/Bandra)", "Bulk dispatch reefers", "Flag zero-credit customer accounts"],
+        invariants: ["Cutoff strictly locks at 5:00 PM", "No unassigned route deliveries permitted"],
+        tokens: "Status Chip Set A & B, Tabular numbers",
+        render: `
+          <div class="space-y-2">
+            <div class="flex justify-between items-center text-xs">
+              <span class="font-bold text-primary">Orders: Route 14</span>
+              <span class="text-[#1F9D63] font-semibold">142 Dispatched</span>
+            </div>
+            <div class="p-2 rounded-xl bg-surface-container text-xs space-y-1">
+              <div class="flex justify-between">
+                <span class="font-bold">#YM-9921 (Ananya S.)</span>
+                <span class="text-[#1F9D63] font-bold">₹ Paid</span>
+              </div>
+              <p class="text-outline">1L A2 Milk · Insulated Bag Drop</p>
+            </div>
+            <div class="p-2 rounded-xl bg-surface-container text-xs space-y-1">
+              <div class="flex justify-between">
+                <span class="font-bold">#YM-9922 (Karan M.)</span>
+                <span class="text-[#DB6805] font-bold">₹ COD Pending</span>
+              </div>
+              <p class="text-outline">2L A2 Milk · Collect ₹220 Cash</p>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Inspect Cold-Chain Drawer →
+          </button>
+        `
+      },
+      {
+        id: 2,
+        title: "Cold-chain Drawer",
+        route: "/admin/orders/telemetry",
+        desc: "Real-time temperature logging across refrigerated delivery vans, checking GPS and door-open cycles.",
+        actions: ["Inspect van thermometer sensor #S-882", "Trigger emergency re-chill alert", "Reroute driver"],
+        invariants: ["Threshold > 6°C alerts admin; threshold > 8°C halts delivery of batch for customer safety"],
+        tokens: "Reefer Blue Chip, Error Container Alert",
+        render: `
+          <div class="space-y-3">
+            <div class="p-3 rounded-xl bg-[#E6E8F5] text-primary-container space-y-1">
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-xs">Van Reefer #04</span>
+                <span class="px-2 py-0.5 rounded bg-surface text-xs font-bold">3.4°C</span>
+              </div>
+              <p class="text-[11px] text-outline">Sensor calibrated 2 hours ago. Door open count: 4 times.</p>
+            </div>
+            <div class="p-2.5 rounded-xl bg-[#E3F6EC] text-[#1F9D63] text-xs flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">verified</span>
+              <span>Purity & Curdling Risk: 0.00%</span>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Record Cash Payment Modal →
+          </button>
+        `
+      },
+      {
+        id: 3,
+        title: "Record Cash Payment Modal",
+        route: "/admin/payments/record-cash",
+        desc: "Audited modal for route drivers to reconcile physical cash collection before evening ledger balance.",
+        actions: ["Input cash collected (₹)", "Verify physical glass bottles retrieved", "Unlock next morning run"],
+        invariants: ["Zero credit: Customer locked if cash not cleared within 24 hours of drop", "Receipt SMS sent"],
+        tokens: "Tier 3 Modal elevation, Saffron ring focus",
+        render: `
+          <div class="p-3 rounded-2xl bg-surface-container border border-surface-variant space-y-3">
+            <h4 class="text-label-md font-bold text-primary">Record Cash (COD)</h4>
+            <div class="space-y-1">
+              <span class="text-[11px] text-outline">Customer #YM-9922</span>
+              <input type="text" value="₹220.00" class="w-full p-2 rounded-lg bg-surface-container-lowest border border-surface-variant font-bold text-sm">
+            </div>
+            <div class="flex items-center gap-2 text-xs">
+              <input type="checkbox" checked class="rounded text-primary-container">
+              <span>Retrieved 2 Glass Bottles</span>
+            </div>
+          </div>
+          <button onclick="nextStep()" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            Submit & View Delivery Queue →
+          </button>
+        `
+      },
+      {
+        id: 4,
+        title: "Delivery Queue & Exceptions",
+        route: "/admin/deliveries/queue",
+        desc: "Route exceptions overview covering locked gates, unreachable phones, or vacation hold notices.",
+        actions: ["Resolve undelivered bottles", "Return to chilling hub", "Issue immediate credit adjustment"],
+        invariants: ["Unopened bottles returned to hub undergo curdling discard if above 6°C", "Audit log saved"],
+        tokens: "Audit log token, Emergency Announcement banner",
+        render: `
+          <div class="space-y-3">
+            <h4 class="text-label-md font-bold text-primary">Exceptions Queue (0 Active)</h4>
+            <div class="p-4 rounded-xl bg-[#E3F6EC] text-[#1F9D63] text-center space-y-1">
+              <span class="material-symbols-outlined text-3xl">check_circle</span>
+              <p class="font-bold text-xs">All 2,410 Deliveries Completed</p>
+              <p class="text-[10px]">Zero door lockouts. Zero cold-chain spikes.</p>
+            </div>
+          </div>
+          <button onclick="switchStep(0)" class="w-full py-3 rounded-xl bg-primary-container text-surface text-label-md font-label-md mt-4">
+            ↺ Restart Admin Journey
+          </button>
+        `
+      }
+    ];
+
+    let currentJourney = 'customer';
+    let currentStepIndex = 0;
+
+    function getSteps() {
+      return currentJourney === 'customer' ? customerSteps : adminSteps;
+    }
+
+    function switchJourney(journey) {
+      currentJourney = journey;
+      currentStepIndex = 0;
+      
+      const tabCust = document.getElementById('tab-cust');
+      const tabAdm = document.getElementById('tab-adm');
+
+      if (journey === 'customer') {
+        tabCust.className = "px-4 py-2 rounded-lg bg-primary-container text-surface text-label-md font-label-md transition-all shadow-sm";
+        tabAdm.className = "px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary text-label-md font-label-md transition-all";
+      } else {
+        tabAdm.className = "px-4 py-2 rounded-lg bg-primary-container text-surface text-label-md font-label-md transition-all shadow-sm";
+        tabCust.className = "px-4 py-2 rounded-lg text-on-surface-variant hover:text-primary text-label-md font-label-md transition-all";
+      }
+      renderTimeline();
+      updateSimulator();
+    }
+
+    function renderTimeline() {
+      const steps = getSteps();
+      const container = document.getElementById('step-timeline');
+      container.innerHTML = '';
+
+      steps.forEach((step, idx) => {
+        const btn = document.createElement('button');
+        btn.onclick = () => switchStep(idx);
+        
+        const isActive = idx === currentStepIndex;
+        btn.className = `flex items-center gap-2 px-3 py-1.5 rounded-xl text-label-sm font-label-sm transition-all whitespace-nowrap ${
+          isActive 
+            ? 'bg-primary-container text-surface shadow-sm' 
+            : 'bg-surface-container hover:bg-surface-container-high text-on-surface-variant'
+        }`;
+
+        btn.innerHTML = `
+          <span class="w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+            isActive ? 'bg-surface text-primary font-bold' : 'bg-surface-variant text-outline'
+          }">${idx + 1}</span>
+          <span>${step.title}</span>
+        `;
+        container.appendChild(btn);
+      });
+    }
+
+    function switchStep(index) {
+      currentStepIndex = index;
+      renderTimeline();
+      updateSimulator();
+    }
+
+    function prevStep() {
+      const steps = getSteps();
+      if (currentStepIndex > 0) {
+        currentStepIndex--;
+        renderTimeline();
+        updateSimulator();
+      }
+    }
+
+    function nextStep() {
+      const steps = getSteps();
+      if (currentStepIndex < steps.length - 1) {
+        currentStepIndex++;
+        renderTimeline();
+        updateSimulator();
+      }
+    }
+
+    function updateSimulator() {
+      const steps = getSteps();
+      const step = steps[currentStepIndex];
+
+      // Update Phone Canvas
+      document.getElementById('simulator-canvas').innerHTML = step.render;
+
+      // Update Inspection Panel
+      document.getElementById('inspect-step-num').textContent = `Step ${currentStepIndex + 1} of ${steps.length} · ${currentJourney.toUpperCase()} JOURNEY`;
+      document.getElementById('inspect-title').textContent = step.title;
+      document.getElementById('inspect-route').textContent = `Route: ${step.route}`;
+      document.getElementById('inspect-desc').textContent = step.desc;
+      document.getElementById('inspect-tokens').textContent = step.tokens;
+
+      // Actions List
+      const actionsList = document.getElementById('inspect-actions');
+      actionsList.innerHTML = '';
+      step.actions.forEach(a => {
+        const li = document.createElement('li');
+        li.textContent = a;
+        actionsList.appendChild(li);
+      });
+
+      // Invariants List
+      const invList = document.getElementById('inspect-invariants');
+      invList.innerHTML = '';
+      step.invariants.forEach(inv => {
+        const li = document.createElement('li');
+        li.textContent = inv;
+        invList.appendChild(li);
+      });
+    }
+
+    // Initialize Prototype on Load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderTimeline();
+      updateSimulator();
+    });
+  </script>
+</body></html>

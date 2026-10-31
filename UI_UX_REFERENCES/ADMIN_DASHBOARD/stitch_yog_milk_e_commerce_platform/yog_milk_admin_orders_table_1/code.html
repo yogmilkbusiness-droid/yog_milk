@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Orders Management</title>
+<!-- Google Fonts: Playfair Display and Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: "#1F2A6B",
+              "navy-dark": "#151D4D",
+              saffron: "#F47B20",
+              cream: "#FBF1DC",
+              bg: "#FFFCF6",
+              text: "#1B2030",
+              green: "#1F9D63",
+              amber: "#E8A317",
+              red: "#D64545"
+            }
+          },
+          fontFamily: {
+            sans: ["'Plus Jakarta Sans'", "sans-serif"],
+            display: ["'Playfair Display'", "serif"]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #FBF1DC;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #d8cdb8;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg text-brand-text antialiased h-full flex flex-col overflow-hidden font-sans selection:bg-brand-cream selection:text-brand-navy">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- SideNavBar -->
+<aside class="bg-brand-navy-dark text-white docked h-screen w-64 flex flex-col justify-between shrink-0 border-r border-[#263168] select-none z-30">
+<div class="h-full flex flex-col justify-between p-4 overflow-y-auto custom-scrollbar">
+<!-- Top brand & navigation -->
+<div class="space-y-6">
+<!-- Logo & Admin subtext -->
+<div class="flex items-center gap-3 px-2 pt-1 pb-2">
+<div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center border border-white/20 shrink-0">
+<span class="material-symbols-outlined text-brand-saffron text-2xl" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="font-display font-semibold text-lg tracking-wide text-white truncate leading-tight">Yog Milk</span>
+<span class="text-[11px] text-white/60 tracking-wider truncate uppercase font-bold">Dairy Operations Admin</span>
+</div>
+</div>
+<!-- Main Nav Tabs List -->
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">dashboard</span>
+<span class="truncate">Dashboard</span>
+</a>
+<!-- Orders (ACTIVE) -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-brand-navy text-white text-sm font-semibold border border-white/20 shadow-sm" href="#">
+<div class="flex items-center gap-3 truncate">
+<span class="material-symbols-outlined text-brand-saffron" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="truncate">Orders</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-brand-saffron text-white text-xs font-bold">18 new</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">payments</span>
+<span class="truncate">Payments</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">local_shipping</span>
+<span class="truncate">Deliveries</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">group</span>
+<span class="truncate">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">inventory_2</span>
+<span class="truncate">Products</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">description</span>
+<span class="truncate">Invoices</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">bar_chart</span>
+<span class="truncate">Reports</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">notifications</span>
+<span class="truncate">Notifications</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">calendar_clock</span>
+<span class="truncate">Ordering schedule</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">history</span>
+<span class="truncate">Audit log</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/70 hover:text-white hover:bg-white/10 text-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-white/60">settings</span>
+<span class="truncate">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Telemetry, Operator Profile & Footer Tab Actions -->
+<div class="pt-4 mt-4 border-t border-white/10 space-y-3">
+<!-- Cold Chain Telemetry Card -->
+<div class="p-2.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-brand-saffron text-base">severe_cold</span>
+<div>
+<p class="text-[10px] text-white/60 uppercase tracking-wider font-semibold">Chilling Tank Temp</p>
+<p class="text-xs text-white font-bold">3.8°C <span class="text-[10px] font-normal text-white/70">(Compliant)</span></p>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-brand-green"></span>
+</div>
+<!-- Operator Profile Info -->
+<div class="flex items-center gap-3 px-2 py-1.5 rounded-xl bg-white/5">
+<div class="w-8 h-8 rounded-full bg-brand-saffron text-white flex items-center justify-center text-xs font-bold">
+            VM
+          </div>
+<div class="overflow-hidden">
+<p class="text-xs font-semibold text-white truncate">Vikram Mehta</p>
+<p class="text-[11px] text-white/60 truncate">Lead Operations Admin</p>
+</div>
+</div>
+<!-- Support Desk CTA -->
+<button class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold transition-colors">
+<span class="material-symbols-outlined text-base">headset_mic</span>
+<span>Support Desk</span>
+</button>
+<!-- Footer Tabs -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<a class="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-white/60 hover:text-white text-xs font-medium hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">vital_signs</span>
+<span>Health</span>
+</a>
+<a class="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-white/60 hover:text-white text-xs font-medium hover:bg-white/5 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span>Log out</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-brand-bg">
+<!-- TopNavBar -->
+<header class="top-0 sticky z-40 shadow-sm border-b border-[#ebdcc4] flex items-center justify-between px-6 py-3.5 w-full bg-white shrink-0">
+<!-- Search omnibar on left -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-text/50">
+<span class="material-symbols-outlined text-xl">search</span>
+</span>
+<input class="w-full pl-10 pr-12 py-2 bg-brand-cream/40 border border-[#e8dac2] rounded-xl text-xs font-medium text-brand-text focus:outline-none focus:border-brand-navy focus:ring-1 focus:ring-brand-navy transition-all" placeholder="Search order code, customer ⌘K" type="text"/>
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-brand-text/40 text-[11px] font-semibold">
+            ⌘K
+          </span>
+</div>
+</div>
+<!-- Trailing actions & status bar -->
+<div class="flex items-center gap-4">
+<!-- 1. TOP BAR: Read-only status pill -->
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-cream border border-brand-amber/40 text-brand-navy">
+<span class="w-2 h-2 rounded-full bg-brand-green"></span>
+<span class="text-xs font-semibold tracking-tight">Ordering Open · Closes 5:00 PM (automatic)</span>
+</div>
+<!-- Emergency Freeze Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-brand-red/30 bg-red-50 hover:bg-red-100 text-brand-red text-xs font-semibold transition-colors" title="Instant intake freeze">
+<span class="material-symbols-outlined text-base">emergency_home</span>
+<span>Emergency Freeze</span>
+</button>
+<!-- Notification Bell with badge -->
+<button class="relative p-2 rounded-xl text-brand-text/70 hover:bg-brand-cream/50 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 bg-brand-red text-white rounded-full text-[10px] font-bold flex items-center justify-center">6</span>
+</button>
+<div class="h-6 w-px bg-[#ebdcc4]"></div>
+<!-- Profile Avatar -->
+<div class="flex items-center gap-2.5 cursor-pointer">
+<div class="w-9 h-9 rounded-full bg-brand-navy text-white flex items-center justify-center text-xs font-bold border-2 border-brand-cream">
+            VM
+          </div>
+<div class="hidden lg:block text-left">
+<p class="text-xs font-bold text-brand-navy leading-tight">Yog Milk Admin</p>
+<p class="text-[11px] text-brand-text/60">Central Hub</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Main View Canvas -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-5">
+<!-- Page Header & Global Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-xs text-brand-text/60 mb-1">
+<span>Operations Console</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-brand-navy font-semibold">Orders Management</span>
+</nav>
+<h1 class="font-display text-2xl font-bold text-brand-navy tracking-tight">Orders Management</h1>
+<p class="text-xs text-brand-text/70 mt-0.5">
+            Monitor daily order fulfillment, payments verification, and dispatch delivery status
+          </p>
+</div>
+<!-- Actions Header Cluster -->
+<div class="flex items-center flex-wrap gap-2.5 shrink-0">
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-[#ebdcc4] bg-white hover:bg-brand-cream/50 text-brand-text text-xs font-semibold shadow-xs transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Export Orders (CSV)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-[#ebdcc4] bg-white hover:bg-brand-cream/50 text-brand-text text-xs font-semibold shadow-xs transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">checklist</span>
+<span>Batch Status Update</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-navy text-white text-xs font-semibold hover:bg-brand-navy-dark shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">add_call</span>
+<span>+ Manual Phone Order</span>
+</button>
+</div>
+</div>
+<!-- 3. FILTER TABS & SEARCH: Filter by Order Status Tabs -->
+<div class="flex items-center justify-between border-b border-[#ebdcc4] pb-2 overflow-x-auto gap-4">
+<div class="flex items-center gap-1.5 shrink-0">
+<!-- All -->
+<button class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-brand-navy text-white shadow-xs transition-colors flex items-center gap-2">
+<span>All</span>
+<span class="px-1.5 py-0.2 rounded-full bg-white/20 text-[10px]">142</span>
+</button>
+<!-- Confirmed -->
+<button class="px-3.5 py-2 rounded-xl text-xs font-semibold text-brand-text/70 hover:text-brand-navy hover:bg-brand-cream/60 transition-colors flex items-center gap-2">
+<span>Confirmed</span>
+<span class="px-1.5 py-0.2 rounded-full bg-[#E3F6EC] text-brand-green text-[10px]">34</span>
+</button>
+<!-- In preparation -->
+<button class="px-3.5 py-2 rounded-xl text-xs font-semibold text-brand-text/70 hover:text-brand-navy hover:bg-brand-cream/60 transition-colors flex items-center gap-2">
+<span>In preparation</span>
+<span class="px-1.5 py-0.2 rounded-full bg-[#FFF4DB] text-[#9A6700] text-[10px]">26</span>
+</button>
+<!-- Ready for delivery -->
+<button class="px-3.5 py-2 rounded-xl text-xs font-semibold text-brand-text/70 hover:text-brand-navy hover:bg-brand-cream/60 transition-colors flex items-center gap-2">
+<span>Ready for delivery</span>
+<span class="px-1.5 py-0.2 rounded-full bg-[#FFF4DB] text-brand-amber text-[10px]">18</span>
+</button>
+<!-- Completed -->
+<button class="px-3.5 py-2 rounded-xl text-xs font-semibold text-brand-text/70 hover:text-brand-navy hover:bg-brand-cream/60 transition-colors flex items-center gap-2">
+<span>Completed</span>
+<span class="px-1.5 py-0.2 rounded-full bg-[#E3F6EC] text-brand-green text-[10px]">59</span>
+</button>
+<!-- Cancelled -->
+<button class="px-3.5 py-2 rounded-xl text-xs font-semibold text-brand-text/70 hover:text-brand-navy hover:bg-brand-cream/60 transition-colors flex items-center gap-2">
+<span>Cancelled</span>
+<span class="px-1.5 py-0.2 rounded-full bg-red-100 text-brand-red text-[10px]">5</span>
+</button>
+</div>
+<!-- Saved Views / Quick Toggle -->
+<div class="relative shrink-0">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-[#ebdcc4] bg-white text-xs font-semibold text-brand-navy hover:bg-brand-cream/40 transition-colors">
+<span class="material-symbols-outlined text-base text-brand-saffron">bookmark_border</span>
+<span>Today's Active Dispatch</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Comprehensive Filter Controls Bar -->
+<div class="bg-white p-3.5 rounded-2xl border border-[#ebdcc4] shadow-xs space-y-3">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+<!-- Text Omnisearch -->
+<div class="md:col-span-3 relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-brand-text/40">
+<span class="material-symbols-outlined text-base">filter_alt</span>
+</span>
+<input class="w-full pl-9 pr-3 py-2 bg-brand-bg border border-[#ebdcc4] rounded-xl text-xs text-brand-text placeholder:text-brand-text/40 focus:outline-none focus:border-brand-navy focus:ring-1 focus:ring-brand-navy" placeholder="Search order code (YM-2026-...), customer..." type="text"/>
+</div>
+<!-- Date Filter Picker -->
+<div class="md:col-span-2">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-brand-bg border border-[#ebdcc4] rounded-xl text-xs font-semibold text-brand-text hover:bg-brand-cream/40 transition-colors">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-base text-brand-text/50">calendar_today</span>
+<span class="truncate">Today · 29 Oct 2026</span>
+</div>
+<span class="material-symbols-outlined text-xs">arrow_drop_down</span>
+</button>
+</div>
+<!-- Order Status Dropdown Filter -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full pl-3 pr-8 py-2 bg-brand-bg border border-[#ebdcc4] rounded-xl text-xs font-semibold text-brand-text hover:bg-brand-cream/40 focus:outline-none focus:border-brand-navy cursor-pointer appearance-none">
+<option selected="">Order Status: All</option>
+<option>Confirmed</option>
+<option>In preparation</option>
+<option>Ready for delivery</option>
+<option>Completed</option>
+<option>Cancelled</option>
+</select>
+<span class="material-symbols-outlined text-xs absolute right-2.5 top-2.5 pointer-events-none text-brand-text/60">arrow_drop_down</span>
+</div>
+</div>
+<!-- Payment Status Dropdown Filter (Pending, Processing, Paid, Failed, Refunded - NO Partially Paid) -->
+<div class="md:col-span-2">
+<div class="relative">
+<select class="w-full pl-3 pr-8 py-2 bg-brand-bg border border-[#ebdcc4] rounded-xl text-xs font-semibold text-brand-text hover:bg-brand-cream/40 focus:outline-none focus:border-brand-navy cursor-pointer appearance-none">
+<option selected="">Payment: All</option>
+<option>Pending</option>
+<option>Processing</option>
+<option>Paid</option>
+<option>Failed</option>
+<option>Refunded</option>
+</select>
+<span class="material-symbols-outlined text-xs absolute right-2.5 top-2.5 pointer-events-none text-brand-text/60">arrow_drop_down</span>
+</div>
+</div>
+<!-- Delivery Status Dropdown Filter (Not assigned, Assigned, Picked up, Out for delivery, Delivered, Failed) -->
+<div class="md:col-span-3">
+<div class="relative">
+<select class="w-full pl-3 pr-8 py-2 bg-brand-bg border border-[#ebdcc4] rounded-xl text-xs font-semibold text-brand-text hover:bg-brand-cream/40 focus:outline-none focus:border-brand-navy cursor-pointer appearance-none">
+<option selected="">Delivery: All Statuses</option>
+<option>Not assigned</option>
+<option>Assigned</option>
+<option>Picked up</option>
+<option>Out for delivery</option>
+<option>Delivered</option>
+<option>Failed</option>
+</select>
+<span class="material-symbols-outlined text-xs absolute right-2.5 top-2.5 pointer-events-none text-brand-text/60">arrow_drop_down</span>
+</div>
+</div>
+</div>
+<!-- Active tags row & Reset buttons -->
+<div class="flex items-center justify-between pt-1 border-t border-[#ebdcc4]/60 text-xs">
+<div class="flex items-center gap-2 flex-wrap text-brand-text/70">
+<span class="font-medium text-[11px]">Applied filters:</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-brand-cream border border-[#ebdcc4] text-brand-navy text-[11px] font-semibold">
+              Today's Orders
+              <span class="material-symbols-outlined text-xs cursor-pointer hover:text-brand-red">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-brand-cream border border-[#ebdcc4] text-brand-navy text-[11px] font-semibold">
+              Status: Active &amp; Pending
+              <span class="material-symbols-outlined text-xs cursor-pointer hover:text-brand-red">close</span>
+</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-brand-navy font-semibold hover:underline flex items-center gap-1 text-[11px]">
+<span class="material-symbols-outlined text-sm">bookmark_add</span>
+<span>Save view</span>
+</button>
+<button class="text-brand-red font-semibold hover:underline flex items-center gap-1 text-[11px]">
+<span class="material-symbols-outlined text-sm">refresh</span>
+<span>Reset filters</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Orders Table Card -->
+<!-- 4. TABLE COLUMNS: Order code, Customer (name & phone), Items, Total Amount (₹), Payment Status, Delivery Status, Delivery note -->
+<div class="bg-white rounded-2xl border border-[#ebdcc4] shadow-xs overflow-hidden flex flex-col">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-brand-cream/60 border-b border-[#ebdcc4] text-brand-navy text-[11px] font-bold uppercase tracking-wider">
+<th class="py-3 px-4 w-10">
+<input class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</th>
+<th class="py-3 px-4 cursor-pointer hover:text-brand-saffron">
+<div class="flex items-center gap-1">
+<span>Order Code</span>
+<span class="material-symbols-outlined text-xs">arrow_downward</span>
+</div>
+</th>
+<th class="py-3 px-4 cursor-pointer hover:text-brand-saffron">
+<div class="flex items-center gap-1">
+<span>Customer</span>
+<span class="material-symbols-outlined text-xs">swap_vert</span>
+</div>
+</th>
+<th class="py-3 px-4">Items</th>
+<th class="py-3 px-4 text-right cursor-pointer hover:text-brand-saffron">
+<div class="flex items-center justify-end gap-1">
+<span>Total Amount (₹)</span>
+<span class="material-symbols-outlined text-xs">swap_vert</span>
+</div>
+</th>
+<th class="py-3 px-4">Payment Status</th>
+<th class="py-3 px-4">Delivery Status</th>
+<th class="py-3 px-4">Delivery Note</th>
+<th class="py-3 px-4 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#ebdcc4]/60 text-xs">
+<!-- ROW 1 (Payment pending block demonstrated) -->
+<tr class="bg-brand-cream/30 hover:bg-brand-cream/50 transition-colors">
+<td class="py-3.5 px-4">
+<input checked="" class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-bold text-brand-navy whitespace-nowrap">
+<div>YM-2026-00123</div>
+<span class="text-[10px] text-brand-text/50 font-normal">Created 07:45 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-brand-navy">Rajesh Sharma</span>
+<span class="text-[11px] text-brand-text/70">+91 98220 14892</span>
+<!-- Replaced credit block with payment pending block -->
+<div class="mt-1 flex items-center gap-1 px-1.5 py-0.5 rounded bg-red-50 border border-brand-red/30 w-fit text-[10px] font-bold text-brand-red">
+<span class="material-symbols-outlined text-xs">warning</span>
+<span>Payment pending block</span>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-semibold text-brand-text truncate">Full Cream Milk 500 ml (pack of 20)</p>
+<p class="text-[11px] text-brand-text/70 truncate">Fresh Dahi 400 g (pack of 24)</p>
+<span class="text-[10px] text-brand-saffron font-bold">2 line items</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="font-bold text-sm text-brand-navy">₹2,440</div>
+<span class="text-[10px] text-brand-text/50">Online inv</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Pending badge: #E8A317 -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand-amber/40 bg-[#FFF4DB] text-[#9A6700] text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-amber"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Assigned -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-brand-cream border border-[#ebdcc4] text-brand-navy text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs text-brand-navy">assignment_ind</span>
+                    Assigned
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-[180px] text-brand-text/80 text-[11px] leading-tight">
+                    Hold delivery at gate until payment verification confirms.
+                  </div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1.5">
+<button class="px-2 py-1 rounded-lg bg-brand-navy text-white text-[11px] font-semibold hover:bg-brand-navy-dark transition-colors">Details</button>
+<button class="px-2 py-1 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-[11px] font-semibold text-brand-text transition-colors">Update</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-brand-cream/30 transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-bold text-brand-navy whitespace-nowrap">
+<div>YM-2026-00142</div>
+<span class="text-[10px] text-brand-text/50 font-normal">Created 08:12 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-brand-navy">Meera Kulkarni</span>
+<span class="text-[11px] text-brand-text/70">+91 94231 88410</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-semibold text-brand-text truncate">Paneer 1 kg</p>
+<p class="text-[11px] text-brand-text/70 truncate">Full Cream Milk 500 ml (pack of 20)</p>
+<span class="text-[10px] text-brand-saffron font-bold">2 line items</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="font-bold text-sm text-brand-navy">₹7,970</div>
+<span class="text-[10px] text-brand-text/50">Direct pay</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Paid badge: #1F9D63 -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand-green/30 bg-[#E3F6EC] text-brand-green text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Not assigned -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gray-100 text-gray-700 text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                    Not assigned
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-[180px] text-brand-text/80 text-[11px] leading-tight">
+                    Leave in refrigerated porch locker if door unattended.
+                  </div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1.5">
+<button class="px-2 py-1 rounded-lg bg-brand-navy text-white text-[11px] font-semibold hover:bg-brand-navy-dark transition-colors">Details</button>
+<button class="px-2 py-1 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-[11px] font-semibold text-brand-text transition-colors">Update</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-brand-cream/30 transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-bold text-brand-navy whitespace-nowrap">
+<div>YM-2026-00139</div>
+<span class="text-[10px] text-brand-text/50 font-normal">Created 08:01 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-brand-navy">Sunil Deshmukh</span>
+<span class="text-[11px] text-brand-text/70">+91 99701 55239</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-semibold text-brand-text truncate">Toned Milk 1 L (pack of 12)</p>
+<span class="text-[10px] text-brand-saffron font-bold">1 line item</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="font-bold text-sm text-brand-navy">₹3,480</div>
+<span class="text-[10px] text-brand-text/50">Online inv</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand-green/30 bg-[#E3F6EC] text-brand-green text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Picked up -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-brand-navy border border-blue-200 text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs text-brand-navy">package_2</span>
+                    Picked up
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-[180px] text-brand-text/80 text-[11px] leading-tight">
+                    Doorstep crate handover requested; notify upon arrival.
+                  </div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1.5">
+<button class="px-2 py-1 rounded-lg bg-brand-navy text-white text-[11px] font-semibold hover:bg-brand-navy-dark transition-colors">Details</button>
+<button class="px-2 py-1 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-[11px] font-semibold text-brand-text transition-colors">Update</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-brand-cream/30 transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-bold text-brand-navy whitespace-nowrap">
+<div>YM-2026-00135</div>
+<span class="text-[10px] text-brand-text/50 font-normal">Created 07:20 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-brand-navy">Anand Patil</span>
+<span class="text-[11px] text-brand-text/70">+91 98812 77002</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-semibold text-brand-text truncate">Paneer 1 kg</p>
+<p class="text-[11px] text-brand-text/70 truncate">Fresh Dahi 400 g (pack of 24)</p>
+<span class="text-[10px] text-brand-saffron font-bold">2 line items</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="font-bold text-sm text-brand-navy">₹5,120</div>
+<span class="text-[10px] text-brand-text/50">COD</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand-amber/40 bg-[#FFF4DB] text-[#9A6700] text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-amber"></span>
+                    Pending
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Out for delivery -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-blue-900 border border-blue-200 text-[11px] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                    Out for delivery
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-[180px] text-brand-text/80 text-[11px] leading-tight">
+                    Commercial kitchen back entrance; ring bell twice.
+                  </div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1.5">
+<button class="px-2 py-1 rounded-lg bg-brand-navy text-white text-[11px] font-semibold hover:bg-brand-navy-dark transition-colors">Details</button>
+<button class="px-2 py-1 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-[11px] font-semibold text-brand-text transition-colors">Update</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-brand-cream/30 transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-bold text-brand-navy whitespace-nowrap">
+<div>YM-2026-00118</div>
+<span class="text-[10px] text-brand-text/50 font-normal">Created yesterday</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-brand-navy">Kavita Rao</span>
+<span class="text-[11px] text-brand-text/70">+91 97654 33100</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-semibold text-brand-text truncate">Full Cream Milk 500 ml (pack of 20)</p>
+<p class="text-[11px] text-brand-text/70 truncate">Paneer 1 kg</p>
+<span class="text-[10px] text-brand-saffron font-bold">2 line items</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="font-bold text-sm text-brand-navy">₹2,290</div>
+<span class="text-[10px] text-brand-text/50">Online paid</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand-green/30 bg-[#E3F6EC] text-brand-green text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-green"></span>
+                    Paid
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Delivered -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E3F6EC] border border-brand-green/30 text-brand-green text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                    Delivered
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-[180px] text-brand-text/80 text-[11px] leading-tight">
+                    Received by security gate team at 06:40 AM.
+                  </div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1.5">
+<button class="px-2 py-1 rounded-lg bg-brand-navy text-white text-[11px] font-semibold hover:bg-brand-navy-dark transition-colors">Details</button>
+<button class="px-2 py-1 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-[11px] font-semibold text-brand-text transition-colors">Invoice</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6 -->
+<tr class="hover:bg-brand-cream/30 transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-[#ebdcc4] text-brand-navy focus:ring-brand-navy" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-bold text-brand-navy whitespace-nowrap">
+<div>YM-2026-00109</div>
+<span class="text-[10px] text-brand-text/50 font-normal">Created yesterday</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-brand-navy">Vandana Joshi</span>
+<span class="text-[11px] text-brand-text/70">+91 98210 99421</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-semibold text-brand-text truncate">Full Cream Milk 500 ml (pack of 20)</p>
+<span class="text-[10px] text-brand-saffron font-bold">1 line item</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right whitespace-nowrap">
+<div class="font-bold text-sm text-brand-red line-through">₹2,720</div>
+<span class="text-[10px] text-brand-red font-medium">Refund logged</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Failed badge: #D64545 -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-brand-red/30 bg-red-50 text-brand-red text-[11px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-brand-red"></span>
+                    Failed
+                  </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Failed delivery -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 text-brand-red border border-brand-red/30 text-[11px] font-semibold">
+<span class="material-symbols-outlined text-xs">cancel</span>
+                    Failed
+                  </span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-[180px] text-brand-red text-[11px] leading-tight font-medium">
+                    Customer requested cancellation due to schedule clash.
+                  </div>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1.5">
+<button class="px-2 py-1 rounded-lg bg-brand-navy text-white text-[11px] font-semibold hover:bg-brand-navy-dark transition-colors">Details</button>
+<button class="px-2 py-1 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-[11px] font-semibold text-brand-text transition-colors">Audit</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer & Pagination Bar -->
+<div class="p-4 bg-white border-t border-[#ebdcc4] flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Left Info & Realtime Telemetry Sync -->
+<div class="flex items-center gap-4 text-xs text-brand-text/70">
+<span>Showing 1-6 of 142 orders · Page 1 of 24</span>
+<div class="h-4 w-px bg-[#ebdcc4]"></div>
+<div class="flex items-center gap-1.5 text-brand-green font-semibold">
+<span class="w-2 h-2 rounded-full bg-brand-green"></span>
+<span>Ledger auto-refresh active · Synced 10s ago</span>
+</div>
+</div>
+<!-- Right Controls: Rows Selector & Pagination -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 text-xs text-brand-text/70">
+<span>Rows per page:</span>
+<select class="py-1 px-2.5 border border-[#ebdcc4] rounded-lg bg-brand-bg text-brand-navy focus:outline-none focus:border-brand-navy text-xs font-semibold">
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-brand-text/50 disabled:opacity-40 transition-colors" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-brand-navy text-white text-xs font-bold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-brand-cream text-brand-text text-xs font-semibold">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-brand-cream text-brand-text text-xs font-semibold">3</button>
+<span class="px-1 text-brand-text/50 text-xs">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-brand-cream text-brand-text text-xs font-semibold">24</button>
+<button class="p-1.5 rounded-lg border border-[#ebdcc4] hover:bg-brand-cream text-brand-navy transition-colors">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Information & Policy Notice -->
+<div class="p-4 rounded-xl bg-brand-cream/50 border border-[#ebdcc4] flex items-start justify-between text-xs text-brand-text/80">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-brand-navy text-xl shrink-0">info</span>
+<div>
+<p class="font-bold text-brand-navy">Order Dispatch &amp; Payment Settlement Guidelines</p>
+<p>Customers with pending payments must settle invoices prior to dispatch confirmation. All delivery slots operate per standard logistics schedule.</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-bold text-brand-navy">Central Fulfillment Hub</span>
+<p class="text-[11px] text-brand-text/60">Updated automatically from dairy dispatch ledger</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

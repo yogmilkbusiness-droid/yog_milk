@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Append-Only Audit Log</title>
+<!-- Material Symbols Outlined font -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f3f0eb",
+            "primary-container": "#151d4d",
+            "primary-fixed-dim": "#bcc3fd",
+            "tertiary-fixed-dim": "#ffb68b",
+            "secondary": "#4f599c",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#190600",
+            "primary": "#000533",
+            "background": "#fcf9f3",
+            "surface-container-low": "#f6f3ed",
+            "on-primary-fixed": "#0e1647",
+            "surface-container-high": "#ebe8e2",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#753400",
+            "surface-bright": "#fcf9f3",
+            "on-background": "#1c1c18",
+            "outline-variant": "#c7c5d0",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#db6805",
+            "surface-tint": "#535b8e",
+            "on-secondary-fixed-variant": "#374183",
+            "secondary-fixed-dim": "#bbc3ff",
+            "outline": "#767680",
+            "on-secondary-fixed": "#051256",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-container": "#f0eee8",
+            "secondary-container": "#a9b4fe",
+            "surface": "#fcf9f3",
+            "tertiary-container": "#3c1700",
+            "inverse-primary": "#bcc3fd",
+            "surface-variant": "#e5e2dc",
+            "on-secondary-container": "#394485",
+            "on-surface": "#1c1c18",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dee0ff",
+            "on-surface-variant": "#46464f",
+            "on-primary-fixed-variant": "#3b4375",
+            "on-tertiary-fixed": "#321200",
+            "primary-fixed": "#dee0ff",
+            "surface-dim": "#dcdad4",
+            "inverse-surface": "#31312d",
+            "tertiary-fixed": "#ffdbc8",
+            "on-error": "#ffffff",
+            "on-primary-container": "#7e86bc"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-xl": "2.25rem",
+            "margin-tablet": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f6f3ed;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #767680;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md text-body-md min-h-screen flex selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- ==================== SIDE NAVIGATION (Shared Component) ==================== -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary-container text-surface border-r border-outline-variant/30 sticky top-0 z-50">
+<div class="h-full flex flex-col justify-between p-4 overflow-y-auto">
+<!-- Brand & Header -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2 pt-2">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/10 flex items-center justify-center border border-surface-container-lowest/20 shadow-inner">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex flex-col">
+<div class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface">Yog Milk</div>
+<div class="text-body-sm font-body-sm text-outline-variant">Vedic Pure Dairy Admin</div>
+</div>
+</div>
+<!-- Navigation Tabs: Exact JSON labels & active state logic -->
+<nav class="flex flex-col gap-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="local_shipping">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="group">group</span>
+<span>Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="inventory_2">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+<span>Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="bar_chart">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="calendar_clock">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<!-- 11. Audit log (ACTIVE - STRICT STYLE MATCH) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md transition-all duration-200 active:scale-[0.99] border-l-2 border-tertiary-fixed" href="#">
+<span class="material-symbols-outlined text-[20px] text-tertiary-fixed" data-icon="history" style="font-variation-settings: 'FILL' 1;">history</span>
+<span class="font-semibold tracking-wide">Audit log</span>
+<span class="ml-auto w-2 h-2 rounded-full bg-emerald-400"></span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Side Actions -->
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant/20">
+<!-- Support CTA -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-surface-container-lowest/5 text-surface font-label-md text-label-md hover:bg-surface-container-lowest/15 transition-colors" href="#">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary-container" data-icon="support_agent">support_agent</span>
+<span>Support Desk</span>
+</span>
+<span class="material-symbols-outlined text-[16px] text-outline-variant" data-icon="open_in_new">open_in_new</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/70 hover:text-surface font-body-sm text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="vital_signs">vital_signs</span>
+<span>System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/70 hover:text-surface font-body-sm text-body-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="logout">logout</span>
+<span>Log out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT AREA ==================== -->
+<div class="flex-1 flex flex-col min-w-0 bg-background overflow-x-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="docked full-width top-0 sticky z-40 bg-surface-container-lowest text-primary shadow-sm border-b border-surface-variant flex items-center justify-between px-6 py-3.5 w-full">
+<!-- Search Bar on Left -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary/30 transition-all" placeholder="Search immutable ledger, request ID, actor..." type="text"/>
+</div>
+</div>
+<!-- Brand / Center Title -->
+<div class="flex items-center gap-2">
+<span class="text-label-md font-label-md text-outline tracking-wider">WORKSPACE:</span>
+<span class="text-title-md font-title-md text-primary font-bold">Yog Milk Admin</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-bold ml-1">PRODUCTION</span>
+</div>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<!-- Ordering Open Pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200/80 shadow-xs">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-label-md font-label-md font-medium">Ordering Open · Closes 5:00 PM</span>
+</div>
+<!-- Notification Icon -->
+<button class="w-9 h-9 rounded-xl hover:bg-surface-container-low flex items-center justify-center text-on-surface-variant transition-colors relative" title="Notifications">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<div class="h-6 w-px bg-surface-container-highest"></div>
+<!-- Profile Cluster -->
+<div class="flex items-center gap-3 cursor-pointer pl-1 group">
+<img alt="Admin Master Profile Avatar" class="w-9 h-9 rounded-full object-cover border border-secondary-container" data-alt="A dignified close-up portrait of an Indian senior operations director wearing clean khadi linen attire in a bright sunlit modern dairy quality facility with pristine glass lab apparatus in soft morning daylight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwG3BIjfKPsI-r4HYYhqpCPSFHGEl4PAPnHa3p2l-U_nTXmf68-MV0GXX3Bik4By3rEplKcTJDnGLzbcP_pWtWfSGU6PZs_Ja-U68wafO9-RmE0TF5QvPHVRDYKVdntLqLag7smIojWFei7irhvKI_7Ssf9z12mCaG2RbRzyhMg-CHW-Pv9M2S_Edt-FG4I2AqndDcGWRiL78obX5cc8ToL34sjw-Igvk7KgBUtKg"/>
+<div class="flex flex-col text-left">
+<span class="text-label-md font-label-md text-primary group-hover:text-secondary transition-colors font-bold">Master Ops Root</span>
+<span class="text-body-sm font-body-sm text-outline">sec-ops@yogmilk.in</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Main Workspace Container -->
+<main class="p-8 max-w-[1400px] w-full mx-auto space-y-6">
+<!-- ==================== HEADER SECTION ==================== -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-2">
+<div class="max-w-3xl space-y-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]" data-icon="verified_user">verified_user</span>
+<span class="text-label-sm font-label-sm tracking-wider text-secondary uppercase font-bold">Cryptographic Ledger Node #4</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight font-serif">
+            Operations Audit Log &amp; Immutable Telemetry
+          </h1>
+<p class="text-body-md font-body-md text-on-surface-variant">
+            Append-only system record tracking all administrative overrides, status transitions, cold-chain events, and financial adjustments. Modifications or deletions are strictly prohibited.
+          </p>
+</div>
+<!-- Compliance Pill & Tamper Seal -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+<div class="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-surface-container-lowest border border-surface-container-highest shadow-sm text-on-surface">
+<div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-emerald-800 font-bold uppercase tracking-wider">SHA-256 Signed · Tamper-Evident Ledger</span>
+<span class="text-body-sm font-body-sm text-outline">No Edit / No Delete Allowed · Root Block #892,104</span>
+</div>
+</div>
+<!-- Ledger Export Action -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest border border-surface-container-highest text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+<span>Export Ledger</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-on-primary font-label-md text-label-md hover:bg-primary transition-all shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified">verified</span>
+<span>Verify Root Hash</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Metrics Strip / Integrity Anchors -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-container-highest shadow-sm flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[22px]" data-icon="database">database</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-outline">Total Append Entries</div>
+<div class="text-title-lg font-title-lg text-primary font-bold">148,924 Records</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-container-highest shadow-sm flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-700">
+<span class="material-symbols-outlined text-[22px]" data-icon="security_update_good">security_update_good</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-outline">Merkle Tree Sync</div>
+<div class="text-title-lg font-title-lg text-emerald-800 font-bold">100% Validated</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-container-highest shadow-sm flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined text-[22px]" data-icon="warning">warning</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-outline">Emergency Overrides (24h)</div>
+<div class="text-title-lg font-title-lg text-amber-800 font-bold">2 Recorded</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-surface-container-highest shadow-sm flex items-center gap-3.5">
+<div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]" data-icon="fingerprint">fingerprint</span>
+</div>
+<div>
+<div class="text-body-sm font-body-sm text-outline">Latest Signature Node</div>
+<div class="text-title-lg font-title-lg text-primary font-mono font-bold">sha256:7f0c...4b12</div>
+</div>
+</div>
+</div>
+<!-- ==================== FILTER & SEARCH TOOLBAR ==================== -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-surface-container-highest shadow-sm space-y-4">
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-3 items-center">
+<!-- Omni-search -->
+<div class="xl:col-span-4 relative">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="manage_search">manage_search</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary" placeholder="Search Request ID, Actor email, or Record ID..." type="text" value="req_98f21a48c"/>
+</div>
+<!-- Date Range Picker -->
+<div class="xl:col-span-2 relative">
+<button class="w-full flex items-center justify-between px-3.5 py-2.5 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface text-left hover:bg-surface-container transition-colors">
+<span class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="date_range">date_range</span>
+<span>Today (29 Oct 2026)</span>
+</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="arrow_drop_down">arrow_drop_down</span>
+</button>
+</div>
+<!-- Actor Filter -->
+<div class="xl:col-span-2">
+<select class="w-full px-3.5 py-2.5 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary">
+<option>All Actors</option>
+<option selected="">Vikram Mehta (Ops Lead)</option>
+<option>Ganesh P. (Kitchen Lead)</option>
+<option>System Allocator Daemon</option>
+<option>Razorpay Webhook</option>
+</select>
+</div>
+<!-- Action Type Filter -->
+<div class="xl:col-span-2">
+<select class="w-full px-3.5 py-2.5 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary">
+<option>All Action Types</option>
+<option>Status Change</option>
+<option>Payment Recorded</option>
+<option>Schedule Override</option>
+<option>Account Suspension</option>
+<option>Price Update</option>
+</select>
+</div>
+<!-- Entity Type Filter -->
+<div class="xl:col-span-2">
+<select class="w-full px-3.5 py-2.5 bg-surface-container-low border border-surface-container-highest rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary">
+<option>All Entities</option>
+<option>Orders</option>
+<option>Payments</option>
+<option>Deliveries</option>
+<option>Customers</option>
+<option>Products</option>
+<option>Schedule</option>
+</select>
+</div>
+</div>
+<!-- Quick Filter Chips & Reset -->
+<div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-surface-container-low">
+<div class="flex flex-wrap items-center gap-2">
+<span class="text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider mr-1">Quick Filters:</span>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300 font-label-sm text-label-sm font-semibold hover:bg-amber-200 transition-colors">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span>
+<span>Emergency Overrides (2)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant border border-surface-container-highest font-label-sm text-label-sm hover:bg-surface-container transition-colors">
+<span>Payment Waivers (0)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-100 text-red-900 border border-red-300 font-label-sm text-label-sm font-semibold hover:bg-red-200 transition-colors">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+<span>Failed Logins (4)</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container-low text-on-surface-variant border border-surface-container-highest font-label-sm text-label-sm hover:bg-surface-container transition-colors">
+<span>Cold-Chain Threshold Breaches (0)</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-body-sm font-body-sm text-outline">Showing <strong>5</strong> of <strong>148,924</strong> append records</span>
+<button class="text-body-sm font-body-sm text-secondary hover:underline font-semibold">Reset Filters</button>
+</div>
+</div>
+</div>
+<!-- ==================== APPEND-ONLY AUDIT TABLE ==================== -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-container-highest shadow-sm overflow-hidden flex flex-col">
+<!-- Table Banner Note -->
+<div class="bg-surface-container-low px-6 py-2.5 border-b border-surface-container-highest flex items-center justify-between text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="policy">policy</span>
+<span>Policy Enforced: All writes are write-once, cryptographically signed, and replicated to cold storage.</span>
+</div>
+<div class="text-label-sm font-label-sm text-outline font-mono">
+            CONSENSUS LATENCY: 12ms · PEERS: 5 OK
+          </div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-container-highest bg-surface-container-low/50 text-label-sm font-label-sm text-outline font-bold uppercase tracking-wider">
+<th class="py-3.5 px-4 pl-6">Time (IST / Relative)</th>
+<th class="py-3.5 px-4">Actor</th>
+<th class="py-3.5 px-4">Action</th>
+<th class="py-3.5 px-4">Record / Entity</th>
+<th class="py-3.5 px-4 min-w-[240px]">Before → After Diff</th>
+<th class="py-3.5 px-4 min-w-[260px]">Operational Reason / Note</th>
+<th class="py-3.5 px-4 pr-6">Request ID &amp; IP</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-highest text-body-sm font-body-sm">
+<!-- ROW 1 (Expanded / Inspected) -->
+<tr class="bg-amber-50/40 hover:bg-amber-50/70 transition-colors cursor-pointer border-l-4 border-l-secondary">
+<!-- 1. Time -->
+<td class="py-4 px-4 pl-6 align-top">
+<div class="font-semibold text-primary font-mono">29 Oct 2026, 08:15:22 IST</div>
+<div class="text-outline text-body-sm flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>24m ago</span>
+</div>
+</td>
+<!-- 2. Actor -->
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-surface flex items-center justify-center font-bold text-xs uppercase shrink-0">
+                      VM
+                    </div>
+<div>
+<div class="font-bold text-primary">Vikram Mehta</div>
+<div class="text-outline text-body-sm">Ops Lead (HQ)</div>
+</div>
+</div>
+</td>
+<!-- 3. Action Badge -->
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-100 text-blue-900 font-mono text-label-sm font-bold border border-blue-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="swap_horiz">swap_horiz</span>
+                    ORDER_STATUS_CHANGED
+                  </span>
+</td>
+<!-- 4. Record / Entity -->
+<td class="py-4 px-4 align-top">
+<a class="font-bold text-secondary hover:underline flex items-center gap-1 font-mono" href="#">
+                    Order #YM-2026-000123
+                    <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<div class="text-outline text-body-sm">A2 Desi Gir Cow Milk (2L)</div>
+</td>
+<!-- 5. Before -> After Diff -->
+<td class="py-4 px-4 align-top">
+<div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-highest space-y-1">
+<div class="flex items-center text-xs gap-1.5">
+<span class="text-outline font-semibold">Status:</span>
+<span class="px-2 py-0.5 rounded bg-gray-100 text-gray-700 line-through">Preparing</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="arrow_forward">arrow_forward</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Ready for delivery</span>
+</div>
+</div>
+</td>
+<!-- 6. Reason / Note -->
+<td class="py-4 px-4 align-top">
+<div class="text-on-surface">Cold-room bottled milk count verified at hub before morning van dispatch.</div>
+<div class="text-outline text-body-sm mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-emerald-700" data-icon="check_circle">check_circle</span>
+<span>Direct Supervisor Signature verified</span>
+</div>
+</td>
+<!-- 7. Request ID & IP -->
+<td class="py-4 px-4 pr-6 align-top font-mono">
+<div class="text-primary font-bold text-xs">req_98f21a48c</div>
+<div class="text-outline text-xs mt-0.5">103.21.144.82</div>
+<span class="inline-block mt-1 text-[10px] px-1.5 py-0.5 bg-surface-container-highest rounded text-on-surface-variant">TLS 1.3 · ECDSA</span>
+</td>
+</tr>
+<!-- DETAIL INSPECT DRAWER / EXPANDABLE ROW (For Row 1) -->
+<tr class="bg-surface-container-low/70">
+<td class="p-6" colspan="7">
+<div class="bg-surface-container-lowest border border-surface-container-highest rounded-xl p-5 shadow-inner">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-highest mb-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-[22px]" data-icon="data_object">data_object</span>
+<h4 class="font-title-md text-title-md text-primary font-bold">Immutable Payload Snapshot &amp; Cryptographic Sign Off</h4>
+<span class="px-2 py-0.5 rounded bg-surface-container text-outline text-xs font-mono">Offset: 0x9F41</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded-md flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span>
+                          Hash Match 100%
+                        </span>
+<button class="px-3 py-1 rounded-lg border border-surface-container-highest text-body-sm text-outline hover:text-primary hover:bg-surface-container transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="content_copy">content_copy</span>
+                          Copy Raw JSON
+                        </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- JSON Payload Diff -->
+<div>
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase mb-1">State Mutation JSON Diff</div>
+<div class="bg-inverse-surface text-inverse-on-surface p-4 rounded-xl font-mono text-xs overflow-x-auto leading-relaxed">
+<pre class="text-emerald-400"><code>{
+  "entity_id": "YM-2026-000123",
+  "entity_type": "ORDER",
+  "timestamp": "2026-10-29T02:45:22.418Z",
+  "mutated_fields": {
+    "status": {
+      "- old": "PREPARING",
+      "+ new": "READY_FOR_DELIVERY"
+    },
+    "batch_lot_number": "VDC-20261029-A2-04",
+    "cold_chain_temp_c": 3.8
+  },
+  "metadata": {
+    "station_id": "HUB-BLR-NORTH-01",
+    "ambient_temperature": "19.4C",
+    "bottle_seal_intact": true
+  }
+}</code></pre>
+</div>
+</div>
+<!-- Telemetry & Cryptographic Verification -->
+<div class="space-y-3">
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase mb-1">Chain Link Signatures</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-surface-container-highest space-y-2.5 text-xs font-mono">
+<div>
+<span class="text-outline block text-[11px]">PREVIOUS BLOCK HASH (PARENT)</span>
+<span class="text-primary select-all break-all">0x4a9e22c091fec089bb219808d92cb641a27e02b7db5b81a4d0e668612f0e0bc3</span>
+</div>
+<div>
+<span class="text-outline block text-[11px]">RECORD SIGNATURE (HMAC-SHA256)</span>
+<span class="text-emerald-800 font-bold select-all break-all">0x7f0c4b12ad319ef0052309da4c08920194bc0283c790184b2e817492cda49e01</span>
+</div>
+<div class="pt-2 border-t border-surface-container-highest flex items-center justify-between text-body-sm font-body-sm font-sans">
+<span class="text-outline">Signed by Secret Key:</span>
+<span class="font-bold text-primary font-mono">node-04-ops-vault-hsm</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm font-sans">
+<span class="text-outline">Enforcement Lock:</span>
+<span class="font-bold text-emerald-800">Immutable · Write-Once Protected</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<!-- 1. Time -->
+<td class="py-4 px-4 pl-6 align-top">
+<div class="font-semibold text-primary font-mono">29 Oct 2026, 07:44:09 IST</div>
+<div class="text-outline text-body-sm flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>55m ago</span>
+</div>
+</td>
+<!-- 2. Actor -->
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold text-xs uppercase shrink-0">
+                      GP
+                    </div>
+<div>
+<div class="font-bold text-primary">Ganesh P.</div>
+<div class="text-outline text-body-sm">Kitchen Lead</div>
+</div>
+</div>
+</td>
+<!-- 3. Action Badge -->
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 font-mono text-label-sm font-bold border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="payments">payments</span>
+                    CASH_PAYMENT_RECORDED
+                  </span>
+</td>
+<!-- 4. Record / Entity -->
+<td class="py-4 px-4 align-top">
+<a class="font-bold text-secondary hover:underline flex items-center gap-1 font-mono" href="#">
+                    Order #YM-2026-000098
+                    <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<div class="text-outline text-body-sm">Weekly Bilona Ghee (500ml)</div>
+</td>
+<!-- 5. Before -> After Diff -->
+<td class="py-4 px-4 align-top">
+<div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-highest space-y-1">
+<div class="flex items-center text-xs gap-1.5">
+<span class="text-outline font-semibold">Payment:</span>
+<span class="px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-medium">Unpaid (₹2,440)</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="arrow_forward">arrow_forward</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Paid (COD Vault)</span>
+</div>
+</div>
+</td>
+<!-- 6. Reason / Note -->
+<td class="py-4 px-4 align-top">
+<div class="text-on-surface">Driver cash physical handover deposited into vault slip #0941.</div>
+<div class="text-outline text-body-sm mt-1">Verified with physical slip signed by Logistics marshal.</div>
+</td>
+<!-- 7. Request ID & IP -->
+<td class="py-4 px-4 pr-6 align-top font-mono">
+<div class="text-primary font-bold text-xs">req_45a11c88d</div>
+<div class="text-outline text-xs mt-0.5">103.21.144.89</div>
+<span class="inline-block mt-1 text-[10px] px-1.5 py-0.5 bg-surface-container-highest rounded text-on-surface-variant">POS Terminal 02</span>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<!-- 1. Time -->
+<td class="py-4 px-4 pl-6 align-top">
+<div class="font-semibold text-primary font-mono">29 Oct 2026, 05:01:00 IST</div>
+<div class="text-outline text-body-sm flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>3h 38m ago</span>
+</div>
+</td>
+<!-- 2. Actor -->
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-xs uppercase shrink-0">
+                      SYS
+                    </div>
+<div>
+<div class="font-bold text-primary">System Allocator</div>
+<div class="text-outline text-body-sm">Automated Daemon</div>
+</div>
+</div>
+</td>
+<!-- 3. Action Badge -->
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-100 text-purple-900 font-mono text-label-sm font-bold border border-purple-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="tune">tune</span>
+                    SCHEDULE_GATE_TOGGLED
+                  </span>
+</td>
+<!-- 4. Record / Entity -->
+<td class="py-4 px-4 align-top">
+<a class="font-bold text-secondary hover:underline flex items-center gap-1 font-mono" href="#">
+                    Schedule Monday Cutoff
+                    <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<div class="text-outline text-body-sm">Route Zone: Bengaluru Core</div>
+</td>
+<!-- 5. Before -> After Diff -->
+<td class="py-4 px-4 align-top">
+<div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-highest space-y-1">
+<div class="flex items-center text-xs gap-1.5">
+<span class="text-outline font-semibold">Gate:</span>
+<span class="px-2 py-0.5 rounded bg-gray-100 text-gray-700">Closed</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="arrow_forward">arrow_forward</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Open (Daily Window)</span>
+</div>
+</div>
+</td>
+<!-- 6. Reason / Note -->
+<td class="py-4 px-4 align-top">
+<div class="text-on-surface">Dawn morning bottling schedule auto-opened after milk chilling telemetry pass.</div>
+<div class="text-outline text-body-sm mt-1">Farm pasteurization temperature benchmarked at 72.5°C.</div>
+</td>
+<!-- 7. Request ID & IP -->
+<td class="py-4 px-4 pr-6 align-top font-mono">
+<div class="text-primary font-bold text-xs">cron_89b77209a</div>
+<div class="text-outline text-xs mt-0.5">10.0.12.4 (Internal)</div>
+<span class="inline-block mt-1 text-[10px] px-1.5 py-0.5 bg-surface-container-highest rounded text-on-surface-variant">Worker CRON</span>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<!-- 1. Time -->
+<td class="py-4 px-4 pl-6 align-top">
+<div class="font-semibold text-primary font-mono">29 Oct 2026, 04:30:15 IST</div>
+<div class="text-outline text-body-sm flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>4h 09m ago</span>
+</div>
+</td>
+<!-- 2. Actor -->
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container text-surface flex items-center justify-center font-bold text-xs uppercase shrink-0">
+                      VM
+                    </div>
+<div>
+<div class="font-bold text-primary">Vikram Mehta</div>
+<div class="text-outline text-body-sm">Ops Lead (HQ)</div>
+</div>
+</div>
+</td>
+<!-- 3. Action Badge -->
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-100 text-amber-900 font-mono text-label-sm font-bold border border-amber-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="lock_open">lock_open</span>
+                    ACCOUNT_UNBLOCKED_OVERRIDE
+                  </span>
+</td>
+<!-- 4. Record / Entity -->
+<td class="py-4 px-4 align-top">
+<a class="font-bold text-secondary hover:underline flex items-center gap-1 font-mono" href="#">
+                    Customer #YM-CUST-8839
+                    <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<div class="text-outline text-body-sm">Ananya Sharma (Indiranagar)</div>
+</td>
+<!-- 5. Before -> After Diff -->
+<td class="py-4 px-4 align-top">
+<div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-highest space-y-1">
+<div class="flex items-center text-xs gap-1.5">
+<span class="text-outline font-semibold">Account:</span>
+<span class="px-2 py-0.5 rounded bg-red-100 text-red-800 line-through">Suspended (OTP Max)</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="arrow_forward">arrow_forward</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">Active</span>
+</div>
+</div>
+</td>
+<!-- 6. Reason / Note -->
+<td class="py-4 px-4 align-top">
+<div class="text-on-surface">Customer phone verification manually completed via verified outbound call.</div>
+<div class="text-outline text-body-sm mt-1">Ticket #SUPP-1920 reference linked.</div>
+</td>
+<!-- 7. Request ID & IP -->
+<td class="py-4 px-4 pr-6 align-top font-mono">
+<div class="text-primary font-bold text-xs">req_33d88192f</div>
+<div class="text-outline text-xs mt-0.5">103.21.144.82</div>
+<span class="inline-block mt-1 text-[10px] px-1.5 py-0.5 bg-surface-container-highest rounded text-on-surface-variant">Web Admin Direct</span>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<!-- 1. Time -->
+<td class="py-4 px-4 pl-6 align-top">
+<div class="font-semibold text-primary font-mono">28 Oct 2026, 23:45:00 IST</div>
+<div class="text-outline text-body-sm flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span>
+<span>8h 54m ago</span>
+</div>
+</td>
+<!-- 2. Actor -->
+<td class="py-4 px-4 align-top">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-blue-800 text-white flex items-center justify-center font-bold text-xs uppercase shrink-0">
+                      RP
+                    </div>
+<div>
+<div class="font-bold text-primary">Razorpay Webhook</div>
+<div class="text-outline text-body-sm">Payment Gateway</div>
+</div>
+</div>
+</td>
+<!-- 3. Action Badge -->
+<td class="py-4 px-4 align-top">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-900 font-mono text-label-sm font-bold border border-emerald-200">
+<span class="material-symbols-outlined text-[14px]" data-icon="credit_card">credit_card</span>
+                    AUTOPAY_MANDATE_CHARGED
+                  </span>
+</td>
+<!-- 4. Record / Entity -->
+<td class="py-4 px-4 align-top">
+<a class="font-bold text-secondary hover:underline flex items-center gap-1 font-mono" href="#">
+                    Payment #pay_Oq8371Xkd
+                    <span class="material-symbols-outlined text-[14px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<div class="text-outline text-body-sm">Monthly Subscription Recharge</div>
+</td>
+<!-- 5. Before -> After Diff -->
+<td class="py-4 px-4 align-top">
+<div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-highest space-y-1">
+<div class="flex items-center text-xs gap-1.5">
+<span class="text-outline font-semibold">Ledger:</span>
+<span class="px-2 py-0.5 rounded bg-gray-100 text-gray-700">₹0.00 Balance</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="arrow_forward">arrow_forward</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-bold">+₹4,500.00 Settled</span>
+</div>
+</div>
+</td>
+<!-- 6. Reason / Note -->
+<td class="py-4 px-4 align-top">
+<div class="text-on-surface">Auto-debit mandate executed successfully via UPI AutoPay for 30-day milk subscription.</div>
+<div class="text-outline text-body-sm mt-1">Bank RRN: 629019283019</div>
+</td>
+<!-- 7. Request ID & IP -->
+<td class="py-4 px-4 pr-6 align-top font-mono">
+<div class="text-primary font-bold text-xs">req_wh_882910</div>
+<div class="text-outline text-xs mt-0.5">52.66.192.102</div>
+<span class="inline-block mt-1 text-[10px] px-1.5 py-0.5 bg-surface-container-highest rounded text-on-surface-variant">Webhook Verified</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- ==================== TABLE PAGINATION & LEDGER INTEGRITY FOOTER ==================== -->
+<div class="px-6 py-4 border-t border-surface-container-highest bg-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="text-body-sm font-body-sm text-outline">Records per page:</span>
+<select class="px-2.5 py-1 bg-surface-container-lowest border border-surface-container-highest rounded-lg text-body-sm font-body-sm text-on-surface focus:outline-none">
+<option>25</option>
+<option>50</option>
+<option>100</option>
+<option>500</option>
+</select>
+<span class="text-body-sm font-body-sm text-outline">Page 1 of 5,957</span>
+</div>
+<!-- Pagination Controls -->
+<div class="flex items-center gap-1.5">
+<button class="px-3 py-1.5 rounded-lg border border-surface-container-highest bg-surface-container-lowest text-outline hover:text-primary disabled:opacity-40 transition-colors text-body-sm font-medium" disabled="">
+              First
+            </button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-container-highest bg-surface-container-lowest text-outline hover:text-primary disabled:opacity-40 transition-colors text-body-sm font-medium" disabled="">
+              Previous
+            </button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-surface text-body-sm font-bold flex items-center justify-center">
+              1
+            </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface text-body-sm font-medium flex items-center justify-center transition-colors">
+              2
+            </button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface text-body-sm font-medium flex items-center justify-center transition-colors">
+              3
+            </button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface text-body-sm font-medium flex items-center justify-center transition-colors">
+              5957
+            </button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-container-highest bg-surface-container-lowest text-primary hover:bg-surface-container transition-colors text-body-sm font-medium">
+              Next
+            </button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-container-highest bg-surface-container-lowest text-primary hover:bg-surface-container transition-colors text-body-sm font-medium">
+              Last
+            </button>
+</div>
+</div>
+</div>
+<!-- ==================== INSTITUTIONAL PROVENANCE GUARANTEE CARD ==================== -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-container-highest p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<h3 class="text-title-lg font-title-lg text-primary font-bold">Vedic Dairy Institutional Provenance Guarantee</h3>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1 max-w-3xl">
+              This log enforces strict non-repudiation. Every morning milking record, chilling temperature reading (3.8°C), and unhomogenized glass bottle dispatch is indelibly timestamped before consumer doorstep delivery across Bengaluru.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<div class="text-right">
+<div class="text-label-sm font-label-sm text-outline font-bold uppercase">Next Checkpoint Batch</div>
+<div class="text-title-md font-title-md text-primary font-bold font-mono">11:00:00 IST</div>
+</div>
+<button class="px-4 py-2.5 rounded-xl border border-secondary text-secondary font-label-md text-label-md hover:bg-secondary/10 transition-colors">
+            Audit Handbook (SOP-09)
+          </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

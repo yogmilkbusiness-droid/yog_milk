@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ordering Window &amp; Operational Schedule - Yog Milk Admin</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#bcc3fd",
+            "inverse-surface": "#31312d",
+            "surface-variant": "#e5e2dc",
+            "surface-container-low": "#f6f3ed",
+            "outline": "#767680",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#7e86bc",
+            "on-primary-fixed-variant": "#3b4375",
+            "tertiary-container": "#3c1700",
+            "tertiary-fixed-dim": "#ffb68b",
+            "surface-bright": "#fcf9f3",
+            "primary": "#000533",
+            "background": "#fcf9f3",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#753400",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ebe8e2",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#dee0ff",
+            "on-primary-fixed": "#0e1647",
+            "on-secondary-container": "#394485",
+            "secondary-container": "#a9b4fe",
+            "surface-container-highest": "#e5e2dc",
+            "secondary-fixed-dim": "#bbc3ff",
+            "primary-container": "#151d4d",
+            "on-surface": "#1c1c18",
+            "on-tertiary-fixed": "#321200",
+            "secondary": "#4f599c",
+            "primary-fixed": "#dee0ff",
+            "on-secondary-fixed-variant": "#374183",
+            "on-tertiary-container": "#db6805",
+            "tertiary-fixed": "#ffdbc8",
+            "primary-fixed-dim": "#bcc3fd",
+            "on-surface-variant": "#46464f",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#c7c5d0",
+            "on-background": "#1c1c18",
+            "on-error": "#ffffff",
+            "surface-tint": "#535b8e",
+            "surface-dim": "#dcdad4",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "tertiary": "#190600",
+            "surface": "#fcf9f3",
+            "on-secondary-fixed": "#051256",
+            "surface-container": "#f0eee8",
+            "inverse-on-surface": "#f3f0eb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2.25rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(240, 238, 232, 0.4);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased min-h-screen flex overflow-hidden selection:bg-secondary-container selection:text-primary">
+<!-- ========================================================================= -->
+<!-- LEFT SIDEBAR (MANDATORY JSON ANCHOR: SideNavBar)                          -->
+<!-- ========================================================================= -->
+<aside class="bg-primary-container text-surface docked h-screen w-64 flex flex-col justify-between shrink-0 border-r border-outline-variant/30 select-none z-30">
+<div class="h-full flex flex-col justify-between p-4">
+<!-- Brand Header -->
+<div class="space-y-6">
+<div class="flex items-center gap-3 px-2 pt-1 pb-2">
+<!-- Drop Lotus Sacred Brand Mark -->
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/10 border border-surface/20 flex items-center justify-center text-surface shadow-sm">
+<span class="material-symbols-outlined text-tertiary-fixed text-2xl" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<div class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface leading-tight">Yog Milk</div>
+<div class="text-label-sm font-label-sm text-surface-variant/80 tracking-wider">Vedic Pure Dairy Admin</div>
+</div>
+</div>
+<!-- System Destinations (12 tabs, active: Ordering schedule) -->
+<nav aria-label="Main Navigation" class="space-y-1 overflow-y-auto max-h-[calc(100vh-270px)] pr-1 custom-scroll">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="receipt_long">receipt_long</span>
+<span class="">Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="payments">payments</span>
+<span class="">Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="local_shipping">local_shipping</span>
+<span class="">Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="group">group</span>
+<span class="">Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="inventory_2">inventory_2</span>
+<span class="">Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="description">description</span>
+<span class="">Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="bar_chart">bar_chart</span>
+<span class="">Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="notifications">notifications</span>
+<span class="">Notifications</span>
+</a>
+<!-- 10. Ordering schedule (ACTIVE STATE LOCKED) -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md transition-colors duration-150 relative" href="#">
+<span class="absolute left-0 top-2 bottom-2 w-1 bg-tertiary-fixed-dim rounded-r"></span>
+<span class="material-symbols-outlined text-lg text-tertiary-fixed" data-icon="calendar_clock" style="font-variation-settings: 'FILL' 1;">calendar_clock</span>
+<span class="font-title-md text-title-md">Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="history">history</span>
+<span class="">Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Footer (System Health, Log out, Support CTA) -->
+<div class="pt-4 border-t border-surface-variant/10 space-y-2">
+<a class="flex items-center justify-between px-3 py-2 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg" data-icon="vital_signs">vital_signs</span>
+<span class="">System Health</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-[#1F9D63] animate-pulse"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="logout">logout</span>
+<span class="">Log out</span>
+</a>
+<!-- Support Desk Action Button -->
+<button class="w-full mt-2 py-2 px-3 bg-surface-container-lowest/10 hover:bg-surface-container-lowest/15 border border-surface/15 rounded-xl text-surface font-label-md text-label-md flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="support_agent">support_agent</span>
+<span class="">Support Desk</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- MAIN WORKSPACE CONTAINER                                                  -->
+<!-- ========================================================================= -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- ======================================================================= -->
+<!-- TOP APP BAR (MANDATORY JSON ANCHOR: TopNavBar)                          -->
+<!-- ======================================================================= -->
+<header class="flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest docked full-width top-0 sticky z-20 shadow-sm border-b border-surface-variant">
+<!-- Omni Search Area (search_bar: on_left) -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 bg-surface-container-low border border-outline-variant/60 rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary transition-all" placeholder="Search orders, subscribers, dispatch routes..." type="text">
+<kbd class="absolute right-3 top-1/2 -translate-y-1/2 text-label-sm font-label-sm px-1.5 py-0.5 rounded bg-surface border border-outline-variant text-outline">⌘K</kbd>
+</div>
+</div>
+<!-- Right Header Actions (Trailing primary status, bell, user avatar) -->
+<div class="flex items-center gap-4">
+<!-- Live Cutoff Status Badge (Trailing Primary Action from JSON) -->
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200"><span class="w-2 h-2 rounded-full bg-emerald-500"></span>Ordering Open · Closes 5:00 PM</span>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-tertiary-fixed-dim ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Master Operations Lead Avatar & Profile -->
+<div class="flex items-center gap-3 pl-1">
+<div class="w-9 h-9 rounded-full bg-primary-container text-surface flex items-center justify-center font-title-md text-title-md ring-2 ring-surface-variant shadow-sm overflow-hidden">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</div>
+<div class="text-left hidden lg:block">
+<div class="text-label-md font-label-md text-primary leading-tight">Vikram Mehta</div>
+<div class="text-body-sm font-body-sm text-outline">Operations Lead</div>
+</div>
+</div>
+</div>
+</header>
+<!-- ======================================================================= -->
+<!-- SCROLLABLE PAGE CANVAS (EDITORIAL WELLNESS OPERATIONAL DESK)             -->
+<!-- ======================================================================= -->
+<main class="flex-1 overflow-y-auto px-8 py-6 space-y-6 custom-scroll">
+<!-- 1. PAGE HEADER -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-2 border-b border-surface-variant/40">
+<div><div class="flex items-center gap-3 mb-1"><h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">Ordering Schedule</h1></div><p class="text-body-md font-body-md text-on-surface-variant max-w-3xl">Configure weekly hours and scheduled holiday closures. Timezone: Asia/Kolkata (IST · UTC+05:30)</p></div>
+<div class="flex items-center gap-3 shrink-0">
+<!-- Fixed Timezone Badge -->
+<div class="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-surface-container-low border border-surface-variant text-body-sm font-body-sm text-on-surface-variant shadow-sm">
+<span class="material-symbols-outlined text-base text-secondary" data-icon="language">language</span>
+<span class="">Asia/Kolkata (UTC+05:30) · System Clock Synced</span>
+</div>
+<!-- Primary Save Action CTA -->
+<button class="px-5 py-2.5 rounded-xl bg-primary-container text-on-primary hover:bg-primary-container/90 transition-all font-label-lg text-label-lg shadow-sm flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="save">save</span>
+<span class="">Save Schedule Changes</span>
+</button>
+</div>
+</div>
+<!-- 2. MASTER OPERATIONAL SWITCH CARD (EMERGENCY OVERRIDE & LIVE GATE) -->
+<section class="bg-surface-container-lowest rounded-2xl border border-[#E7E2D6] p-6 shadow-sm"><div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center"><div class="md:col-span-1"><label class="block text-title-md font-title-md text-primary">Storefront Cutoff Header Banner</label><span class="text-body-sm font-body-sm text-outline">Live microcopy broadcasted in customer header banner</span></div><div class="md:col-span-2"><div class="relative"><input class="w-full h-11 px-4 pr-24 rounded-xl border border-[#E7E2D6] bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary focus:ring-1 focus:ring-secondary focus:outline-none" type="text" value="Ordering open · closes today 5:00 PM"><span class="absolute right-3 top-1/2 -translate-y-1/2 text-label-sm font-label-sm px-2 py-1 bg-surface-container-low text-on-surface-variant rounded border border-surface-variant">Live Preview</span></div></div></div></section>
+<!-- 3. WEEKLY OPERATIONAL HOURS GRID & DISPATCH SLOTS -->
+<section class="bg-surface-container-lowest rounded-2xl border border-[#E7E2D6] p-6 shadow-sm space-y-5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-title-lg font-title-lg text-primary">Weekly Ordering Schedule &amp; Dispatch Pairing</h2>
+<p class="text-body-sm font-body-sm text-outline">Defines the daily customer order creation cutoff before logistics locks the morning van manifesting.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container-low text-label-md font-label-md text-on-surface transition-colors">
+              Apply to All Weekdays
+            </button>
+<button class="px-3 py-1.5 rounded-lg border border-surface-variant hover:bg-surface-container-low text-label-md font-label-md text-on-surface transition-colors">
+              Restore Standard Vedic Dairy Hours
+            </button>
+</div>
+</div>
+<!-- Tabular Grid -->
+<div class="overflow-x-auto rounded-xl border border-surface-variant">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-label-md font-label-md text-on-surface-variant border-b border-surface-variant">
+<th class="py-3 px-4">Day of Week</th>
+<th class="py-3 px-4">Storefront Open</th>
+<th class="py-3 px-4">Cutoff / Gate Close</th>
+
+<th class="py-3 px-4 text-center">Day Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/60 font-body-md text-body-md">
+<!-- Monday -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary">Monday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm font-semibold text-primary">05:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+<!-- Tuesday -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary">Tuesday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm font-semibold text-primary">05:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+<!-- Wednesday -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary">Wednesday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm font-semibold text-primary">05:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+<!-- Thursday -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary">Thursday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm font-semibold text-primary">05:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+<!-- Friday -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary">Friday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm font-semibold text-primary">05:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+<!-- Saturday -->
+<tr class="hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary">Saturday</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm font-semibold text-primary">05:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+<!-- Sunday (Special Early Cutoff) -->
+<tr class="bg-surface-container-low/40 hover:bg-surface-container-lowest/80 transition-colors">
+<td class="py-3.5 px-4 font-title-md text-title-md text-primary flex items-center gap-2">
+<span class="">Sunday</span>
+<span class="text-label-sm font-label-sm px-1.5 py-0.5 rounded bg-tertiary-fixed text-tertiary-container font-semibold">Special Cutoff</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-surface border border-outline-variant/60 text-body-sm font-body-sm">07:00 AM</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2.5 py-1 rounded bg-[#FFF4DB] border border-[#E8A317] text-body-sm font-body-sm font-bold text-[#753400]">01:00 PM</span>
+</td>
+
+<td class="py-3.5 px-4 text-center">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-label-sm font-label-sm bg-[#E3F6EC] text-[#1F9D63] border border-[#1F9D63]/30">Open</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- 4. TWO-COLUMN BENTO: HOLIDAY CALENDAR + BROADCAST GATE -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- 4A. HOLIDAY CALENDAR & SABBATICAL SCHEDULE (7 Cols) -->
+<section class="lg:col-span-7 bg-surface-container-lowest rounded-2xl border border-[#E7E2D6] p-6 shadow-sm space-y-5"><div class="flex items-center justify-between pb-4 border-b border-surface-variant/40"><div><h2 class="text-title-lg font-title-lg text-primary">Scheduled Holiday &amp; Exception Closures</h2><p class="text-body-sm font-body-sm text-outline">Pre-scheduled dates when storefront ordering is closed.</p></div><button class="px-3.5 py-2 rounded-xl bg-surface-container-low hover:bg-surface-container text-primary font-label-md text-label-md border border-surface-variant flex items-center gap-1.5 transition-colors"><span class="material-symbols-outlined text-base" data-icon="add">add</span><span class="">Add Holiday Closure</span></button></div><div class="overflow-x-auto rounded-xl border border-surface-variant"><table class="w-full text-left border-collapse"><thead><tr class="bg-surface-container-low text-label-md font-label-md text-on-surface-variant border-b border-surface-variant"><th class="py-3 px-4">Date</th><th class="py-3 px-4">Occasion / Scheduled Closure Reason</th><th class="py-3 px-4 text-center">Storefront Status</th></tr></thead><tbody class="divide-y divide-surface-variant/60 font-body-md text-body-md"><tr class="hover:bg-surface-container-lowest/80 transition-colors"><td class="py-3.5 px-4 font-semibold text-primary text-body-sm">Nov 1, 2026</td><td class="py-3.5 px-4"><div class="font-title-md text-title-md text-primary">Diwali</div><span class="text-body-sm text-on-surface-variant">Gaushala Annual Worship &amp; Special Festival</span></td><td class="py-3.5 px-4 text-center"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-semibold">Closed</span></td></tr><tr class="hover:bg-surface-container-lowest/80 transition-colors"><td class="py-3.5 px-4 font-semibold text-primary text-body-sm">Mar 25, 2026</td><td class="py-3.5 px-4"><div class="font-title-md text-title-md text-primary">Holi</div><span class="text-body-sm text-on-surface-variant">Spring Holy Festival Closure</span></td><td class="py-3.5 px-4 text-center"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-semibold">Closed</span></td></tr><tr class="hover:bg-surface-container-lowest/80 transition-colors"><td class="py-3.5 px-4 font-semibold text-primary text-body-sm">Aug 15, 2026</td><td class="py-3.5 px-4"><div class="font-title-md text-title-md text-primary">Annual Dairy Overhaul</div><span class="text-body-sm text-on-surface-variant">Logistics Cold Chain &amp; Equipment Maintenance</span></td><td class="py-3.5 px-4 text-center"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-label-sm font-label-sm bg-error-container text-on-error-container font-semibold">Closed</span></td></tr></tbody></table></div></section>
+<!-- 4B. CUSTOMER BROADCAST & AUDIT GATE (5 Cols) -->
+<section class="lg:col-span-5 bg-surface-container-lowest rounded-2xl border border-[#E7E2D6] p-6 shadow-sm space-y-5"><div class="pb-3 border-b border-surface-variant/40"><h2 class="text-title-lg font-title-lg text-primary">Customer Notifications</h2><p class="text-body-sm font-body-sm text-outline">Broadcast schedule updates to subscribed customer accounts.</p></div><div class="space-y-4"><label class="flex items-start gap-3 p-3.5 rounded-xl border border-secondary-container bg-surface cursor-pointer select-none"><input checked="" class="mt-1 w-4 h-4 text-primary rounded border-outline-variant focus:ring-secondary" type="checkbox"><div><span class="font-title-md text-title-md text-primary block leading-tight">Notify customers who enabled ordering alerts</span><span class="text-body-sm font-body-sm text-on-surface-variant mt-0.5 block">Send push notification and banner update upon saving schedule changes.</span></div></label><div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-variant space-y-1.5"><span class="text-label-sm font-label-sm text-outline uppercase tracking-wider block">Notification Preview</span><div class="flex items-center gap-2 text-body-sm font-body-sm text-primary"><span class="material-symbols-outlined text-base text-secondary" data-icon="notifications">notifications</span><span class="italic">“Ordering schedule updated: Check revised cutoff times for your area.”</span></div></div><div class="pt-2"><button class="w-full py-2.5 px-4 rounded-xl bg-primary-container text-on-primary hover:bg-primary-container/90 transition-all font-label-lg text-label-lg shadow-sm flex items-center justify-center gap-2 active:scale-95"><span class="material-symbols-outlined text-lg" data-icon="save">save</span><span class="">Save Schedule Changes</span></button></div></div></section>
+</div>
+<!-- 5. RECENT SCHEDULE AUDIT HISTORY PANEL -->
+<section class="bg-surface-container-lowest rounded-2xl border border-[#E7E2D6] p-6 shadow-sm space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-surface-variant/40">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-xl text-primary" data-icon="history">history</span>
+<h2 class="text-title-lg font-title-lg text-primary">Recent Operational Schedule Audit History</h2>
+</div>
+<span class="text-body-sm font-body-sm text-outline">Immutable ledger of gate switches and cutoff updates</span>
+</div>
+<div class="divide-y divide-surface-variant/50">
+<!-- Audit Entry 1 -->
+<div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-body-sm font-body-sm">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-secondary-container/40 text-on-secondary-container flex items-center justify-center font-bold text-label-sm shrink-0">
+                VM
+              </div>
+<div>
+<span class="font-title-md text-title-md text-primary">Vikram Mehta (Ops Lead)</span>
+<span class="text-on-surface-variant">adjusted Wednesday cutoff from 04:30 PM to 05:00 PM</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-outline shrink-0">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant/40 text-label-sm font-label-sm text-[#1F9D63]">Notification sent</span>
+<span class="">27 Oct 2026, 09:15 AM</span>
+</div>
+</div>
+<!-- Audit Entry 2 -->
+<div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-body-sm font-body-sm">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-outline flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-sm" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-primary">System Daemon</span>
+<span class="text-on-surface-variant">executed scheduled 5:00 PM automatic order gate freeze</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-outline shrink-0">
+<span class="px-2 py-0.5 rounded bg-surface border border-outline-variant/40 text-label-sm font-label-sm">Automated</span>
+<span class="">28 Oct 2026, 05:00 PM</span>
+</div>
+</div>
+<!-- Audit Entry 3 -->
+<div class="py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-body-sm font-body-sm">
+<div class="flex items-center gap-3">
+<div class="w-7 h-7 rounded-full bg-tertiary-fixed text-tertiary-container flex items-center justify-center font-bold text-label-sm shrink-0">
+                AP
+              </div>
+<div>
+<span class="font-title-md text-title-md text-primary">Anand Patil (Admin)</span>
+<span class="text-on-surface-variant">toggled emergency freeze for 22 mins during reefer chiller calibration</span>
+</div>
+</div>
+<div class="flex items-center gap-3 text-outline shrink-0">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container text-label-sm font-label-sm">Emergency Override</span>
+<span class="">24 Oct 2026, 11:42 AM</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Spacer -->
+<div class="h-6"></div>
+</main>
+</div>
+
+
+</body></html>

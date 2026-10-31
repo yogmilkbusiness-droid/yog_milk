@@ -1,0 +1,335 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Checkout - Yog Milk</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#dde1f8",
+            "on-primary-fixed-variant": "#374183",
+            "outline-variant": "#c6c5d2",
+            "on-primary-fixed": "#051256",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary": "#994700",
+            "inverse-surface": "#2b3041",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface-bright": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container": "#eaedff",
+            "tertiary": "#261a00",
+            "error": "#ba1a1a",
+            "on-background": "#161b2b",
+            "on-tertiary-fixed": "#251a00",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#bbc3ff",
+            "tertiary-container": "#3f2e00",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#ba9331",
+            "background": "#faf8ff",
+            "surface-tint": "#4f599c",
+            "on-secondary-container": "#602a00",
+            "surface": "#faf8ff",
+            "on-secondary-fixed-variant": "#753400",
+            "on-surface": "#161b2b",
+            "outline": "#767681",
+            "primary-fixed": "#dee0ff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "surface-container-low": "#f2f3ff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "on-primary-container": "#8994db",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-high": "#e3e7fe",
+            "surface-dim": "#d5d9ef",
+            "secondary-fixed-dim": "#ffb68b",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center selection:bg-surface-container-high selection:text-primary min-h-screen">
+<!-- Mobile Frame Container (Targeting 390px x 844px flow) -->
+<main class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col pb-36 shadow-2xl">
+<!-- Top App Bar (Task-Focused: Sub-page with Back Navigation) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-4 h-16 flex items-center justify-between shadow-sm">
+<button aria-label="Back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<span class="font-title-lg text-title-lg text-primary tracking-tight">Checkout</span>
+<span class="font-label-sm text-label-sm text-outline tracking-wider">Yog Milk • Sattvic Batch</span>
+</div>
+<div class="w-10 h-10 flex items-center justify-center text-primary/40">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+</header>
+<!-- Main Scrollable Flow -->
+<div class="px-4 pt-3 space-y-4 flex-1">
+<!-- Prominent Warning Banner: Ordering Closed -->
+<section class="bg-tertiary-fixed/35 rounded-[20px] p-4 relative overflow-hidden shadow-sm"><div class="absolute -right-4 -bottom-4 opacity-10 pointer-events-none text-tertiary"><span class="material-symbols-outlined text-[108px]" style="font-variation-settings: 'FILL' 1;">wb_twilight</span></div><div class="flex items-start gap-3"><div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim/50 flex-shrink-0 flex items-center justify-center text-on-tertiary-fixed-variant shadow-inner"><span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">schedule</span></div><div class="flex-1 pr-1"><div class="flex items-center gap-1.5 mb-1"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-secondary text-on-secondary">BATCH FINALIZED</span><span class="font-label-sm text-label-sm text-on-tertiary-fixed-variant">Dawn Cycle</span></div><h2 class="font-title-md text-title-md text-tertiary leading-tight mb-1.5">The ordering window is closed. We'll notify you when ordering opens again.</h2><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Opens tomorrow at <strong class="text-tertiary font-semibold">7:00 AM</strong></p><div class="mt-3 pt-3 border-t border-tertiary/10 flex items-center justify-between"><span class="font-label-md text-label-md text-primary font-medium flex items-center gap-1.5"><span class="material-symbols-outlined text-[16px] text-secondary">notifications_active</span>Notify me when ordering opens</span><label class="relative inline-flex items-center cursor-pointer"><input type="checkbox" checked="" class="sr-only peer"><div class="w-9 h-5 bg-outline-variant/60 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-surface-container-lowest after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div></label></div></div></div></section>
+<!-- Delivery Address Card (Read-only) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 shadow-sm">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">pin_drop</span>
+<h3 class="font-title-md text-title-md text-primary">Delivery Address</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline bg-surface-container px-2 py-0.5 rounded-full">Primary</span>
+</div>
+<div class="bg-surface-container-low/60 rounded-xl p-3 flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">store</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md text-on-surface font-semibold leading-tight">Sharma General Store</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">College Road, Nashik, Maharashtra 422005</p>
+<div class="mt-2 flex items-center gap-2 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span class="">+91 98230 •••••</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Selected Payment Method (Dimmed State) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 shadow-sm opacity-60">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[20px]">account_balance_wallet</span>
+<h3 class="font-title-md text-title-md text-outline">Payment Method</h3>
+</div>
+<span class="font-label-sm text-label-sm text-outline">Locked</span>
+</div>
+<div class="space-y-2">
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/40 cursor-not-allowed">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[18px]">radio_button_checked</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface-variant font-medium">UPI / Online Gateway</p>
+<p class="font-body-sm text-body-sm text-outline">GPay, PhonePe, Cards, NetBanking</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">lock</span>
+</label>
+<label class="flex items-center justify-between p-3 rounded-xl bg-surface-container-low/20 cursor-not-allowed">
+<div class="flex items-center gap-3">
+<div class="w-5 h-5 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-[18px]">radio_button_unchecked</span>
+</div>
+<div>
+<p class="font-label-lg text-label-lg text-outline">Cash on Dawn Delivery</p>
+<p class="font-body-sm text-body-sm text-outline">Payment stays pending until our team confirms collection.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">lock</span>
+</label>
+</div>
+</section>
+<!-- Order Summary Card (3 Items · ₹4,260 visible & saved) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 shadow-sm">
+<div class="flex items-center justify-between mb-3 pb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">inventory_2</span>
+<h3 class="font-title-md text-title-md text-primary">Saved Cart Summary</h3>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary bg-primary-container px-2 py-0.5 rounded-full">3 Items</span>
+</div>
+<!-- Item 1 -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high/60 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">water_drop</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface font-semibold text-[13px] leading-tight">Gir Cow A2 Raw Milk (5L)</p>
+<p class="font-body-sm text-body-sm text-outline">Glass Bottled • 4.8% Churned Fat</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-md text-title-md text-primary">₹750</span>
+<p class="font-label-sm text-label-sm text-outline">Qty: 1</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-tertiary-fixed/30 flex items-center justify-center text-on-tertiary-fixed-variant flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">local_fire_department</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface font-semibold text-[13px] leading-tight">Vedic Bilona A2 Desi Cow Ghee</p>
+<p class="font-body-sm text-body-sm text-outline">Earthen Pot Curd Churn (1000ml)</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-md text-title-md text-primary">₹3,200</span>
+<p class="font-label-sm text-label-sm text-outline">Qty: 1</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between py-2">
+<div class="flex items-center gap-2.5">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high/60 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">bakery_dining</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface font-semibold text-[13px] leading-tight">Organic Malai Paneer (500g)</p>
+<p class="font-body-sm text-body-sm text-outline">Freshly Pressed • Zero Starch</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-md text-title-md text-primary">₹310</span>
+<p class="font-label-sm text-label-sm text-outline">Qty: 1</p>
+</div>
+</div>
+<!-- Breakdown -->
+<div class="mt-3 pt-3 space-y-1.5 font-body-sm text-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span class="">Cart Subtotal</span>
+<span class="font-medium text-on-surface">₹4,260</span>
+</div>
+<div class="flex justify-between text-secondary">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+              Dawn Chilled Delivery
+            </span>
+<span class="font-semibold">FREE</span>
+</div>
+<div class="flex justify-between text-outline text-[11px]">
+<span class="">Vedic Quality Guarantee &amp; Traceability</span>
+<span class="">Included</span>
+</div>
+</div>
+</section>
+<!-- Purity Guarantee Mini-Banner -->
+<section class="bg-surface-container-low rounded-xl p-3 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Every dawn delivery comes with batch purity lab tests and zero-hormone guarantee.
+        </p>
+</section>
+</div>
+<!-- Sticky Bottom Bar -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] bg-surface-container-lowest/95 backdrop-blur-md px-4 py-3 shadow-[0_-8px_24px_rgba(5,18,86,0.06)] z-50">
+<!-- Total and Cart Status -->
+<div class="flex items-baseline justify-between mb-2">
+<div class="flex items-baseline gap-1.5">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Payable</span>
+<span class="font-headline-sm text-headline-sm text-primary font-bold">₹4,260</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">bookmark</span> 3 Items Saved
+        </span>
+</div>
+<!-- Primary Button (DISABLED / Ordering Closed) -->
+<button class="w-full h-12 rounded-[14px] bg-outline-variant/60 text-on-surface-variant font-label-lg text-label-lg flex items-center justify-center gap-2 cursor-not-allowed select-none opacity-85" disabled="" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_clock</span>
+<span class="">Ordering Closed · Reopens 7:00 AM</span>
+</button>
+<!-- Reassurance Helper Text -->
+<p class="text-center font-body-sm text-[11px] text-on-surface-variant/90 mt-1.5">
+        Your cart items are safely reserved for the next opening window.
+      </p>
+<!-- Secondary Navigation Actions -->
+<div class="mt-2.5 grid grid-cols-2 gap-2">
+<button class="h-10 rounded-[14px] bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">home</span>
+<span class="">Return to Home</span>
+</button>
+<button class="h-10 rounded-[14px] border border-primary-container text-primary-container hover:bg-surface-container text-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[16px]">storefront</span>
+<span class="">Browse Catalog</span>
+</button>
+</div>
+</div>
+</main>
+
+
+</body></html>

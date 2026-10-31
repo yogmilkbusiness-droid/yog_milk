@@ -1,0 +1,507 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Empty States Gallery</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary-container": "#3f2e00",
+            "inverse-surface": "#2b3041",
+            "surface-container": "#eaedff",
+            "secondary-fixed": "#ffdbc8",
+            "on-error-container": "#93000a",
+            "secondary": "#994700",
+            "tertiary": "#261a00",
+            "surface-container-highest": "#dde1f8",
+            "on-surface": "#161b2b",
+            "error": "#ba1a1a",
+            "on-tertiary-fixed": "#251a00",
+            "background": "#faf8ff",
+            "surface-container-low": "#f2f3ff",
+            "primary-container": "#1f2a6b",
+            "surface-variant": "#dde1f8",
+            "primary-fixed": "#dee0ff",
+            "on-secondary-container": "#602a00",
+            "primary-fixed-dim": "#bbc3ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374183",
+            "on-primary": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#161b2b",
+            "secondary-fixed-dim": "#ffb68b",
+            "tertiary-fixed-dim": "#edc15a",
+            "tertiary-fixed": "#ffdf9c",
+            "on-primary-container": "#8994db",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "inverse-primary": "#bbc3ff",
+            "on-surface-variant": "#454650",
+            "surface-tint": "#4f599c",
+            "inverse-on-surface": "#eef0ff",
+            "secondary-container": "#fc8127",
+            "outline-variant": "#c6c5d2",
+            "surface-dim": "#d5d9ef",
+            "on-primary-fixed": "#051256",
+            "on-secondary-fixed-variant": "#753400",
+            "surface": "#faf8ff",
+            "primary": "#051256",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#321200",
+            "on-tertiary-container": "#ba9331",
+            "outline": "#767681",
+            "surface-bright": "#faf8ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "margin": "1rem",
+            "space-2xl": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "margin-desktop": "3rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "space-xs": "0.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .halo-glow {
+      box-shadow: 0 0 35px 2px rgba(237, 193, 90, 0.22);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col justify-between selection:bg-secondary-fixed selection:text-on-secondary-container" style="background-color: rgb(255, 252, 246);">
+<!-- TopAppBar from Shared Components JSON -->
+<header class="bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline/20 shadow-sm flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40">
+<div class="flex items-center space-x-3">
+<button aria-label="Brand Icon" class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="spa">spa</span>
+</button>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-semibold tracking-wide text-primary">Yog Milk</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary-container inline-block"></span>
+          शुद्ध दूध आणि दुग्ध उत्पादने • Pure Fresh Dairy</span>
+</div>
+</div>
+<!-- Right Header Actions (Interactive & Gallery Info) -->
+<div class="flex items-center space-x-2">
+<div class="hidden sm:flex items-center px-3 py-1 bg-surface-container-high rounded-full text-primary border border-outline-variant/40">
+<span class="material-symbols-outlined text-sm mr-1.5 text-on-tertiary-container" data-icon="verified">verified</span>
+<span class="font-label-md text-label-md">Fresh Dairy Selection</span>
+</div>
+<button aria-label="Shopping Bag" class="p-2 rounded-full hover:bg-surface-container-high transition-colors duration-150 active:scale-95 text-primary">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="flex-grow max-w-5xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-10">
+<!-- Header Intro / Gallery Context -->
+<div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/40 mb-3">
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-md text-label-md text-on-surface-variant">Design System • Empty States Gallery</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg sm:text-display-lg text-primary tracking-tight mb-2">
+        Sacred Emptiness, Pure Promise
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Clear and thoughtful empty states. When orders or baskets are clear, intuitive guidance assists every customer.</p>
+</div>
+<!-- Interactive Filter / Switcher Tab Strip -->
+<div class="bg-surface-container-lowest p-1.5 rounded-2xl border border-outline-variant/50 shadow-sm mb-8 overflow-x-auto scrollbar-none">
+<div class="flex items-center justify-start sm:justify-center min-w-max gap-1" id="tabStrip" role="tablist">
+<!-- Tab 1: No Orders -->
+<button aria-controls="view-orders" aria-selected="true" class="tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 bg-primary text-on-primary shadow-sm" id="tab-orders" onclick="switchTab('orders')" role="tab">
+<span class="material-symbols-outlined text-base" data-icon="receipt_long">receipt_long</span>
+<span class="">No Orders</span>
+<span class="text-[10px] opacity-75 font-body-sm">(ऑर्डर नाही)</span>
+</button>
+<!-- Tab 2: Empty Cart -->
+<button aria-controls="view-cart" aria-selected="false" class="tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-high" id="tab-cart" onclick="switchTab('cart')" role="tab">
+<span class="material-symbols-outlined text-base" data-icon="shopping_basket">shopping_basket</span>
+<span class="">Empty Basket</span>
+<span class="text-[10px] opacity-75 font-body-sm">(बास्केट)</span>
+</button>
+<!-- Tab 3: No Invoices -->
+<button aria-controls="view-invoices" aria-selected="false" class="tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-high" id="tab-invoices" onclick="switchTab('invoices')" role="tab">
+<span class="material-symbols-outlined text-base" data-icon="description">description</span>
+<span class="">No Invoices</span>
+<span class="text-[10px] opacity-75 font-body-sm">(इनव्हॉइस)</span>
+</button>
+<!-- Tab 4: No Notifications -->
+<button aria-controls="view-notifications" aria-selected="false" class="tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-high" id="tab-notifications" onclick="switchTab('notifications')" role="tab">
+<span class="material-symbols-outlined text-base" data-icon="notifications">notifications</span>
+<span class="">Notifications</span>
+<span class="text-[10px] opacity-75 font-body-sm">(सूचना)</span>
+</button>
+<!-- Tab 5: No Search Results -->
+<button aria-controls="view-search" aria-selected="false" class="tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-high" id="tab-search" onclick="switchTab('search')" role="tab">
+<span class="material-symbols-outlined text-base" data-icon="search_off">search_off</span>
+<span class="">No Results</span>
+<span class="text-[10px] opacity-75 font-body-sm">(शोध परिणाम)</span>
+</button>
+</div>
+</div>
+<!-- STAGE CONTAINER FOR EMPTY STATES -->
+<div class="relative bg-surface-container-lowest border border-outline-variant/60 rounded-3xl p-6 sm:p-12 shadow-sm min-h-[520px] flex items-center justify-center overflow-hidden">
+<!-- Ambient Decorative Lotus Watermark Background -->
+<div class="absolute inset-0 pointer-events-none opacity-40 flex items-center justify-center overflow-hidden">
+<div class="w-[600px] h-[600px] rounded-full border border-secondary-fixed/50 animate-pulse duration-1000"></div>
+<div class="absolute w-[450px] h-[450px] rounded-full border border-surface-container-highest"></div>
+</div>
+<!-- STATE 1: No Orders -->
+<div class="empty-state-card w-full max-w-lg mx-auto flex flex-col items-center text-center relative z-10 transition-all duration-300" id="view-orders"><div class="relative mb-6">
+<div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border flex items-center justify-center relative" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); box-shadow: 0 0 35px 2px rgba(244, 123, 32, 0.15);">
+<div class="w-24 h-24 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-5xl" data-icon="water_drop" style="color: #1F2A6B; font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="absolute -bottom-2 bg-surface-container-lowest border rounded-full px-3 py-0.5 shadow-sm flex items-center gap-1" style="border-color: #F47B20;">
+<span class="material-symbols-outlined text-sm" data-icon="spa" style="color: #F47B20; font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-sm text-label-sm font-semibold" style="color: #1F2A6B;">ताजे दूध • Fresh Dairy</span>
+</div>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md font-semibold mb-1" style="color: rgb(31, 42, 107);">
+कोणतीही सक्रिय ऑर्डर नाही
+</h2>
+<h3 class="font-title-md text-title-md text-on-surface mb-3 font-medium">
+No Orders Placed Yet
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-8">
+Fresh dairy delivered directly to your doorstep. Browse our fresh dairy selection.
+</p>
+<div class="flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+<button class="w-full sm:w-auto px-6 h-12 text-on-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 transition-colors duration-150 active:scale-95 shadow-sm" style="background-color: #1F2A6B;">
+<span class="material-symbols-outlined text-lg" data-icon="explore">explore</span>
+<span class="">ताजे दूध पहा / Browse Fresh Dairy</span>
+</button>
+<button class="w-full sm:w-auto px-4 h-12 rounded-xl font-label-md text-label-md flex items-center justify-center transition-colors duration-150" style="background-color: #FBF1DC; color: #1F2A6B;">
+आमच्या सेवांबद्दल अधिक जाणून घ्या / Learn More
+</button>
+</div>
+<div class="mt-8 flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs" data-icon="verified" style="color: #F47B20;">verified</span>
+<span class="">100% Pure Fresh Dairy • Direct from Local Farms</span>
+</div></div>
+<!-- STATE 2: Empty Cart / Morning Basket -->
+<div class="empty-state-card hidden w-full max-w-lg mx-auto flex flex-col items-center text-center relative z-10 transition-all duration-300" id="view-cart"><div class="relative mb-6">
+<div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border flex items-center justify-center relative" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); box-shadow: 0 0 35px 2px rgba(244, 123, 32, 0.15);">
+<div class="w-24 h-24 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-5xl" data-icon="shopping_basket" style="color: #F47B20;">shopping_basket</span>
+</div>
+<div class="absolute -bottom-2 bg-surface-container-lowest border rounded-full px-3 py-0.5 shadow-sm flex items-center gap-1" style="border-color: #F47B20;">
+<span class="material-symbols-outlined text-sm" data-icon="schedule" style="color: #F47B20;">schedule</span>
+<span class="font-label-sm text-label-sm font-semibold" style="color: #1F2A6B;">Order by Evening</span>
+</div>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md font-semibold mb-1" style="color: rgb(31, 42, 107);">
+तुमची बास्केट रिकामी आहे
+</h2>
+<h3 class="font-title-md text-title-md text-on-surface mb-3 font-medium">
+Your Basket is Empty
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-8">
+Add fresh milk, curd, and pure ghee to your basket for next-day doorstep delivery.
+</p>
+<div class="w-full flex flex-col items-center gap-4">
+<button class="w-full sm:w-auto px-8 h-12 text-on-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 transition-colors duration-150 active:scale-95 shadow-sm" style="background-color: #F47B20;">
+<span class="material-symbols-outlined text-lg" data-icon="local_mall">local_mall</span>
+<span class="">बास्केट भरा / Explore Products</span>
+</button>
+<div class="flex flex-wrap items-center justify-center gap-2 mt-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Popular Items:</span>
+<button class="px-3 py-1 rounded-full border font-label-sm text-label-sm transition-colors" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;">
++ Fresh Cow Milk 1L
+</button>
+<button class="px-3 py-1 rounded-full border font-label-sm text-label-sm transition-colors" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;">
++ Pure Cow Ghee 500ml
+</button>
+<button class="px-3 py-1 rounded-full border font-label-sm text-label-sm transition-colors" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;">
++ Fresh Dahi 500g
+</button>
+</div>
+</div></div>
+<!-- STATE 3: No Invoices -->
+<div class="empty-state-card hidden w-full max-w-lg mx-auto flex flex-col items-center text-center relative z-10 transition-all duration-300" id="view-invoices">
+<!-- Sacred Drop & Lotus Emblem Container -->
+<div class="relative mb-6">
+<div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-surface-container-low border border-tertiary-fixed-dim/40 flex items-center justify-center halo-glow relative">
+<div class="w-24 h-24 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="receipt">receipt</span>
+</div>
+<!-- Sacred Lotus Badge -->
+<div class="absolute -bottom-2 bg-surface-container-lowest border border-tertiary-fixed-dim rounded-full px-3 py-0.5 shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-on-tertiary-container" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm text-tertiary">Zero Dues</span>
+</div>
+</div>
+</div>
+<!-- Bilingual Typography Block -->
+<h2 class="font-headline-md text-headline-md text-primary font-semibold mb-1">
+          कोणतेही इनव्हॉइस उपलब्ध नाही
+        </h2>
+<h3 class="font-title-md text-title-md text-on-surface mb-3 font-medium">
+          No Invoices or Bills Yet
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-8">Receipts and monthly billing summaries will appear here once your dairy deliveries begin.</p>
+<!-- CTA & Secondary Action -->
+<div class="flex flex-col sm:flex-row items-center gap-3">
+<button class="w-full sm:w-auto px-6 h-12 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 hover:bg-primary-container transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-lg" data-icon="calendar_month">calendar_month</span>
+<span class="">View Delivery Calendar</span>
+</button>
+<button class="w-full sm:w-auto px-4 h-12 bg-surface-container-lowest border border-outline-variant text-primary rounded-xl font-label-md text-label-md flex items-center justify-center hover:bg-surface-container-low transition-colors duration-150">
+            Download Pricing Schedule
+          </button>
+</div>
+</div>
+<!-- STATE 4: No Notifications -->
+<div class="empty-state-card hidden w-full max-w-lg mx-auto flex flex-col items-center text-center relative z-10 transition-all duration-300" id="view-notifications">
+<!-- Sacred Drop & Lotus Emblem Container -->
+<div class="relative mb-6">
+<div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-surface-container-low border border-tertiary-fixed-dim/40 flex items-center justify-center halo-glow relative">
+<div class="w-24 h-24 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="notifications_paused">notifications_paused</span>
+</div>
+<!-- Sacred Lotus Badge -->
+<div class="absolute -bottom-2 bg-surface-container-lowest border border-tertiary-fixed-dim rounded-full px-3 py-0.5 shadow-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary-container" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-sm text-label-sm text-tertiary">All Caught Up</span>
+</div>
+</div>
+</div>
+<!-- Bilingual Typography Block -->
+<h2 class="font-headline-md text-headline-md text-primary font-semibold mb-1">
+          कोणत्याही सूचना नाहीत
+        </h2>
+<h3 class="font-title-md text-title-md text-on-surface mb-3 font-medium">
+          Peaceful Silence • All Caught Up
+        </h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-8">You are all caught up! Order status updates and delivery tracking alerts will appear here.</p>
+<!-- CTA & Notification Channel Toggles -->
+<div class="flex flex-col items-center gap-3">
+<div class="flex items-center gap-2 p-3 bg-surface-container-high/60 rounded-xl border border-outline-variant/40">
+<span class="material-symbols-outlined text-secondary-container text-lg" data-icon="sms">sms</span>
+<span class="font-label-md text-label-md text-on-surface-variant">WhatsApp delivery updates active for +91 98200 ••••</span>
+</div>
+<button class="px-5 h-10 text-primary font-label-md text-label-md hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="tune">tune</span>
+<span class="">Manage Notification Preferences</span>
+</button>
+</div>
+</div>
+<!-- STATE 5: No Search Results -->
+<div class="empty-state-card hidden w-full max-w-lg mx-auto flex flex-col items-center text-center relative z-10 transition-all duration-300" id="view-search"><div class="relative mb-6">
+<div class="w-32 h-32 sm:w-36 sm:h-36 rounded-full border flex items-center justify-center relative" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); box-shadow: 0 0 35px 2px rgba(244, 123, 32, 0.15);">
+<div class="w-24 h-24 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-lowest">
+<span class="material-symbols-outlined text-5xl" data-icon="manage_search" style="color: #1F2A6B;">manage_search</span>
+</div>
+<div class="absolute -bottom-2 bg-surface-container-lowest border rounded-full px-3 py-0.5 shadow-sm flex items-center gap-1" style="border-color: #F47B20;">
+<span class="material-symbols-outlined text-sm" data-icon="filter_alt" style="color: #F47B20;">filter_alt</span>
+<span class="font-label-sm text-label-sm font-semibold" style="color: #1F2A6B;">Fresh Dairy Catalog</span>
+</div>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md font-semibold mb-1" style="color: rgb(31, 42, 107);">
+कोणतीही उत्पादने सापडली नाहीत
+</h2>
+<h3 class="font-title-md text-title-md text-on-surface mb-3 font-medium">
+No Dairy Products Matched
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mb-6">
+We could not find products matching your query. Try searching for everyday fresh dairy items below.
+</p>
+<div class="flex flex-wrap items-center justify-center gap-2 mb-8">
+<span class="font-label-sm text-label-sm text-on-surface-variant w-full mb-1">Try Searching:</span>
+<button class="px-4 py-2 rounded-full border font-label-md text-label-md transition-all" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;" onclick="simulateSearch('दूध / Fresh Milk')">
+"दूध" (Fresh Milk)
+</button>
+<button class="px-4 py-2 rounded-full border font-label-md text-label-md transition-all" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;" onclick="simulateSearch('तूप / Pure Ghee')">
+"तूप" (Pure Ghee)
+</button>
+<button class="px-4 py-2 rounded-full border font-label-md text-label-md transition-all" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;" onclick="simulateSearch('दही / Fresh Dahi')">
+"दही" (Fresh Curd)
+</button>
+<button class="px-4 py-2 rounded-full border font-label-md text-label-md transition-all" style="background-color: #FBF1DC; border-color: rgba(244, 123, 32, 0.3); color: #1F2A6B;" onclick="simulateSearch('लोणी / Butter')">
+"लोणी" (Butter)
+</button>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-6 h-12 text-on-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-2 transition-colors duration-150 active:scale-95" style="background-color: #1F2A6B;">
+<span class="material-symbols-outlined text-lg" data-icon="refresh">refresh</span>
+<span class="">Clear Search &amp; View All Products</span>
+</button>
+</div></div>
+</div>
+<!-- Architectural Bento Grid: Design Guidelines & Vedic Dairy Principles -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 mb-10"><div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/50 shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background-color: #FBF1DC; color: #1F2A6B;">
+<span class="material-symbols-outlined" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<h4 class="font-title-lg text-title-lg font-semibold mb-2" style="color: #1F2A6B;">Drop &amp; Lotus Motif</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+The fresh milk drop paired with the lotus emblem represents clarity, natural care, and pristine dairy standards.
+</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 mt-4 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Brand Visual</span>
+<span class="font-semibold" style="color: #F47B20;">Clean &amp; Restorative</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/50 shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background-color: #FBF1DC; color: #F47B20;">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</div>
+<h4 class="font-title-lg text-title-lg font-semibold mb-2" style="color: #1F2A6B;">Bilingual Clarity</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+Thoughtful Devanagari (Marathi) headers paired with clear English translations ensure effortless navigation across generations.
+</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 mt-4 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Language Support</span>
+<span class="font-semibold" style="color: #1F2A6B;">Regional Warmth</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant/50 shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background-color: #FBF1DC; color: #1F2A6B;">
+<span class="material-symbols-outlined" data-icon="local_shipping">local_shipping</span>
+</div>
+<h4 class="font-title-lg text-title-lg font-semibold mb-2" style="color: #1F2A6B;">Reliable Morning Delivery</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+Clear feedback across each empty state assures customers of dependable next-morning doorstep dairy deliveries.
+</p>
+</div>
+<div class="pt-4 border-t border-outline-variant/30 mt-4 flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm">
+<span class="">Service Cadence</span>
+<span class="font-semibold" style="color: #F47B20;">Daily Doorstep</span>
+</div>
+</div></div>
+</main>
+<!-- Bottom Navigation Bar from Shared Components JSON -->
+<!-- Top-level destination: This is an empty state gallery within the Yog Milk ecosystem -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface/95 dark:bg-surface-container-lowest/95 backdrop-blur-md shadow-lg border-t border-outline-variant/30">
+<!-- Destination 1: Home -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#home">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm font-semibold">Home</span>
+</a>
+<!-- Destination 2: Shop -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#shop">
+<span class="material-symbols-outlined text-2xl" data-icon="storefront">storefront</span>
+<span class="font-label-sm text-label-sm font-semibold">Shop</span>
+</a>
+<!-- Destination 3: Orders (Active since this is the primary Empty Orders / Log view) -->
+<a class="flex flex-col items-center justify-center text-primary font-semibold bg-surface-container-high rounded-full px-4 py-1 active:scale-95 transition-transform duration-150" href="#orders">
+<span class="material-symbols-outlined text-2xl" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-sm text-label-sm font-semibold">Orders</span>
+</a>
+<!-- Destination 4: Account -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#account">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm font-semibold">Account</span>
+</a>
+</nav>
+<!-- Interactive Switcher Script -->
+<script>
+    const tabs = ['orders', 'cart', 'invoices', 'notifications', 'search'];
+
+    function switchTab(selectedKey) {
+      tabs.forEach(key => {
+        const viewEl = document.getElementById(`view-${key}`);
+        const tabBtn = document.getElementById(`tab-${key}`);
+
+        if (key === selectedKey) {
+          viewEl.classList.remove('hidden');
+          viewEl.classList.add('flex');
+          
+          // Active styles for Tab
+          tabBtn.className = "tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 bg-primary text-on-primary shadow-sm";
+          tabBtn.setAttribute('aria-selected', 'true');
+        } else {
+          viewEl.classList.add('hidden');
+          viewEl.classList.remove('flex');
+          
+          // Inactive styles for Tab
+          tabBtn.className = "tab-btn px-4 py-2.5 rounded-xl font-label-md text-label-md transition-all duration-200 flex items-center gap-2 text-on-surface-variant hover:bg-surface-container-high";
+          tabBtn.setAttribute('aria-selected', 'false');
+        }
+      });
+    }
+
+    function simulateSearch(query) {
+      alert(`Filtering Yog Milk catalog for: ${query}. Fresh Gir cow batches found!`);
+    }
+  </script>
+
+
+</body></html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk - Reorder Review</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-tint": "#4f599c",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-tertiary-fixed": "#251a00",
+            "outline-variant": "#c6c5d2",
+            "on-surface": "#161b2b",
+            "tertiary": "#261a00",
+            "background": "#faf8ff",
+            "primary": "#051256",
+            "surface-container-high": "#e3e7fe",
+            "inverse-on-surface": "#eef0ff",
+            "surface-container-highest": "#dde1f8",
+            "on-tertiary-container": "#ba9331",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#faf8ff",
+            "surface-variant": "#dde1f8",
+            "secondary-container": "#fc8127",
+            "outline": "#767681",
+            "surface-container": "#eaedff",
+            "tertiary-container": "#3f2e00",
+            "on-primary": "#ffffff",
+            "tertiary-fixed-dim": "#edc15a",
+            "inverse-primary": "#bbc3ff",
+            "secondary-fixed": "#ffdbc8",
+            "on-primary-container": "#8994db",
+            "on-surface-variant": "#454650",
+            "primary-container": "#1f2a6b",
+            "surface-container-low": "#f2f3ff",
+            "secondary": "#994700",
+            "tertiary-fixed": "#ffdf9c",
+            "surface": "#faf8ff",
+            "on-primary-fixed": "#051256",
+            "error-container": "#ffdad6",
+            "on-background": "#161b2b",
+            "primary-fixed-dim": "#bbc3ff",
+            "primary-fixed": "#dee0ff",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "on-secondary-fixed-variant": "#753400",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#374183",
+            "surface-dim": "#d5d9ef",
+            "on-secondary-container": "#602a00",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#321200",
+            "inverse-surface": "#2b3041",
+            "on-error": "#ffffff",
+            "error": "#ba1a1a"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-tablet": "2rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem",
+            "space-2xl": "3rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2rem",
+            "gutter-desktop": "1.5rem",
+            "margin": "1rem",
+            "margin-desktop": "3rem",
+            "gutter": "1rem",
+            "space-lg": "1.5rem"
+          },
+          "fontFamily": {
+            "body-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-md": ["14px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500"}],
+            "body-lg": ["16px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+            "body-sm": ["12px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Subtle custom scrollbar for modal interior */
+    .sheet-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .sheet-scroll::-webkit-scrollbar-thumb {
+      background-color: #c6c5d2;
+      border-radius: 9999px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased flex justify-center items-center min-h-screen p-0 sm:p-4">
+<!-- Mobile Screen Canvas (390px x 844px context) -->
+<div class="relative w-full max-w-[412px] h-[844px] max-h-[884px] bg-surface flex flex-col overflow-hidden shadow-2xl rounded-none sm:rounded-[36px] border border-outline-variant/30">
+<!-- Dimmed & Softly Blurred Background Screen (Contextual Home / Past Orders View) -->
+<div aria-hidden="true" class="absolute inset-0 flex flex-col bg-surface filter blur-[2px] opacity-40 pointer-events-none select-none">
+<!-- Simulated Top Bar -->
+<header class="flex justify-between items-center w-full px-4 h-16 bg-surface/90 border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]">spa</span>
+<span class="font-headline-sm text-headline-sm font-semibold tracking-wide text-primary">Yog Milk</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-[24px]">shopping_bag</span>
+</div>
+</header>
+<!-- Background Content Mockup -->
+<div class="p-4 space-y-4">
+<div class="h-28 bg-surface-container rounded-2xl p-4 flex flex-col justify-between">
+<div class="h-4 w-32 bg-outline-variant/50 rounded"></div>
+<div class="h-6 w-48 bg-primary/20 rounded"></div>
+</div>
+<div class="h-44 bg-surface-container-high rounded-2xl p-4">
+<div class="h-4 w-24 bg-outline-variant/50 rounded mb-3"></div>
+<div class="h-10 w-full bg-surface-container-lowest rounded-xl"></div>
+</div>
+<div class="h-32 bg-surface-container rounded-2xl"></div>
+</div>
+</div>
+<!-- Backdrop Dim Layer -->
+<div class="absolute inset-0 bg-primary/35 backdrop-blur-[2px] z-10 transition-opacity"></div>
+<!-- BOTTOM SHEET CONTAINER (Modal Layer 4) -->
+<section aria-labelledby="sheet-title" aria-modal="true" class="relative z-20 mt-auto w-full h-[92%] flex flex-col bg-surface-container-lowest rounded-t-[28px] shadow-[0_-8px_32px_rgba(5,18,86,0.18)] border-t border-outline-variant/40 overflow-hidden" role="dialog">
+<!-- Top Drag Handle & Sheet Header -->
+<div class="pt-3 px-5 pb-3 flex-shrink-0 bg-surface-container-lowest border-b border-outline-variant/20">
+<!-- Center Handle Pill -->
+<div class="flex justify-center mb-2">
+<div aria-hidden="true" class="w-11 h-1.5 bg-outline-variant/70 rounded-full"></div>
+</div>
+<div class="flex items-center justify-between mt-1">
+<div>
+<h2 class="font-headline-sm text-headline-sm text-primary font-semibold tracking-tight" id="sheet-title">
+              Review Past Order
+            </h2>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1 mt-0.5 font-medium">
+<span class="material-symbols-outlined text-[14px] text-on-tertiary-container">history</span>
+              YM-2026-000118
+            </p>
+</div>
+<button aria-label="Close" class="w-9 h-9 rounded-full bg-surface-container hover:bg-surface-container-high text-primary flex items-center justify-center transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Sheet Content -->
+<div class="flex-1 overflow-y-auto px-4 py-3 sheet-scroll space-y-3.5">
+<!-- Notice Banner: Dawn Batch Clarification -->
+<div class="flex items-start gap-2.5 p-3 rounded-xl bg-surface-container-high/60 border border-surface-container-highest">
+<span class="material-symbols-outlined text-primary text-[20px] mt-0.5" data-weight="fill" style="font-variation-settings: 'FILL' 1;">wb_twilight</span>
+<div class="space-y-0.5">
+<p class="font-label-md text-label-md text-primary font-semibold">
+              Tomorrow's Dawn Batch Sync
+            </p>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug">
+              Prices and availability updated for tomorrow’s dawn batch (30 Oct 2026).
+            </p>
+</div>
+</div>
+<!-- Section Heading -->
+<div class="flex items-center justify-between pt-1 px-1">
+<span class="font-label-md text-label-md text-on-surface-variant font-bold uppercase tracking-wider">
+            Order Items (3)
+          </span>
+<span class="font-label-sm text-label-sm text-primary-container font-semibold">
+            2 Available
+          </span>
+</div>
+<!-- ITEMS LIST -->
+<div class="space-y-3">
+<!-- ITEM 1: Available (Checked) -->
+<article class="p-3.5 rounded-2xl bg-surface-container-lowest border border-outline-variant/50 shadow-sm relative transition-all">
+<div class="flex items-start gap-3">
+<!-- Custom Checkbox Checked -->
+<label class="relative flex items-center justify-center cursor-pointer mt-0.5">
+<input aria-label="Select Gir Cow A2 Full Cream Milk" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-5 h-5 rounded-md bg-primary peer-checked:bg-primary border border-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-on-primary text-[15px] font-bold">check</span>
+</div>
+</label>
+<!-- Item Content -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-title-md text-title-md text-primary font-semibold leading-snug">
+                      Gir Cow A2 Full Cream Milk 500 ml
+                    </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                      Quantity: 20 bottles (1 pack)
+                    </p>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-title-md text-title-md text-primary font-bold">₹720</span>
+</div>
+</div>
+<!-- Status Badge -->
+<div class="mt-2.5 flex items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-primary font-label-sm text-label-sm font-semibold border border-outline-variant/30">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                    Available
+                  </span>
+<span class="font-label-sm text-label-sm text-outline">No price change</span>
+</div>
+</div>
+</div>
+</article>
+<!-- ITEM 2: Price Changed Flag (Checked) -->
+<article class="p-3.5 rounded-2xl bg-surface-container-lowest border-2 border-secondary-container/30 shadow-sm relative transition-all">
+<div class="flex items-start gap-3">
+<!-- Custom Checkbox Checked -->
+<label class="relative flex items-center justify-center cursor-pointer mt-0.5">
+<input aria-label="Select Fresh Malai Paneer" checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-5 h-5 rounded-md bg-primary peer-checked:bg-primary border border-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-on-primary text-[15px] font-bold">check</span>
+</div>
+</label>
+<!-- Item Content -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-title-md text-title-md text-primary font-semibold leading-snug">
+                      Fresh Malai Paneer 1 kg
+                    </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                      Quantity: 1 kg pack
+                    </p>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-title-md text-title-md text-primary font-bold">₹540</span>
+</div>
+</div>
+<!-- Alert Flag Chip: Amber / Solar Orange -->
+<div class="mt-2.5 flex flex-col gap-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-secondary-fixed/50 border border-secondary-fixed-dim text-on-secondary-fixed w-fit">
+<span class="material-symbols-outlined text-secondary text-[16px]">change_circle</span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">
+                      Price changed ₹520 → ₹540
+                    </span>
+</div>
+<!-- Explanatory Microcopy -->
+<p class="font-body-sm text-body-sm text-on-surface-variant italic pl-1 leading-snug">
+                    Updated due to seasonal organic feed cost adjustment
+                  </p>
+</div>
+</div>
+</div>
+</article>
+<!-- ITEM 3: Unavailable Flag (Disabled / Greyed Out) -->
+<article class="p-3.5 rounded-2xl bg-surface-container-low/70 border border-outline-variant/30 opacity-75 relative">
+<div class="flex items-start gap-3">
+<!-- Disabled Checkbox with Cross -->
+<div aria-hidden="true" class="w-5 h-5 rounded-md bg-surface-dim border border-outline/40 flex items-center justify-center flex-shrink-0 mt-0.5 cursor-not-allowed">
+<span class="material-symbols-outlined text-outline text-[14px]">close</span>
+</div>
+<!-- Item Content -->
+<div class="flex-1 min-w-0">
+<div class="flex items-start justify-between gap-2">
+<div>
+<h3 class="font-title-md text-title-md text-outline font-semibold leading-snug">
+                      Sweet Probiotic Lassi 200 ml
+                    </h3>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">
+                      Quantity: Pack of 30
+                    </p>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-title-md text-title-md text-outline font-bold line-through">₹1,420</span>
+</div>
+</div>
+<!-- Alert Flag Chip: Red / Out of stock container -->
+<div class="mt-2.5 space-y-1">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-lg bg-error-container text-on-error-container w-fit">
+<span class="material-symbols-outlined text-[15px]">block</span>
+<span class="font-label-sm text-label-sm font-semibold">
+                      Currently unavailable
+                    </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-0.5">
+                    Dawn churning quota full for this batch. Restocks tomorrow 7:00 AM.
+                  </p>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- SUMMARY BREAKDOWN CARD -->
+<section class="mt-4 p-4 rounded-2xl bg-surface-container border border-outline-variant/40 space-y-3">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+<span class="font-label-md text-label-md text-on-surface-variant font-medium">Previous order total</span>
+<span class="font-label-lg text-label-lg text-outline line-through">₹2,680</span>
+</div>
+<div class="flex items-baseline justify-between pt-0.5">
+<div>
+<span class="font-title-md text-title-md text-primary font-bold block">
+                Updated available total
+              </span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+                2 items selected
+              </span>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md text-primary font-bold">
+                ₹1,260
+              </span>
+</div>
+</div>
+<!-- Dawn Drop Timing Ribbon -->
+<div class="flex items-center gap-2 pt-2 border-t border-outline-variant/20 text-on-tertiary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[18px]">wb_sunny</span>
+<span>Tomorrow 5:30 AM drop</span>
+</div>
+<!-- Legal / Clarification text -->
+<p class="font-body-sm text-body-sm text-outline text-center pt-1 border-t border-outline-variant/20 leading-tight">
+            Prices confirmed at order placement · Non-GST Bill
+          </p>
+</section>
+</div>
+<!-- Sticky Sheet Footer Action Buttons -->
+<footer class="p-4 bg-surface-container-lowest border-t border-outline-variant/30 flex-shrink-0 space-y-2">
+<button class="w-full h-[52px] bg-primary-container text-on-primary rounded-[14px] font-title-md text-title-md font-semibold flex items-center justify-center gap-2 hover:bg-primary active:scale-[0.98] transition-all shadow-md focus:ring-4 focus:ring-primary/20" type="button">
+<span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+<span>Add available items to cart · ₹1,260</span>
+</button>
+<button class="w-full h-11 bg-transparent text-primary hover:bg-surface-container rounded-[14px] font-label-lg text-label-lg font-semibold flex items-center justify-center transition-colors active:scale-[0.98]" type="button">
+          Cancel
+        </button>
+</footer>
+</section>
+</div>
+</body></html>

@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Settings &amp; Governance</title>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-on-surface": "#f3f0eb",
+            "primary-container": "#151d4d",
+            "primary-fixed-dim": "#bcc3fd",
+            "tertiary-fixed-dim": "#ffb68b",
+            "secondary": "#4f599c",
+            "surface-container-highest": "#e5e2dc",
+            "on-primary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "tertiary": "#190600",
+            "primary": "#000533",
+            "background": "#fcf9f3",
+            "surface-container-low": "#f6f3ed",
+            "on-primary-fixed": "#0e1647",
+            "surface-container-high": "#ebe8e2",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#753400",
+            "surface-bright": "#fcf9f3",
+            "on-background": "#1c1c18",
+            "outline-variant": "#c7c5d0",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#db6805",
+            "surface-tint": "#535b8e",
+            "on-secondary-fixed-variant": "#374183",
+            "secondary-fixed-dim": "#bbc3ff",
+            "outline": "#767680",
+            "on-secondary-fixed": "#051256",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "surface-container": "#f0eee8",
+            "secondary-container": "#a9b4fe",
+            "surface": "#fcf9f3",
+            "tertiary-container": "#3c1700",
+            "inverse-primary": "#bcc3fd",
+            "surface-variant": "#e5e2dc",
+            "on-secondary-container": "#394485",
+            "on-surface": "#1c1c18",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#dee0ff",
+            "on-surface-variant": "#46464f",
+            "on-primary-fixed-variant": "#3b4375",
+            "on-tertiary-fixed": "#321200",
+            "primary-fixed": "#dee0ff",
+            "surface-dim": "#dcdad4",
+            "inverse-surface": "#31312d",
+            "tertiary-fixed": "#ffdbc8",
+            "on-error": "#ffffff",
+            "on-primary-container": "#7e86bc"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-xl": "2.25rem",
+            "margin-tablet": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex overflow-x-hidden selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- LEFT SIDEBAR: Shared Component SideNavBar (Exact styling from JSON) -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary-container text-surface border-r border-outline-variant/30 sticky top-0 z-50">
+<div class="h-full flex flex-col justify-between p-4 custom-scroll overflow-y-auto">
+<!-- Header / Brand Section -->
+<div>
+<div class="flex items-center gap-3 px-3 py-3 mb-4 rounded-xl bg-surface-container-highest/10">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/15 flex items-center justify-center text-surface shadow-inner shrink-0">
+<span class="material-symbols-outlined text-surface text-2xl" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface truncate leading-none">Yog Milk</span>
+<span class="text-label-sm font-label-sm text-surface-variant/80 tracking-wider truncate mt-1">Vedic Pure Dairy Admin</span>
+</div>
+</div>
+<!-- Tab Items from JSON -->
+<nav class="space-y-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">payments</span>
+<span>Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span>Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg">history</span>
+<span>Audit log</span>
+</a>
+<!-- 12. Settings - ACTIVE TAB -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Navigation Items from JSON -->
+<div class="pt-4 border-t border-outline-variant/20 space-y-1">
+<!-- CTA -->
+<div class="px-3 py-2 rounded-lg bg-surface-container-highest/10 flex items-center justify-between mb-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-surface">headset_mic</span>
+<span class="text-label-md font-label-md text-surface">Support Desk</span>
+</div>
+<span class="inline-block w-2 h-2 rounded-full bg-surface"></span>
+</div>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg">vital_signs</span>
+<span>System Health</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-lg">logout</span>
+<span>Log out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS -->
+<div class="flex-1 flex flex-col min-w-0 bg-background">
+<!-- TOP NAV BAR: Shared Component TopNavBar -->
+<header class="docked full-width top-0 sticky z-40 shadow-sm border-b border-surface-variant bg-surface-container-lowest flex items-center justify-between px-6 py-3.5 w-full">
+<!-- Search on Left -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full pl-9 pr-4 py-2 rounded-xl bg-surface-container-low border border-surface-variant text-body-sm font-body-sm placeholder:text-outline focus:outline-none focus:border-secondary transition-colors" placeholder="Search governance parameters, staff roles, audit records..." type="text"/>
+</div>
+</div>
+<!-- Trailing Status & Action Buttons -->
+<div class="flex items-center gap-4">
+<!-- Ordering Open Pill (Mandatory from JSON) -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container-low border border-outline-variant/30 text-on-surface">
+<span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+<span class="text-label-md font-label-md text-primary font-semibold">Ordering Open · Closes 5:00 PM</span>
+</div>
+<!-- Trailing Icon Action: notifications -->
+<button class="relative p-2 rounded-xl hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span>
+</button>
+<!-- Divider -->
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Admin Profile Avatar -->
+<div class="flex items-center gap-3 pl-1">
+<div class="w-9 h-9 rounded-xl bg-primary-container text-surface flex items-center justify-center font-title-md text-title-md shadow-sm">
+            VM
+          </div>
+<div class="hidden lg:flex flex-col text-left">
+<span class="text-label-md font-label-md text-on-surface">Vikram Mehta</span>
+<span class="text-label-sm font-label-sm text-outline">Master Admin · Ops Lead</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg">expand_more</span>
+</div>
+</div>
+</header>
+<!-- CONTENT WORKSPACE: Settings & Governance -->
+<main class="flex-1 p-8 max-w-[1240px] w-full mx-auto space-y-8">
+<!-- Header Banner with Breadcrumbs & Save Sticky Banner -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-6 border-b border-surface-variant">
+<div>
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-outline uppercase tracking-wider mb-1">
+<span>Governance &amp; Administration</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface-variant">System Hub</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary tracking-tight">Settings &amp; Vedic Governance</h1>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Configure sacred origin parameters, strict financial settlement protocols, and RBAC permissions.</p>
+</div>
+<div class="flex items-center gap-3">
+<!-- Audit Status Stamp -->
+<div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container-low border border-outline-variant/30 text-outline">
+<span class="material-symbols-outlined text-sm text-secondary">verified_user</span>
+<span class="text-label-sm font-label-sm">Immutable Audit Hash: #VK-9482A</span>
+</div>
+<!-- Primary CTA Button -->
+<button class="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary-container text-on-primary hover:opacity-95 active:scale-[0.99] font-label-md text-label-md shadow-sm transition-all">
+<span class="material-symbols-outlined text-base">save</span>
+<span>Save Governance Changes</span>
+</button>
+</div>
+</div>
+<!-- Quick Section Anchor Tabs -->
+<div class="flex items-center gap-2 p-1.5 bg-surface-container-low rounded-xl border border-surface-variant w-fit text-label-md font-label-md">
+<a class="px-4 py-1.5 rounded-lg bg-surface-container-lowest text-primary shadow-sm" href="#business-details">Business Identity</a>
+<a class="px-4 py-1.5 rounded-lg text-outline hover:text-on-surface transition-colors" href="#payment-settings">Payment Settlement</a>
+<a class="px-4 py-1.5 rounded-lg text-outline hover:text-on-surface transition-colors" href="#rbac-matrix">Staff Roles &amp; Matrix</a>
+<a class="px-4 py-1.5 rounded-lg text-outline hover:text-on-surface transition-colors" href="#notification-governance">Food Safety Alerts</a>
+</div>
+<!-- SECTION 1: Business Details & Vedic Origin -->
+<section class="bg-surface-container-lowest rounded-2xl border border-surface-variant p-6 shadow-sm space-y-6" id="business-details">
+<div class="flex items-start justify-between border-b border-surface-variant pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">corporate_fare</span>
+</div>
+<div>
+<h2 class="text-title-lg font-title-lg text-primary">1. Dairy Business Details &amp; Origin Mandate</h2>
+<p class="text-body-sm font-body-sm text-outline">Statutory registration and single-origin dispatch credentials</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-surface-container-low border border-outline-variant/30 text-on-surface-variant">
+            Primary Produce Exemption · Non-GST
+          </span>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Legal Entity & Origin Form Fields -->
+<div class="lg:col-span-2 space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1.5">Dairy Legal Business Name</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-variant text-body-md font-body-md text-on-surface focus:outline-none focus:border-secondary transition-colors" type="text" value="Yog Milk Technologies Private Limited"/>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1.5">Milk Purity Regulatory Status</label>
+<div class="flex items-center justify-between px-3.5 py-2.5 rounded-xl bg-surface-container-low border border-surface-variant text-on-surface">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-emerald-600 text-lg">verified</span>
+<span class="text-label-md font-label-md truncate">Vedic Non-GST Exemption</span>
+</div>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container-lowest text-outline border border-surface-variant">Active</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-1.5">Facility Origin (Certified Vedic Farm Land Parcel)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline text-lg">location_on</span>
+<textarea class="w-full pl-9 pr-3.5 py-2 rounded-xl bg-surface border border-surface-variant text-body-md font-body-md text-on-surface focus:outline-none focus:border-secondary transition-colors" rows="2">Gat No. 142/2, Anjaneri Vedic Reserve, Trimbak Road, Nashik Rural, Maharashtra 422002.</textarea>
+</div>
+</div>
+<!-- Invoice Header & Footer Customizer -->
+<div class="pt-2 border-t border-surface-variant space-y-3">
+<h3 class="text-label-lg font-label-lg text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">receipt</span>
+                Invoice Header &amp; Footer Customizer
+              </h3>
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Header Subtitle (Printed directly below brand title)</label>
+<input class="w-full px-3.5 py-2 rounded-xl bg-surface border border-surface-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary transition-colors" type="text" value="Unadulterated Raw A2 Gir Cow Milk · Direct Farm Dispatch"/>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Footer Settlement Disclaimer (Customer Delivery Memo)</label>
+<textarea class="w-full px-3.5 py-2 rounded-xl bg-surface border border-surface-variant text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-secondary transition-colors" rows="2">Non-GST primary produce under Vedic Zero-Credit settlement mandate. Glass bottles subject to daily return exchange.</textarea>
+</div>
+</div>
+</div>
+<!-- Brand Logo Card Upload -->
+<div class="bg-surface rounded-xl border border-surface-variant p-4 flex flex-col justify-between">
+<div>
+<span class="text-label-md font-label-md text-primary block mb-1">Official Brand Seal</span>
+<p class="text-body-sm font-body-sm text-outline mb-4">Drop and Lotus sacred mark used on tamper seals &amp; glass crate manifests.</p>
+<div class="w-full aspect-square rounded-xl bg-primary-container flex flex-col items-center justify-center p-6 text-center text-surface relative overflow-hidden group">
+<div class="w-16 h-16 rounded-2xl bg-surface/10 border border-surface/20 flex items-center justify-center mb-3">
+<span class="material-symbols-outlined text-4xl text-surface" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<span class="text-title-md font-title-md text-surface tracking-wide">Yog Milk</span>
+<span class="text-label-sm font-label-sm text-surface-variant/70 mt-1">Sacred Drop &amp; Lotus Seal</span>
+<span class="mt-2 text-label-sm font-label-sm px-2.5 py-0.5 rounded-full bg-surface/15 text-surface">SVG Vector · 512x512</span>
+</div>
+</div>
+<div class="flex items-center gap-2 mt-4">
+<button class="flex-1 py-2 rounded-xl bg-surface-container-lowest border border-surface-variant text-label-md font-label-md text-on-surface hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                Preview Seal
+              </button>
+<button class="flex-1 py-2 rounded-xl bg-surface-container-lowest border border-surface-variant text-label-md font-label-md text-primary hover:bg-surface-container-low transition-colors flex items-center justify-center gap-1.5">
+<span class="material-symbols-outlined text-sm">cloud_upload</span>
+                Replace Asset
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Payment Governance & Settlement Limits -->
+<section class="bg-surface-container-lowest rounded-2xl border border-surface-variant p-6 shadow-sm space-y-6" id="payment-settings">
+<div class="flex items-start justify-between border-b border-surface-variant pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="text-title-lg font-title-lg text-primary">2. Payment Settings &amp; Driver Cash Limits</h2>
+<p class="text-body-sm font-body-sm text-outline">Manage payment gateway connectivity and cash collection risk controls</p>
+</div>
+</div>
+<span class="px-3 py-1 rounded-full text-label-sm font-label-sm bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            Razorpay Live &amp; Active
+          </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Cash on Delivery (COD) Master Card -->
+<div class="bg-surface rounded-xl border border-surface-variant p-5 flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">payments</span>
+<span class="text-title-md font-title-md text-primary">Cash On Delivery</span>
+</div>
+<!-- Master Toggle Switch [ON] -->
+<div class="w-12 h-6 bg-primary-container rounded-full p-1 cursor-pointer flex items-center justify-end transition-all">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-2">Driver doorstep physical rupee collection for morning milk dispatch crates.</p>
+</div>
+<!-- Zero credit badge -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-outline-variant/30 space-y-1.5">
+<div class="flex items-center gap-1.5 text-error text-label-sm font-label-sm font-semibold">
+<span class="material-symbols-outlined text-sm">lock</span>
+                Strict Zero-Credit Policy Enforced
+              </div>
+<p class="text-label-sm font-label-sm text-outline leading-snug">
+                Customer delivery is blocked automatically on Day 2 if prior COD collection remains unsettled.
+              </p>
+</div>
+</div>
+<!-- Razorpay Integration Card -->
+<div class="bg-surface rounded-xl border border-surface-variant p-5 flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">sync_saved_locally</span>
+<span class="text-title-md font-title-md text-primary">Razorpay Gateway</span>
+</div>
+<span class="text-label-sm font-label-sm px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-semibold">Live Mode</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-2">Instant UPI AutoPay and Recurring Dairy Subscriptions webhooks connected.</p>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Merchant ID:</span>
+<span class="font-mono text-on-surface">rzp_live_9aX3kd9</span>
+</div>
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="text-outline">Webhook Latency:</span>
+<span class="text-emerald-700 font-semibold">42 ms (Stable)</span>
+</div>
+<button class="w-full mt-2 py-2 rounded-xl bg-surface-container-lowest border border-surface-variant text-label-md font-label-md text-outline hover:text-on-surface hover:bg-surface-container-low transition-colors">
+                Regenerate Webhook Secret
+              </button>
+</div>
+</div>
+<!-- Driver COD Daily Cash Limit Card -->
+<div class="bg-surface rounded-xl border border-surface-variant p-5 flex flex-col justify-between space-y-4">
+<div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">local_shipping</span>
+<span class="text-title-md font-title-md text-primary">Driver Cash Cap</span>
+</div>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded bg-surface-container-low text-outline border border-surface-variant">Van Security</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline mt-2">Daily cash threshold before driver is prompted for mandatory hub handover.</p>
+</div>
+<div>
+<label class="block text-label-sm font-label-sm text-outline mb-1">Max Cash Held Per Van Route</label>
+<div class="flex items-center rounded-xl bg-surface-container-lowest border border-surface-variant overflow-hidden">
+<span class="px-3 text-body-md font-body-md text-outline bg-surface-container-low border-r border-surface-variant">₹</span>
+<input class="w-full px-3 py-2 text-title-md font-title-md text-primary focus:outline-none border-none bg-transparent" type="text" value="50,000"/>
+<span class="pr-3 text-label-sm font-label-sm text-outline">INR</span>
+</div>
+<p class="text-label-sm font-label-sm text-outline mt-1.5">Threshold triggers SMS lock on morning delivery terminal.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Admin Users, Roles & Permission Matrix (RBAC) -->
+<section class="bg-surface-container-lowest rounded-2xl border border-surface-variant p-6 shadow-sm space-y-6" id="rbac-matrix">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-surface-variant pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">admin_panel_settings</span>
+</div>
+<div>
+<h2 class="text-title-lg font-title-lg text-primary">3. Admin Users &amp; Role Permission Matrix (RBAC)</h2>
+<p class="text-body-sm font-body-sm text-outline">Manage active staff members and granular administrative rights across operations</p>
+</div>
+</div>
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-surface border border-surface-variant text-primary hover:bg-surface-container-low font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-sm">person_add</span>
+<span>Invite Admin Operator</span>
+</button>
+</div>
+<!-- 3A. Active Admin Operators Table -->
+<div>
+<span class="text-label-lg font-label-lg text-primary block mb-3">Active Administrative Staff (4 Operators)</span>
+<div class="overflow-x-auto rounded-xl border border-surface-variant bg-surface">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface-container-low text-label-sm font-label-sm text-outline">
+<th class="py-3 px-4">Operator Name</th>
+<th class="py-3 px-4">Assigned Role</th>
+<th class="py-3 px-4">Direct Contact</th>
+<th class="py-3 px-4">Last Activity</th>
+<th class="py-3 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body-sm font-body-sm">
+<!-- Operator 1: Vikram Mehta -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container text-surface flex items-center justify-center text-label-sm font-label-sm font-semibold">
+                      VM
+                    </div>
+<div>
+<div class="font-semibold text-on-surface">Vikram Mehta</div>
+<div class="text-label-sm font-label-sm text-outline">vikram@yogmilk.com</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="px-2.5 py-1 rounded-full bg-primary-container/10 text-primary-container text-label-sm font-label-sm font-semibold">
+                      Owner / Ops Lead
+                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">+91 98230 44102</td>
+<td class="py-3 px-4 text-outline">Active 3m ago</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 rounded text-outline hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Operator 2: Anand Patil -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center text-label-sm font-label-sm font-semibold">
+                      AP
+                    </div>
+<div>
+<div class="font-semibold text-on-surface">Anand Patil</div>
+<div class="text-label-sm font-label-sm text-outline">anand.patil@yogmilk.com</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="px-2.5 py-1 rounded-full bg-secondary-fixed text-on-secondary-fixed text-label-sm font-label-sm font-semibold">
+                      Accounts Lead
+                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">+91 94222 18940</td>
+<td class="py-3 px-4 text-outline">Today, 08:14 AM</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 rounded text-outline hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Operator 3: Ganesh P. -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-label-sm font-label-sm font-semibold">
+                      GP
+                    </div>
+<div>
+<div class="font-semibold text-on-surface">Ganesh P.</div>
+<div class="text-label-sm font-label-sm text-outline">kitchen.ops@yogmilk.com</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed text-label-sm font-label-sm font-semibold">
+                      Kitchen Manager
+                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">+91 97650 99231</td>
+<td class="py-3 px-4 text-outline">Today, 04:30 AM</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 rounded text-outline hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+<!-- Operator 4: Suresh K. -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center text-label-sm font-label-sm font-semibold">
+                      SK
+                    </div>
+<div>
+<div class="font-semibold text-on-surface">Suresh K.</div>
+<div class="text-label-sm font-label-sm text-outline">dispatch.lead@yogmilk.com</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-label-sm font-semibold">
+                      Fleet Dispatch
+                    </span>
+</td>
+<td class="py-3 px-4 text-on-surface-variant">+91 99701 54312</td>
+<td class="py-3 px-4 text-outline">Yesterday, 07:12 PM</td>
+<td class="py-3 px-4 text-right">
+<button class="p-1 rounded text-outline hover:text-primary"><span class="material-symbols-outlined text-lg">more_vert</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- 3B. Role Permission Matrix -->
+<div class="pt-4">
+<div class="flex items-center justify-between mb-3">
+<div>
+<span class="text-label-lg font-label-lg text-primary block">Granular Permission Matrix</span>
+<span class="text-body-sm font-body-sm text-outline">Enforced across Vedic dispatch terminals, billing registers, and mobile apps.</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline italic">Changes take effect immediately on next token refresh</span>
+</div>
+<div class="overflow-x-auto rounded-xl border border-surface-variant bg-surface">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-surface-variant bg-surface-container-low text-label-sm font-label-sm">
+<th class="py-3 px-4 text-on-surface w-1/3">Permission Scope</th>
+<th class="py-3 px-4 text-center text-primary font-bold">Owner</th>
+<th class="py-3 px-4 text-center text-on-surface-variant font-semibold">Operations Lead</th>
+<th class="py-3 px-4 text-center text-on-surface-variant font-semibold">Accounts &amp; Finance</th>
+<th class="py-3 px-4 text-center text-on-surface-variant font-semibold">Order / Kitchen Mgr</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body-sm font-body-sm">
+<!-- Row 1: Manage Ordering Schedule -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Manage Ordering Schedule &amp; Emergency Gate</div>
+<div class="text-label-sm font-label-sm text-outline">Daily 5:00 PM cutoff threshold &amp; farm emergency locks</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+</tr>
+<!-- Row 2: Record Offline / Cash Payments -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Record Offline / Cash Payments</div>
+<div class="text-label-sm font-label-sm text-outline">Clear driver cash collections &amp; bank physical deposits</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+</tr>
+<!-- Row 3: Cancel Orders & Cold-chain Exceptions -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Cancel Orders &amp; Cold-chain Exceptions</div>
+<div class="text-label-sm font-label-sm text-outline">Thermal breach recalls and replacement crate dispatches</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+</tr>
+<!-- Row 4: View Financial Reports & Ledgers -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">View Financial Reports &amp; Ledgers</div>
+<div class="text-label-sm font-label-sm text-outline">Non-GST turnover records, bottle deposit ledgers</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+</tr>
+<!-- Row 5: Manage Dairy Products & Catalog -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Manage Dairy Products &amp; Catalog</div>
+<div class="text-label-sm font-label-sm text-outline">Fat percentages, lab certifications, pricing per liter</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+</tr>
+<!-- Row 6: User & Role Management -->
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">User &amp; Role Management</div>
+<div class="text-label-sm font-label-sm text-outline">Invite admins, rotate API keys, alter access matrix</div>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-emerald-700 text-xl font-bold">check_circle</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+<td class="py-3.5 px-4 text-center">
+<span class="material-symbols-outlined text-outline-variant text-xl">remove</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- SECTION 4: Food Safety & Cold-Chain Notification Governance -->
+<section class="bg-surface-container-lowest rounded-2xl border border-surface-variant p-6 shadow-sm space-y-6" id="notification-governance">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-surface-variant pb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-low border border-surface-variant flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">notifications_active</span>
+</div>
+<div>
+<h2 class="text-title-lg font-title-lg text-primary">4. Notification &amp; Real-Time Alert Governance</h2>
+<p class="text-body-sm font-body-sm text-outline">Manage alerts for kitchen teams, finance, and delivery vans</p>
+</div>
+</div>
+<!-- Prominent Badge Mandate -->
+<div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-900 text-label-sm font-label-sm font-semibold">
+<span class="material-symbols-outlined text-amber-700 text-sm" style="font-variation-settings: 'FILL' 1;">lock</span>
+<span>Always On · Required for Food Safety &amp; Cold-Chain Governance</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Category 1: Core Order Alerts (LOCKED) -->
+<div class="bg-surface rounded-xl border border-surface-variant p-5 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">order_approve</span>
+<span class="text-title-md font-title-md text-primary">Core Order Alerts</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" title="Required System Alert">lock</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">Kitchen dispatch sync and morning customer order approvals.</p>
+<div class="space-y-3 pt-2">
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-on-surface">Customer Order Confirmed</div>
+<div class="text-label-sm font-label-sm text-outline">Triggers morning crate packing</div>
+</div>
+<div class="w-10 h-5 bg-primary-container/40 rounded-full p-0.5 cursor-not-allowed flex items-center justify-end">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-on-surface">Kitchen Bottling Ready</div>
+<div class="text-label-sm font-label-sm text-outline">Notifies dispatch bay</div>
+</div>
+<div class="w-10 h-5 bg-primary-container/40 rounded-full p-0.5 cursor-not-allowed flex items-center justify-end">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 2: Payment Alerts -->
+<div class="bg-surface rounded-xl border border-surface-variant p-5 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">credit_card_heart</span>
+<span class="text-title-md font-title-md text-primary">Payment Alerts</span>
+</div>
+<span class="text-label-sm font-label-sm text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Active</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">Gateway sync discrepancies and unpaid COD route warnings.</p>
+<div class="space-y-3 pt-2">
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-on-surface">Webhook Failure Alert</div>
+<div class="text-label-sm font-label-sm text-outline">SMS to Accounts Lead</div>
+</div>
+<div class="w-10 h-5 bg-primary-container rounded-full p-0.5 cursor-pointer flex items-center justify-end">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-on-surface">Driver COD Pending Warning</div>
+<div class="text-label-sm font-label-sm text-outline">Cash exceeds ₹50,000 limit</div>
+</div>
+<div class="w-10 h-5 bg-primary-container rounded-full p-0.5 cursor-pointer flex items-center justify-end">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Category 3: Cold-Chain & Van Delivery Alerts (CRITICAL) -->
+<div class="bg-surface rounded-xl border border-surface-variant p-5 space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-xl">thermostat</span>
+<span class="text-title-md font-title-md text-primary">Delivery Alerts</span>
+</div>
+<span class="material-symbols-outlined text-outline text-lg" title="Required Safety Protocol">lock</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">Telemetry from cold-insulated milk vans during dawn transit.</p>
+<div class="space-y-3 pt-2">
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-error font-semibold flex items-center gap-1">
+<span>Cold-chain temp &gt;6°C</span>
+<span class="material-symbols-outlined text-xs">warning</span>
+</div>
+<div class="text-label-sm font-label-sm text-outline">Immediate fleet recall broadcast</div>
+</div>
+<div class="w-10 h-5 bg-primary-container/40 rounded-full p-0.5 cursor-not-allowed flex items-center justify-end">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-on-surface">Van Route Departure</div>
+<div class="text-label-sm font-label-sm text-outline">Sends customer morning SMS</div>
+</div>
+<div class="w-10 h-5 bg-primary-container rounded-full p-0.5 cursor-pointer flex items-center justify-end">
+<div class="w-4 h-4 rounded-full bg-surface shadow-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Sticky-style Action Bar -->
+<div class="bg-surface-container-lowest border border-surface-variant rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-800">
+<span class="material-symbols-outlined text-lg">shield</span>
+</div>
+<div>
+<div class="text-label-md font-label-md text-primary">Governance Audit Check Passed</div>
+<div class="text-label-sm font-label-sm text-outline">Last configuration recorded on 24 Oct, 04:12 AM IST by Vikram Mehta</div>
+</div>
+</div>
+<div class="flex items-center gap-3 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-4 py-2 rounded-xl bg-surface border border-surface-variant text-outline hover:text-on-surface font-label-md text-label-md transition-colors">
+            Discard Unsaved
+          </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-primary-container text-on-primary hover:opacity-95 font-label-md text-label-md transition-all shadow-sm">
+<span class="material-symbols-outlined text-base">check</span>
+<span>Publish Governance Updates</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+</body></html>

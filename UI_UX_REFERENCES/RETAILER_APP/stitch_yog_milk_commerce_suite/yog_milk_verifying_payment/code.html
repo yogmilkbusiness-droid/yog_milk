@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verifying Payment - Yog Milk</title>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#dde1f8",
+            "on-primary-fixed-variant": "#374183",
+            "outline-variant": "#c6c5d2",
+            "on-primary-fixed": "#051256",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary": "#994700",
+            "inverse-surface": "#2b3041",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface-bright": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container": "#eaedff",
+            "tertiary": "#261a00",
+            "error": "#ba1a1a",
+            "on-background": "#161b2b",
+            "on-tertiary-fixed": "#251a00",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#bbc3ff",
+            "tertiary-container": "#3f2e00",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#ba9331",
+            "background": "#faf8ff",
+            "surface-tint": "#4f599c",
+            "on-secondary-container": "#602a00",
+            "surface": "#faf8ff",
+            "on-secondary-fixed-variant": "#753400",
+            "on-surface": "#161b2b",
+            "outline": "#767681",
+            "primary-fixed": "#dee0ff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "surface-container-low": "#f2f3ff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "on-primary-container": "#8994db",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-high": "#e3e7fe",
+            "surface-dim": "#d5d9ef",
+            "secondary-fixed-dim": "#ffb68b",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes spin-slow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes pulse-saffron {
+      0%, 100% { transform: scale(1); opacity: 0.9; }
+      50% { transform: scale(1.08); opacity: 1; }
+    }
+    @keyframes ripple {
+      0% { transform: scale(0.85); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 0.2; }
+      100% { transform: scale(1.35); opacity: 0; }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 7s linear infinite;
+    }
+    .animate-pulse-saffron {
+      animation: pulse-saffron 2.4s ease-in-out infinite;
+    }
+    .animate-ripple {
+      animation: ripple 2.8s cubic-bezier(0.2, 0.8, 0.4, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex items-center justify-center p-0 md:p-6 antialiased selection:bg-secondary-fixed selection:text-secondary selection:font-medium">
+<!-- Mobile Viewport Canvas Container: 390px x 844px device viewport -->
+<main class="w-full max-w-[390px] h-[844px] max-h-[844px] bg-surface relative flex flex-col justify-between overflow-hidden shadow-2xl rounded-[36px] border border-outline-variant/30">
+<!-- Subtle Sacred Watermark Backdrop (Lotus Vedic Motif) -->
+<div aria-hidden="true" class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-[0.035] overflow-hidden">
+<svg class="w-[520px] h-[520px] text-primary" fill="currentColor" viewbox="0 0 200 200">
+<path d="M100 20 C100 20, 70 65, 70 100 C70 125, 83 145, 100 145 C117 145, 130 125, 130 100 C130 65, 100 20, 100 20 Z"></path>
+<path d="M100 145 C80 145, 50 120, 40 90 C30 125, 55 160, 100 160 C145 160, 170 125, 160 90 C150 120, 120 145, 100 145 Z"></path>
+<path d="M70 135 C50 135, 25 110, 20 85 C15 115, 35 145, 75 150 C72 145, 70 140, 70 135 Z"></path>
+<path d="M130 135 C150 135, 175 110, 180 85 C185 115, 165 145, 125 150 C128 145, 130 140, 130 135 Z"></path>
+</svg>
+</div>
+<!-- Header: Minimal Pure Lotus Yog Milk Branding -->
+<header class="pt-7 pb-2 px-6 flex flex-col items-center justify-center relative z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]" data-icon="spa">spa</span>
+<span class="font-headline-sm-mobile text-headline-sm text-primary font-semibold tracking-wide">Yog Milk</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant/70 tracking-widest mt-0.5">FROM NATURE TO NOURISH YOU</p>
+</header>
+<!-- Main Verification Center Section -->
+<div class="px-6 flex-1 flex flex-col items-center justify-center text-center relative z-10 -mt-2">
+<!-- Serene Yogic Loader / Sun Drop Meditative Spinner -->
+<div class="relative w-32 h-32 flex items-center justify-center mb-6">
+<!-- Ambient Water Ripples -->
+<div aria-hidden="true" class="absolute inset-0 rounded-full border border-secondary-container/40 animate-ripple"></div>
+<div aria-hidden="true" class="absolute inset-2 rounded-full border border-primary-container/20 animate-ripple" style="animation-delay: 0.9s;"></div>
+<!-- Rotating Sattvic Petal Ring -->
+<svg class="absolute inset-0 w-full h-full animate-spin-slow" viewbox="0 0 120 120">
+<circle cx="60" cy="60" fill="none" r="54" stroke="#c6c5d2" stroke-opacity="0.3" stroke-width="2.5"></circle>
+<circle cx="60" cy="60" fill="none" r="54" stroke="#1f2a6b" stroke-dasharray="75 180" stroke-linecap="round" stroke-width="3"></circle>
+<circle cx="60" cy="60" fill="none" r="54" stroke="#fc8127" stroke-dasharray="35 220" stroke-dashoffset="-120" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<!-- Center Sacred Drop with Glowing Sun Core -->
+<div class="relative w-16 h-16 rounded-full bg-surface-container-lowest shadow-md flex items-center justify-center border border-outline-variant/30">
+<!-- Stylized Dew Drop with Inner Dawn Sun -->
+<div class="animate-pulse-saffron flex items-center justify-center">
+<svg class="w-10 h-10 text-secondary-container" fill="none" viewbox="0 0 48 48">
+<!-- Milk Drop Contour -->
+<path d="M24 6 C24 6, 12 21, 12 30 C12 36.6274 17.3726 42 24 42 C30.6274 42 36 36.6274 36 30 C36 21 24 6 24 6 Z" fill="#fc8127" fill-opacity="0.12" stroke="#1f2a6b" stroke-linejoin="round" stroke-width="2"></path>
+<!-- Dawn Solar Arc Motif -->
+<path d="M19 31 C19 28.2386 21.2386 26 24 26 C26.7614 26 29 28.2386 29 31" stroke="#fc8127" stroke-linecap="round" stroke-width="2.2"></path>
+<circle cx="24" cy="23" fill="#fc8127" r="2.5"></circle>
+<!-- Morning Rays -->
+<line stroke="#fc8127" stroke-linecap="round" stroke-width="2" x1="24" x2="24" y1="16" y2="18.5"></line>
+<line stroke="#fc8127" stroke-linecap="round" stroke-width="2" x1="18.5" x2="20" y1="18" y2="19.5"></line>
+<line stroke="#fc8127" stroke-linecap="round" stroke-width="2" x1="29.5" x2="28" y1="18" y2="19.5"></line>
+</svg>
+</div>
+</div>
+</div>
+<!-- Editorial Verification Title & Sensitive Transaction Instruction -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-semibold tracking-tight mb-2">
+        Verifying your payment...
+      </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-[320px] leading-relaxed mb-5">
+        Please don't close the app or tap the back button while we securely verify your dawn batch reservation.
+      </p>
+<!-- Order Details Card (Tactile Malai Cream / Paper Elevation) -->
+<div class="w-full bg-surface-container-lowest rounded-[20px] p-4 text-left border border-outline-variant/30 shadow-[0_4px_16px_-2px_rgba(31,42,107,0.04)] mb-4">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-label-md text-label-md text-on-surface-variant">Batch Allocation</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold bg-surface-container-high px-2.5 py-0.5 rounded-full">
+            A2 Gir Cow Milk
+          </span>
+</div>
+<div class="pt-3 space-y-2.5">
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Amount</span>
+<span class="font-title-lg text-title-lg text-primary font-bold">₹4,260</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Method</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary-container text-[16px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md text-on-surface font-medium">UPI / Razorpay Gateway</span>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Target Drop</span>
+<div class="flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-[15px]" data-icon="wb_twilight">wb_twilight</span>
+<span class="font-label-md text-label-md font-semibold">Tomorrow Dawn 5:30 AM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Reassurance Pill -->
+<div class="inline-flex items-center gap-2 bg-surface-container-high/60 border border-outline-variant/30 rounded-full px-3.5 py-1.5 mb-2.5">
+<span class="material-symbols-outlined text-primary-container text-[15px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">
+          Zero duplicate charges · Verified via 256-bit encryption
+        </span>
+</div>
+<!-- Quiet Peace-of-Mind Guarantee -->
+<p class="font-body-sm text-body-sm text-outline flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="shield">shield</span>
+        Nothing is recorded unless confirmed by the bank.
+      </p>
+</div>
+<!-- Bottom Gateway Assurance & Statutory Credentials Footer -->
+<footer class="pb-6 pt-3 px-6 bg-surface-container-lowest/70 backdrop-blur-sm border-t border-outline-variant/20 relative z-10 flex flex-col items-center gap-2.5">
+<!-- FSSAI & National Payments Compliance Badge Strip -->
+<div class="flex items-center justify-center gap-6 opacity-75">
+<!-- FSSAI Seal Typography -->
+<div class="flex items-center gap-1.5 border border-outline-variant/50 rounded-lg px-2 py-0.5 bg-surface-container-lowest">
+<span class="font-label-sm text-[10px] font-bold tracking-tight text-primary">fssai</span>
+<span class="text-[9px] text-outline border-l border-outline-variant/60 pl-1.5 leading-none">Lic. 11521018000341</span>
+</div>
+<!-- NPCI / UPI Gateway Security Indicator -->
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[15px]" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Bank Grade UPI Gateway</span>
+</div>
+</div>
+<!-- Visual Trust Partner Micro-pills -->
+<div class="flex items-center justify-center gap-3 font-label-sm text-[10px] text-outline tracking-wider">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          RAZORPAY SECURE
+        </span>
+<span>•</span>
+<span>NPCI AUTHORIZED</span>
+<span>•</span>
+<span>PCI-DSS CERTIFIED</span>
+</div>
+</footer>
+</main>
+<!-- Interactive status update simulation script for subtle micro-interactions -->
+<script>
+    // Purely unobtrusive visual polish: update the timer dots if prolonged
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Secure Yog Milk Payment verification hand-shake in progress.');
+    });
+  </script>
+</body></html>

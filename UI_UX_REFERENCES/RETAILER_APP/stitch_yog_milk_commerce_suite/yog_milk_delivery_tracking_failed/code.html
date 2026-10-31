@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Dawn Delivery Tracking - Yog Milk</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-error": "#ffffff",
+            "on-background": "#161b2b",
+            "background": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "tertiary-fixed-dim": "#edc15a",
+            "inverse-on-surface": "#eef0ff",
+            "tertiary": "#261a00",
+            "outline-variant": "#c6c5d2",
+            "inverse-primary": "#bbc3ff",
+            "on-tertiary-fixed": "#251a00",
+            "secondary-fixed": "#ffdbc8",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "primary": "#051256",
+            "on-tertiary-container": "#ba9331",
+            "on-surface-variant": "#454650",
+            "surface-dim": "#d5d9ef",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "on-primary-fixed-variant": "#374183",
+            "surface-container": "#eaedff",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface": "#faf8ff",
+            "surface-container-highest": "#dde1f8",
+            "on-primary-fixed": "#051256",
+            "on-secondary": "#ffffff",
+            "on-surface": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "inverse-surface": "#2b3041",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#8994db",
+            "on-primary": "#ffffff",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#ffdf9c",
+            "outline": "#767681",
+            "surface-variant": "#dde1f8",
+            "secondary-container": "#fc8127",
+            "on-secondary-fixed": "#321200",
+            "primary-container": "#1f2a6b",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "tertiary-container": "#3f2e00",
+            "secondary": "#994700",
+            "error-container": "#ffdad6",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-secondary-fixed-variant": "#753400",
+            "primary-fixed": "#dee0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-desktop": "3rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "space-lg": "1.5rem",
+            "space-2xl": "3rem",
+            "gutter": "1rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin-tablet": "2rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- Mobile Viewport Container (390px Max Width Context) -->
+<main class="w-full max-w-[420px] bg-background min-h-screen pb-12 flex flex-col relative shadow-2xl">
+<!-- Top Navigation Header (Linear Task Focused / Suppression of Bottom Navigation Bar) -->
+<header class="sticky top-0 z-40 bg-surface/90 backdrop-blur-md px-4 py-3 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors active:scale-95" type="button">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<div>
+<h1 class="font-title-md text-title-md text-primary tracking-tight">Dawn Delivery Tracking</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+            Order <span class="font-mono text-primary font-semibold">YM-2026-000115</span>
+</p>
+</div>
+</div>
+<!-- Vedic Lotus / Brand Crest Micro-Badge -->
+<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+</header>
+<div class="px-4 py-4 space-y-4 flex-1">
+<!-- Dignified Vedic Heritage Brand Banner (Subtle Botanical Graphic) -->
+<div class="w-full bg-surface-container-lowest rounded-[20px] p-3 shadow-sm flex items-center justify-between overflow-hidden relative">
+<div class="flex items-center gap-3 z-10">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[22px]">water_drop</span>
+</div>
+<div>
+<div class="font-label-md text-label-md text-primary tracking-wide">Yog Milk • Pure Sattvic A2 Gir Cow Farm</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Cold-chain insulated dispatch from Nashik Valley</div>
+</div>
+</div>
+<div class="absolute right-[-12px] -bottom-2 text-surface-container opacity-60 pointer-events-none">
+<span class="material-symbols-outlined text-[72px]" style="font-variation-settings: 'FILL' 1;">eco</span>
+</div>
+</div>
+<!-- Header Alert Card: Delivery Attempt Unsuccessful (Warm Amber / Rose Tone) -->
+<section class="rounded-[20px] bg-error-container/40 p-4 space-y-3 shadow-sm relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-error/15 text-error flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">error</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-error uppercase tracking-wider block font-bold">Dawn Drop Status</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Delivery Attempt Unsuccessful</h2>
+</div>
+</div>
+</div>
+<!-- Copyable Delivery Code Pill -->
+<div class="bg-surface-container-lowest/80 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Delivery Code</span>
+<span class="font-mono font-label-md text-label-md text-primary font-bold" id="deliveryCodeText">YMD-2026-000115</span>
+</div>
+<button class="flex items-center gap-1 font-label-sm text-label-sm text-primary hover:text-on-secondary-container transition-colors py-1 px-2 rounded-md hover:bg-surface-container" id="copyBtn" onclick="copyDeliveryCode()">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span id="copyLabel" class="">Copy</span>
+</button>
+</div>
+<!-- Stated Reason & Cold Chain Assurance -->
+<div class="space-y-2.5 pt-1"><div class="bg-surface-container-lowest rounded-xl p-3 space-y-1"><div class="flex items-center gap-1.5 text-on-surface font-title-md text-title-md"><span class="material-symbols-outlined text-secondary text-[18px]">door_front</span><span class="font-title-md text-title-md">Drop Issue Noted</span></div><p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Store shutter closed during delivery attempt. We'll reach out to reschedule.</p></div></div>
+</section>
+<!-- Stepper Tracking Timeline (Vertical Doorstep Rail) -->
+<section class="bg-surface-container-lowest rounded-[20px] p-5 shadow-sm space-y-4">
+<div class="flex items-center justify-between pb-1 border-b border-outline-variant/30">
+<h3 class="font-title-md text-title-md text-primary">Delivery Status Log</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">Batch #A2-NSK-44</span>
+</div>
+<div class="relative pl-6 space-y-6 before:absolute before:left-[11px] before:top-2 before:bottom-3 before:w-[2px] before:bg-outline-variant/40">
+<!-- Step 1: Not Assigned -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface">Not Assigned</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">27 Oct, 4:00 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Order verified and queued for dispatch assignment</p>
+</div>
+</div>
+<!-- Step 2: Assigned -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface">Assigned</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">27 Oct, 9:30 PM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Assigned to delivery route partner</p>
+</div>
+</div>
+<!-- Step 3: Picked Up -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface">Picked Up</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">28 Oct, 4:30 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Pre-dawn insulated load dispatched from chilling center (4°C)</p>
+</div>
+</div>
+<!-- Step 4: Out for Delivery -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] ring-4 ring-surface-container-lowest">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div>
+<div class="flex items-center justify-between">
+<span class="font-title-md text-title-md text-on-surface">Out for Delivery</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">28 Oct, 5:15 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Early morning door drop run initiated</p>
+</div>
+</div>
+<!-- Step 5: Delivery Failed (Flagged / Red-Amber warning badge) -->
+<div class="relative">
+<div class="absolute -left-6 top-1 w-5 h-5 rounded-full bg-error text-on-error flex items-center justify-center text-[12px] ring-4 ring-error-container">
+<span class="material-symbols-outlined text-[14px]">priority_high</span>
+</div>
+<div class="bg-error-container/20 rounded-xl p-3 -mt-1 space-y-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-error font-bold">Delivery Failed</span>
+<span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-error text-on-error font-bold">FLAGGED</span>
+</div>
+<span class="font-label-sm text-label-sm text-error font-medium">28 Oct, 6:05 AM</span>
+</div>
+<p class="font-body-sm text-body-sm text-error font-medium">
+                Unreached drop point. Return to hub initiated.
+              </p>
+<div class="flex items-center gap-1 text-on-surface-variant text-[11px] pt-1 border-t border-error/15">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">ac_unit</span>
+<span class="">Chilling pack maintained below 4°C during entire transit</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Rescheduling & Assistance Section -->
+<section class="bg-surface-container-lowest rounded-[20px] p-5 shadow-sm space-y-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary text-[20px]">calendar_clock</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Next Steps for Dawn Re-delivery</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Choose an automated rescheduling for tomorrow's delivery slot or request a refund for online orders back to your original payment method.</p>
+</div>
+<!-- Dawn Slot Guarantee Notice Card -->
+<div class="bg-surface-container-high/60 rounded-xl p-3 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">wb_twilight</span>
+</div>
+<div class="flex-1">
+<div class="font-title-md text-title-md text-primary">Next Slot: Tomorrow Dawn</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Wednesday, 29 Oct • 05:30 AM – 07:00 AM</div>
+</div>
+<span class="material-symbols-outlined text-primary text-[20px]">chevron_right</span>
+</div>
+<!-- Actions Cluster -->
+<div class="space-y-2.5 pt-2">
+<!-- Primary CTA (Navy) -->
+<button class="w-full h-[52px] bg-primary-container text-on-primary hover:bg-primary font-label-lg text-label-lg rounded-[14px] flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-sm" type="button">
+<span class="material-symbols-outlined text-[20px]">event_repeat</span>
+<span class="">Reschedule Dawn Delivery Slot</span>
+</button>
+<!-- Secondary CTA (Outline / Operations Call) -->
+<button class="w-full h-[48px] bg-transparent border-[1.5px] border-primary text-primary hover:bg-surface-container-high font-label-lg text-label-lg rounded-[14px] flex items-center justify-center gap-2 transition-all active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-[20px]">phone_in_talk</span>
+<span class="">Call Operations Team (5:00 AM – 10:00 PM)</span>
+</button>
+<!-- WhatsApp Chat Link for Instant Support -->
+<a class="w-full py-2.5 flex items-center justify-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary">chat</span>
+<span class="">Need quick answers? Chat with Dawn Support on WhatsApp</span>
+</a>
+</div>
+</section>
+<!-- Transparency & Ayurvedic Vedic Traceability Footer -->
+<footer class="pt-2 pb-4 text-center space-y-2">
+<div class="flex items-center justify-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-secondary">lock</span>
+<span class="font-label-sm text-label-sm">Pure A2 Vedic Certified • Batch Safe Lock Assured</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline px-6">
+          Every drop of Yog Milk is harvested with reverence and maintained through uncompromised cold-chain custody.
+        </p>
+</footer>
+</div>
+</main>
+<script>
+    function copyDeliveryCode() {
+      const codeText = document.getElementById('deliveryCodeText').innerText;
+      navigator.clipboard.writeText(codeText).then(() => {
+        const copyLabel = document.getElementById('copyLabel');
+        const originalText = copyLabel.innerText;
+        copyLabel.innerText = 'Copied!';
+        setTimeout(() => {
+          copyLabel.innerText = originalText;
+        }, 2000);
+      }).catch(err => {
+        console.error('Failed to copy text: ', err);
+      });
+    }
+  </script>
+
+
+</body></html>

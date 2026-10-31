@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk - Admin Payments &amp; Reconciliation</title>
+<!-- Material Symbols & Typography -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CDN & Config Plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary": "#1F2A6B",
+            "primary-container": "#151d4d",
+            "on-primary": "#ffffff",
+            "background": "#FFFCF6",
+            "surface": "#FFFCF6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#FAF6EC",
+            "surface-container": "#F5EFE2",
+            "surface-container-high": "#EFE6D5",
+            "surface-container-highest": "#E6DCC8",
+            "on-surface": "#1B2030",
+            "on-surface-variant": "#4E5568",
+            "outline": "#7E8597",
+            "outline-variant": "#D1D6E2",
+            "success": "#1F9D63",
+            "amber": {
+              "50": "#FEF9EC",
+              "100": "#FCF1D2",
+              "200": "#F7E1A1",
+              "500": "#E8A317",
+              "600": "#C98509",
+              "900": "#684200"
+            },
+            "error": "#D64545",
+            "error-container": "#FCEBEB"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display"],
+            "headline-md": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #FAF6EC;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #E6DCC8;
+      border-radius: 4px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb:hover {
+      background: #D1D6E2;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-sm antialiased min-h-screen flex selection:bg-primary/10 selection:text-primary">
+<!-- ============================================================== -->
+<!-- LEFT SIDEBAR: SHARED COMPONENT 'SideNavBar'                     -->
+<!-- ============================================================== -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary border-r border-primary/20 sticky top-0 z-30 select-none text-white">
+<div class="h-full flex flex-col justify-between p-4">
+<!-- Brand & Header -->
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2 py-1.5">
+<div class="w-10 h-10 rounded-xl bg-white/10 border border-white/20 flex items-center justify-center text-white shadow-sm">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-sm font-semibold tracking-wide text-lg text-white">Yog Milk</span>
+<span class="text-[11px] text-white/70 font-normal">Vedic Pure Dairy Admin</span>
+</div>
+</div>
+<!-- Navigation Tabs ('Payments' Active) -->
+<nav class="flex flex-col gap-1 overflow-y-auto max-h-[calc(100vh-270px)] custom-scroll pr-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+<span>Orders</span>
+</a>
+<!-- 3. Payments (ACTIVE TAB) -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-white/15 text-white font-semibold border-l-4 border-amber-500 shadow-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg text-amber-500" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="tracking-wide">Payments</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-amber-500 text-white text-[10px] font-bold shadow-sm">Pending</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">local_shipping</span>
+<span>Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">group</span>
+<span>Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">inventory_2</span>
+<span>Products</span>
+</a>
+<!-- 7. Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">description</span>
+<span>Invoices</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">bar_chart</span>
+<span>Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span>Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">calendar_clock</span>
+<span>Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">history</span>
+<span>Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-white/75 hover:text-white hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+</div>
+<!-- Footer Actions -->
+<div class="flex flex-col gap-2 pt-3 border-t border-white/15">
+<button class="w-full flex items-center justify-center gap-2 py-2 px-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-semibold transition-colors">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span>Support Desk</span>
+</button>
+<div class="flex items-center justify-between px-1 pt-1 text-white/70 text-xs">
+<div class="flex items-center gap-1.5 hover:text-white cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-sm text-emerald-400">vital_signs</span>
+<span>System Health</span>
+</div>
+<button class="flex items-center gap-1 hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span>Log out</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- ============================================================== -->
+<!-- MAIN WORKSPACE CONTAINER                                       -->
+<!-- ============================================================== -->
+<div class="flex-1 flex flex-col min-w-0 bg-background">
+<!-- ============================================================ -->
+<!-- TOP APP BAR                                                  -->
+<!-- ============================================================ -->
+<header class="docked full-width top-0 sticky z-40 bg-surface-container-lowest border-b border-surface-container-high shadow-xs flex items-center justify-between px-6 py-3 w-full">
+<!-- Search Bar on Left -->
+<div class="flex items-center gap-4 flex-1 max-w-lg">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-surface-container-high rounded-xl text-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition-all" placeholder="Search reference, order code (YM-2026-...), customer..." type="text"/>
+</div>
+</div>
+<!-- Right Action Trailing Cluster -->
+<div class="flex items-center gap-3">
+<!-- Read-only Pill requested -->
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container border border-surface-container-high text-primary font-medium text-xs select-none">
+<span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+<span>Ordering Open · Closes 5:00 PM (automatic)</span>
+</div>
+<div class="h-6 w-px bg-surface-container-high"></div>
+<!-- Notification Bell -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 rounded-full bg-amber-500 text-white text-[10px] font-bold flex items-center justify-center">6</span>
+</button>
+<!-- Admin Profile -->
+<div class="flex items-center gap-3 pl-2">
+<img alt="Vikram Mehta portrait" class="w-9 h-9 rounded-full object-cover border border-surface-container-high shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpJyptnHnfWPEkwflP-n794h0xAy_DHRTAjjI36yioSZS1kGheTreCMqPWq9wfJ6bxhjinYC7yf3H0fT4YskgbWkD6zyFsisZSG6Rb6OaJU2R_E9bjzjSDKwSzT25KSkLIdpYHzkQaOKyS2RhIwBFdW7HmjMOCC5wHxcZo66CvuQ4Knxj_cJnDNRqaSzHZQQ_Y36VGeM1TABzGOxXdb6zWjQi-SPiMISyIhid3quw"/>
+<div class="hidden xl:flex flex-col text-left">
+<span class="text-xs font-semibold text-on-surface leading-tight">Vikram Mehta</span>
+<span class="text-[11px] text-outline font-normal">Nashik Operations</span>
+</div>
+<span class="material-symbols-outlined text-outline text-sm">expand_more</span>
+</div>
+</div>
+</header>
+<!-- ============================================================ -->
+<!-- MAIN CONTENT VIEW CANVAS                                     -->
+<!-- ============================================================ -->
+<main class="flex-1 p-6 md:p-8 space-y-6 max-w-[1440px] mx-auto w-full">
+<!-- Header Section -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2 border-b border-surface-container-high">
+<div>
+<nav class="flex items-center gap-2 text-xs font-medium text-outline mb-1">
+<span>Operations Console</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Payments &amp; Reconciliation</span>
+</nav>
+<h1 class="text-2xl lg:text-3xl font-headline-lg font-bold text-primary tracking-tight">Payments &amp; Reconciliation</h1>
+<p class="text-sm text-on-surface-variant mt-0.5">Manage transaction settlements, payment pending block accounts, and payment records.</p>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center flex-wrap gap-2.5">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container text-xs font-semibold shadow-xs transition-colors">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Export Ledger (CSV)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl border border-primary/20 bg-surface-container-lowest text-primary hover:bg-primary/5 text-xs font-semibold shadow-xs transition-colors">
+<span class="material-symbols-outlined text-base">sync_alt</span>
+<span>Reconcile Razorpay Batch</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-primary text-white hover:bg-primary/90 text-xs font-semibold shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base text-amber-200">add_card</span>
+<span>+ Record Payment</span>
+</button>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- TOP SUMMARY KPI STRIP                                        -->
+<!-- ============================================================ -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Pending Balance -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border-2 border-amber-500/40 shadow-xs flex flex-col justify-between relative overflow-hidden">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-amber-900 uppercase tracking-wider">Pending Balances</span>
+<span class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-amber-600">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">pending</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline-md text-primary">₹37,810</span>
+<span class="text-xs text-outline font-medium">18 unpaid invoices</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1.5 flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+<span>Pending online or Cash on Delivery settlement</span>
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-amber-100 flex items-center justify-between">
+<span class="text-xs text-amber-900 font-semibold">Requires follow-up</span>
+<span class="material-symbols-outlined text-amber-600 text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Card 2: Settled Online -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container-high shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-outline uppercase tracking-wider">Paid (Today)</span>
+<span class="w-8 h-8 rounded-lg bg-emerald-50 flex items-center justify-center text-success">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline-md text-primary">₹98,400</span>
+<span class="text-xs text-success font-semibold bg-emerald-50 px-1.5 py-0.5 rounded">142 Paid</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1.5">
+Razorpay Online &amp; verified settlements today.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between text-xs text-outline">
+<span>Last synchronized 07:45 AM</span>
+<span class="text-success font-semibold">Active</span>
+</div>
+</div>
+<!-- Card 3: Failed Transactions -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container-high shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-outline uppercase tracking-wider">Failed Attempts</span>
+<span class="w-8 h-8 rounded-lg bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg">error_outline</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline-md text-error">₹4,120</span>
+<span class="text-xs text-error font-semibold bg-red-50 px-1.5 py-0.5 rounded">3 failed</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1.5">
+Failed online payments requiring customer re-initiation.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between text-xs">
+<span class="text-outline">Auto-retry scheduled</span>
+<a class="text-primary font-semibold hover:underline" href="#">View Failures</a>
+</div>
+</div>
+<!-- Card 4: Payment Pending Block Accounts -->
+<div class="p-5 rounded-2xl bg-surface-container-lowest border border-surface-container-high shadow-xs flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-outline uppercase tracking-wider">Payment Pending Block</span>
+<span class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">block</span>
+</span>
+</div>
+<div class="mt-2.5 flex items-baseline gap-2">
+<span class="text-2xl font-bold font-headline-md text-primary">3 Accounts</span>
+<span class="text-xs text-error font-semibold bg-red-50 px-1.5 py-0.5 rounded">Dispatch hold</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-1.5">
+Orders paused until full unpaid balance is recorded.
+</p>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between text-xs">
+<span class="text-outline">Enforced automatically</span>
+<span class="text-error font-semibold">Active Block</span>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- SECTION: PAYMENT PENDING BLOCK ACCOUNTS PANEL               -->
+<!-- ============================================================ -->
+<div class="bg-surface-container-lowest rounded-2xl border border-amber-500/40 shadow-xs overflow-hidden">
+<div class="p-4 md:px-6 bg-amber-50/60 border-b border-amber-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">block</span>
+</div>
+<div>
+<h2 class="text-base font-bold text-on-surface flex items-center gap-2">
+Payment Pending Block Accounts
+<span class="text-xs bg-red-100 text-error px-2 py-0.5 rounded-full font-bold">3 Holds Active</span>
+</h2>
+<p class="text-xs text-on-surface-variant">
+Accounts with overdue unpaid balances. Shipments are held until payment is recorded.
+</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs text-outline">
+<span>Automatic enforcement active</span>
+</div>
+</div>
+<div class="divide-y divide-surface-container-high">
+<!-- Blocked Account 1 -->
+<div class="p-4 md:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="text-sm font-bold text-on-surface">Sharma General Store</span>
+<span class="text-xs text-outline">(Rajesh Sharma)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-mono text-xs font-semibold border border-surface-container-high">YM-2026-000123</span>
+</div>
+<div class="flex items-center gap-3 mt-1.5 text-xs text-on-surface-variant flex-wrap">
+<span class="font-bold text-error">Total Overdue: ₹2,440</span>
+<span>•</span>
+<span class="text-amber-900 bg-amber-100 px-2 py-0.5 rounded font-medium">Pending: 1 Day</span>
+<span>•</span>
+<span class="text-error font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">lock</span>
+Payment pending block applied
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 self-end lg:self-center shrink-0">
+<button class="px-3.5 py-1.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container text-xs font-semibold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View Invoice</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-xl bg-primary text-white hover:bg-primary/90 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs">
+<span class="material-symbols-outlined text-sm text-amber-200">check_circle</span>
+<span>Record payment</span>
+</button>
+</div>
+</div>
+<!-- Blocked Account 2 -->
+<div class="p-4 md:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="text-sm font-bold text-on-surface">Vasant Dairy &amp; Provisions</span>
+<span class="text-xs text-outline">(Vasant Patil)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-mono text-xs font-semibold border border-surface-container-high">YM-2026-000098</span>
+</div>
+<div class="flex items-center gap-3 mt-1.5 text-xs text-on-surface-variant flex-wrap">
+<span class="font-bold text-error">Total Overdue: ₹1,680</span>
+<span>•</span>
+<span class="text-amber-900 bg-amber-100 px-2 py-0.5 rounded font-medium">Pending: 2 Days</span>
+<span>•</span>
+<span class="text-error font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">lock</span>
+Payment pending block applied
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 self-end lg:self-center shrink-0">
+<button class="px-3.5 py-1.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container text-xs font-semibold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View Invoice</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-xl bg-primary text-white hover:bg-primary/90 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs">
+<span class="material-symbols-outlined text-sm text-amber-200">check_circle</span>
+<span>Record payment</span>
+</button>
+</div>
+</div>
+<!-- Blocked Account 3 -->
+<div class="p-4 md:px-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-xl">storefront</span>
+</div>
+<div>
+<div class="flex items-center gap-2.5 flex-wrap">
+<span class="text-sm font-bold text-on-surface">Godavari Sweets &amp; Milk Bar</span>
+<span class="text-xs text-outline">(Nilesh Kulkarni)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-mono text-xs font-semibold border border-surface-container-high">YM-2026-000105</span>
+</div>
+<div class="flex items-center gap-3 mt-1.5 text-xs text-on-surface-variant flex-wrap">
+<span class="font-bold text-error">Total Overdue: ₹3,150</span>
+<span>•</span>
+<span class="text-amber-900 bg-amber-100 px-2 py-0.5 rounded font-medium">Pending: 1 Day</span>
+<span>•</span>
+<span class="text-error font-medium flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">lock</span>
+Payment pending block applied
+</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 self-end lg:self-center shrink-0">
+<button class="px-3.5 py-1.5 rounded-xl border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container text-xs font-semibold flex items-center gap-1.5 transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+<span>View Invoice</span>
+</button>
+<button class="px-3.5 py-1.5 rounded-xl bg-primary text-white hover:bg-primary/90 text-xs font-semibold flex items-center gap-1.5 transition-all shadow-xs">
+<span class="material-symbols-outlined text-sm text-amber-200">check_circle</span>
+<span>Record payment</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================================ -->
+<!-- PAYMENTS TABLE & FILTERS                                     -->
+<!-- ============================================================ -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-container-high shadow-xs overflow-hidden">
+<!-- Filter Bar Header -->
+<div class="p-5 border-b border-surface-container-high flex flex-col gap-4">
+<div class="flex items-center justify-between flex-wrap gap-3">
+<!-- Status Tabs: Pending, Paid, Failed, Refunded -->
+<div class="flex items-center gap-1.5 bg-surface-container-low p-1 rounded-xl border border-surface-container-high">
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-semibold text-xs flex items-center gap-1">
+<span>Pending</span>
+<span class="px-1.5 py-0.2 bg-amber-100 text-amber-900 rounded-full text-[10px] font-bold">18</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container-lowest text-primary font-semibold text-xs shadow-xs flex items-center gap-1">
+<span>Paid</span>
+<span class="px-1.5 py-0.2 bg-emerald-100 text-success rounded-full text-[10px] font-bold">142</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-semibold text-xs flex items-center gap-1">
+<span>Failed</span>
+<span class="px-1.5 py-0.2 bg-red-100 text-error rounded-full text-[10px] font-bold">3</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-semibold text-xs">
+<span>Refunded</span>
+<span class="text-outline font-normal ml-1">1</span>
+</button>
+</div>
+<!-- Secondary Actions -->
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-xl border border-surface-container-high hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Reload Records">
+<span class="material-symbols-outlined text-lg">refresh</span>
+</button>
+<button class="p-2 rounded-xl border border-surface-container-high hover:bg-surface-container-low text-on-surface-variant transition-colors" title="Customize Columns">
+<span class="material-symbols-outlined text-lg">view_column</span>
+</button>
+</div>
+</div>
+<!-- Secondary Filters Row -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+<!-- Payment Method Filter: Online / Cash on Delivery -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Payment Method</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded-xl py-2 pl-3 pr-8 text-xs font-medium text-on-surface focus:ring-1 focus:ring-primary focus:border-primary appearance-none">
+<option selected="">All Methods</option>
+<option>Razorpay Online</option>
+<option>Cash on Delivery</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Date Range Filter -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Date Range</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border border-surface-container-high rounded-xl py-2 pl-3 pr-8 text-xs font-medium text-on-surface focus:ring-1 focus:ring-primary focus:border-primary appearance-none">
+<option selected="">Today · 29 Oct 2026</option>
+<option>Yesterday · 28 Oct 2026</option>
+<option>Last 7 Days</option>
+<option>Current Billing Cycle</option>
+</select>
+<span class="material-symbols-outlined absolute right-2.5 top-1/2 -translate-y-1/2 text-outline text-base pointer-events-none">calendar_today</span>
+</div>
+</div>
+<!-- In-Table Keyword Search -->
+<div class="relative">
+<label class="block text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Filter Reference / ID</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border border-surface-container-high rounded-xl py-2 pl-8 pr-3 text-xs text-on-surface placeholder:text-outline focus:ring-1 focus:ring-primary focus:border-primary" placeholder="Search reference, order, or customer..." type="text"/>
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-sm">filter_list</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto custom-scroll">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/70 border-b border-surface-container-high text-xs font-bold text-outline uppercase tracking-wider">
+<th class="py-3 px-4 pl-6">Reference ID</th>
+<th class="py-3 px-4">Order Code</th>
+<th class="py-3 px-4">Customer</th>
+<th class="py-3 px-4 text-right">Amount</th>
+<th class="py-3 px-4">Payment Method</th>
+<th class="py-3 px-4">Status</th>
+<th class="py-3 px-4">Date &amp; Time</th>
+<th class="py-3 px-4 pr-6 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high text-xs text-on-surface font-medium">
+<!-- ROW 1 (Pending Cash on Delivery) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-amber-50/30">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-primary">REF-2026-8812</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-primary">YM-2026-000123</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Sharma General Store</div>
+<div class="text-[11px] text-outline">Rajesh Sharma</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-on-surface">
+₹2,440
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-amber-500/40 bg-amber-50 text-amber-900 font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+Cash on Delivery
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+Pending
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+29 Oct 2026, 06:15 AM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg bg-primary text-white hover:bg-primary/90 text-xs font-semibold transition-colors">
+Record payment
+</button>
+</td>
+</tr>
+<!-- ROW 2 (Paid Razorpay Online) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-medium text-on-surface">pay_Nsk928374a</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-primary">YM-2026-000124</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Pooja Mandir Organics</div>
+<div class="text-[11px] text-outline">Anand Joshi</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-on-surface">
+₹7,970
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary/20 bg-surface-container text-primary font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+Razorpay Online
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-success font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+Paid
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+29 Oct 2026, 07:42 AM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg border border-surface-container-high hover:bg-surface-container text-primary font-semibold text-xs transition-colors">
+View invoice
+</button>
+</td>
+</tr>
+<!-- ROW 3 (Paid Cash on Delivery) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-medium text-on-surface">REF-2026-00389</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-primary">YM-2026-000119</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Tapovan Vedic Ashram Kitchen</div>
+<div class="text-[11px] text-outline">Swami Chinmayan</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-on-surface">
+₹12,450
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-amber-500/40 bg-amber-50 text-amber-900 font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+Cash on Delivery
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-success font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+Paid
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+29 Oct 2026, 07:15 AM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg border border-surface-container-high hover:bg-surface-container text-primary font-semibold text-xs transition-colors">
+View invoice
+</button>
+</td>
+</tr>
+<!-- ROW 4 (Failed Razorpay Online) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-red-50/20">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-medium text-error">pay_failed_42910</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-primary">YM-2026-000098</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Vasant Dairy &amp; Provisions</div>
+<div class="text-[11px] text-outline">Vasant Patil</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-error">
+₹1,680
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-red-200 bg-red-50 text-error font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+Razorpay Online
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-100 text-error font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+Failed
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+28 Oct 2026, 09:12 PM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg bg-primary text-white hover:bg-primary/90 text-xs font-semibold transition-colors">
+Record payment
+</button>
+</td>
+</tr>
+<!-- ROW 5 (Paid Razorpay Online) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-medium text-on-surface">pay_Nsk881921c</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-primary">YM-2026-000125</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Shri Krishna Dairy Parlour</div>
+<div class="text-[11px] text-outline">Gopal Ranade</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-on-surface">
+₹3,480
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-primary/20 bg-surface-container text-primary font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+Razorpay Online
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-100 text-success font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-success"></span>
+Paid
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+29 Oct 2026, 06:40 AM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg border border-surface-container-high hover:bg-surface-container text-primary font-semibold text-xs transition-colors">
+View invoice
+</button>
+</td>
+</tr>
+<!-- ROW 6 (Pending Cash on Delivery) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors bg-amber-50/30">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-semibold text-primary">REF-2026-7721</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-primary">YM-2026-000105</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Godavari Sweets &amp; Milk Bar</div>
+<div class="text-[11px] text-outline">Nilesh Kulkarni</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-on-surface">
+₹3,150
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-amber-500/40 bg-amber-50 text-amber-900 font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+Cash on Delivery
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+Pending
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+29 Oct 2026, 05:50 AM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg bg-primary text-white hover:bg-primary/90 text-xs font-semibold transition-colors">
+Record payment
+</button>
+</td>
+</tr>
+<!-- ROW 7 (Refunded Razorpay Online) -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3.5 px-4 pl-6 font-mono text-xs">
+<div class="flex items-center gap-1.5">
+<span class="font-medium text-outline">ref_Nsk004928</span>
+<button class="text-outline hover:text-primary" title="Copy ID">
+<span class="material-symbols-outlined text-xs">content_copy</span>
+</button>
+</div>
+</td>
+<td class="py-3.5 px-4 font-mono">
+<span class="px-2 py-0.5 rounded bg-surface-container border border-surface-container-high font-semibold text-outline">YM-2026-000076</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="font-bold text-on-surface">Panchavati Vedic Ghee Center</div>
+<div class="text-[11px] text-outline">Kailash Gupta</div>
+</td>
+<td class="py-3.5 px-4 text-right font-mono font-bold text-outline">
+₹890
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-surface-container-high bg-surface-container text-outline font-semibold text-[11px]">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+Razorpay Online
+</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container text-outline font-bold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+Refunded
+</span>
+</td>
+<td class="py-3.5 px-4 text-outline whitespace-nowrap">
+28 Oct 2026, 04:15 PM
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="px-3 py-1 rounded-lg border border-surface-container-high hover:bg-surface-container text-outline hover:text-on-surface font-semibold text-xs transition-colors">
+View invoice
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination Bar -->
+<div class="p-4 px-6 border-t border-surface-container-high flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs text-outline">
+<div class="flex items-center gap-2">
+<span>Showing <span class="font-semibold text-on-surface">1–7</span> of <span class="font-semibold text-on-surface">164</span> transactions</span>
+<div class="h-4 w-px bg-surface-container-high mx-2"></div>
+<div class="flex items-center gap-1">
+<span>Rows per page:</span>
+<select class="bg-surface-container-low border border-surface-container-high rounded-lg py-1 px-2 text-xs font-semibold text-on-surface focus:ring-0">
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+</div>
+<!-- Page Navigation -->
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded-lg border border-surface-container-high text-outline hover:text-on-surface hover:bg-surface-container-low disabled:opacity-40" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-white font-semibold flex items-center justify-center">
+1
+</button>
+<button class="w-8 h-8 rounded-lg border border-surface-container-high text-on-surface hover:bg-surface-container-low font-semibold flex items-center justify-center">
+2
+</button>
+<button class="w-8 h-8 rounded-lg border border-surface-container-high text-on-surface hover:bg-surface-container-low font-semibold flex items-center justify-center">
+3
+</button>
+<span class="px-1 text-outline">...</span>
+<button class="w-8 h-8 rounded-lg border border-surface-container-high text-on-surface hover:bg-surface-container-low font-semibold flex items-center justify-center">
+7
+</button>
+<button class="p-1.5 rounded-lg border border-surface-container-high text-on-surface hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Informational Policy Footer Note -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-container-high flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs text-on-surface-variant">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-lg">info</span>
+<span>Payment pending block ensures accounts with unsettled balances are cleared by admin prior to subsequent dispatch.</span>
+</div>
+<div class="shrink-0 flex items-center gap-3 text-xs font-semibold">
+<a class="text-primary hover:underline" href="#">Reconciliation Guide</a>
+<span class="text-outline">•</span>
+<a class="text-primary hover:underline" href="#">Audit Logs</a>
+</div>
+</div>
+</main>
+</div>
+</body></html>

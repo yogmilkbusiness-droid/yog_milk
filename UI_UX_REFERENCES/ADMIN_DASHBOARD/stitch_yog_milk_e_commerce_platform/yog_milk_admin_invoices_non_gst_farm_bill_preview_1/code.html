@@ -1,0 +1,717 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk Admin - Invoices</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#bcc3fd",
+            "inverse-surface": "#31312d",
+            "surface-variant": "#e5e2dc",
+            "surface-container-low": "#f6f3ed",
+            "outline": "#767680",
+            "on-error-container": "#93000a",
+            "on-primary-container": "#7e86bc",
+            "on-primary-fixed-variant": "#3b4375",
+            "tertiary-container": "#3c1700",
+            "tertiary-fixed-dim": "#ffb68b",
+            "surface-bright": "#fcf9f3",
+            "primary": "#000533",
+            "background": "#fcf9f3",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#753400",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ebe8e2",
+            "on-primary": "#ffffff",
+            "secondary-fixed": "#dee0ff",
+            "on-primary-fixed": "#0e1647",
+            "on-secondary-container": "#394485",
+            "secondary-container": "#a9b4fe",
+            "surface-container-highest": "#e5e2dc",
+            "secondary-fixed-dim": "#bbc3ff",
+            "primary-container": "#151d4d",
+            "on-surface": "#1c1c18",
+            "on-tertiary-fixed": "#321200",
+            "secondary": "#4f599c",
+            "primary-fixed": "#dee0ff",
+            "on-secondary-fixed-variant": "#374183",
+            "on-tertiary-container": "#db6805",
+            "tertiary-fixed": "#ffdbc8",
+            "primary-fixed-dim": "#bcc3fd",
+            "on-surface-variant": "#46464f",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#c7c5d0",
+            "on-background": "#1c1c18",
+            "on-error": "#ffffff",
+            "surface-tint": "#535b8e",
+            "surface-dim": "#dcdad4",
+            "on-secondary": "#ffffff",
+            "error": "#ba1a1a",
+            "tertiary": "#190600",
+            "surface": "#fcf9f3",
+            "on-secondary-fixed": "#051256",
+            "surface-container": "#f0eee8",
+            "inverse-on-surface": "#f3f0eb"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "margin-tablet": "1.5rem",
+            "space-md": "1rem",
+            "space-xl": "2.25rem",
+            "margin": "1rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface antialiased overflow-x-hidden selection:bg-secondary-container selection:text-primary-container">
+<div class="flex h-screen w-screen overflow-hidden bg-background">
+<!-- 1. LEFT SIDEBAR (SideNavBar Shared Component Specification) -->
+<aside class="docked h-screen w-64 flex flex-col justify-between shrink-0 bg-primary-container text-surface border-r border-outline-variant/30">
+<!-- Shell Top / Header & Nav Tabs -->
+<div class="flex flex-col h-full overflow-y-auto">
+<!-- Brand Header -->
+<div class="p-5 pb-4 flex items-center gap-3.5 border-b border-outline-variant/15">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/10 border border-surface/20 flex items-center justify-center shrink-0 shadow-inner">
+<span class="material-symbols-outlined text-secondary-container" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface">Yog Milk</span>
+<span class="text-label-sm font-label-sm text-surface-variant/70 tracking-wider">Vedic Pure Dairy Admin</span>
+</div>
+</div>
+<!-- Navigation Tab Items (Strictly using JSON labels & icons, "Invoices" Active) -->
+<nav class="flex-1 px-3 py-4 space-y-1">
+<!-- 1. Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="dashboard">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<!-- 2. Orders -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="receipt_long">receipt_long</span>
+<span class="">Orders</span>
+</a>
+<!-- 3. Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="payments">payments</span>
+<span class="">Payments</span>
+</a>
+<!-- 4. Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="local_shipping">local_shipping</span>
+<span class="">Deliveries</span>
+</a>
+<!-- 5. Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="group">group</span>
+<span class="">Customers</span>
+</a>
+<!-- 6. Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="inventory_2">inventory_2</span>
+<span class="">Products</span>
+</a>
+<!-- 7. Invoices (ACTIVE - style_active_navigation applied) -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md active:scale-[0.99]" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-lg text-secondary-fixed" data-icon="description" style="font-variation-settings: 'FILL' 1;">description</span>
+<span class="font-semibold">Invoices</span>
+</div>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-tertiary-fixed text-tertiary-container">18 Due</span>
+</a>
+<!-- 8. Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="bar_chart">bar_chart</span>
+<span class="">Reports</span>
+</a>
+<!-- 9. Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="notifications">notifications</span>
+<span class="">Notifications</span>
+</a>
+<!-- 10. Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="calendar_clock">calendar_clock</span>
+<span class="">Ordering schedule</span>
+</a>
+<!-- 11. Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="history">history</span>
+<span class="">Audit log</span>
+</a>
+<!-- 12. Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-lg opacity-80" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+<!-- CTA & Bottom Footer -->
+<div class="p-3 border-t border-outline-variant/15 space-y-2 mt-auto">
+<!-- Support Desk CTA -->
+<div class="p-3 rounded-xl bg-surface-container-lowest/5 border border-surface/10 flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-fixed text-base" data-icon="support_agent">support_agent</span>
+<span class="text-body-sm font-body-sm text-surface-variant">Support Desk</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+</div>
+<!-- System Health & Log out -->
+<div class="pt-1 flex items-center justify-between px-1">
+<button class="flex items-center gap-1.5 text-label-sm font-label-sm text-surface-variant/70 hover:text-surface transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="vital_signs">vital_signs</span>
+<span class="">System Health</span>
+</button>
+<button class="flex items-center gap-1.5 text-label-sm font-label-sm text-surface-variant/70 hover:text-error-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="logout">logout</span>
+<span class="">Log out</span>
+</button>
+</div>
+</div>
+</div>
+</aside>
+<!-- 2. MAIN APP CONTENT CONTAINER (Top Bar + Two Column Split Workspace) -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopNavBar (Shared Component Specification) -->
+<header class="docked full-width top-0 sticky z-40 flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest border-b border-surface-variant">
+<!-- Omni Search (Search bar on left) -->
+<div class="flex items-center gap-3 w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg" data-icon="search">search</span>
+<input class="w-full h-10 pl-10 pr-4 text-body-sm font-body-sm bg-surface-container-low border border-surface-variant rounded-xl text-on-surface focus:outline-none focus:border-secondary transition-all" placeholder="Search by Bill No (YMI-...), Order Code, Customer..." type="text" value="YMI-2026-000049">
+</div>
+</div>
+<!-- Trailing Actions Cluster -->
+<div class="flex items-center gap-4">
+<!-- Trailing Primary Status Toggle Action from JSON -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="text-label-sm font-label-sm text-emerald-800 font-semibold tracking-wide">
+              Ordering Open · Closes 5:00 PM
+            </span>
+</div>
+<!-- Notification Icon Action from JSON -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container transition-colors" title="Notifications">
+<span class="material-symbols-outlined text-xl" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+</button>
+<!-- Divider -->
+<div class="h-6 w-px bg-surface-variant"></div>
+<!-- Admin Master Profile Avatar -->
+<div class="flex items-center gap-3 pl-1 cursor-pointer">
+<div class="w-9 h-9 rounded-full bg-primary-container text-surface flex items-center justify-center font-title-md text-title-md ring-2 ring-surface-variant">
+              VM
+            </div>
+<div class="flex flex-col text-left">
+<span class="text-label-md font-label-md text-on-surface font-semibold">Vikram Mehta</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Ops Lead · Nashik Hub</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Split-View Main Workspace (Left: Invoices List & Table | Right: Direct Non-GST Bill Preview) -->
+<main class="flex-1 flex overflow-hidden">
+<!-- ==================== LEFT COLUMN: INVOICES MANAGEMENT & LEDGER ==================== -->
+<section class="flex-1 flex flex-col border-r border-surface-variant overflow-y-auto bg-surface/50">
+<!-- Section Header & Ledger Actions -->
+<div class="p-6 pb-4 bg-surface-container-lowest border-b border-surface-variant">
+<div class="flex items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1"><h1 class="text-headline-md font-headline-md text-primary">Invoices</h1></div>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-xl">Official dairy delivery receipts and customer settlement records under payment pending review.</p>
+</div>
+<!-- Primary Top Actions -->
+<div class="flex items-center gap-2.5 shrink-0">
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-label-md font-label-md bg-surface-container-lowest border border-surface-variant text-on-surface hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="file_download">file_download</span>
+<span class="">Export Ledger (CSV)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2 rounded-xl text-label-md font-label-md bg-primary-container text-surface hover:bg-primary-container/90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="download">download</span>
+<span class="">Batch Download Bills</span>
+</button>
+</div>
+</div>
+<!-- Tab Filters -->
+<div class="flex items-center gap-2 mt-6 border-b border-surface-variant/60 -mb-4 pb-3 overflow-x-auto">
+<button class="px-3 py-1.5 rounded-lg text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+                All Invoices <span class="ml-1 text-on-surface-variant font-normal">(184)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-label-md bg-tertiary-fixed text-tertiary-container font-semibold flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+                Outstanding / Unsettled (18)
+              </button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+                Settled / Paid <span class="ml-1 text-on-surface-variant font-normal">(162)</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">
+                Corrected / Cancelled <span class="ml-1 text-on-surface-variant font-normal">(4)</span>
+</button>
+</div>
+</div>
+<!-- Search & Filter Ribbon -->
+<div class="px-6 py-3 bg-surface flex items-center justify-between gap-4 border-b border-surface-variant text-body-sm font-body-sm">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-lg" data-icon="tune">tune</span>
+<span class="text-label-sm font-label-sm uppercase tracking-wider font-semibold">Active Filter:</span>
+<span class="bg-surface-container-high px-2 py-0.5 rounded text-xs text-on-surface font-medium">Pending Delivery Cash · Route 4</span>
+<button class="text-xs text-error hover:underline ml-1">Clear</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-lowest border border-surface-variant rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-body-sm font-body-sm">29 Oct 2026 (Today)</span>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1 bg-surface-container-lowest border border-surface-variant rounded-lg text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="credit_card">credit_card</span>
+<span class="text-body-sm font-body-sm">Settlement: Cash &amp; COD</span>
+</div>
+</div>
+</div>
+<!-- Table Container -->
+<div class="flex-1 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider border-b border-surface-variant">
+<th class="py-3 px-4 pl-6">Invoice No</th>
+<th class="py-3 px-4">Order Code</th>
+<th class="py-3 px-4">Customer &amp; Outlet</th>
+<th class="py-3 px-4">Dispatch Run</th>
+<th class="py-3 px-4 text-right">Amount</th>
+<th class="py-3 px-4">Payment State</th>
+<th class="py-3 px-4">Version</th>
+<th class="py-3 px-4 pr-6 text-center">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant/60 text-body-sm font-body-sm bg-surface-container-lowest">
+<!-- ROW 1 (Active / Currently Selected / Previewed) -->
+<tr class="bg-secondary-container/10 border-l-4 border-l-primary-container transition-colors">
+<td class="py-3.5 px-4 pl-6">
+<div class="font-semibold text-primary font-mono text-xs">YMI-2026-000049</div>
+<span class="text-[10px] text-on-surface-variant">Dairy Invoice</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-xs text-on-surface">YM-2026-000123</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Rajesh Sharma</div>
+<div class="text-[11px] text-on-surface-variant">Sharma General Store · Nashik East</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="">29 Oct, Dawn</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Van #04 (06:15 AM)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface">₹2,440</div>
+<span class="text-[10px] text-tertiary font-medium">Net Due</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-800 border border-amber-200"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Payment Pending · Cash on Delivery</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1.5">
+<span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-surface-container-high text-on-surface">v2 (Corrected)</span>
+</div>
+<span class="text-[10px] text-on-surface-variant">History: 2 versions</span>
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<span class="inline-flex items-center gap-1 text-xs font-semibold text-primary bg-primary-fixed/50 px-2.5 py-1 rounded-lg">
+<span class="material-symbols-outlined text-sm" data-icon="visibility" style="font-variation-settings: 'FILL' 1;">visibility</span>
+                      Previewing
+                    </span>
+</td>
+</tr>
+<!-- ROW 2: Pooja Mandir Organics -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 pl-6">
+<div class="font-semibold text-on-surface font-mono text-xs">YMI-2026-000048</div>
+<span class="text-[10px] text-on-surface-variant">Dairy Invoice</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-xs text-on-surface">YM-2026-000124</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Pooja Mandir Organics</div>
+<div class="text-[11px] text-on-surface-variant">Govind Nagar Outlet</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="">29 Oct, Dawn</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Van #02 (05:45 AM)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface">₹7,970</div>
+<span class="text-[10px] text-emerald-700">Settled</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                      Paid (Razorpay)
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-surface-container text-on-surface-variant">v1 (Original)</span>
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="text-xs text-secondary hover:text-primary font-medium hover:underline">
+                      View / Download
+                    </button>
+</td>
+</tr>
+<!-- ROW 3: Tapovan Vedic Ashram Kitchen -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 pl-6">
+<div class="font-semibold text-on-surface font-mono text-xs">YMI-2026-000047</div>
+<span class="text-[10px] text-on-surface-variant">Dairy Invoice</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-xs text-on-surface">YM-2026-000119</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Tapovan Vedic Ashram Kitchen</div>
+<div class="text-[11px] text-on-surface-variant">Panchavati Sector 1</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="">29 Oct, Dawn</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Van #01 (05:10 AM)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface">₹12,450</div>
+<span class="text-[10px] text-emerald-700">Settled</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                      Paid (Admin Cash Handover)
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-surface-container text-on-surface-variant">v1 (Original)</span>
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="text-xs text-secondary hover:text-primary font-medium hover:underline">
+                      View / Download
+                    </button>
+</td>
+</tr>
+<!-- ROW 4: Kalyani Natural Wellness -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4 pl-6">
+<div class="font-semibold text-on-surface font-mono text-xs">YMI-2026-000046</div>
+<span class="text-[10px] text-on-surface-variant">Dairy Invoice</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-xs text-on-surface">YM-2026-000112</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface">Kalyani Natural Wellness</div>
+<div class="text-[11px] text-on-surface-variant">Gangapur Road Flagship</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="local_shipping">local_shipping</span>
+<span class="">29 Oct, Dawn</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Van #03 (06:00 AM)</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface">₹24,800</div>
+<span class="text-[10px] text-emerald-700">Settled</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="material-symbols-outlined text-[12px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                      Paid (NEFT)
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-surface-container text-on-surface-variant">v1 (Original)</span>
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="text-xs text-secondary hover:text-primary font-medium hover:underline">
+                      View / Download
+                    </button>
+</td>
+</tr>
+<!-- ROW 5: Godavari Sweets & Milk Bar (VOIDED / CANCELLED) -->
+<tr class="hover:bg-surface-container-low transition-colors opacity-80 bg-stone-50/60">
+<td class="py-3.5 px-4 pl-6">
+<div class="font-semibold text-error line-through font-mono text-xs">YMI-2026-000045</div>
+<span class="text-[10px] text-error font-medium">(CANX VOID)</span>
+</td>
+<td class="py-3.5 px-4 font-mono text-xs text-on-surface-variant line-through">YM-2026-000109</td>
+<td class="py-3.5 px-4">
+<div class="font-medium text-on-surface-variant">Godavari Sweets &amp; Milk Bar</div>
+<div class="text-[11px] text-on-surface-variant">Old City Market Hub</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-xs" data-icon="cancel">cancel</span>
+<span class="">28 Oct, Evening</span>
+</div>
+<span class="text-[11px] text-error">Cold-chain abort</span>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-on-surface-variant line-through">₹8,920</div>
+<span class="text-[10px] text-on-surface-variant">Reversed</span>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-200">
+                      Voided · Delivery Exception
+                    </span>
+</td>
+<td class="py-3.5 px-4">
+<span class="px-2 py-0.5 rounded text-[10px] font-medium bg-red-100 text-red-800">v1 (Cancelled)</span>
+</td>
+<td class="py-3.5 px-4 pr-6 text-center">
+<button class="text-xs text-on-surface-variant hover:text-on-surface font-medium hover:underline">
+                      View History
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Bottom Ledger Status Alert (Strict Zero-Credit Policy Notice) -->
+<div class="p-4 mx-6 my-4 bg-tertiary-fixed/40 border border-on-tertiary-container/20 rounded-2xl flex items-start gap-3"><span class="material-symbols-outlined text-on-tertiary-container mt-0.5 shrink-0" data-icon="shield_lock" style="font-variation-settings: &quot;FILL&quot; 1;">shield_lock</span><div class="text-xs"><span class="font-semibold text-tertiary">Payment Pending Block Active:</span><p class="text-on-surface-variant mt-0.5">Invoices marked pending review require settlement recording before subsequent dawn milk dispatch confirmation. Cash on delivery collections are recorded directly by admin upon hub reconciliation.</p></div></div>
+</section>
+<!-- ==================== RIGHT COLUMN: NON-GST DIRECT FARM INVOICE PREVIEW ==================== -->
+<aside class="w-[520px] 2xl:w-[580px] shrink-0 flex flex-col bg-surface-container-low h-full overflow-hidden border-l border-surface-variant">
+<!-- Bill Top Preview Toolbar -->
+<div class="px-6 py-3.5 bg-surface-container-lowest border-b border-surface-variant flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span class="text-label-md font-label-md text-on-surface font-semibold">Invoice Preview (#0049)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" title="Zoom In">
+<span class="material-symbols-outlined text-base" data-icon="zoom_in">zoom_in</span>
+</button>
+<button class="p-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors" title="Close Preview">
+<span class="material-symbols-outlined text-base" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Document View Canvas -->
+<div class="flex-1 overflow-y-auto p-6 space-y-5">
+<!-- THE OFFICIAL NON-GST FARM DISPATCH BILL (Physical Print Replica Container) -->
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-[#E7E2D6] relative">
+<!-- STRICT NON-GST STAMP (Top Right Pill) -->
+<div class="absolute top-6 right-6 text-right"><span class="inline-block px-2.5 py-1 rounded bg-secondary-container/20 border border-secondary/20 text-[10px] font-bold tracking-wider text-primary uppercase">Official Invoice</span><div class="text-[10px] text-on-surface-variant font-mono mt-0.5">Original Copy</div></div>
+<!-- Farm Identity & Header -->
+<div class="border-b border-[#E7E2D6] pb-4 mb-4">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary-container text-2xl" data-icon="water_drop" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary">Yog Milk</span>
+</div>
+<div class="text-[11px] italic font-serif text-on-surface-variant mb-2">"From Nature to Nourish You"</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed text-[11px]">
+                  Yog Milk Cold-Chain Hub · Trimbak Road, Nashik Rural, Maharashtra 422002<br>
+                  Farm Gate Facility: Gat No. 142/2, Anjaneri Vedic Reserve
+                </div>
+<!-- Document Title (STRICT RULE: NO "TAX INVOICE") -->
+<div class="mt-4 pt-3 border-t border-dashed border-[#E7E2D6] flex items-center justify-between"><div><h2 class="text-title-lg font-headline-sm text-primary font-bold">Invoice</h2><span class="text-label-sm font-label-sm text-primary-container font-mono">Invoice #YMI-2026-000049</span><span class="ml-1 text-[10px] bg-amber-100 text-amber-900 px-1.5 py-0.2 rounded font-semibold">(v2 Corrected)</span></div><div class="text-right text-xs"><div class="text-on-surface-variant">Order Ref: <span class="font-mono font-medium text-on-surface">YM-2026-000123</span></div><div class="text-on-surface-variant">Date: <span class="font-medium text-on-surface">29 Oct 2026, 07:45 AM</span></div></div></div>
+</div>
+<!-- Dispatch & Courier Details -->
+<div class="grid grid-cols-2 gap-3 p-3 rounded-xl bg-[#FFFCF6] border border-[#E7E2D6] mb-4 text-xs">
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider block text-[10px]">Dispatch Route</span>
+<span class="font-semibold text-on-surface">Route 4 Nashik East</span>
+<div class="text-on-surface-variant text-[11px]">Cold Reefer Van #04 (Dawn Run)</div>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider block text-[10px]">Milk Batch Certification</span>
+<span class="font-semibold text-emerald-800">4.9% Fat · 8.8 SNF Passed</span>
+<div class="text-on-surface-variant text-[11px]">Lab Chilling Lock: 3.8°C at Gate</div>
+</div>
+</div>
+<!-- Billed To Customer Card -->
+<div class="p-3.5 rounded-xl border border-[#E7E2D6] bg-surface-container-low mb-4 text-xs">
+<div class="flex items-center justify-between mb-1.5">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider font-semibold text-[10px]">Billed Customer / Retail Partner</span>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-800">Hold on Next Run</span>
+</div>
+<div class="font-bold text-on-surface text-sm">Rajesh Sharma</div>
+<div class="text-on-surface font-medium">Sharma General Store</div>
+<div class="text-on-surface-variant mt-0.5">Shop #4, College Road, Nashik East · Ph: +91 98230 11223</div>
+<div class="mt-1 pt-1.5 border-t border-surface-variant flex items-center justify-between text-[11px]">
+<span class="text-on-surface-variant font-mono">Account ID: YM-CUST-8839</span>
+<span class="text-error font-medium">Payment Pending Block</span>
+</div>
+</div>
+<!-- Line Items Table (NON-GST: NO GSTIN, NO HSN, NO CGST/SGST COLUMNS) -->
+<div class="border border-[#E7E2D6] rounded-xl overflow-hidden mb-4">
+<table class="w-full text-left text-xs border-collapse">
+<thead class="bg-[#FBF1DC] text-on-surface border-b border-[#E7E2D6]">
+<tr>
+<th class="py-2 px-3 font-semibold text-[11px]">Item Description</th>
+<th class="py-2 px-2 text-right font-semibold text-[11px]">Rate / Unit</th>
+<th class="py-2 px-2 text-center font-semibold text-[11px]">Qty / Pack</th>
+<th class="py-2 px-3 text-right font-semibold text-[11px]">Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#E7E2D6] text-on-surface bg-surface-container-lowest">
+<!-- Item 1 -->
+<tr>
+<td class="py-2.5 px-3">
+<div class="font-semibold text-primary">Full Cream Milk 500 ml</div>
+<div class="text-[10px] text-on-surface-variant">Glass bottle pack of 20 units · A2 Gir Cow</div>
+</td>
+<td class="py-2.5 px-2 text-right font-mono">₹680.00</td>
+<td class="py-2.5 px-2 text-center font-medium">2 packs<br><span class="text-[10px] text-on-surface-variant">(40 bottles)</span></td>
+<td class="py-2.5 px-3 text-right font-semibold font-mono">₹1,360.00</td>
+</tr>
+<!-- Item 2 -->
+<tr>
+<td class="py-2.5 px-3">
+<div class="font-semibold text-primary">Fresh Dahi 400 g</div>
+<div class="text-[10px] text-on-surface-variant">Clay handi curd pack of 24 units</div>
+</td>
+<td class="py-2.5 px-2 text-right font-mono">₹1,080.00</td>
+<td class="py-2.5 px-2 text-center font-medium">1 pack<br><span class="text-[10px] text-on-surface-variant">(24 pots)</span></td>
+<td class="py-2.5 px-3 text-right font-semibold font-mono">₹1,080.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Financial Breakdown Ledger -->
+<div class="p-3.5 rounded-xl bg-[#FBF1DC] border border-[#E7E2D6] space-y-2 text-xs"><div class="flex justify-between text-on-surface"><span class="text-on-surface-variant">Subtotal:</span><span class="font-mono font-medium">₹2,440.00</span></div><div class="flex justify-between text-on-surface"><span class="text-on-surface-variant">Cold-Chain Reefer Delivery:</span><span class="font-medium text-emerald-800">FREE</span></div><div class="pt-2 border-t border-[#E7E2D6] flex justify-between items-baseline"><div><span class="font-bold text-sm text-primary block">Total Net Payable:</span><span class="text-[10px] text-tertiary">Cash on Delivery (Pending Admin Settlement)</span></div><span class="text-headline-sm font-headline-sm font-bold text-primary font-mono">₹2,440.00</span></div></div>
+<!-- Terms & Statutory Producer Declaration -->
+<div class="mt-4 pt-3 border-t border-dashed border-[#E7E2D6] text-[10px] text-on-surface-variant leading-relaxed"><p class="font-semibold text-on-surface mb-0.5">Invoice Terms &amp; Settlement:</p><p class="">Official billing slip generated by Yog Milk Ops. Settlement is verified and recorded by administrator upon receipt.</p><div class="mt-2 text-center text-on-surface-variant font-mono text-[9px]">FSSAI Central Dairy License: 11524022000189 · Nashik Hub</div></div>
+</div>
+<!-- AUDIT TRAIL & REVISION LOG (Explicit preservation of revisions) -->
+<div class="bg-surface-container-lowest rounded-2xl p-5 border border-surface-variant shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base" data-icon="history_edu">history_edu</span>
+<h3 class="text-label-md font-label-md font-bold text-on-surface">Bill Version History &amp; Revision Log</h3>
+</div>
+<span class="text-[11px] font-mono text-on-surface-variant">2 Audited Edits</span>
+</div>
+<div class="relative pl-6 space-y-3 before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-surface-variant text-xs">
+<!-- v2 Current Revision -->
+<div class="relative">
+<span class="absolute -left-6 top-1 w-2.5 h-2.5 rounded-full bg-emerald-600 ring-4 ring-surface-container-lowest"></span>
+<div class="flex items-center justify-between font-semibold">
+<span class="text-primary font-mono">v2 (Current Active Bill)</span>
+<span class="text-on-surface-variant text-[11px]">29 Oct, 08:05 AM</span>
+</div>
+<p class="text-on-surface text-[11px] mt-0.5 leading-snug">
+                    Corrected by <span class="font-medium text-primary">Vikram Mehta (Ops Lead)</span>.
+                  </p>
+<p class="text-on-surface-variant text-[11px] italic bg-surface-container-low p-2 rounded-lg mt-1 border border-surface-variant/40">
+                    "Corrected pack count from 1 to 2 packs of Full Cream Milk per customer dawn phone confirmation. Difference: +₹680.00 logged in gate tally."
+                  </p>
+</div>
+<!-- v1 Archived Initial Draft -->
+<div class="relative opacity-75">
+<span class="absolute -left-6 top-1 w-2.5 h-2.5 rounded-full bg-surface-variant ring-4 ring-surface-container-lowest"></span>
+<div class="flex items-center justify-between">
+<span class="font-mono text-on-surface">v1 (Archived Snapshot)</span>
+<span class="text-on-surface-variant text-[11px]">29 Oct, 07:45 AM</span>
+</div>
+<div class="text-[11px] text-on-surface-variant flex items-center justify-between mt-0.5">
+<span class="">Original dispatch draft (₹1,760.00)</span>
+<button class="text-secondary hover:underline font-medium">View v1 Snapshot</button>
+</div>
+</div>
+</div>
+<!-- SHA-256 Ledger Verification Hash -->
+<div class="pt-2 border-t border-surface-variant flex items-center justify-between text-[10px] text-on-surface-variant">
+<span class="font-mono">SHA256: e8f4b238a9...91c2</span>
+<span class="flex items-center gap-1 text-emerald-700 font-medium">
+<span class="material-symbols-outlined text-[12px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                  Immutable Ledger Hash Valid
+                </span>
+</div>
+</div>
+</div>
+<!-- Bottom Bill Action Toolbar -->
+<div class="p-4 bg-surface-container-lowest border-t border-surface-variant flex flex-col gap-2.5">
+<div class="grid grid-cols-2 gap-2">
+<button class="flex items-center justify-center gap-2 h-11 rounded-xl bg-primary-container text-surface hover:bg-primary-container/90 transition-all font-label-md text-label-md shadow-sm">
+<span class="material-symbols-outlined text-base" data-icon="picture_as_pdf">picture_as_pdf</span>
+<span class="">Download PDF</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-11 rounded-xl bg-surface-container-lowest border border-[#E7E2D6] text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-base" data-icon="print">print</span>
+<span class="">Print Thermal Bill (3-in)</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-lg text-secondary border border-secondary/20 hover:bg-secondary-container/10 transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+<span class="">Resend Slip to Customer</span>
+</button>
+<button class="flex items-center justify-center gap-1.5 py-2 text-xs font-semibold rounded-lg text-on-tertiary-container bg-tertiary-fixed/60 hover:bg-tertiary-fixed transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="edit_note">edit_note</span>
+<span class="">Create Revision / Correction</span>
+</button>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</div>
+
+
+</body></html>

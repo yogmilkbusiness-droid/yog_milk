@@ -1,0 +1,580 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Yog Milk - Account &amp; Settings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#767681",
+            "surface-bright": "#faf8ff",
+            "secondary": "#994700",
+            "outline-variant": "#c6c5d2",
+            "on-tertiary-fixed": "#251a00",
+            "surface-variant": "#dde1f8",
+            "tertiary": "#261a00",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bbc3ff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#374183",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary-fixed-dim": "#ffb68b",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-high": "#e3e7fe",
+            "on-secondary": "#ffffff",
+            "background": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-primary-container": "#8994db",
+            "error": "#ba1a1a",
+            "inverse-surface": "#2b3041",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "primary-fixed": "#dee0ff",
+            "surface-container": "#eaedff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "on-secondary-container": "#602a00",
+            "surface-tint": "#4f599c",
+            "on-secondary-fixed-variant": "#753400",
+            "tertiary-fixed": "#ffdf9c",
+            "surface": "#faf8ff",
+            "on-background": "#161b2b",
+            "surface-container-low": "#f2f3ff",
+            "on-surface": "#161b2b",
+            "on-tertiary-container": "#ba9331",
+            "on-error-container": "#93000a",
+            "tertiary-container": "#3f2e00",
+            "inverse-on-surface": "#eef0ff",
+            "surface-dim": "#d5d9ef",
+            "on-primary-fixed": "#051256"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "space-2xl": "3rem",
+            "space-xl": "2rem",
+            "margin-tablet": "2rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "space-lg": "1.5rem",
+            "gutter-desktop": "1.5rem",
+            "space-md": "1rem",
+            "margin": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-md": ["16px", { "lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Smooth touch tap */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Subtle paper texture backdrop */
+    body {
+      background-color: #FAF8FF;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-primary">
+<!-- Mobile Viewport Container (Max 390px canonical width) -->
+<div class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col shadow-2xl pb-24 overflow-x-hidden">
+<!-- TopAppBar (Shared Component Implementation) -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40 bg-surface/90 dark:bg-surface-container-lowest/90 backdrop-blur-md shadow-sm">
+<div class="flex items-center space-x-2.5">
+<!-- Brand Lotus Medallion -->
+<div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="spa">spa</span>
+</div>
+<div>
+<span class="font-headline-sm-mobile text-headline-sm-mobile font-semibold tracking-wide text-primary">Yog Milk</span>
+<span class="block font-label-sm text-label-sm text-outline-variant font-medium -mt-1 tracking-wider uppercase">Vedic Dairy</span>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<!-- Notification with unread dot -->
+<button aria-label="Notifications" class="relative w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary-container rounded-full ring-2 ring-surface"></span>
+</button>
+<!-- Shopping Bag Action (from JSON schema trailing) -->
+<button aria-label="Cart" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container-high transition-colors duration-150 active:scale-95">
+<span class="material-symbols-outlined text-[22px]" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Page Title Subheader -->
+<div class="px-4 pt-3 pb-2 flex items-center justify-between">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-semibold text-primary">Account</h1>
+
+</div>
+<!-- Main Content Canvas -->
+<main class="px-4 space-y-4 pt-1">
+<!-- Customer Profile Card -->
+<section class="bg-surface-container-lowest rounded-[20px] p-4 border border-outline-variant/30 shadow-sm relative overflow-hidden">
+<!-- Vedic Ornamental Subtle Glow / Accent Arc -->
+<div class="absolute -top-12 -right-12 w-28 h-28 bg-surface-variant/40 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start gap-3.5 relative z-10">
+<!-- Avatar Lotus Badge with User Initials -->
+<div class="relative shrink-0">
+<div class="w-14 h-14 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm font-semibold tracking-wide ring-2 ring-tertiary-fixed-dim/70 shadow-sm">
+              RS
+            </div>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[13px]" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+</div>
+<!-- User Details -->
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h2 class="font-title-lg text-title-lg text-primary truncate">Rajesh Sharma</h2>
+<button aria-label="Edit Profile" class="text-primary hover:text-secondary p-1 -mr-1 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[18px]" data-icon="edit">edit</span>
+</button>
+</div>
+
+<div class="flex items-center gap-2 mt-1.5 flex-wrap"><p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5 truncate"><span class="material-symbols-outlined text-[15px] text-outline" data-icon="badge">badge</span><span class="font-medium text-on-surface truncate">Customer ID: YM-CUST-84920</span></p><span class="font-label-sm text-[11px] text-[#128C7E] bg-[#25D366]/20 px-2 py-0.5 rounded-full font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#25D366]"></span>Active</span></div>
+<div class="mt-1 flex flex-col gap-0.5 font-label-md text-label-md text-on-surface-variant">
+<span class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="call">call</span>
+                +91 98201 54321
+              </span>
+<span class="flex items-center gap-1.5 truncate">
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="mail">mail</span>
+                rajesh.sharma@gmail.com
+              </span>
+</div>
+</div>
+</div>
+<!-- Dawn Delivery Hub Badge Banner -->
+<div class="mt-3.5 pt-3 border-t border-outline-variant/20 flex items-start gap-2.5 bg-surface-container-low/70 -mx-4 -mb-4 px-4 py-2.5 rounded-b-[20px]"><div class="w-7 h-7 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0 text-secondary mt-0.5"><span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span></div><div class="flex-1 min-w-0"><div class="flex items-center justify-between"><span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Delivery Drop Point</span><span class="font-label-sm text-label-sm text-secondary-container font-bold bg-secondary-fixed/50 px-2 py-0.2 rounded-full">Morning 5:30 AM</span></div><p class="font-body-sm text-body-sm text-on-surface font-medium truncate mt-0.5">Shop #4, College Road, Nashik</p></div></div>
+</section>
+<!-- GROUP 1: Orders & Finance -->
+<section class="space-y-1.5">
+<h3 class="font-label-md text-label-md text-outline tracking-wider uppercase px-1 font-bold">Orders &amp; Finance</h3>
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/30 divide-y divide-outline-variant/20 overflow-hidden shadow-sm">
+<!-- My Orders -->
+<a class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">My Orders</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-2">
+<span class="inline-flex items-center gap-1 font-semibold text-secondary">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Active: 2
+                  </span>
+<span class="">·</span>
+<span class="">Delivered: 14</span>
+</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Invoices & Bills -->
+<a class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="description">description</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Invoices</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Past invoices &amp; GST receipts</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Payments & Ledger -->
+<a class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Payments &amp; Ledger</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="text-on-surface font-semibold">Settled: ₹14,200</span>
+<span class="">·</span>
+<span class="text-error font-semibold">Pending: ₹4,260</span>
+</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- My Purchases -->
+<a class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="bar_chart">bar_chart</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">My Purchases</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Monthly analytics &amp; top items (A2 Gir Milk)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Delivery Addresses & Drop Point -->
+<a class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="location_on">location_on</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Delivery Addresses &amp; Drop Point</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate max-w-[210px]">Shop #4, College Road, Nashik</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+</section>
+<!-- GROUP 2: Preferences & Settings -->
+<section class="space-y-1.5">
+<h3 class="font-label-md text-label-md text-outline tracking-wider uppercase px-1 font-bold">Preferences &amp; Settings</h3>
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/30 divide-y divide-outline-variant/20 overflow-hidden shadow-sm">
+<!-- Language Selection -->
+<div class="p-3.5">
+<div class="flex items-center justify-between mb-2.5">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="language">language</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Language / भाषा / निवडा</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Selected: <strong class="text-primary font-semibold">English</strong></p>
+</div>
+</div>
+</div>
+<!-- Quick switch chips -->
+<div class="flex items-center gap-2 pl-12" id="language-chips">
+<button class="lang-chip h-[34px] px-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all active:scale-95 shadow-xs border border-primary" type="button">
+                English
+              </button>
+<button class="lang-chip h-[34px] px-3.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-md text-label-md border border-outline-variant/40 transition-all active:scale-95" type="button">
+                हिन्दी
+              </button>
+<button class="lang-chip h-[34px] px-3.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-md text-label-md border border-outline-variant/40 transition-all active:scale-95" type="button">
+                मराठी
+              </button>
+</div>
+</div>
+<!-- Notification Preferences -->
+<div class="p-3.5">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications_active">notifications_active</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<p class="font-title-md text-title-md text-on-surface">Notification Preferences</p>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="notification-toggle" type="checkbox">
+<div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  Optional Farm Announcements &amp; New Batches
+                </p>
+<div class="mt-2 p-2 bg-surface-container-low rounded-xl border border-outline-variant/20 flex items-start gap-2">
+<span class="material-symbols-outlined text-[15px] text-secondary shrink-0 mt-0.5" data-icon="info">info</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">
+                    Essential alerts (Orders, Delivery, Payments) are always active for dawn logistics dispatch.
+                  </p>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-outline-variant/20 flex items-start gap-3"><div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary shrink-0 mt-0.5"><span class="material-symbols-outlined text-[20px]" data-icon="alarm">alarm</span></div><div class="flex-1"><div class="flex items-center justify-between"><p class="font-title-md text-title-md text-on-surface">Notify me when ordering opens</p><label class="relative inline-flex items-center cursor-pointer"><input checked="" class="sr-only peer" type="checkbox"><div class="w-11 h-6 bg-outline-variant/50 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div></label></div><p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Receive an alert when the daily ordering window opens at 7:00 AM</p></div></div></div>
+</div>
+</section>
+<!-- GROUP 3: Care & Governance -->
+<section class="space-y-1.5">
+<h3 class="font-label-md text-label-md text-outline tracking-wider uppercase px-1 font-bold">Care &amp; Governance</h3>
+<div class="bg-surface-container-lowest rounded-[20px] border border-outline-variant/30 divide-y divide-outline-variant/20 overflow-hidden shadow-sm">
+<!-- Help & Support (Trigger Sheet Modal) -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" onclick="openSupportSheet()" type="button">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Help &amp; Support</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">WhatsApp support, morning ops desk, FAQs</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<!-- About Yog Milk -->
+<a class="p-3.5 flex items-center justify-between hover:bg-surface-container-low transition-colors duration-150 group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="eco">eco</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">About Yog Milk</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Our Ahimsa Gir Cow Gaushala in Nashik</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- Legal & Policies -->
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield">shield</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Legal &amp; Purity Policies</p>
+<div class="flex items-center gap-2 mt-0.5">
+<a class="font-label-md text-label-md text-primary underline underline-offset-2 hover:text-secondary" href="#">Terms of Service</a>
+<span class="text-outline-variant">·</span>
+<a class="font-label-md text-label-md text-primary underline underline-offset-2 hover:text-secondary" href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Log Out Action -->
+<button class="w-full text-left p-3.5 flex items-center justify-between hover:bg-error-container/20 transition-colors duration-150 group" onclick="confirmLogout()" type="button">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-error-container/40 flex items-center justify-center text-error group-hover:bg-error group-hover:text-on-error transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="logout">logout</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-error font-semibold">Log Out</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Signed in as +91 98201 54321</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-error text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Footer Brand Display -->
+<footer class="pt-6 pb-4 flex flex-col items-center justify-center text-center">
+<!-- Centered Yog Milk drop-lotus icon -->
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary mb-2 shadow-xs">
+<span class="material-symbols-outlined text-[28px] text-primary" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<p class="font-headline-sm text-headline-sm font-semibold text-primary tracking-wide">Yog Milk</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Yog Milk v2.4.0 · Sattvic Pure Dairy</p>
+<p class="font-headline-sm italic text-[13px] text-secondary mt-1">“From Nature to Nourish You”</p>
+<div class="flex items-center gap-1.5 mt-2 text-outline text-[11px] font-label-sm">
+<span class="">Nashik Valley Farms</span>
+<span class="">·</span>
+<span class="">A2 Gir Certified</span>
+<span class="">·</span>
+<span class="">Ahimsa Vedic</span>
+</div>
+</footer>
+</main>
+<!-- Support Sheet / Drawer Modal (Layer 4) -->
+<div class="fixed inset-0 z-50 flex items-end justify-center bg-inverse-surface/40 backdrop-blur-xs transition-opacity duration-300 opacity-0 pointer-events-none" id="support-sheet">
+<div class="w-full max-w-[390px] bg-surface-container-lowest rounded-t-[28px] p-5 shadow-2xl transform translate-y-full transition-transform duration-300 border-t border-outline-variant/40" id="support-panel">
+<!-- Drawer Handle -->
+<div class="w-12 h-1 bg-outline-variant rounded-full mx-auto mb-4"></div>
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="support_agent">support_agent</span>
+<h3 class="font-headline-md text-headline-md text-primary">Care &amp; Support Desk</h3>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:bg-surface-container-high active:scale-95" onclick="closeSupportSheet()" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 mb-4">
+          Dedicated dawn support for Nashik distribution network partners and daily home subscribers.
+        </p>
+<!-- Support Actions -->
+<div class="space-y-2.5">
+<!-- WhatsApp Support Button -->
+<a class="w-full flex items-center justify-between p-3.5 bg-surface-container-low rounded-[14px] border border-outline-variant/20 hover:border-outline active:scale-98 transition-all" href="https://wa.me/919820154321" target="_blank">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[22px]" data-icon="chat">chat</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface flex items-center gap-1.5">
+                  Direct WhatsApp Support
+                  <span class="bg-[#25D366]/20 text-[#128C7E] font-label-sm text-[10px] px-1.5 py-0.2 rounded-full font-bold">Instant</span>
+</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Fast response for route changes &amp; milk quantities</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="arrow_outward">arrow_outward</span>
+</a>
+<!-- Call Operations Desk -->
+<a class="w-full flex items-center justify-between p-3.5 bg-surface-container-low rounded-[14px] border border-outline-variant/20 hover:border-outline active:scale-98 transition-all" href="tel:+919820154321">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="call">call</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Call Operations Desk</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">+91 98201 54321 · 5:00 AM – 10:00 PM Daily</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+<!-- FAQs & SLAs -->
+<a class="w-full flex items-center justify-between p-3.5 bg-surface-container-low rounded-[14px] border border-outline-variant/20 hover:border-outline active:scale-98 transition-all" href="#">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="help_outline">help_outline</span>
+</div>
+<div>
+<p class="font-title-md text-title-md text-on-surface">Dawn Delivery SLA &amp; FAQs</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Cold chain protocols, bottle return policy</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]" data-icon="chevron_right">chevron_right</span>
+</a>
+</div>
+<button class="mt-4 w-full h-[48px] rounded-[14px] bg-primary text-on-primary font-title-md text-title-md font-semibold hover:bg-primary/90 transition-colors active:scale-95 shadow-sm" onclick="closeSupportSheet()" type="button">
+          Dismiss
+        </button>
+</div>
+</div>
+<!-- BottomNavBar (Shared Component JSON Implementation) -->
+<!-- Destination count: 4, Active: 'Account' (mapped autonomously to current view) -->
+<nav aria-label="Bottom Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 pb-safe bg-surface/95 dark:bg-surface-container-lowest/95 backdrop-blur-md shadow-lg">
+<!-- Destination 1: Home (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">Home</span>
+</a>
+<!-- Destination 2: Shop (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="storefront">storefront</span>
+<span class="text-label-sm font-label-sm mt-0.5">Shop</span>
+</a>
+<!-- Destination 3: Orders (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant font-normal px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm mt-0.5">Orders</span>
+</a>
+<!-- Destination 4: Account (ACTIVE - Mapped strictly per Intent Protocol) -->
+<a aria-current="page" class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed font-semibold bg-surface-container-high dark:bg-primary-container/40 rounded-full px-4 py-1 hover:text-primary transition-colors duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="text-label-sm font-label-sm mt-0.5">Account</span>
+</a>
+</nav>
+</div>
+<!-- Interactive JavaScript for Sheet, Chips & Toggle -->
+<script>
+    function openSupportSheet() {
+      const sheet = document.getElementById('support-sheet');
+      const panel = document.getElementById('support-panel');
+      sheet.classList.remove('opacity-0', 'pointer-events-none');
+      sheet.classList.add('opacity-100');
+      panel.classList.remove('translate-y-full');
+      panel.classList.add('translate-y-0');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSupportSheet() {
+      const sheet = document.getElementById('support-sheet');
+      const panel = document.getElementById('support-panel');
+      sheet.classList.add('opacity-0', 'pointer-events-none');
+      sheet.classList.remove('opacity-100');
+      panel.classList.add('translate-y-full');
+      panel.classList.remove('translate-y-0');
+      document.body.style.overflow = '';
+    }
+
+    // Backdrop click dismisses modal
+    document.getElementById('support-sheet').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeSupportSheet();
+      }
+    });
+
+    // Language Chips Quick Switch Interaction
+    const chips = document.querySelectorAll('.lang-chip');
+    chips.forEach(chip => {
+      chip.addEventListener('click', function() {
+        chips.forEach(c => {
+          c.className = 'lang-chip h-[34px] px-3.5 rounded-full bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-label-md text-label-md border border-outline-variant/40 transition-all active:scale-95';
+        });
+        this.className = 'lang-chip h-[34px] px-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md transition-all active:scale-95 shadow-xs border border-primary';
+      });
+    });
+
+    // Logout Confirmation Toast Mock
+    function confirmLogout() {
+      if (confirm('Are you sure you want to log out of your Yog Milk partner account (+91 98201 54321)?')) {
+        alert('Logging out... Dawn delivery schedules remain active with your Gaushala route manager.');
+      }
+    }
+  </script>
+
+
+
+
+</body></html>

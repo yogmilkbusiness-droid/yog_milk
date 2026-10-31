@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin - Orders Management</title>
+<!-- Google Fonts: Playfair Display and Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&amp;family=Plus Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline": "#767680",
+            "surface-dim": "#dcdad4",
+            "on-secondary-fixed-variant": "#374183",
+            "on-primary-fixed-variant": "#3b4375",
+            "primary-fixed": "#dee0ff",
+            "surface": "#fcf9f3",
+            "primary": "#000533",
+            "tertiary-fixed": "#ffdbc8",
+            "on-tertiary-fixed": "#321200",
+            "inverse-surface": "#31312d",
+            "outline-variant": "#c7c5d0",
+            "secondary-fixed": "#dee0ff",
+            "primary-fixed-dim": "#bcc3fd",
+            "surface-bright": "#fcf9f3",
+            "surface-tint": "#535b8e",
+            "secondary-container": "#a9b4fe",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#4f599c",
+            "tertiary": "#190600",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#394485",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#ebe8e2",
+            "on-surface-variant": "#46464f",
+            "error": "#ba1a1a",
+            "surface-container-low": "#f6f3ed",
+            "on-primary-container": "#7e86bc",
+            "on-secondary-fixed": "#051256",
+            "surface-variant": "#e5e2dc",
+            "surface-container-highest": "#e5e2dc",
+            "secondary-fixed-dim": "#bbc3ff",
+            "on-tertiary-fixed-variant": "#753400",
+            "inverse-on-surface": "#f3f0eb",
+            "on-background": "#1c1c18",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "tertiary-fixed-dim": "#ffb68b",
+            "primary-container": "#151d4d",
+            "inverse-primary": "#bcc3fd",
+            "on-error-container": "#93000a",
+            "surface-container": "#f0eee8",
+            "on-primary-fixed": "#0e1647",
+            "on-primary": "#ffffff",
+            "on-surface": "#1c1c18",
+            "on-tertiary-container": "#db6805",
+            "tertiary-container": "#3c1700",
+            "background": "#fcf9f3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "margin-tablet": "1.5rem",
+            "space-sm": "0.5rem",
+            "space-xl": "2.25rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "margin-desktop": "3rem",
+            "space-xs": "0.25rem",
+            "gutter-desktop": "1.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "headline-lg": ["Playfair Display"],
+            "display-lg": ["Playfair Display"],
+            "headline-sm": ["Playfair Display"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "fontWeight": "600" }],
+            "display-lg-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+            "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }],
+            "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f0eee8;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c7c5d0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased h-full flex flex-col overflow-hidden font-body-md text-body-md selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="bg-primary-container dark:bg-primary text-surface dark:text-surface-bright docked h-screen w-64 flex flex-col justify-between shrink-0 border-r border-outline-variant/30 dark:border-outline-variant/10 flat no shadows select-none z-30">
+<div class="h-full flex flex-col justify-between p-4 overflow-y-auto custom-scrollbar">
+<!-- Top brand & navigation -->
+<div class="space-y-6">
+<!-- Logo & Admin subtext -->
+<div class="flex items-center gap-3 px-2 pt-1 pb-2">
+<div class="w-10 h-10 rounded-xl bg-surface-container-lowest/10 flex items-center justify-center border border-surface/20 shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-headline-sm font-headline-sm font-semibold tracking-wide text-surface dark:text-surface-bright truncate leading-tight">Yog Milk</span>
+<span class="text-label-sm font-label-sm text-on-primary-container tracking-wider truncate uppercase">Vedic Pure Dairy Admin</span>
+</div>
+</div>
+<!-- Main Nav Tabs List -->
+<nav class="space-y-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">dashboard</span>
+<span class="truncate">Dashboard</span>
+</a>
+<!-- Orders (ACTIVE) -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-secondary-container/20 text-surface font-label-md text-label-md active:scale-[0.99] border border-secondary-container/30" href="#">
+<div class="flex items-center gap-3 truncate">
+<span class="material-symbols-outlined text-secondary-fixed" data-weight="fill" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="truncate">Orders</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-on-tertiary-container text-surface text-label-sm font-label-sm">18 new</span>
+</a>
+<!-- Payments -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">payments</span>
+<span class="truncate">Payments</span>
+</a>
+<!-- Deliveries -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">local_shipping</span>
+<span class="truncate">Deliveries</span>
+</a>
+<!-- Customers -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">group</span>
+<span class="truncate">Customers</span>
+</a>
+<!-- Products -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">inventory_2</span>
+<span class="truncate">Products</span>
+</a>
+<!-- Invoices -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">description</span>
+<span class="truncate">Invoices</span>
+</a>
+<!-- Reports -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">bar_chart</span>
+<span class="truncate">Reports</span>
+</a>
+<!-- Notifications -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">notifications</span>
+<span class="truncate">Notifications</span>
+</a>
+<!-- Ordering schedule -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">calendar_clock</span>
+<span class="truncate">Ordering schedule</span>
+</a>
+<!-- Audit log -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">history</span>
+<span class="truncate">Audit log</span>
+</a>
+<!-- Settings -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-surface-variant/80 hover:text-surface font-body-md text-body-md hover:bg-surface-container-highest/10 transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-surface-variant/70">settings</span>
+<span class="truncate">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Telemetry, Operator Profile & Footer Tab Actions -->
+<div class="pt-4 mt-4 border-t border-outline-variant/20 space-y-3">
+<!-- Cold Chain Telemetry Card -->
+<div class="p-2.5 rounded-xl bg-surface-container-highest/10 border border-surface/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-container animate-pulse text-base">severe_cold</span>
+<div>
+<p class="text-label-sm font-label-sm text-surface-dim uppercase tracking-wider">Cold-Chain Tank</p>
+<p class="text-label-md font-label-md text-surface font-bold">4.2°C <span class="text-label-sm font-normal text-surface-variant/70">(Compliant)</span></p>
+</div>
+</div>
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+</div>
+<!-- Operator Profile Info -->
+<div class="flex items-center gap-3 px-2 py-1.5 rounded-xl bg-surface-container-lowest/5">
+<div class="w-8 h-8 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-label-md text-label-md font-bold">
+              VM
+            </div>
+<div class="overflow-hidden">
+<p class="text-label-md font-label-md text-surface truncate">Vikram Mehta</p>
+<p class="text-label-sm font-label-sm text-on-primary-container truncate">Lead Operations Admin</p>
+</div>
+</div>
+<!-- Support Desk CTA -->
+<button class="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl bg-surface-container-lowest/10 hover:bg-surface-container-lowest/20 text-surface text-label-md font-label-md transition-colors">
+<span class="material-symbols-outlined text-base">headset_mic</span>
+<span>Support Desk</span>
+</button>
+<!-- Footer Tabs (System Health & Log out) -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<a class="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-surface-variant/70 hover:text-surface text-label-sm font-label-sm hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">vital_signs</span>
+<span>System Health</span>
+</a>
+<a class="flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-surface-variant/70 hover:text-surface text-label-sm font-label-sm hover:bg-surface-container-highest/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-sm">logout</span>
+<span>Log out</span>
+</a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopNavBar (Shared Component) -->
+<header class="docked full-width top-0 sticky z-40 shadow-sm border-b border-surface-variant dark:border-outline-variant/20 flex items-center justify-between px-6 py-3.5 w-full bg-surface-container-lowest dark:bg-inverse-surface shrink-0">
+<!-- Search omnibar on left -->
+<div class="flex items-center gap-4 w-96">
+<div class="relative w-full">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-xl">search</span>
+</span>
+<input class="w-full pl-10 pr-12 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-all" placeholder="Search order code, customer ⌘K" type="text"/>
+<span class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-outline text-label-sm font-label-sm">
+              ⌘K
+            </span>
+</div>
+</div>
+<!-- Trailing actions & status bar -->
+<div class="flex items-center gap-4">
+<!-- Live Ordering Window Pill -->
+<div class="flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-amber-50 border border-amber-200">
+<span class="w-2 h-2 rounded-full bg-amber-500 animate-ping"></span>
+<span class="text-label-md font-label-md text-tertiary-container flex items-center gap-1.5">
+<span>Ordering Open · Closes 5:00 PM</span>
+<span class="text-label-sm font-label-sm font-normal text-on-surface-variant">(3h 48m left)</span>
+</span>
+<div class="w-8 h-4 bg-emerald-600 rounded-full relative cursor-pointer flex items-center p-0.5 transition-colors">
+<div class="w-3 h-3 bg-white rounded-full ml-auto shadow-sm"></div>
+</div>
+</div>
+<!-- Emergency Freeze Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-error/30 bg-error-container/20 hover:bg-error-container/40 text-error text-label-sm font-label-sm transition-colors" title="Instant killswitch for intake">
+<span class="material-symbols-outlined text-base">emergency_home</span>
+<span>Emergency Freeze</span>
+</button>
+<!-- Notification Bell with badge -->
+<button class="relative p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-4 h-4 bg-error text-on-error rounded-full text-[10px] font-bold flex items-center justify-center">6</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/40"></div>
+<!-- Profile Avatar -->
+<div class="flex items-center gap-2.5 cursor-pointer">
+<div class="w-9 h-9 rounded-full bg-primary-container text-surface flex items-center justify-center font-label-md text-label-md font-semibold border-2 border-surface-container">
+              VM
+            </div>
+<div class="hidden lg:block text-left">
+<p class="text-label-md font-label-md text-on-surface leading-tight">Yog Milk Admin</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Nashik Rural Hub</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Scrollable Main View Canvas -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-6 space-y-5">
+<!-- Page Header & Global Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<!-- Breadcrumbs -->
+<nav class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant mb-1">
+<span>Operations Console</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="text-on-surface font-semibold">Orders Management</span>
+</nav>
+<h1 class="font-headline-md text-headline-md text-primary tracking-tight">Orders Management</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+              Live dawn batch fulfillment, COD cash verifications, and delivery dispatch routes
+            </p>
+</div>
+<!-- Actions Header Cluster -->
+<div class="flex items-center flex-wrap gap-2.5 shrink-0">
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low text-on-surface text-label-md font-label-md shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Export Orders (CSV)</span>
+</button>
+<button class="flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-outline-variant bg-surface-container-lowest hover:bg-surface-container-low text-on-surface text-label-md font-label-md shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-base">checklist</span>
+<span>Batch Status Update</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary-container text-white text-label-md font-label-md hover:bg-primary shadow-sm transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined text-lg">add_call</span>
+<span>+ Manual Phone Order (Strict Zero-Credit)</span>
+</button>
+</div>
+</div>
+<!-- Metric / Saved Filter Tabs & Views Bar -->
+<div class="flex items-center justify-between border-b border-surface-variant pb-2 overflow-x-auto gap-4">
+<div class="flex items-center gap-1.5 shrink-0">
+<!-- All Orders Tab -->
+<button class="px-3.5 py-2 rounded-xl text-label-md font-label-md bg-primary-container text-white shadow-xs transition-colors flex items-center gap-2">
+<span>All Orders</span>
+<span class="px-1.5 py-0.5 rounded-full bg-white/20 text-label-sm font-label-sm">142</span>
+</button>
+<!-- Awaiting Kitchen Action -->
+<button class="px-3.5 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+<span>Awaiting Kitchen Action</span>
+<span class="px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-label-sm font-label-sm">14</span>
+</button>
+<!-- Pending COD Verification -->
+<button class="px-3.5 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+<span>Pending COD Verification</span>
+<span class="px-1.5 py-0.5 rounded-full bg-orange-100 text-orange-800 text-label-sm font-label-sm">18</span>
+</button>
+<!-- Out for Dawn Delivery -->
+<button class="px-3.5 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+<span>Out for Dawn Delivery</span>
+<span class="px-1.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-label-sm font-label-sm">56</span>
+</button>
+<!-- Blocked Customers -->
+<button class="px-3.5 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+<span>Blocked Customers</span>
+<span class="px-1.5 py-0.5 rounded-full bg-red-100 text-red-800 text-label-sm font-label-sm">3</span>
+</button>
+<!-- Delivery Failed / Exception -->
+<button class="px-3.5 py-2 rounded-xl text-label-md font-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center gap-2">
+<span>Delivery Failed / Exception</span>
+<span class="px-1.5 py-0.5 rounded-full bg-red-100 text-red-800 text-label-sm font-label-sm">2</span>
+</button>
+</div>
+<!-- Saved Views Presets Dropdown -->
+<div class="relative shrink-0">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-surface-variant bg-surface-container-lowest text-label-md font-label-md text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-base text-secondary">bookmark_border</span>
+<span>Morning Run Nashik Hub</span>
+<span class="material-symbols-outlined text-base">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Comprehensive Filter & Omnisearch Controls Bar -->
+<div class="bg-surface-container-lowest p-3.5 rounded-2xl border border-surface-variant shadow-sm space-y-3">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-center">
+<!-- Specific Input Search -->
+<div class="md:col-span-4 relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-outline">
+<span class="material-symbols-outlined text-lg">filter_alt</span>
+</span>
+<input class="w-full pl-9 pr-3 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search order code (e.g. YM-2026-000123), customer name, phone..." type="text"/>
+</div>
+<!-- Date Filter Picker -->
+<div class="md:col-span-2">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-label-md font-label-md text-on-surface hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-base text-outline">calendar_today</span>
+<span class="truncate">Today · 29 Oct 2026</span>
+</div>
+<span class="material-symbols-outlined text-xs">arrow_drop_down</span>
+</button>
+</div>
+<!-- Order Status Multi-select -->
+<div class="md:col-span-2">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-label-md font-label-md text-on-surface hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-base text-outline">tune</span>
+<span class="truncate">Status: All active</span>
+</div>
+<span class="material-symbols-outlined text-xs">arrow_drop_down</span>
+</button>
+</div>
+<!-- Payment Status & Method Multi-select -->
+<div class="md:col-span-2">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-label-md font-label-md text-on-surface hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-base text-outline">currency_rupee</span>
+<span class="truncate">Payment &amp; COD</span>
+</div>
+<span class="material-symbols-outlined text-xs">arrow_drop_down</span>
+</button>
+</div>
+<!-- Route Selection -->
+<div class="md:col-span-2">
+<button class="w-full flex items-center justify-between px-3 py-2 bg-surface-container-low border border-surface-variant rounded-xl text-label-md font-label-md text-on-surface hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-2 truncate">
+<span class="material-symbols-outlined text-base text-outline">alt_route</span>
+<span class="truncate">All Routes (1-8)</span>
+</div>
+<span class="material-symbols-outlined text-xs">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<!-- Active tags row & Reset buttons -->
+<div class="flex items-center justify-between pt-1 border-t border-surface-variant/50 text-label-sm font-label-sm">
+<div class="flex items-center gap-2 flex-wrap text-on-surface-variant">
+<span>Applied filters:</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container border border-surface-variant text-on-surface">
+                Nashik Dairy Hub
+                <span class="material-symbols-outlined text-xs cursor-pointer hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container border border-surface-variant text-on-surface">
+                Shift: Dawn Run (05:30 - 07:30)
+                <span class="material-symbols-outlined text-xs cursor-pointer hover:text-error">close</span>
+</span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg bg-surface-container border border-surface-variant text-on-surface">
+                Non-GST Farm Ledger
+                <span class="material-symbols-outlined text-xs cursor-pointer hover:text-error">close</span>
+</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="text-on-secondary-fixed-variant hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">bookmark_add</span>
+<span>Save view</span>
+</button>
+<button class="text-error hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">refresh</span>
+<span>Reset filters</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Orders Table Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-surface-variant shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-surface-variant text-on-surface-variant text-label-sm font-label-sm uppercase tracking-wider">
+<th class="py-3.5 px-4 w-10">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</th>
+<th class="py-3.5 px-4 cursor-pointer hover:text-on-surface">
+<div class="flex items-center gap-1">
+<span>Order Code</span>
+<span class="material-symbols-outlined text-xs">arrow_downward</span>
+</div>
+</th>
+<th class="py-3.5 px-4 cursor-pointer hover:text-on-surface">
+<div class="flex items-center gap-1">
+<span>Customer &amp; Outlet</span>
+<span class="material-symbols-outlined text-xs">swap_vert</span>
+</div>
+</th>
+<th class="py-3.5 px-4 cursor-pointer hover:text-on-surface">
+<div class="flex items-center gap-1">
+<span>Created Time</span>
+<span class="material-symbols-outlined text-xs">swap_vert</span>
+</div>
+</th>
+<th class="py-3.5 px-4">Items &amp; Packs</th>
+<th class="py-3.5 px-4 cursor-pointer hover:text-on-surface text-right">
+<div class="flex items-center justify-end gap-1">
+<span>Order Total</span>
+<span class="material-symbols-outlined text-xs">swap_vert</span>
+</div>
+</th>
+<th class="py-3.5 px-4">Order Status</th>
+<th class="py-3.5 px-4">Payment &amp; Method</th>
+<th class="py-3.5 px-4">Delivery Status</th>
+<th class="py-3.5 px-4 text-center">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-variant text-body-sm font-body-sm">
+<!-- ROW 1 (Highlight/Selected Row with Blocked Notice) -->
+<tr class="bg-surface-container/60 hover:bg-surface-container transition-colors">
+<td class="py-3.5 px-4">
+<input checked="" class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex flex-col">
+<span class="font-bold">YM-2026-000123</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Dawn Batch #04</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span>Rajesh Sharma</span>
+<span class="material-symbols-outlined text-error text-sm" title="Blocked from next order: Unpaid debt exceeds ₹2,000 threshold">report_problem</span>
+</div>
+<span class="text-xs text-on-surface-variant">Sharma General Store, Nashik</span>
+<span class="text-[10px] font-bold text-error bg-error-container/30 px-1.5 py-0.2 rounded w-fit mt-0.5">Blocked from next order: Unpaid</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface whitespace-nowrap">
+<div>29 Oct, 07:45 AM</div>
+<span class="text-[11px] text-on-surface-variant">32m ago</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-medium text-on-surface truncate">Full Cream Milk 500ml × 2 pk</p>
+<p class="text-xs text-on-surface-variant truncate">Fresh Dahi 400g × 1 pk</p>
+<span class="text-[11px] text-secondary font-semibold">2 items total</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-base text-on-surface">₹2,440</div>
+<span class="text-[10px] text-on-surface-variant">Non-GST Farm Ledger</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Soft filled pill: Preparing -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6E8F5] text-[#151D4D] text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#151D4D]"></span>
+                      Preparing
+                    </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Payment Status Badge: Outlined pill with ₹ icon (Pending COD) -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#E8A317] bg-[#FFF4DB] text-[#9A6700] text-xs font-semibold">
+<span class="text-xs font-bold">₹</span>
+<span>Pending · Cash on Delivery</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Delivery Slot Badge: Soft pill with Truck icon -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6E8F5] text-[#151D4D] text-xs font-medium">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<span>Assigned (Route 4 - Morning Run)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="px-2 py-1 rounded-lg hover:bg-surface-container-high text-xs font-semibold text-primary transition-colors">View Details</button>
+<button class="px-2 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-xs font-semibold text-on-surface transition-colors">Update Status</button>
+<button class="p-1 rounded-lg hover:bg-surface-container-high text-on-surface-variant" title="Print Bill">
+<span class="material-symbols-outlined text-base">print</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex flex-col">
+<span class="font-bold">YM-2026-000142</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Dawn Batch #05</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Meera Kulkarni</span>
+<span class="text-xs text-on-surface-variant">Kulkarni Pure Foods</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface whitespace-nowrap">
+<div>29 Oct, 08:12 AM</div>
+<span class="text-[11px] text-on-surface-variant">5m ago</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-medium text-on-surface truncate">Pure Ghee 1L × 3 pk</p>
+<p class="text-xs text-on-surface-variant truncate">Fresh Paneer 1kg × 4 pk</p>
+<span class="text-[11px] text-secondary font-semibold">4 items total</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-base text-on-surface">₹7,970</div>
+<span class="text-[10px] text-on-surface-variant">Non-GST Direct Farmer</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Soft filled pill: Confirmed -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#1F9D63]"></span>
+                      Confirmed
+                    </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Payment Status Badge: Paid Online -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#1F9D63] bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">
+<span class="text-xs font-bold">₹</span>
+<span>Paid · Online (Razorpay)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant text-xs font-medium">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Not assigned</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="px-2 py-1 rounded-lg hover:bg-surface-container-high text-xs font-semibold text-primary transition-colors">View Details</button>
+<button class="px-2 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-xs font-semibold text-on-surface transition-colors">Update Status</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex flex-col">
+<span class="font-bold">YM-2026-000139</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Dawn Batch #03</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Sunil Deshmukh</span>
+<span class="text-xs text-on-surface-variant">Godavari Dairy Hub</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface whitespace-nowrap">
+<div>29 Oct, 08:01 AM</div>
+<span class="text-[11px] text-on-surface-variant">16m ago</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-medium text-on-surface truncate">Toned Milk 1L × 5 pks</p>
+<span class="text-[11px] text-secondary font-semibold">1 item total</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-base text-on-surface">₹3,480</div>
+<span class="text-[10px] text-on-surface-variant">Glass Return Credit applied</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FFF4DB] text-[#9A6700] text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#E8A317]"></span>
+                      Ready for delivery
+                    </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#1F9D63] bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">
+<span class="text-xs font-bold">₹</span>
+<span>Paid · Online (Razorpay)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6E8F5] text-[#151D4D] text-xs font-medium">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<span>Picked up (Insulated Van #02)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="px-2 py-1 rounded-lg hover:bg-surface-container-high text-xs font-semibold text-primary transition-colors">View Details</button>
+<button class="px-2 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-xs font-semibold text-on-surface transition-colors">Update Status</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex flex-col">
+<span class="font-bold">YM-2026-000135</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Dawn Batch #02</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Anand Patil</span>
+<span class="text-xs text-on-surface-variant">Patil Sweets &amp; Bakers</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface whitespace-nowrap">
+<div>29 Oct, 07:20 AM</div>
+<span class="text-[11px] text-on-surface-variant">57m ago</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-medium text-on-surface truncate">Fresh Malai Paneer 1kg × 6 pk</p>
+<p class="text-xs text-on-surface-variant truncate">Butter 500g × 4 pk</p>
+<span class="text-[11px] text-secondary font-semibold">3 items total</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-base text-on-surface">₹5,120</div>
+<span class="text-[10px] text-on-surface-variant">Non-GST Direct Bill</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
+                      Out for delivery
+                    </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#E8A317] bg-[#FFF4DB] text-[#9A6700] text-xs font-semibold">
+<span class="text-xs font-bold">₹</span>
+<span>Pending · Cash on Delivery</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E6E8F5] text-[#151D4D] text-xs font-medium">
+<span class="material-symbols-outlined text-sm">local_shipping</span>
+<span>Out for delivery (Route 1 - Dawn)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="px-2 py-1 rounded-lg hover:bg-surface-container-high text-xs font-semibold text-primary transition-colors">View Details</button>
+<button class="px-2 py-1 rounded-lg bg-surface-container-high hover:bg-surface-variant text-xs font-semibold text-on-surface transition-colors">Update Status</button>
+</div>
+</td>
+</tr>
+<!-- ROW 5 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex flex-col">
+<span class="font-bold">YM-2026-000118</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Dawn Batch #01</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Rajesh Sharma</span>
+<span class="text-xs text-on-surface-variant">Sharma General Store</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface whitespace-nowrap">
+<div>28 Oct, 06:15 AM</div>
+<span class="text-[11px] text-on-surface-variant">Yesterday</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-medium text-on-surface truncate">Pure Ghee 1L × 1 pk</p>
+<p class="text-xs text-on-surface-variant truncate">Fresh Paneer 1kg × 2 pk</p>
+<span class="text-[11px] text-secondary font-semibold">2 items total</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-base text-on-surface">₹2,290</div>
+<span class="text-[10px] text-on-surface-variant">Reconciled in Bank</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">
+<span class="material-symbols-outlined text-xs">check_circle</span>
+                      Delivered
+                    </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#1F9D63] bg-[#E3F6EC] text-[#1F9D63] text-xs font-semibold">
+<span class="text-xs font-bold">₹</span>
+<span>Paid · Online (Razorpay)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-medium">
+<span class="material-symbols-outlined text-sm">task_alt</span>
+<span>Delivered (06:40 AM)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="px-2 py-1 rounded-lg hover:bg-surface-container-high text-xs font-semibold text-primary transition-colors">View Details</button>
+<button class="px-2 py-1 rounded-lg bg-surface-container text-xs font-semibold text-secondary hover:bg-surface-variant transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">receipt</span>
+<span>YMI-2026-000045</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 6 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-3.5 px-4">
+<input class="rounded border-outline-variant text-primary-container focus:ring-primary-container" type="checkbox"/>
+</td>
+<td class="py-3.5 px-4 font-semibold text-primary">
+<div class="flex flex-col">
+<span class="font-bold">YM-2026-000109</span>
+<span class="text-[10px] text-on-surface-variant font-normal">Dawn Batch #01</span>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-surface">Vandana Joshi</span>
+<span class="text-xs text-on-surface-variant">Nirvana Wellness Ashram</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-on-surface whitespace-nowrap">
+<div>28 Oct, 05:40 AM</div>
+<span class="text-[11px] text-on-surface-variant">Yesterday</span>
+</td>
+<td class="py-3.5 px-4">
+<div class="max-w-xs">
+<p class="font-medium text-on-surface truncate">Full Cream Milk 500ml × 4 pks</p>
+<span class="text-[11px] text-secondary font-semibold">2 items total</span>
+</div>
+</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-bold text-base text-on-surface line-through text-outline">₹2,720</div>
+<span class="text-[10px] text-error font-medium">Reversed Zero-Balance</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Soft red-amber pill: Cancelled -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-100 text-red-800 text-xs font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-red-600"></span>
+                      Cancelled
+                    </span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<!-- Refunded Online pill -->
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-outline bg-surface-container text-on-surface-variant text-xs font-semibold">
+<span class="text-xs font-bold">₹</span>
+<span>Refunded · Online (Razorpay)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 text-red-800 text-xs font-medium">
+<span class="material-symbols-outlined text-sm">cancel</span>
+<span>Failed (Cold-chain trip)</span>
+</span>
+</td>
+<td class="py-3.5 px-4 whitespace-nowrap text-center">
+<div class="flex items-center justify-center gap-1">
+<span class="text-xs font-medium text-error bg-error-container/40 px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">info</span>
+<span>Cold-chain delay</span>
+</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer & Pagination Bar -->
+<div class="p-4 bg-surface-container-lowest border-t border-surface-variant flex flex-col md:flex-row items-center justify-between gap-4">
+<!-- Left Info & Realtime Telemetry Sync -->
+<div class="flex items-center gap-4 text-label-sm font-label-sm text-on-surface-variant">
+<span>Showing 1-6 of 142 orders · Page 1 of 24</span>
+<div class="h-4 w-px bg-outline-variant/60"></div>
+<div class="flex items-center gap-1.5 text-emerald-800 font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span>Live Cold-Chain Ledger synced 15s ago · Auto-refresh active</span>
+</div>
+</div>
+<!-- Right Controls: Rows Selector & Pagination -->
+<div class="flex items-center gap-4">
+<!-- Rows Per Page Dropdown -->
+<div class="flex items-center gap-2 text-label-sm font-label-sm text-on-surface-variant">
+<span>Rows per page:</span>
+<select class="py-1 px-2.5 border border-surface-variant rounded-lg bg-surface-container-low text-on-surface focus:outline-none focus:border-primary-container text-xs font-semibold">
+<option selected="">25</option>
+<option>50</option>
+<option>100</option>
+</select>
+</div>
+<!-- Pagination Navigation -->
+<div class="flex items-center gap-1">
+<button class="p-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-outline hover:text-on-surface disabled:opacity-40 transition-colors" disabled="">
+<span class="material-symbols-outlined text-base">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary-container text-white text-xs font-semibold">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface text-xs font-medium">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface text-xs font-medium">3</button>
+<span class="px-1 text-on-surface-variant text-xs">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container text-on-surface text-xs font-medium">24</button>
+<button class="p-1.5 rounded-lg border border-surface-variant hover:bg-surface-container text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Non-GST Vedic Dairy Operational Disclaimers -->
+<div class="p-4 rounded-xl bg-surface-container-low border border-surface-variant flex items-start justify-between text-xs text-on-surface-variant">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary text-xl shrink-0">verified</span>
+<div>
+<p class="font-bold text-on-surface">Strict Zero-Credit Policy Enforced</p>
+<p>Per operational bylaws, customers with uncollected COD or past balances exceeding ₹2,000 are barred automatically from the 05:00 PM dawn batch compilation run.</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-semibold text-on-surface">Direct Producer Exemption</span>
+<p class="text-[11px]">Unprocessed raw a2 milk dispatch pursuant to agri farm gate ledger.</p>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Yog Milk Admin Authentication Portal</title>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#321200",
+            "tertiary-fixed-dim": "#ffb68b",
+            "primary-container": "#151d4d",
+            "primary-fixed": "#dee0ff",
+            "on-background": "#1c1c18",
+            "on-primary-fixed": "#0e1647",
+            "on-secondary-container": "#394485",
+            "on-error": "#ffffff",
+            "surface-variant": "#e5e2dc",
+            "surface-container-highest": "#e5e2dc",
+            "on-secondary-fixed-variant": "#374183",
+            "surface-container-high": "#ebe8e2",
+            "error": "#ba1a1a",
+            "outline-variant": "#c7c5d0",
+            "primary": "#000533",
+            "on-tertiary-fixed-variant": "#753400",
+            "on-secondary": "#ffffff",
+            "outline": "#767680",
+            "secondary-fixed-dim": "#bbc3ff",
+            "secondary-container": "#a9b4fe",
+            "inverse-primary": "#bcc3fd",
+            "surface-container": "#f0eee8",
+            "on-surface-variant": "#46464f",
+            "secondary-fixed": "#dee0ff",
+            "on-surface": "#1c1c18",
+            "surface-dim": "#dcdad4",
+            "secondary": "#4f599c",
+            "on-secondary-fixed": "#051256",
+            "error-container": "#ffdad6",
+            "tertiary": "#190600",
+            "background": "#fcf9f3",
+            "on-tertiary-container": "#db6805",
+            "inverse-surface": "#31312d",
+            "primary-fixed-dim": "#bcc3fd",
+            "inverse-on-surface": "#f3f0eb",
+            "on-primary-container": "#7e86bc",
+            "surface-tint": "#535b8e",
+            "on-primary-fixed-variant": "#3b4375",
+            "surface-container-low": "#f6f3ed",
+            "on-error-container": "#93000a",
+            "surface-bright": "#fcf9f3",
+            "tertiary-container": "#3c1700",
+            "on-primary": "#ffffff",
+            "surface": "#fcf9f3",
+            "tertiary-fixed": "#ffdbc8",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin-tablet": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "space-sm": "0.5rem",
+            "gutter-desktop": "1.5rem",
+            "gutter": "1rem",
+            "margin-desktop": "3rem",
+            "margin": "1rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"]
+          },
+          "fontSize": {
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+            "title-md": ["16px", {"lineHeight": "24px", "fontWeight": "600"}],
+            "label-sm": ["10px", {"lineHeight": "14px", "letterSpacing": "0.06em", "fontWeight": "700"}],
+            "body-md": ["14px", {"lineHeight": "22px", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "fontWeight": "700"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+            "display-lg": ["44px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "18px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "34px", "fontWeight": "600"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-warm-cream {
+      background-color: #FBF1DC;
+    }
+    .botanical-border {
+      background-image: radial-gradient(#151D4D 0.75px, transparent 0.75px), radial-gradient(#F47B20 0.5px, #FBF1DC 0.5px);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+      opacity: 0.18;
+    }
+    .lotus-glow {
+      box-shadow: 0 0 50px -10px rgba(244, 123, 32, 0.15), 0 10px 30px -4px rgba(21, 29, 77, 0.08);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased min-h-screen relative flex flex-col justify-between selection:bg-secondary-container selection:text-primary">
+<!-- Ambient Indian Botanical & Vedic Pattern Layer -->
+<div class="fixed inset-0 pointer-events-none botanical-border"></div>
+<!-- Micro Header / Purity Badge Banner -->
+<header class="relative z-10 w-full px-6 py-4 flex items-center justify-between border-b border-surface-variant/50 bg-surface-container-lowest/80 backdrop-blur-md">
+<div class="flex items-center gap-3">
+<!-- Sacred Drop Lotus Yog Milk Brand Emblem -->
+<div class="w-10 h-10 rounded-full bg-primary-container text-surface flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-surface" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary font-semibold tracking-tight">Yog Milk</span>
+<span class="text-[10px] tracking-wider uppercase px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm">Admin Gateway</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">From Nature to Nourish You</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container border border-surface-variant text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Cold-Chain Network: 3.8°C Nominal</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span>256-Bit TLS Terminal</span>
+</div>
+</div>
+</header>
+<!-- Main Viewport Container (1440px Desktop Focus) -->
+<main class="relative z-10 flex-1 max-w-[1440px] w-full mx-auto px-4 md:px-8 py-8 md:py-12 flex flex-col justify-center">
+<!-- Portal Header Narrative -->
+<div class="text-center max-w-2xl mx-auto mb-10">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container-lowest border border-surface-variant/80 shadow-sm mb-3">
+<span class="material-symbols-outlined text-[#F47B20] text-sm" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+<span class="font-label-md text-label-md text-primary font-medium tracking-wide">Vedic Pure Dairy Operations</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight mb-2">Internal Fleet &amp; Governance Portal</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Multi-facility telemetry, artisan dispatch scheduling, and direct farm harvest authentication.
+      </p>
+</div>
+<!-- Side-by-Side Dual State Showcase Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto w-full">
+<!-- ========================================== -->
+<!-- STATE A: STANDARD ADMIN SIGN-IN -->
+<!-- ========================================== -->
+<section class="bg-surface-container-lowest rounded-3xl p-8 md:p-10 border border-[#E7E2D6] lotus-glow flex flex-col justify-between relative overflow-hidden transition-all duration-200">
+<!-- Subtle Top Accent Glow -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-primary via-secondary to-[#F47B20]"></div>
+<div>
+<!-- State Label Pill -->
+<div class="flex items-center justify-between mb-8">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2.5 py-1 rounded-md bg-[#E3F6EC] text-[#1F9D63] font-bold">
+              State A • Authorized Gateway
+            </span>
+<span class="font-label-sm text-label-sm text-outline">Terminal ID: DEL-HQ-01</span>
+</div>
+<!-- Brand Lotus & Drop Icon Header -->
+<div class="flex flex-col items-center text-center mb-8">
+<div class="relative w-16 h-16 rounded-2xl bg-[#FBF1DC] border border-[#E7E2D6] flex items-center justify-center mb-4 text-primary shadow-sm">
+<span class="material-symbols-outlined text-3xl text-primary-container" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="material-symbols-outlined text-sm text-[#F47B20] absolute bottom-2 right-2" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">Operations &amp; Fleet Console</h2>
+<p class="font-label-md text-label-md text-[#F47B20] font-semibold tracking-wide">Yog Milk • From Nature to Nourish You</p>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-sm">
+              Authorized internal dairy team &amp; fulfillment coordinators only.
+            </p>
+</div>
+<!-- Official Google SSO Button Compliance -->
+<div class="space-y-4 mb-8">
+<button class="w-full h-12 px-6 rounded-full bg-surface-container-lowest border border-[#E7E2D6] hover:border-primary-container hover:bg-surface-container-low transition-all duration-150 flex items-center justify-center gap-3.5 shadow-sm active:scale-[0.99] group" type="button">
+<!-- Compliant Multi-colored Google "G" SVG -->
+<svg aria-hidden="true" class="w-5 h-5 flex-shrink-0" viewbox="0 0 24 24">
+<path d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.8-2.4 3.66v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.15z" fill="#4285F4"></path>
+<path d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.25 21.36 7.33 24 12 24z" fill="#34A853"></path>
+<path d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z" fill="#FBBC05"></path>
+<path d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.25 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z" fill="#EA4335"></path>
+</svg>
+<span class="font-title-md text-title-md text-on-surface font-semibold group-hover:text-primary">
+                Continue with Google
+              </span>
+</button>
+<!-- Active Security Disclaimer Box -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-surface-variant/60 flex items-start gap-2.5 text-left">
+<span class="material-symbols-outlined text-secondary text-base mt-0.5" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Requires <span class="font-semibold text-primary">@yogmilk.com</span> enterprise workspace domain. Single Sign-On enforced with cold-chain audit logging.
+              </p>
+</div>
+</div>
+</div>
+<!-- Card Footer Meta / Support Desk -->
+<div class="pt-6 border-t border-surface-variant/50 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+<div class="flex items-center gap-1.5 text-outline">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span class="font-body-sm text-body-sm">Contact Operations IT Desk (ext. 104)</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary hover:underline cursor-pointer">
+            Request Terminal Token
+          </span>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- STATE B: ACCESS DENIED / UNAUTHORIZED -->
+<!-- ========================================== -->
+<section class="bg-surface-container-lowest rounded-3xl p-8 md:p-10 border border-[#E7E2D6] lotus-glow flex flex-col justify-between relative overflow-hidden transition-all duration-200">
+<!-- Error Status Top Bar Accent -->
+<div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-error via-[#E8A317] to-error"></div>
+<div>
+<!-- State Label Pill -->
+<div class="flex items-center justify-between mb-8">
+<span class="font-label-sm text-label-sm uppercase tracking-wider px-2.5 py-1 rounded-md bg-error-container text-on-error-container font-bold">
+              State B • Access Denied (403)
+            </span>
+<div class="flex items-center gap-1 text-error font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span>Verification Refused</span>
+</div>
+</div>
+<!-- Warning Shield / Blocked Badge in Warm Amber-Red -->
+<div class="flex flex-col items-center text-center mb-6">
+<div class="relative w-16 h-16 rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center mb-4 text-error shadow-sm">
+<span class="material-symbols-outlined text-3xl text-error" style="font-variation-settings: 'FILL' 1;">gpp_bad</span>
+<span class="material-symbols-outlined text-sm text-amber-600 absolute -top-1 -right-1" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">This account isn't authorised</h2>
+<!-- Explanatory Blocked Message -->
+<div class="bg-surface-container-low rounded-2xl p-4 border border-surface-variant/80 text-left my-2 w-full">
+<div class="flex items-center gap-2 mb-2 pb-2 border-b border-surface-variant/40">
+<span class="material-symbols-outlined text-base text-outline">account_circle</span>
+<span class="font-label-md text-label-md text-error font-mono bg-error-container/40 px-2 py-0.5 rounded">
+                  rajesh.sharma@gmail.com
+                </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                google-account <span class="font-semibold text-primary">rajesh.sharma@gmail.com</span> does not have permission to access the Yog Milk Admin Dashboard. This console is restricted to certified dairy facility operators and brand administration.
+              </p>
+</div>
+</div>
+<!-- Diagnostic Session Info Container -->
+<div class="mb-6 p-3.5 rounded-xl bg-surface-container border border-surface-variant/50 text-xs font-mono text-on-surface-variant space-y-1">
+<div class="flex justify-between items-center">
+<span class="text-outline uppercase text-[10px] tracking-wider font-sans font-bold">Diagnostic Code:</span>
+<span class="text-error font-semibold">AUTH_FORBIDDEN_403</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline uppercase text-[10px] tracking-wider font-sans font-bold">Client IP Timestamp:</span>
+<span>29 Oct 2026, 07:48 AM IST</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-outline uppercase text-[10px] tracking-wider font-sans font-bold">Origin Trace:</span>
+<span>BLR-CENTRAL-HUB-GATE-04</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-3">
+<!-- Primary Action Button: Switch Google Account (Navy Dark) -->
+<button class="w-full h-12 px-6 rounded-full bg-primary-container text-surface hover:bg-primary transition-all duration-150 flex items-center justify-center gap-2 shadow-sm font-label-lg text-label-lg active:scale-[0.99]" type="button">
+<span class="material-symbols-outlined text-lg">switch_account</span>
+<span>Switch Google Account</span>
+</button>
+<!-- Secondary Actions -->
+<div class="flex items-center justify-center gap-4 pt-1">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">storefront</span>
+<span>Return to Customer Storefront</span>
+</a>
+<span class="text-outline-variant">•</span>
+<a class="font-label-md text-label-md text-[#F47B20] hover:underline flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">shield_person</span>
+<span>Contact Super Admin</span>
+</a>
+</div>
+</div>
+</div>
+<!-- State B Footer Diagnostic Verification -->
+<div class="pt-6 border-t border-surface-variant/50 flex items-center justify-between text-outline">
+<span class="font-body-sm text-body-sm">Audit Incident logged in Ledger #8942-D</span>
+<span class="material-symbols-outlined text-base text-outline">fingerprint</span>
+</div>
+</section>
+</div>
+<!-- Supplementary Brand Values / Dairy Integrity Footer Strip -->
+<div class="mt-12 max-w-4xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface-container-lowest/70 backdrop-blur-sm rounded-2xl p-4 border border-[#E7E2D6] flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-[#FDEBDC] text-[#F47B20] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">temp_preferences_custom</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary">Unbroken Cold Chain</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Continuous IoT milk chilling audits</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/70 backdrop-blur-sm rounded-2xl p-4 border border-[#E7E2D6] flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-[#E3F6EC] text-[#1F9D63] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">biotech</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary">Zero Adulteration</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Daily farm batch purity certs</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest/70 backdrop-blur-sm rounded-2xl p-4 border border-[#E7E2D6] flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-[#E6E8F5] text-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-xl">admin_panel_settings</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-primary">RBAC Facility Access</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Strict biometric &amp; SSO segregation</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Global Minimal Legal & Infrastructure Footer -->
+<footer class="relative z-10 w-full py-6 px-8 border-t border-surface-variant/40 bg-surface-container-lowest/60 backdrop-blur-sm text-center md:flex md:justify-between items-center text-outline font-body-sm text-body-sm">
+<div class="flex items-center justify-center md:justify-start gap-2 mb-2 md:mb-0">
+<span>© 2026 Yog Milk Technologies Private Limited. Vedic Pure Dairy Ecosystem.</span>
+</div>
+<div class="flex items-center justify-center gap-6">
+<a class="hover:text-primary transition-colors" href="#">Cold-Chain Protocol</a>
+<a class="hover:text-primary transition-colors" href="#">Operator Privacy Notice</a>
+<a class="hover:text-primary transition-colors" href="#">Terminal Status</a>
+</div>
+</footer>
+</body></html>

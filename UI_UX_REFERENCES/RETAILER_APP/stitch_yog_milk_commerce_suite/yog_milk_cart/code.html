@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Your Morning Basket - Yog Milk</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#dde1f8",
+            "on-primary-fixed-variant": "#374183",
+            "outline-variant": "#c6c5d2",
+            "on-primary-fixed": "#051256",
+            "inverse-on-surface": "#eef0ff",
+            "on-surface-variant": "#454650",
+            "on-primary": "#ffffff",
+            "secondary": "#994700",
+            "inverse-surface": "#2b3041",
+            "tertiary-fixed-dim": "#edc15a",
+            "on-tertiary-fixed-variant": "#5b4300",
+            "surface-bright": "#faf8ff",
+            "primary-container": "#1f2a6b",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#ffdf9c",
+            "surface-container": "#eaedff",
+            "tertiary": "#261a00",
+            "error": "#ba1a1a",
+            "on-background": "#161b2b",
+            "on-tertiary-fixed": "#251a00",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "primary-fixed-dim": "#bbc3ff",
+            "tertiary-container": "#3f2e00",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#ba9331",
+            "background": "#faf8ff",
+            "surface-tint": "#4f599c",
+            "on-secondary-container": "#602a00",
+            "surface": "#faf8ff",
+            "on-secondary-fixed-variant": "#753400",
+            "on-surface": "#161b2b",
+            "outline": "#767681",
+            "primary-fixed": "#dee0ff",
+            "surface-container-highest": "#dde1f8",
+            "inverse-primary": "#bbc3ff",
+            "primary": "#051256",
+            "surface-container-low": "#f2f3ff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#321200",
+            "secondary-container": "#fc8127",
+            "on-primary-container": "#8994db",
+            "secondary-fixed": "#ffdbc8",
+            "surface-container-high": "#e3e7fe",
+            "surface-dim": "#d5d9ef",
+            "secondary-fixed-dim": "#ffb68b",
+            "surface-container-lowest": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1rem",
+            "space-sm": "0.5rem",
+            "margin-desktop": "3rem",
+            "margin-tablet": "2rem",
+            "space-xl": "2rem",
+            "space-md": "1rem",
+            "space-2xl": "3rem",
+            "gutter-desktop": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "margin": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Playfair Display"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Playfair Display"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Playfair Display"],
+            "title-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Playfair Display"],
+            "label-md": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Playfair Display"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "title-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Playfair Display"]
+          },
+          "fontSize": {
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "22px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "display-lg-mobile": ["34px", {"lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "26px", "letterSpacing": "0", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "0", "fontWeight": "500"}],
+            "title-md": ["16px", {"lineHeight": "24px", "letterSpacing": "0", "fontWeight": "600"}],
+            "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+            "headline-lg-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "0", "fontWeight": "600"}],
+            "body-sm": ["12px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "title-lg": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "0", "fontWeight": "500"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    body {
+      background-color: #faf8ff;
+      color: #161b2b;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex justify-center selection:bg-surface-container selection:text-primary">
+<!-- Mobile Container (390 x 844 viewport simulation on desktop / fluid mobile) -->
+<div class="w-full max-w-[420px] min-h-screen bg-surface flex flex-col relative pb-32 shadow-xl border-x border-outline-variant/20">
+<!-- Top Sticky Bar (Task-Focused Screen Header: Back Button + Basket Title + Delivery Slot Badge) -->
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-md px-4 py-3 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-2.5">
+<button aria-label="Go back" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[22px]" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="font-headline-sm text-headline-sm font-semibold text-primary tracking-tight">Your Morning Basket</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container inline-block"></span>
+            3 items batch-reserved
+          </p>
+</div>
+</div>
+<!-- Nashik Dawn Badge -->
+<div class="bg-surface-container-high text-primary px-2.5 py-1 rounded-full flex items-center gap-1.5 border border-outline-variant/40">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="wb_twilight">wb_twilight</span>
+<span class="font-label-sm text-label-sm font-semibold whitespace-nowrap">Nashik 5:30 AM</span>
+</div>
+</header>
+<!-- Main Scrollable Content Area -->
+<main class="flex-1 px-4 pt-3 space-y-4">
+<!-- Notice Alert Banner: Soft cream/navy alert -->
+<div class="rounded-xl bg-surface-container-low border border-outline-variant/50 p-3.5 flex items-start gap-3 shadow-sm">
+<div class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="schedule">schedule</span>
+</div>
+<div class="flex-1 pr-1">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md font-semibold text-primary">Ordering open</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold bg-secondary-fixed/50 px-2 py-0.5 rounded-full">Dawn Cycle</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            Closes today <strong class="text-on-surface font-semibold">5:00 PM</strong> for tomorrow's early morning doorstep delivery.
+          </p>
+</div>
+</div>
+<!-- Cart Item Rows Section -->
+<section class="space-y-3">
+<div class="flex items-center justify-between px-1">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider font-semibold">Reserved Fresh Items</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified">verified</span> A2 Sattvic Batch
+          </span>
+</div>
+<!-- Item 1: Gir Cow A2 Full Cream Milk -->
+<article class="bg-surface-container-lowest rounded-2xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden group">
+<div class="flex items-start gap-3.5">
+<!-- Packshot thumbnail tile -->
+<div class="w-20 h-20 rounded-xl bg-surface-container-low flex items-center justify-center shrink-0 border border-outline-variant/20 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Premium traditional glass milk bottle containing fresh organic pure A2 whole milk with golden cream layer on top, set on warm cream textured linen with morning sunlight and subtle navy blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtTKymHYX3yCpIXHHc3wtMuPr8fbAuenVFqp1g18Ra4PRzZ6dRaXDRjsossBZNnltbgbkyM0i3iY3-8PIWHn6PlrcbVC7lMWem-UMej4iWQa1jHYTlbL00PNDJzpq7CJ9L5rDZVKwdu5iAQ0iU6Uvz9F30sVjhtVyKrJ5UUnleJBzRonsBoXYpsJYFWaVE4FPzQHFSCoQcQMKdBWoFPDRyfri9Ya1Y7rYw-3c_Qw">
+<span class="absolute bottom-1 right-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-bold text-primary tracking-wide">
+                500ml
+              </span>
+</div>
+<!-- Details & Stepper -->
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-title-md text-title-md font-semibold text-primary truncate leading-snug">Gir Cow A2 Full Cream Milk</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">500 ml · Pack of 20 bottles</p>
+</div>
+<!-- Remove item icon button -->
+<button aria-label="Remove item" class="text-outline-variant hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Price & Stepper row -->
+<div class="mt-3 flex items-center justify-between pt-1">
+<div>
+<span class="font-title-lg text-title-lg font-bold text-primary">₹1,440</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">₹720 / pack</span>
+</div>
+<!-- Custom Stepper [- 2 +] -->
+<div class="flex items-center bg-surface-container-low rounded-xl border border-outline-variant/40 p-0.5">
+<button aria-label="Decrease quantity" class="w-7 h-7 rounded-lg flex items-center justify-center text-primary hover:bg-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="remove">remove</span>
+</button>
+<span class="w-8 text-center font-label-md text-label-md font-semibold text-primary">2</span>
+<button aria-label="Increase quantity" class="w-7 h-7 rounded-lg flex items-center justify-center text-primary hover:bg-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 2: Cultured Vedic Bilona Ghee -->
+<article class="bg-surface-container-lowest rounded-2xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden group">
+<div class="flex items-start gap-3.5">
+<!-- Packshot thumbnail tile -->
+<div class="w-20 h-20 rounded-xl bg-surface-container-low flex items-center justify-center shrink-0 border border-outline-variant/20 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Traditional earthen clay pot and vintage glass jar filled with luminous golden granular Vedic Bilona cultured ghee, accented by warm dawn reflections, Ayurvedic herbal styling, and deep royal indigo elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAapXUuEY5UnPPNU4EBl559owki4KmE95O_awCBfUktKH_PQYfLoFT-J8rarzSFN3F8VJciU6oFTScEbtHonphVCyUJHouGyR4d6_WFTc-qmmkjvPBnn90IXKV0YZexHTVZgphUiD0nb2Z6uqevfan8wjNBUk8VPAdr-rD3kjKIpvKyz2krW1Qf50N255GbnqIqfZG7Xw9VegG8WAPMhT7dbdAHsjZCn8K73LXk7w">
+<span class="absolute bottom-1 right-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-bold text-secondary font-semibold tracking-wide">
+                Bilona
+              </span>
+</div>
+<!-- Details & Stepper -->
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-title-md text-title-md font-semibold text-primary truncate leading-snug">Cultured Vedic Bilona Ghee</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">500 ml · Pack of 2 jars</p>
+</div>
+<!-- Remove item icon button -->
+<button aria-label="Remove item" class="text-outline-variant hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Price & Stepper row -->
+<div class="mt-3 flex items-center justify-between pt-1">
+<div>
+<span class="font-title-lg text-title-lg font-bold text-primary">₹1,450</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Hand-churned batch</span>
+</div>
+<!-- Custom Stepper [- 1 +] -->
+<div class="flex items-center bg-surface-container-low rounded-xl border border-outline-variant/40 p-0.5">
+<button aria-label="Decrease quantity" class="w-7 h-7 rounded-lg flex items-center justify-center text-primary hover:bg-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="remove">remove</span>
+</button>
+<span class="w-8 text-center font-label-md text-label-md font-semibold text-primary">1</span>
+<button aria-label="Increase quantity" class="w-7 h-7 rounded-lg flex items-center justify-center text-primary hover:bg-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+<!-- Item 3: Fresh Set Dahi -->
+<article class="bg-surface-container-lowest rounded-2xl p-3.5 border border-outline-variant/30 shadow-sm relative overflow-hidden group">
+<div class="flex items-start gap-3.5">
+<!-- Packshot thumbnail tile -->
+<div class="w-20 h-20 rounded-xl bg-surface-container-low flex items-center justify-center shrink-0 border border-outline-variant/20 overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Rustic terracotta clay matka containing dense velvety Indian curd or set dahi with fresh lotus flower petals beside it, captured under clean soft morning ambient daylight with rich milk cream textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBO7R7SXEEzLbQkSyix3fTVgc9-v8oBIHJfOvAxqB2bfe0dnjIllNMLlbC7WM_1y_RXkGDt0V4IohRcbc5QSXB54iBT1dwC65ltoOWSbw9J41RbnMQO-3ddG6pTRwUYYnZXFoEzMmoYfPLue10CPMuUGIizlvEmm3IRUef0y6cchG1wGBBNFBN3g27nZJ4wwq5HECK8tiQdGttxqJy5JY0frOU_jvnJsbNl7pRH2g">
+<span class="absolute bottom-1 right-1 bg-surface-container-lowest/90 px-1 py-0.2 rounded text-[9px] font-bold text-primary tracking-wide">
+                400g
+              </span>
+</div>
+<!-- Details & Stepper -->
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-title-md text-title-md font-semibold text-primary truncate leading-snug">Fresh Set Dahi</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">400 g · Pack of 24 matkas</p>
+</div>
+<!-- Remove item icon button -->
+<button aria-label="Remove item" class="text-outline-variant hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+<!-- Price & Stepper row -->
+<div class="mt-3 flex items-center justify-between pt-1">
+<div>
+<span class="font-title-lg text-title-lg font-bold text-primary">₹1,370</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Clay matka set</span>
+</div>
+<!-- Custom Stepper [- 3 +] -->
+<div class="flex items-center bg-surface-container-low rounded-xl border border-outline-variant/40 p-0.5">
+<button aria-label="Decrease quantity" class="w-7 h-7 rounded-lg flex items-center justify-center text-primary hover:bg-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="remove">remove</span>
+</button>
+<span class="w-8 text-center font-label-md text-label-md font-semibold text-primary">3</span>
+<button aria-label="Increase quantity" class="w-7 h-7 rounded-lg flex items-center justify-center text-primary hover:bg-surface active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</article>
+</section>
+<!-- Add more items prompt / link back to Shop -->
+<div class="py-1">
+<a class="flex items-center justify-center gap-2 py-3 px-4 rounded-xl border-2 border-dashed border-outline-variant/60 text-primary font-label-md text-label-md font-semibold hover:bg-surface-container-high transition-colors" href="#shop">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="add_circle">add_circle</span>
+          Add more items from Morning Dairy Shop
+        </a>
+</div>
+<!-- Dawn Delivery Slot Card -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+</div>
+<span class="font-label-md text-label-md font-semibold text-primary">Dawn Delivery Destination</span>
+</div>
+<button class="font-label-sm text-label-sm font-semibold text-secondary hover:underline" type="button">Change</button>
+</div>
+<div class="bg-surface-container-low/60 rounded-xl p-3 border border-outline-variant/20">
+<p class="font-body-md text-body-md font-medium text-on-surface">Sharma General Store</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">College Road, Nashik, Maharashtra 422005</p>
+<div class="mt-2 pt-2 border-t border-outline-variant/20 flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="nest_clock_farsight_analog">nest_clock_farsight_analog</span>
+              Scheduled Dawn Slot: <strong>05:30 AM – 06:15 AM</strong>
+</span>
+</div>
+</div>
+</section>
+<!-- Bill Summary Card (strictly non-GST bill, clean Indian e-commerce style) -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between border-b border-outline-variant/20 pb-2.5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="receipt_long">receipt_long</span>
+<h3 class="font-title-md text-title-md font-semibold text-primary">Bill Summary</h3>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">3 Items</span>
+</div>
+<div class="space-y-2.5 font-body-sm text-body-sm">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Items Subtotal</span>
+<span class="font-semibold text-on-surface">₹4,260</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="text-on-surface-variant">Morning Dawn Delivery</span>
+<span class="font-label-sm text-label-sm bg-surface-container text-primary font-semibold px-1.5 py-0.2 rounded">Community</span>
+</div>
+<span class="font-semibold text-secondary">FREE</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="text-on-surface-variant">Packaging &amp; Chilled Cold-Chain</span>
+<span class="material-symbols-outlined text-[14px] text-outline" data-icon="eco" title="Eco glass deposit included">eco</span>
+</div>
+<span class="font-semibold text-on-surface">₹0 </span>
+</div>
+<div class="border-t border-dashed border-outline-variant/40 pt-3 flex items-center justify-between">
+<div>
+<span class="font-title-md text-title-md font-bold text-primary">Total to Pay</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Inclusive of all farm gate charges</p>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">₹4,260</span>
+</div>
+</div>
+</section>
+<!-- Highlight note below bill -->
+<div class="px-2 py-2 flex items-start gap-2.5 bg-surface-container-high/40 rounded-xl border border-outline-variant/30">
+<span class="material-symbols-outlined text-[17px] text-secondary shrink-0 mt-0.5" data-icon="auto_awesome">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<strong class="font-semibold text-primary">Purity Guarantee:</strong> Final amount is confirmed when you place the order. Dawn batch fresh bottled at 4:30 AM directly from Nashik grass-fed Gir cow sanctuary.
+        </p>
+</div>
+<!-- Sattvic Trust Marks -->
+<div class="grid grid-cols-3 gap-2 pt-1 pb-4 text-center">
+<div class="p-2 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="verified_user">verified_user</span>
+<p class="font-label-sm text-label-sm font-semibold text-primary mt-1">100% A2 Tested</p>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Zero Oxytocin</span>
+</div>
+<div class="p-2 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="thermostat">thermostat</span>
+<p class="font-label-sm text-label-sm font-semibold text-primary mt-1">4°C Cold Chain</p>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Never Broken</span>
+</div>
+<div class="p-2 bg-surface-container-lowest rounded-xl border border-outline-variant/20"><span class="material-symbols-outlined text-[20px] text-primary" data-icon="agriculture">agriculture</span>
+<p class="font-label-sm text-label-sm font-semibold text-primary mt-1">Farm Fresh</p>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Direct from Farm</span></div>
+</div>
+</main>
+<!-- Sticky Bottom Checkout Bar (Task focused checkout screen bar with safe elevation) -->
+<div class="fixed bottom-0 left-0 w-full flex justify-center z-50 pointer-events-none">
+<div class="w-full max-w-[420px] bg-surface/95 backdrop-blur-md px-4 py-3 border-t border-outline-variant/20 shadow-lg pointer-events-auto">
+<div class="flex items-center justify-between gap-3">
+<!-- Price summary snippet -->
+<div class="min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold tracking-wider">3 Items Reserved</span>
+<div class="flex items-baseline gap-1">
+<span class="font-headline-sm text-headline-sm font-bold text-primary">₹4,260</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Total</span>
+</div>
+</div>
+<!-- Checkout CTA Button -->
+<button class="flex-1 bg-primary text-on-primary hover:bg-primary-container active:scale-[0.98] transition-all duration-150 py-3.5 px-5 rounded-[14px] flex items-center justify-center gap-2 font-label-lg text-label-lg font-semibold shadow-md" type="button">
+<span class="">Checkout · ₹4,260</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+
+</body></html>

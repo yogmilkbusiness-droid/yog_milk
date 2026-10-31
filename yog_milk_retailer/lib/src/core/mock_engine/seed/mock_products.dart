@@ -1,0 +1,88 @@
+import '../contracts/catalog_repository.dart';
+
+final mockProducts = [
+  const ProductEntity(
+    id: 'prod-001',
+    name: 'Gir Cow Full Cream Milk',
+    categoryId: 'cat-cow',
+    categoryName: 'Cow Milk',
+    packSize: '1L Pouch',
+    unitsPerCrate: 12,
+    wholesalePrice: 68.00,
+    fatPercentage: 4.5,
+    snfPercentage: 8.5,
+    description:
+        'Fresh A2 Gir Cow whole milk from Satara farms. Pasteurized and homogenized.',
+    isAvailable: true,
+  ),
+  const ProductEntity(
+    id: 'prod-002',
+    name: 'Buffalo Full Cream Gold Milk',
+    categoryId: 'cat-buffalo',
+    categoryName: 'Buffalo Milk',
+    packSize: '1L Pouch',
+    unitsPerCrate: 12,
+    wholesalePrice: 80.00,
+    fatPercentage: 6.5,
+    snfPercentage: 9.0,
+    description:
+        'Rich Kolhapuri buffalo milk, high fat content ideal for tea stalls and sweetmakers.',
+    isAvailable: true,
+  ),
+  const ProductEntity(
+    id: 'prod-003',
+    name: 'Fresh Malai Paneer',
+    categoryId: 'cat-paneer',
+    categoryName: 'Paneer & Butter',
+    packSize: '1kg Vacuum Pack',
+    unitsPerCrate: 5,
+    wholesalePrice: 380.00,
+    fatPercentage: 22.0,
+    snfPercentage: 18.0,
+    description:
+        'Soft vacuum-packed traditional malai paneer, zero preservatives.',
+    isAvailable: true,
+  ),
+  const ProductEntity(
+    id: 'prod-004',
+    name: 'Spiced Masala Taak (Buttermilk)',
+    categoryId: 'cat-curd',
+    categoryName: 'Curd & Taak',
+    packSize: '200ml Pouch',
+    unitsPerCrate: 24,
+    wholesalePrice: 15.00,
+    fatPercentage: 1.5,
+    snfPercentage: 8.0,
+    description:
+        'Traditional spiced buttermilk with roasted cumin, ginger, and green chilli.',
+    isAvailable: true,
+  ),
+  const ProductEntity(
+    id: 'prod-005',
+    name: 'Traditional Vedic Cow Ghee',
+    categoryId: 'cat-ghee',
+    categoryName: 'Artisanal Ghee',
+    packSize: '500ml Glass Jar',
+    unitsPerCrate: 6,
+    wholesalePrice: 650.00,
+    fatPercentage: 99.8,
+    snfPercentage: 0.0,
+    description:
+        'Bilona method golden cow ghee prepared from curd cultured cream.',
+    isAvailable: true,
+  ),
+  const ProductEntity(
+    id: 'prod-006',
+    name: 'Cow Milk Dahi (Thick Curd)',
+    categoryId: 'cat-curd',
+    categoryName: 'Curd & Taak',
+    packSize: '500g Tub',
+    unitsPerCrate: 12,
+    wholesalePrice: 42.00,
+    fatPercentage: 4.0,
+    snfPercentage: 8.5,
+    description:
+        'Set curd with thick natural cream layer and mild lactic sweetness.',
+    isAvailable: true,
+  ),
+];
